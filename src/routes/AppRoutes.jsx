@@ -7,7 +7,7 @@ import Gallery from "../pages/Gallery";
 import Reviews from "../pages/Reviews";
 import About from "../pages/About";
 import Facilities from "../pages/Facilities";
-import BookNow from "../pages/BookNow";
+
 
 export default function AppRoutes() {
   return (
@@ -69,14 +69,6 @@ export default function AppRoutes() {
   }
   />
 
-    <Route
-  path="/book"
-  element={
-    <MainLayout>
-      <BookNow />
-    </MainLayout>
-  }
-/>
 
     </Routes>
   );

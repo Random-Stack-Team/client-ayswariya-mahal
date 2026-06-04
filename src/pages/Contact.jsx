@@ -204,12 +204,12 @@ export default function Contact() {
 
           <div className="bg-white rounded-3xl overflow-hidden shadow-sm">
 
-            <iframe
-              title="Ayswariya Mahal Location"
-              src="https://maps.google.com/maps?q=Trichy&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              className="w-full h-[500px]"
-              loading="lazy"
-            />
+              <iframe
+            title="Ayswariya Mahal Chennai Location"
+            src="https://maps.google.com/maps?q=Ayswariya%20Mahal%20Arumbakkam%20Chennai%20600106&output=embed"
+            className="w-full h-[500px] border-0"
+            loading="lazy"
+          />
 
           </div>
 

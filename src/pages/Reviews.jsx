@@ -172,9 +172,7 @@ export default function Reviews() {
             Ayswariya Mahal for their most cherished celebrations.
           </p>
 
-          <button className="bg-[#C8A97E] text-white px-8 py-4 rounded-full hover:scale-105 transition">
-            Contact Us
-          </button>
+          
 
         </div>
       </section>

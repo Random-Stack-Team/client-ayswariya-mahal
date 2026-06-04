@@ -24,13 +24,14 @@ function Navbar() {
 
           <NavLink to="/reviews" className={linkClass}>Reviews</NavLink>
 
-          <NavLink to="/contact" className={linkClass}>Contact</NavLink>
-
           <NavLink to="/about" className={linkClass}>About</NavLink>
 
           <NavLink to="/facilities" className={linkClass}>Facilities</NavLink>
 
-          <NavLink to="/book" className={linkClass}>Book Now</NavLink>
+          {/* SINGLE ENQUIRY CTA */}
+          <NavLink to="/contact" className="text-yellow-400 font-semibold hover:text-yellow-300 transition">
+            Enquiry
+          </NavLink>
 
         </div>
 
