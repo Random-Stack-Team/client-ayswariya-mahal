@@ -20,18 +20,15 @@ function Navbar() {
 
           <NavLink to="/" className={linkClass}>Home</NavLink>
 
-          <NavLink to="/gallery" className={linkClass}>Gallery</NavLink>
+<NavLink to="/about" className={linkClass}>About</NavLink>
 
-          <NavLink to="/reviews" className={linkClass}>Reviews</NavLink>
+<NavLink to="/facilities" className={linkClass}>Facilities</NavLink>
 
-          <NavLink to="/about" className={linkClass}>About</NavLink>
+<NavLink to="/gallery" className={linkClass}>Gallery</NavLink>
 
-          <NavLink to="/facilities" className={linkClass}>Facilities</NavLink>
+<NavLink to="/reviews" className={linkClass}>Reviews</NavLink>
 
-          {/* SINGLE ENQUIRY CTA */}
-          <NavLink to="/contact" className="text-yellow-400 font-semibold hover:text-yellow-300 transition">
-            Enquiry
-          </NavLink>
+<NavLink to="/contact" className={linkClass}>Enquiry</NavLink>
 
         </div>
 

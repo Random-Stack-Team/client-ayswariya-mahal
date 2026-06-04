@@ -1,14 +1,19 @@
+import { useNavigate } from "react-router-dom";
+import aboutImg from "../../assets/images/about.jpg";
 export default function AboutPreview() {
+  const navigate = useNavigate();
+
+
   return (
     <section className="py-24 bg-cream">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12">
 
         <div>
           <img
-            src="/about.jpg"
-            alt="hall"
-            className="rounded-3xl"
-          />
+         src={aboutImg}
+          alt="hall"
+         className="rounded-3xl object-cover w-full h-full"
+        />
         </div>
 
         <div className="flex flex-col justify-center">
@@ -27,9 +32,12 @@ export default function AboutPreview() {
             celebrations.
           </p>
 
-          <button className="mt-8 border border-black px-6 py-3 w-fit rounded-full">
-            Learn More
-          </button>
+          <button
+        onClick={() => navigate("/about")}
+        className="mt-6 px-6 py-3 border border-[#C8A97E] text-[#C8A97E] rounded-full hover:bg-[#C8A97E] hover:text-white transition duration-300"
+           >
+          Learn More
+         </button>
         </div>
 
       </div>
