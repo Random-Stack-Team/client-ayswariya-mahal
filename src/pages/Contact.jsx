@@ -1,248 +1,187 @@
 import { motion } from "framer-motion";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Clock, CalendarDays, Users, Type } from "lucide-react";
 
 export default function Contact() {
   return (
-    <main className="bg-[#F7F4EF] min-h-screen">
+    <main className="bg-surface min-h-screen pt-32 pb-24">
+      {/* Decorative BG */}
+      <div className="absolute top-0 left-0 w-full h-[600px] bg-primary rounded-b-[50%] scale-150 origin-top -translate-y-64 pointer-events-none opacity-90"></div>
 
-      {/* Hero */}
-      <section className="pt-32 pb-20 px-6">
-        <div className="max-w-6xl mx-auto text-center">
-
+      {/* Hero Section */}
+      <section className="relative z-10 px-6 mb-24">
+        <div className="max-w-4xl mx-auto text-center">
           <motion.p
-            className="uppercase tracking-[0.3em] text-[#C8A97E] mb-4"
+            className="font-body text-gold-leaf font-semibold tracking-[0.4em] uppercase text-sm mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            Contact Us
+            Connect With Us
           </motion.p>
-
           <motion.h1
-            className="text-5xl md:text-7xl font-serif text-[#111111]"
+            className="text-5xl md:text-7xl font-cinzel text-surface-bright leading-tight drop-shadow-xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            Let's Plan Your Celebration
+            Plan Your <span className="italic text-antique-gold">Royal Celebration</span>
           </motion.h1>
-
-          <motion.p
-            className="mt-6 max-w-3xl mx-auto text-lg text-gray-600"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            Get in touch with our team to discuss your wedding,
-            reception, engagement, or special event.
-          </motion.p>
-
+          <div className="w-24 h-px bg-gold-leaf mx-auto mt-8 opacity-50"></div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="pb-24 px-6">
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12">
+      <section className="relative z-10 px-6">
+        <div className="max-w-[1280px] mx-auto grid lg:grid-cols-12 gap-16">
 
-          {/* Contact Details */}
+          {/* Contact Details Column */}
           <motion.div
-            className="bg-white rounded-3xl p-10 shadow-sm"
+            className="lg:col-span-5 bg-deep-maroon text-ivory rounded-t-full rounded-b-3xl p-12 md:p-16 flex flex-col items-center text-center shadow-[0_20px_50px_rgba(74,10,18,0.2)] border border-gold-leaf/20 relative overflow-hidden"
             initial={{ opacity: 0, x: -40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
+            {/* Inner Border */}
+            <div className="absolute inset-4 rounded-t-full rounded-b-2xl border border-gold-leaf/10 pointer-events-none"></div>
 
-            <h2 className="text-3xl font-serif mb-8">
-              Contact Information
+            <h2 className="text-3xl md:text-4xl font-cinzel text-gold-leaf mb-12 mt-16">
+              Palace Directory
             </h2>
 
-            <div className="space-y-8">
-
-              <div className="flex gap-5">
-                <Phone
-                  size={28}
-                  className="text-[#C8A97E]"
-                />
-
-                <div>
-                  <h3 className="font-semibold text-lg">
-                    Phone Number
-                  </h3>
-
-                  <p className="text-gray-600">
-                    +91 98765 43210
-                  </p>
-                </div>
+            <div className="space-y-10 w-full">
+              <div className="flex flex-col items-center gap-3">
+                <MapPin size={24} className="text-gold-leaf" />
+                <h3 className="font-cinzel text-xl text-antique-gold">Location</h3>
+                <p className="font-body text-ivory/80 leading-relaxed text-sm">
+                  Ayswariya Mahal,<br />
+                  Trichy Road, Arumbakkam,<br />
+                  Chennai 600106
+                </p>
               </div>
 
-              <div className="flex gap-5">
-                <Mail
-                  size={28}
-                  className="text-[#C8A97E]"
-                />
+              <div className="w-12 h-px bg-gold-leaf/30 mx-auto"></div>
 
-                <div>
-                  <h3 className="font-semibold text-lg">
-                    Email Address
-                  </h3>
-
-                  <p className="text-gray-600">
-                    info@ayswariyamahal.com
-                  </p>
-                </div>
+              <div className="flex flex-col items-center gap-3">
+                <Phone size={24} className="text-gold-leaf" />
+                <h3 className="font-cinzel text-xl text-antique-gold">Direct Line</h3>
+                <p className="font-body text-ivory/80 leading-relaxed text-sm">
+                  +91 98765 43210
+                </p>
               </div>
 
-              <div className="flex gap-5">
-                <MapPin
-                  size={28}
-                  className="text-[#C8A97E]"
-                />
+              <div className="w-12 h-px bg-gold-leaf/30 mx-auto"></div>
 
-                <div>
-                  <h3 className="font-semibold text-lg">
-                    Location
-                  </h3>
-
-                  <p className="text-gray-600">
-                    Ayswariya Mahal,
-                    Trichy Road,
-                    Tamil Nadu, India
-                  </p>
-                </div>
+              <div className="flex flex-col items-center gap-3">
+                <Mail size={24} className="text-gold-leaf" />
+                <h3 className="font-cinzel text-xl text-antique-gold">Electronic Mail</h3>
+                <p className="font-body text-ivory/80 leading-relaxed text-sm">
+                  royal@ayswariyamahal.com
+                </p>
               </div>
-
-              <div className="flex gap-5">
-                <Clock
-                  size={28}
-                  className="text-[#C8A97E]"
-                />
-
-                <div>
-                  <h3 className="font-semibold text-lg">
-                    Office Hours
-                  </h3>
-
-                  <p className="text-gray-600">
-                    Monday - Sunday
-                  </p>
-
-                  <p className="text-gray-600">
-                    9:00 AM - 9:00 PM
-                  </p>
-                </div>
-              </div>
-
             </div>
-
           </motion.div>
 
-          {/* Contact Form */}
+          {/* Enquiry Form Column */}
           <motion.div
-            className="bg-white rounded-3xl p-10 shadow-sm"
+            className="lg:col-span-7"
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
+            <div className="bg-white p-10 md:p-14 rounded-3xl shadow-xl border border-gold-leaf/10 relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 rounded-tr-3xl"></div>
+              
+              <h2 className="text-3xl md:text-4xl font-cinzel text-primary mb-2">Request an Audience</h2>
+              <p className="font-body text-on-surface-variant mb-10">We invite you to share the details of your upcoming celebration.</p>
 
-            <h2 className="text-3xl font-serif mb-8">
-              Send an Enquiry
-            </h2>
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Name */}
+                  <div className="relative">
+                    <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Honorable Name</label>
+                    <input
+                      type="text"
+                      className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary placeholder-primary/30"
+                      placeholder="e.g. Anand & Priya"
+                    />
+                  </div>
 
-            <form className="space-y-6">
+                  {/* Phone */}
+                  <div className="relative">
+                    <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Contact Number</label>
+                    <input
+                      type="tel"
+                      className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary placeholder-primary/30"
+                      placeholder="+91"
+                    />
+                  </div>
+                </div>
 
-              <div>
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  className="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#C8A97E]"
-                />
-              </div>
+                <div className="grid md:grid-cols-2 gap-6">
+                  {/* Event Type */}
+                  <div className="relative">
+                    <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Type of Celebration</label>
+                    <select className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary appearance-none">
+                      <option>Wedding Ceremony</option>
+                      <option>Grand Reception</option>
+                      <option>Engagement</option>
+                      <option>Corporate Event</option>
+                      <option>Other Event</option>
+                    </select>
+                  </div>
 
-              <div>
-                <input
-                  type="email"
-                  placeholder="Email Address"
-                  className="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#C8A97E]"
-                />
-              </div>
+                  {/* Guest Count */}
+                  <div className="relative">
+                    <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Expected Guests</label>
+                    <select className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary appearance-none">
+                      <option>Up to 500</option>
+                      <option>500 - 1000</option>
+                      <option>1000 - 1500</option>
+                      <option>1500+</option>
+                    </select>
+                  </div>
+                </div>
 
-              <div>
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  className="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#C8A97E]"
-                />
-              </div>
+                {/* Event Date */}
+                <div className="relative">
+                  <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Auspicious Date</label>
+                  <input
+                    type="date"
+                    className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary"
+                  />
+                </div>
 
-              <div>
-                <textarea
-                  rows="5"
-                  placeholder="Tell us about your event..."
-                  className="w-full border border-gray-200 rounded-xl p-4 focus:outline-none focus:ring-2 focus:ring-[#C8A97E]"
-                />
-              </div>
+                {/* Message */}
+                <div className="relative">
+                  <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Special Requests</label>
+                  <textarea
+                    rows="4"
+                    className="w-full bg-surface border-2 border-gold-leaf/30 rounded-xl py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary placeholder-primary/30 resize-none"
+                    placeholder="Tell us about any specific requirements, traditions, or catering needs..."
+                  />
+                </div>
 
-              <button
-                type="submit"
-                className="w-full bg-[#C8A97E] text-white py-4 rounded-xl hover:scale-[1.02] transition"
-              >
-                Send Enquiry
-              </button>
-
-            </form>
-
+                <button
+                  type="submit"
+                  className="w-full bg-gradient-to-r from-[#9e7d32] via-[#E5C76B] to-[#9e7d32] text-primary font-cinzel text-lg font-bold py-5 rounded-xl hover:shadow-[0_10px_30px_rgba(229,199,107,0.4)] hover:scale-[1.02] transition-all duration-300 tracking-wider uppercase mt-4"
+                >
+                  BOOK YOUR CELEBRATION
+                </button>
+              </form>
+            </div>
           </motion.div>
-
         </div>
       </section>
 
       {/* Map Section */}
-      <section className="pb-24 px-6">
-        <div className="max-w-7xl mx-auto">
-
-          <div className="bg-white rounded-3xl overflow-hidden shadow-sm">
-
-              <iframe
-            title="Ayswariya Mahal Chennai Location"
+      <section className="mt-24 px-6 relative z-10">
+        <div className="max-w-[1280px] mx-auto relative rounded-3xl overflow-hidden border-8 border-gold-leaf/20 shadow-2xl">
+          <div className="absolute inset-0 bg-primary/10 pointer-events-none mix-blend-multiply"></div>
+          <iframe
+            title="Ayswariya Mahal Location"
             src="https://maps.google.com/maps?q=Ayswariya%20Mahal%20Arumbakkam%20Chennai%20600106&output=embed"
-            className="w-full h-[500px] border-0"
+            className="w-full h-[500px] border-0 grayscale opacity-90 contrast-125 hover:grayscale-0 transition-all duration-1000"
             loading="lazy"
           />
-
-          </div>
-
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="bg-white py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-
-          <p className="uppercase tracking-[0.3em] text-[#C8A97E] mb-4">
-            Book Your Event
-          </p>
-
-          <h2 className="text-4xl md:text-5xl font-serif mb-6">
-            Your Perfect Celebration Starts Here
-          </h2>
-
-          <p className="text-gray-600 leading-8 mb-10">
-            Contact us today and let us help you create
-            unforgettable memories for your special occasion.
-          </p>
-
-          <a
-            href="tel:+919876543210"
-            className="inline-block bg-[#C8A97E] text-white px-8 py-4 rounded-full hover:scale-105 transition"
-          >
-            Call Now
-          </a>
-
-        </div>
-      </section>
-
     </main>
   );
 }

@@ -7,19 +7,78 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Build output
+dist/
+dist-ssr/
+build/
+out/
+out-tsc/
+
+# Cache and temporary files
+.eslintcache
+.tmp/
+tmp/
+*.tsbuildinfo
+.vite/
+.next/
+.nuxt/
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 *.local
 
-# Editor directories and files
+# Testing
+coverage/
+.nyc_output/
+cypress/videos/
+cypress/screenshots/
+
+# OS/System generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDEs and Editors
+.idea/
 .vscode/*
 !.vscode/extensions.json
-.idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
-*.vite
+*.swo
+*.swn
+.project
+.classpath
+
+# Internal / AI Agent files
+.gemini/
+brain/
+artifacts/
+.system_generated/
+.agents/
+
+# Security / Misc
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
+secrets.json
+graphify.yaml

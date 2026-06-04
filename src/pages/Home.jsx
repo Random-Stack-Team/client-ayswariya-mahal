@@ -1,5 +1,5 @@
 import Navbar from "../components/common/Navbar";
-import Hero from "../components/home/Hero";
+import GateExperience from "../components/home/GateExperience";
 import AboutPreview from "../components/home/AboutPreview";
 import FacilitiesPreview from "../components/home/FacilitiesPreview";
 import Footer from "../components/common/Footer";
@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <Hero />
+      <GateExperience />
       <AboutPreview />
       <FacilitiesPreview />
       <Footer />
