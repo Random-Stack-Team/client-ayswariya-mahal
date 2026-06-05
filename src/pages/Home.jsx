@@ -1,13 +1,26 @@
 import GateExperience from "../components/home/GateExperience";
 import AboutPreview from "../components/home/AboutPreview";
+import RoyalStatistics from "../components/home/RoyalStatistics";
 import FacilitiesPreview from "../components/home/FacilitiesPreview";
+import GalleryPreview from "../components/home/GalleryPreview";
+import ContactCTA from "../components/home/ContactCTA";
+import SEO from "../components/common/SEO";
 
 export default function Home() {
   return (
     <>
-      <GateExperience />
+      <SEO 
+        title="Luxury Wedding Hall in Chennai" 
+        description="Experience grandeur at Ayswariya Mahal. The perfect destination for royal weddings, grand receptions, and premium corporate events." 
+      />
+      <div className="hidden md:block">
+        <GateExperience />
+      </div>
       <AboutPreview />
+      <RoyalStatistics />
       <FacilitiesPreview />
+      <GalleryPreview />
+      <ContactCTA />
     </>
   );
 }

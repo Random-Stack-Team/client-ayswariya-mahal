@@ -1,22 +1,67 @@
 @import "tailwindcss";
 
 @theme {
-  --color-deep-maroon: #4A0A12;
-  --color-antique-gold: #B8860B;
-  --color-ivory: #FFFFF0;
-  --color-warm-gold: #D4AF37;
-  --color-deep-brown: #3E2723;
-  
-  --color-gold-leaf: #E5C76B;
-  --color-primary: #1c0002;
+  /* Royal Heritage Luxe Palette */
   --color-surface: #fcf9f4;
+  --color-surface-dim: #dcdad5;
   --color-surface-bright: #fcf9f4;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #f6f3ee;
+  --color-surface-container: #f0ede9;
+  --color-surface-container-high: #ebe8e3;
+  --color-surface-container-highest: #e5e2dd;
   --color-on-surface: #1c1c19;
   --color-on-surface-variant: #554241;
+  --color-inverse-surface: #31302d;
+  --color-inverse-on-surface: #f3f0eb;
+  --color-outline: #887271;
+  --color-outline-variant: #dcc0bf;
+  --color-surface-tint: #9e3f42;
+  --color-primary: #450e18;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #75202c;
+  --color-on-primary-container: #ffd9dd;
+  --color-inverse-primary: #ffb3b2;
+  --color-secondary: #725c05;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #fddd7f;
+  --color-on-secondary-container: #77600a;
+  --color-tertiary: #735c00;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #c6a94e;
+  --color-on-tertiary-container: #4e3e00;
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  --color-primary-fixed: #ffdad9;
+  --color-primary-fixed-dim: #ffb3b2;
+  --color-on-primary-fixed: #410008;
+  --color-on-primary-fixed-variant: #7f282d;
+  --color-secondary-fixed: #ffe084;
+  --color-secondary-fixed-dim: #e2c468;
+  --color-on-secondary-fixed: #231b00;
+  --color-on-secondary-fixed-variant: #574500;
+  --color-tertiary-fixed: #ffe085;
+  --color-tertiary-fixed-dim: #e3c466;
+  --color-on-tertiary-fixed: #231b00;
+  --color-on-tertiary-fixed-variant: #574500;
+  --color-background: #fcf9f4;
+  --color-on-background: #1c1c19;
+  --color-surface-variant: #e5e2dd;
   
-  --font-primary: 'Playfair Display', serif;
-  --font-secondary: 'Montserrat', sans-serif;
-  --font-body: 'Lora', serif;
+  /* Brand Specific Accents */
+  --color-deep-maroon: #801c2c;
+  --color-gold-leaf: #E5C76B;
+  --color-surface-warm: #FAF7F2;
+  --color-on-surface-muted: #564241;
+  
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Be Vietnam Pro', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 :root {
@@ -30,19 +75,21 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-primary);
-  letter-spacing: -0.02em; /* More authentic editorial look */
+  font-family: var(--font-display);
+  letter-spacing: 0.02em; /* Romantic editorial feel */
+  text-rendering: optimizeLegibility;
 }
 
-.font-cinzel {
-  font-family: var(--font-primary);
+.font-display {
+  font-family: var(--font-display);
 }
 
-.font-cormorant {
-  font-family: var(--font-secondary);
+.font-body {
+  font-family: var(--font-body);
 }
 
 /* 3D Gate Scene Styles */
@@ -93,11 +140,41 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .gold-border-double {
-  border: 4px double var(--color-gold-leaf);
+  border: 3px double var(--color-gold-leaf);
 }
 
 .input-focus-gold:focus {
   border-color: var(--color-gold-leaf);
   outline: none;
-  box-shadow: 0 1px 0 0 var(--color-gold-leaf);
+}
+
+/* Gold Shimmer interactive state */
+.gold-shimmer-hover {
+  position: relative;
+  overflow: hidden;
+}
+.gold-shimmer-hover::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent 40%, rgba(229,199,107,0.4) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-out;
+}
+.gold-shimmer-hover:hover::after {
+  transform: translateX(100%);
+}
+
+/* Base custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-gold-leaf);
 }

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import aboutImg from "../../assets/images/about.jpg";
+import aboutImg from "../../assets/images/about.webp";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -31,7 +31,7 @@ export default function AboutPreview() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-surface py-32 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-[#4A0A12] py-32 overflow-hidden border-b border-[#E5C76B]/20">
       {/* Decorative Gold Pattern Background */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
@@ -41,39 +41,24 @@ export default function AboutPreview() {
         
         {/* Text Content */}
         <div className="lg:col-span-5 space-y-8 z-10">
-          <div className="w-16 h-px bg-gold-leaf stagger-reveal"></div>
-          
-          <p className="font-body text-gold-leaf font-semibold tracking-[0.3em] uppercase text-sm stagger-reveal">
-            The Legacy
-          </p>
-          
-          <h3 className="font-cinzel text-4xl md:text-5xl text-primary leading-tight stagger-reveal">
-            A Stage for <br />
-            <span className="italic text-antique-gold">Extraordinary Unions</span>
-          </h3>
-          
-          <p className="font-body text-on-surface-variant leading-relaxed text-lg stagger-reveal">
-            Built upon the foundations of timeless Dravidian architecture, Ayswariya Mahal offers a sanctuary of luxury. From the hand-carved pillars to the expansive marble stages, every inch is designed to be the backdrop of your most precious memory.
-          </p>
-          
-          <div className="grid grid-cols-2 gap-8 pt-4 pb-8 stagger-reveal">
-            <div>
-              <div className="font-cinzel text-3xl text-primary mb-2">20+</div>
-              <div className="font-body text-xs text-on-surface-variant uppercase tracking-widest font-semibold">Years Legacy</div>
-            </div>
-            <div>
-              <div className="font-cinzel text-3xl text-primary mb-2">1000+</div>
-              <div className="font-body text-xs text-on-surface-variant uppercase tracking-widest font-semibold">Events Hosted</div>
-            </div>
-          </div>
+          <div className="order-2 lg:order-1 text-center lg:text-left">
+            <h2 className="text-5xl lg:text-7xl font-display text-[#fdfbf7] mb-8 leading-tight drop-shadow-sm">
+              A Legacy of <br />
+              <span className="italic text-[#E5C76B]">Celebrations</span>
+            </h2>
+            
+            <p className="font-serif text-lg text-[#fdfbf7]/80 leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+              For over two decades, Ayswariya Mahal has been the backdrop to life's most precious moments. With our palatial architecture and unwavering commitment to excellence, we transform your dreams into timeless memories.
+            </p>
 
-          <button
-            onClick={() => navigate("/about")}
-            className="stagger-reveal inline-flex items-center gap-4 text-gold-leaf font-body text-sm font-semibold tracking-widest uppercase group hover:text-antique-gold transition-colors"
-          >
-            DISCOVER OUR STORY
-            <span className="text-xl group-hover:translate-x-2 transition-transform">→</span>
-          </button>
+            <button 
+              onClick={() => navigate("/about")}
+              className="inline-flex items-center gap-3 font-serif text-sm font-bold tracking-[0.2em] uppercase text-[#E5C76B] hover:text-white transition-colors group"
+            >
+              Discover Our Story
+              <span className="w-12 h-px bg-[#E5C76B] group-hover:w-16 group-hover:bg-white transition-all"></span>
+            </button>
+          </div>
         </div>
 
         {/* Image Content */}

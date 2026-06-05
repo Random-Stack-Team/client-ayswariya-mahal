@@ -7,6 +7,7 @@ import Gallery from "../pages/Gallery";
 import Reviews from "../pages/Reviews";
 import About from "../pages/About";
 import Facilities from "../pages/Facilities";
+import Contact from "../pages/Contact";
 
 const pageTransition = {
   initial: { opacity: 0, y: 20 },
@@ -21,8 +22,14 @@ const PageWrapper = ({ children }) => (
   </motion.div>
 );
 
+import { useEffect } from "react";
+
 export default function AppRoutes() {
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <AnimatePresence mode="wait">
@@ -78,6 +85,17 @@ export default function AppRoutes() {
             <MainLayout>
               <PageWrapper>
                 <Facilities />
+              </PageWrapper>
+            </MainLayout>
+          }
+        />
+
+        <Route
+          path="/contact"
+          element={
+            <MainLayout>
+              <PageWrapper>
+                <Contact />
               </PageWrapper>
             </MainLayout>
           }

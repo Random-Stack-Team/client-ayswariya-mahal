@@ -2,8 +2,9 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import leftGate from "../../assets/images/left_palace_gate.png";
-import rightGate from "../../assets/images/right_palace_gate.png";
+import leftGate from "../../assets/images/left_palace_gate.webp";
+import rightGate from "../../assets/images/right_palace_gate.webp";
+import interiorImage from "../../assets/images/hero.webp";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -22,14 +23,13 @@ export default function GateExperience() {
   const ray1Ref = useRef(null);
   const ray2Ref = useRef(null);
 
-  const INTERIOR_IMAGE = "https://lh3.googleusercontent.com/aida/AP1WRLutNoJBuHaED1BOfPNnOxaeRPfbHr0h0_InNkXAbMXe6x4NkkTKZ9L14_d5QwFuAkhbI6M9SDQDrbEH2yyZT-I43ByPT-uebEkSwI884S9pVXh_OgablN25ITB-KCEdUZSx-xMj_fitQhZPOo4xVIm-d-QXZ9A7ihuNQrMMh_QGjP_8IDsmUNXTMz81WuT1sNf_qHnlghARzypiWXqyQG5ESTP1O-0IFZ6wMqKU3QLMMmN_Sp2OqvBdpoo";
+  const INTERIOR_IMAGE = interiorImage;
 
   useEffect(() => {
     // 1. Initial Entrance Animation
     const tlInit = gsap.timeline();
     tlInit
-      .to(mainTitleRef.current, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out", delay: 0.5 })
-      .to(scrollPromptRef.current, { opacity: 1, duration: 1 }, "-=0.5");
+      .to(mainTitleRef.current, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out", delay: 0.5 });
 
     // 2. Particle/Petal Creation
     const petalContainer = petalsLayerRef.current;
@@ -37,7 +37,7 @@ export default function GateExperience() {
       petalContainer.innerHTML = ''; // Clean up on re-render
       for (let i = 0; i < 30; i++) {
         const petal = document.createElement("div");
-        petal.className = "petal w-4 h-4 rounded-full opacity-70"; 
+        petal.className = "petal w-4 h-4 rounded-2xl opacity-70"; 
         petal.style.background = "linear-gradient(135deg, #ffc0cb 0%, #ff69b4 100%)";
         petal.style.left = Math.random() * 100 + "%";
         petal.style.top = Math.random() * 100 + "%";
@@ -81,9 +81,7 @@ export default function GateExperience() {
       .to(palaceInteriorRef.current, { opacity: 1, scale: 1, duration: 1 }, 0.4)
       
       // Phase 4: Final Hero Transition
-      .to("#main-nav", { opacity: 1, duration: 0.5 }, 0.8) // Un-hide the global navbar
-      .to(heroContentRef.current, { opacity: 1, y: 0, pointerEvents: "auto", duration: 0.5 }, 1)
-      .to(palaceInteriorRef.current, { filter: "brightness(0.6)", duration: 0.5 }, 1);
+      .to(heroContentRef.current, { opacity: 1, y: 0, pointerEvents: "auto", duration: 0.5 }, 1);
 
     // Parallax mouse effect for gates (clean up on unmount)
     const handleMouseMove = (e) => {
@@ -147,42 +145,32 @@ export default function GateExperience() {
           </div>
         </div>
 
-        {/* Center Branding */}
         <div ref={brandingOverlayRef} className="absolute inset-0 z-30 flex flex-col items-center justify-center text-center px-4 pointer-events-none">
-          <h1 ref={mainTitleRef} style={{ opacity: 0, transform: "translateY(30px)" }} className="font-cinzel text-5xl md:text-[4rem] text-gold-leaf tracking-[0.1em] mb-4 leading-tight">
+          <h1 ref={mainTitleRef} style={{ opacity: 0, transform: "translateY(30px)" }} className="font-display text-4xl md:text-5xl text-gold-leaf tracking-[0.1em] mb-4 leading-tight">
             <span className="text-white drop-shadow-2xl font-medium tracking-normal">Welcome To</span><br/>
             <span className="gold-text-gradient font-semibold">Ayswariya Mahal</span>
           </h1>
-          
-          <div ref={scrollPromptRef} style={{ opacity: 0 }} className="mt-12">
-            <p className="font-cormorant text-sm md:text-base text-gold-leaf/90 tracking-[0.2em] font-medium mb-4 uppercase">
-              Scroll To Enter The Legacy
-            </p>
-            <div className="scroll-indicator flex flex-col items-center">
-              <span className="text-gold-leaf text-4xl font-light">↓</span>
-            </div>
-          </div>
         </div>
 
         {/* Final Hero Overlay (Homepage Start) */}
         <div ref={heroContentRef} className="absolute inset-0 z-40 bg-transparent flex flex-col justify-center px-8 md:px-16 opacity-0 pointer-events-none">
           <div className="max-w-2xl mt-32">
-            <span className="font-cormorant text-[0.875rem] font-semibold text-gold-leaf tracking-[0.3em] uppercase block mb-4">
+            <span className="font-body text-[0.875rem] font-semibold text-gold-leaf tracking-[0.3em] uppercase block mb-4">
               Established 2001
             </span>
-            <h2 className="font-cinzel text-5xl md:text-[3.5rem] text-surface-bright leading-[1.1] mb-8 font-medium">
+            <h2 className="font-display text-4xl md:text-5xl text-surface-bright leading-[1.1] mb-8 font-medium">
               Where Ancestral Echoes Meet <span className="italic text-antique-gold font-normal">Eternal Vows.</span>
             </h2>
             <div className="flex flex-col sm:flex-row gap-6">
               <button 
                 onClick={() => navigate("/facilities")}
-                className="bg-deep-maroon text-gold-leaf border border-gold-leaf px-8 py-3.5 font-cormorant text-[0.875rem] font-semibold uppercase tracking-[0.2em] hover:bg-gold-leaf hover:text-deep-maroon transition-all duration-500 active:opacity-80"
+                className="bg-deep-maroon text-gold-leaf border border-gold-leaf px-8 py-3.5 font-body text-[0.875rem] font-semibold uppercase tracking-[0.2em] hover:bg-gold-leaf hover:text-deep-maroon transition-all duration-500 active:opacity-80"
               >
                 Explore the Grounds
               </button>
               <button 
                 onClick={() => navigate("/about")}
-                className="border border-gold-leaf text-gold-leaf px-8 py-3.5 font-cormorant text-[0.875rem] font-semibold uppercase tracking-[0.2em] hover:bg-gold-leaf/10 transition-all duration-500"
+                className="border border-gold-leaf text-gold-leaf px-8 py-3.5 font-body text-[0.875rem] font-semibold uppercase tracking-[0.2em] hover:bg-gold-leaf/10 transition-all duration-500"
               >
                 The Story
               </button>
