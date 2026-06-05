@@ -2,6 +2,8 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import leftGate from "../../assets/images/left_palace_gate.png";
+import rightGate from "../../assets/images/right_palace_gate.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +23,6 @@ export default function GateExperience() {
   const ray2Ref = useRef(null);
 
   const INTERIOR_IMAGE = "https://lh3.googleusercontent.com/aida/AP1WRLutNoJBuHaED1BOfPNnOxaeRPfbHr0h0_InNkXAbMXe6x4NkkTKZ9L14_d5QwFuAkhbI6M9SDQDrbEH2yyZT-I43ByPT-uebEkSwI884S9pVXh_OgablN25ITB-KCEdUZSx-xMj_fitQhZPOo4xVIm-d-QXZ9A7ihuNQrMMh_QGjP_8IDsmUNXTMz81WuT1sNf_qHnlghARzypiWXqyQG5ESTP1O-0IFZ6wMqKU3QLMMmN_Sp2OqvBdpoo";
-  const GATE_IMAGE = "https://lh3.googleusercontent.com/aida/AP1WRLs4M6js3b2-hqGqBdiLxVDdKmE8qGcB8Q3Kavhf4W8l4tzpuC-86-_VX2BLEGbPzWNItLfrNBJ4uGRen5V1FiFvjlryh4wQKRxp-yWFXJxi40sO3Q-IIdu9VoR-pNqBTj-oWvsRcbq_XF3NP1y94QR3a4HFDKFZTZp8ZThDEq0vInaYGWOULOfgYU_8Xpp2VC886PZ1glx-TcafpncfWmCzhkBFDYoteeVgfsFAQsULyt84RXuv0npIpGw=s4000";
 
   useEffect(() => {
     // 1. Initial Entrance Animation
@@ -128,9 +129,9 @@ export default function GateExperience() {
           {/* Left Gate */}
           <div ref={gateLeftRef} className="w-1/2 h-full relative origin-left bg-black border-r border-gold-leaf/20 overflow-hidden [transform-style:preserve-3d]">
             <img 
-              src={GATE_IMAGE} 
+              src={leftGate} 
               alt="Left Palace Gate"
-              className="absolute top-0 left-0 h-full w-[200%] max-w-none object-cover object-left" 
+              className="absolute top-0 left-0 h-full w-full object-cover" 
             />
             <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
           </div>
@@ -138,9 +139,9 @@ export default function GateExperience() {
           {/* Right Gate */}
           <div ref={gateRightRef} className="w-1/2 h-full relative origin-right bg-black border-l border-gold-leaf/20 overflow-hidden [transform-style:preserve-3d]">
             <img 
-              src={GATE_IMAGE} 
+              src={rightGate} 
               alt="Right Palace Gate"
-              className="absolute top-0 right-0 h-full w-[200%] max-w-none object-cover object-right" 
+              className="absolute top-0 right-0 h-full w-full object-cover" 
             />
             <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
           </div>
