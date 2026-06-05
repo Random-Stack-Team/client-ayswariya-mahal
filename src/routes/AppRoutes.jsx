@@ -3,7 +3,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import MainLayout from "../layouts/MainLayout";
 
 import Home from "../pages/Home";
-import Contact from "../pages/Contact";
 import Gallery from "../pages/Gallery";
 import Reviews from "../pages/Reviews";
 import About from "../pages/About";
@@ -35,17 +34,6 @@ export default function AppRoutes() {
             <MainLayout>
               <PageWrapper>
                 <Home />
-              </PageWrapper>
-            </MainLayout>
-          }
-        />
-
-        <Route
-          path="/contact"
-          element={
-            <MainLayout>
-              <PageWrapper>
-                <Contact />
               </PageWrapper>
             </MainLayout>
           }
