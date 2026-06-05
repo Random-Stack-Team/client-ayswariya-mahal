@@ -73,6 +73,7 @@ brain/
 artifacts/
 .system_generated/
 .agents/
+graphify-out/
 
 # Security / Misc
 *.pem
