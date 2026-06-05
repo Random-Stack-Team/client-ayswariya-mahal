@@ -8,7 +8,7 @@ import { useEnquiry } from "../../context/EnquiryContext";
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { openEnquiry } = useEnquiry();
+  const { openForm } = useEnquiry();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isHome = location.pathname === "/";
@@ -74,7 +74,7 @@ function Navbar() {
 
         {/* CTA (Desktop) */}
         <button
-          onClick={openEnquiry}
+          onClick={openForm}
           className="hidden lg:block bg-deep-maroon text-gold-leaf border border-gold-leaf px-8 py-3 font-body text-[0.875rem] font-semibold uppercase tracking-widest rounded-full hover:bg-gold-leaf hover:text-deep-maroon hover:shadow-[0_0_20px_rgba(229,199,107,0.4)] transition-all duration-500 active:scale-95 transform hover:-translate-y-1"
         >
           Enquire Now
@@ -108,7 +108,7 @@ function Navbar() {
               <div className="w-24 h-px bg-gold-leaf/30 my-4"></div>
               
               <button
-                onClick={openEnquiry}
+                onClick={openForm}
                 className="bg-deep-maroon text-gold-leaf border border-gold-leaf px-10 py-4 font-body text-lg font-semibold uppercase tracking-widest rounded-full hover:bg-gold-leaf hover:text-deep-maroon transition-all duration-500 w-full max-w-sm"
               >
                 Enquire Now

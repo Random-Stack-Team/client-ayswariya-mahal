@@ -319,6 +319,33 @@
       "norm_label": "main.jsx"
     },
     {
+      "label": "FloatingEnvelope.jsx",
+      "file_type": "code",
+      "source_file": "src/components/common/FloatingEnvelope.jsx",
+      "source_location": "L1",
+      "id": "src_components_common_floatingenvelope_jsx",
+      "community": 7,
+      "norm_label": "floatingenvelope.jsx"
+    },
+    {
+      "label": "QUOTES",
+      "file_type": "code",
+      "source_file": "src/components/common/FloatingEnvelope.jsx",
+      "source_location": "L6",
+      "id": "common_floatingenvelope_quotes",
+      "community": 7,
+      "norm_label": "quotes"
+    },
+    {
+      "label": "FloatingEnvelope()",
+      "file_type": "code",
+      "source_file": "src/components/common/FloatingEnvelope.jsx",
+      "source_location": "L17",
+      "id": "common_floatingenvelope_floatingenvelope",
+      "community": 7,
+      "norm_label": "floatingenvelope()"
+    },
+    {
       "label": "Footer.jsx",
       "file_type": "code",
       "source_file": "src/components/common/Footer.jsx",
@@ -342,16 +369,16 @@
       "source_file": "src/components/common/Navbar.jsx",
       "source_location": "L1",
       "id": "src_components_common_navbar_jsx",
-      "community": 0,
+      "community": 7,
       "norm_label": "navbar.jsx"
     },
     {
       "label": "Navbar()",
       "file_type": "code",
       "source_file": "src/components/common/Navbar.jsx",
-      "source_location": "L5",
+      "source_location": "L8",
       "id": "common_navbar_navbar",
-      "community": 0,
+      "community": 7,
       "norm_label": "navbar()"
     },
     {
@@ -472,6 +499,42 @@
       "norm_label": "reviewpreview.jsx"
     },
     {
+      "label": "EnquiryContext.jsx",
+      "file_type": "code",
+      "source_file": "src/context/EnquiryContext.jsx",
+      "source_location": "L1",
+      "id": "src_context_enquirycontext_jsx",
+      "community": 7,
+      "norm_label": "enquirycontext.jsx"
+    },
+    {
+      "label": "EnquiryContext",
+      "file_type": "code",
+      "source_file": "src/context/EnquiryContext.jsx",
+      "source_location": "L3",
+      "id": "context_enquirycontext_enquirycontext",
+      "community": 7,
+      "norm_label": "enquirycontext"
+    },
+    {
+      "label": "useEnquiry()",
+      "file_type": "code",
+      "source_file": "src/context/EnquiryContext.jsx",
+      "source_location": "L5",
+      "id": "context_enquirycontext_useenquiry",
+      "community": 7,
+      "norm_label": "useenquiry()"
+    },
+    {
+      "label": "EnquiryProvider()",
+      "file_type": "code",
+      "source_file": "src/context/EnquiryContext.jsx",
+      "source_location": "L7",
+      "id": "context_enquirycontext_enquiryprovider",
+      "community": 7,
+      "norm_label": "enquiryprovider()"
+    },
+    {
       "label": "facilities.js",
       "file_type": "code",
       "source_file": "src/data/facilities.js",
@@ -504,16 +567,16 @@
       "source_file": "src/layouts/MainLayout.jsx",
       "source_location": "L1",
       "id": "src_layouts_mainlayout_jsx",
-      "community": 0,
+      "community": 7,
       "norm_label": "mainlayout.jsx"
     },
     {
       "label": "MainLayout()",
       "file_type": "code",
       "source_file": "src/layouts/MainLayout.jsx",
-      "source_location": "L4",
+      "source_location": "L6",
       "id": "layouts_mainlayout_mainlayout",
-      "community": 0,
+      "community": 7,
       "norm_label": "mainlayout()"
     },
     {
@@ -533,24 +596,6 @@
       "id": "pages_about_about",
       "community": 1,
       "norm_label": "about()"
-    },
-    {
-      "label": "Contact.jsx",
-      "file_type": "code",
-      "source_file": "src/pages/Contact.jsx",
-      "source_location": "L1",
-      "id": "src_pages_contact_jsx",
-      "community": 1,
-      "norm_label": "contact.jsx"
-    },
-    {
-      "label": "Contact()",
-      "file_type": "code",
-      "source_file": "src/pages/Contact.jsx",
-      "source_location": "L4",
-      "id": "pages_contact_contact",
-      "community": 1,
-      "norm_label": "contact()"
     },
     {
       "label": "Facilities.jsx",
@@ -576,7 +621,7 @@
       "source_file": "src/pages/Gallery.jsx",
       "source_location": "L1",
       "id": "src_pages_gallery_jsx",
-      "community": 7,
+      "community": 1,
       "norm_label": "gallery.jsx"
     },
     {
@@ -585,7 +630,7 @@
       "source_file": "src/pages/Gallery.jsx",
       "source_location": "L10",
       "id": "pages_gallery_galleryimages",
-      "community": 7,
+      "community": 1,
       "norm_label": "galleryimages"
     },
     {
@@ -594,7 +639,7 @@
       "source_file": "src/pages/Gallery.jsx",
       "source_location": "L19",
       "id": "pages_gallery_categories",
-      "community": 7,
+      "community": 1,
       "norm_label": "categories"
     },
     {
@@ -603,7 +648,7 @@
       "source_file": "src/pages/Gallery.jsx",
       "source_location": "L21",
       "id": "pages_gallery_gallery",
-      "community": 7,
+      "community": 1,
       "norm_label": "gallery()"
     },
     {
@@ -619,7 +664,7 @@
       "label": "Home()",
       "file_type": "code",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L7",
+      "source_location": "L5",
       "id": "pages_home_home",
       "community": 0,
       "norm_label": "home()"
@@ -655,7 +700,7 @@
       "label": "pageTransition",
       "file_type": "code",
       "source_file": "src/routes/AppRoutes.jsx",
-      "source_location": "L12",
+      "source_location": "L11",
       "id": "routes_approutes_pagetransition",
       "community": 1,
       "norm_label": "pagetransition"
@@ -664,7 +709,7 @@
       "label": "PageWrapper()",
       "file_type": "code",
       "source_file": "src/routes/AppRoutes.jsx",
-      "source_location": "L19",
+      "source_location": "L18",
       "id": "routes_approutes_pagewrapper",
       "community": 1,
       "norm_label": "pagewrapper()"
@@ -673,7 +718,7 @@
       "label": "AppRoutes()",
       "file_type": "code",
       "source_file": "src/routes/AppRoutes.jsx",
-      "source_location": "L25",
+      "source_location": "L24",
       "id": "routes_approutes_approutes",
       "community": 1,
       "norm_label": "approutes()"
@@ -760,31 +805,193 @@
       "norm_label": "readme.md"
     },
     {
+      "label": "Ayswariya Mahal - Royal Union Web Application \ud83c\udff0\u2728",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "client_ayswariya_mahal_readme_ayswariya_mahal_royal_union_web_application",
+      "community": 6,
+      "norm_label": "ayswariya mahal - royal union web application \ud83c\udff0\u2728"
+    },
+    {
+      "label": "\ud83d\ude80 Tech Stack",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "id": "client_ayswariya_mahal_readme_tech_stack",
+      "community": 6,
+      "norm_label": "\ud83d\ude80 tech stack"
+    },
+    {
+      "label": "Core Architecture",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L13",
+      "id": "client_ayswariya_mahal_readme_core_architecture",
+      "community": 6,
+      "norm_label": "core architecture"
+    },
+    {
+      "label": "Styling & UI",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "id": "client_ayswariya_mahal_readme_styling_ui",
+      "community": 6,
+      "norm_label": "styling & ui"
+    },
+    {
+      "label": "Animation Engines",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L22",
+      "id": "client_ayswariya_mahal_readme_animation_engines",
+      "community": 6,
+      "norm_label": "animation engines"
+    },
+    {
+      "label": "\ud83d\udcc2 Branching Strategy",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L29",
+      "id": "client_ayswariya_mahal_readme_branching_strategy",
+      "community": 6,
+      "norm_label": "\ud83d\udcc2 branching strategy"
+    },
+    {
+      "label": "`main` Branch \ud83d\udfe2",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L33",
+      "id": "client_ayswariya_mahal_readme_main_branch",
+      "community": 6,
+      "norm_label": "`main` branch \ud83d\udfe2"
+    },
+    {
+      "label": "`develop` Branch \ud83d\udfe1",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L37",
+      "id": "client_ayswariya_mahal_readme_develop_branch",
+      "community": 6,
+      "norm_label": "`develop` branch \ud83d\udfe1"
+    },
+    {
+      "label": "Feature Branches \ud83d\udd35",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "id": "client_ayswariya_mahal_readme_feature_branches",
+      "community": 6,
+      "norm_label": "feature branches \ud83d\udd35"
+    },
+    {
+      "label": "\ud83d\udee0\ufe0f Getting Started",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L47",
+      "id": "client_ayswariya_mahal_readme_getting_started",
+      "community": 18,
+      "norm_label": "\ud83d\udee0\ufe0f getting started"
+    },
+    {
+      "label": "Prerequisites",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L49",
+      "id": "client_ayswariya_mahal_readme_prerequisites",
+      "community": 18,
+      "norm_label": "prerequisites"
+    },
+    {
+      "label": "Installation",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "id": "client_ayswariya_mahal_readme_installation",
+      "community": 18,
+      "norm_label": "installation"
+    },
+    {
+      "label": "code:bash (git clone [your-repo-url])",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L54",
+      "id": "client_ayswariya_mahal_readme_codeblock_1",
+      "community": 18,
+      "norm_label": "code:bash (git clone [your-repo-url])"
+    },
+    {
+      "label": "code:bash (cd Client-Ayswariya-Mahal)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L58",
+      "id": "client_ayswariya_mahal_readme_codeblock_2",
+      "community": 18,
+      "norm_label": "code:bash (cd client-ayswariya-mahal)"
+    },
+    {
+      "label": "code:bash (npm install)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L62",
+      "id": "client_ayswariya_mahal_readme_codeblock_3",
+      "community": 18,
+      "norm_label": "code:bash (npm install)"
+    },
+    {
+      "label": "Running the Development Server",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L66",
+      "id": "client_ayswariya_mahal_readme_running_the_development_server",
+      "community": 18,
+      "norm_label": "running the development server"
+    },
+    {
+      "label": "code:bash (npm run dev)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L68",
+      "id": "client_ayswariya_mahal_readme_codeblock_4",
+      "community": 18,
+      "norm_label": "code:bash (npm run dev)"
+    },
+    {
+      "label": "\ud83c\udfa8 Design Guidelines",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L75",
+      "id": "client_ayswariya_mahal_readme_design_guidelines",
+      "community": 6,
+      "norm_label": "\ud83c\udfa8 design guidelines"
+    },
+    {
       "label": "React + Vite",
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L1",
-      "id": "client_ayswariya_mahal_readme_react_vite",
       "community": 6,
-      "norm_label": "react + vite"
+      "norm_label": "react + vite",
+      "id": "client_ayswariya_mahal_readme_react_vite"
     },
     {
       "label": "React Compiler",
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L10",
-      "id": "client_ayswariya_mahal_readme_react_compiler",
       "community": 6,
-      "norm_label": "react compiler"
+      "norm_label": "react compiler",
+      "id": "client_ayswariya_mahal_readme_react_compiler"
     },
     {
       "label": "Expanding the ESLint configuration",
       "file_type": "document",
       "source_file": "README.md",
       "source_location": "L14",
-      "id": "client_ayswariya_mahal_readme_expanding_the_eslint_configuration",
       "community": 6,
-      "norm_label": "expanding the eslint configuration"
+      "norm_label": "expanding the eslint configuration",
+      "id": "client_ayswariya_mahal_readme_expanding_the_eslint_configuration"
     }
   ],
   "links": [
@@ -794,9 +1001,9 @@
       "source_file": "package.json",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_json",
-      "target": "client_ayswariya_mahal_package_dependencies",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_dependencies"
     },
     {
       "relation": "contains",
@@ -804,9 +1011,9 @@
       "source_file": "package.json",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_json",
-      "target": "client_ayswariya_mahal_package_devdependencies",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies"
     },
     {
       "relation": "contains",
@@ -814,9 +1021,9 @@
       "source_file": "package.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_json",
-      "target": "client_ayswariya_mahal_package_name",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_name"
     },
     {
       "relation": "contains",
@@ -824,9 +1031,9 @@
       "source_file": "package.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_json",
-      "target": "client_ayswariya_mahal_package_private",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_private"
     },
     {
       "relation": "contains",
@@ -834,9 +1041,9 @@
       "source_file": "package.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_json",
-      "target": "client_ayswariya_mahal_package_scripts",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_scripts"
     },
     {
       "relation": "contains",
@@ -844,9 +1051,9 @@
       "source_file": "package.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_json",
-      "target": "client_ayswariya_mahal_package_type",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_type"
     },
     {
       "relation": "contains",
@@ -854,9 +1061,9 @@
       "source_file": "package.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "package_json",
-      "target": "client_ayswariya_mahal_package_version",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_version"
     },
     {
       "relation": "contains",
@@ -864,9 +1071,9 @@
       "source_file": "package.json",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_scripts",
-      "target": "client_ayswariya_mahal_package_scripts_build",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_scripts_build"
     },
     {
       "relation": "contains",
@@ -874,9 +1081,9 @@
       "source_file": "package.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_scripts",
-      "target": "client_ayswariya_mahal_package_scripts_dev",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_scripts_dev"
     },
     {
       "relation": "contains",
@@ -884,9 +1091,9 @@
       "source_file": "package.json",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_scripts",
-      "target": "client_ayswariya_mahal_package_scripts_lint",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_scripts_lint"
     },
     {
       "relation": "contains",
@@ -894,9 +1101,9 @@
       "source_file": "package.json",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_scripts",
-      "target": "client_ayswariya_mahal_package_scripts_preview",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_scripts_preview"
     },
     {
       "relation": "contains",
@@ -904,9 +1111,9 @@
       "source_file": "package.json",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_dependencies",
-      "target": "client_ayswariya_mahal_package_dependencies_clsx",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_dependencies_clsx"
     },
     {
       "relation": "contains",
@@ -914,9 +1121,9 @@
       "source_file": "package.json",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_dependencies",
-      "target": "client_ayswariya_mahal_package_dependencies_framer_motion",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_dependencies_framer_motion"
     },
     {
       "relation": "contains",
@@ -924,9 +1131,9 @@
       "source_file": "package.json",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_dependencies",
-      "target": "client_ayswariya_mahal_package_dependencies_gsap",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_dependencies_gsap"
     },
     {
       "relation": "contains",
@@ -934,9 +1141,9 @@
       "source_file": "package.json",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_dependencies",
-      "target": "client_ayswariya_mahal_package_dependencies_lucide_react",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_dependencies_lucide_react"
     },
     {
       "relation": "contains",
@@ -944,9 +1151,9 @@
       "source_file": "package.json",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_dependencies",
-      "target": "client_ayswariya_mahal_package_dependencies_react",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_dependencies_react"
     },
     {
       "relation": "contains",
@@ -954,9 +1161,9 @@
       "source_file": "package.json",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_dependencies",
-      "target": "client_ayswariya_mahal_package_dependencies_react_dom",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_dependencies_react_dom"
     },
     {
       "relation": "contains",
@@ -964,9 +1171,9 @@
       "source_file": "package.json",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_dependencies",
-      "target": "client_ayswariya_mahal_package_dependencies_react_router_dom",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_dependencies_react_router_dom"
     },
     {
       "relation": "contains",
@@ -974,9 +1181,9 @@
       "source_file": "package.json",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_eslint",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_eslint"
     },
     {
       "relation": "contains",
@@ -984,9 +1191,9 @@
       "source_file": "package.json",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_eslint_js",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_eslint_js"
     },
     {
       "relation": "contains",
@@ -994,9 +1201,9 @@
       "source_file": "package.json",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_eslint_plugin_react_hooks",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_eslint_plugin_react_hooks"
     },
     {
       "relation": "contains",
@@ -1004,9 +1211,9 @@
       "source_file": "package.json",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_eslint_plugin_react_refresh",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_eslint_plugin_react_refresh"
     },
     {
       "relation": "contains",
@@ -1014,9 +1221,9 @@
       "source_file": "package.json",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_globals",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_globals"
     },
     {
       "relation": "contains",
@@ -1024,9 +1231,9 @@
       "source_file": "package.json",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_tailwindcss",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_tailwindcss"
     },
     {
       "relation": "contains",
@@ -1034,9 +1241,9 @@
       "source_file": "package.json",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_tailwindcss_vite",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_tailwindcss_vite"
     },
     {
       "relation": "contains",
@@ -1044,9 +1251,9 @@
       "source_file": "package.json",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_types_react",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_types_react"
     },
     {
       "relation": "contains",
@@ -1054,9 +1261,9 @@
       "source_file": "package.json",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_types_react_dom",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_types_react_dom"
     },
     {
       "relation": "contains",
@@ -1064,9 +1271,9 @@
       "source_file": "package.json",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_vite",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_vite"
     },
     {
       "relation": "contains",
@@ -1074,9 +1281,9 @@
       "source_file": "package.json",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_package_devdependencies",
-      "target": "client_ayswariya_mahal_package_devdependencies_vitejs_plugin_react",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_package_devdependencies_vitejs_plugin_react"
     },
     {
       "relation": "contains",
@@ -1084,9 +1291,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_jsx",
-      "target": "src_app_app",
-      "confidence_score": 1.0
+      "target": "src_app_app"
     },
     {
       "relation": "imports_from",
@@ -1095,9 +1302,9 @@
       "source_file": "src/App.jsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_app_jsx",
-      "target": "src_routes_approutes_jsx",
-      "confidence_score": 1.0
+      "target": "src_routes_approutes_jsx"
     },
     {
       "relation": "imports_from",
@@ -1106,9 +1313,73 @@
       "source_file": "src/main.jsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_main_jsx",
-      "target": "src_app_jsx",
+      "target": "src_app_jsx"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/FloatingEnvelope.jsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "src_components_common_floatingenvelope_jsx",
+      "target": "common_floatingenvelope_floatingenvelope",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/FloatingEnvelope.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_components_common_floatingenvelope_jsx",
+      "target": "common_floatingenvelope_quotes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/FloatingEnvelope.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_components_common_floatingenvelope_jsx",
+      "target": "context_enquirycontext_useenquiry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/FloatingEnvelope.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_components_common_floatingenvelope_jsx",
+      "target": "src_context_enquirycontext_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/MainLayout.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_layouts_mainlayout_jsx",
+      "target": "src_components_common_floatingenvelope_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/components/common/FloatingEnvelope.jsx",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "common_floatingenvelope_floatingenvelope",
+      "target": "context_enquirycontext_useenquiry"
     },
     {
       "relation": "contains",
@@ -1116,9 +1387,9 @@
       "source_file": "src/components/common/Footer.jsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_common_footer_jsx",
-      "target": "common_footer_footer",
-      "confidence_score": 1.0
+      "target": "common_footer_footer"
     },
     {
       "relation": "imports_from",
@@ -1127,9 +1398,9 @@
       "source_file": "src/layouts/MainLayout.jsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_layouts_mainlayout_jsx",
-      "target": "src_components_common_footer_jsx",
-      "confidence_score": 1.0
+      "target": "src_components_common_footer_jsx"
     },
     {
       "relation": "imports_from",
@@ -1138,9 +1409,9 @@
       "source_file": "src/pages/Home.jsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_home_jsx",
-      "target": "src_components_common_footer_jsx",
-      "confidence_score": 1.0
+      "target": "src_components_common_footer_jsx"
     },
     {
       "relation": "contains",
@@ -1148,9 +1419,31 @@
       "source_file": "src/components/common/Navbar.jsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_common_navbar_jsx",
-      "target": "common_navbar_navbar",
-      "confidence_score": 1.0
+      "target": "common_navbar_navbar"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/Navbar.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_common_navbar_jsx",
+      "target": "context_enquirycontext_useenquiry"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/Navbar.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_components_common_navbar_jsx",
+      "target": "src_context_enquirycontext_jsx"
     },
     {
       "relation": "imports_from",
@@ -1159,9 +1452,9 @@
       "source_file": "src/layouts/MainLayout.jsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_layouts_mainlayout_jsx",
-      "target": "src_components_common_navbar_jsx",
-      "confidence_score": 1.0
+      "target": "src_components_common_navbar_jsx"
     },
     {
       "relation": "imports_from",
@@ -1170,9 +1463,20 @@
       "source_file": "src/pages/Home.jsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_home_jsx",
-      "target": "src_components_common_navbar_jsx",
-      "confidence_score": 1.0
+      "target": "src_components_common_navbar_jsx"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/Navbar.jsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "common_navbar_navbar",
+      "target": "context_enquirycontext_useenquiry"
     },
     {
       "relation": "contains",
@@ -1180,9 +1484,9 @@
       "source_file": "src/components/home/AboutPreview.jsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_home_aboutpreview_jsx",
-      "target": "home_aboutpreview_aboutpreview",
-      "confidence_score": 1.0
+      "target": "home_aboutpreview_aboutpreview"
     },
     {
       "relation": "imports_from",
@@ -1191,9 +1495,9 @@
       "source_file": "src/pages/Home.jsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_home_jsx",
-      "target": "src_components_home_aboutpreview_jsx",
-      "confidence_score": 1.0
+      "target": "src_components_home_aboutpreview_jsx"
     },
     {
       "relation": "contains",
@@ -1201,9 +1505,9 @@
       "source_file": "src/components/home/FacilitiesPreview.jsx",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_home_facilitiespreview_jsx",
-      "target": "home_facilitiespreview_facilities",
-      "confidence_score": 1.0
+      "target": "home_facilitiespreview_facilities"
     },
     {
       "relation": "contains",
@@ -1211,9 +1515,9 @@
       "source_file": "src/components/home/FacilitiesPreview.jsx",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_home_facilitiespreview_jsx",
-      "target": "home_facilitiespreview_facilitiespreview",
-      "confidence_score": 1.0
+      "target": "home_facilitiespreview_facilitiespreview"
     },
     {
       "relation": "imports_from",
@@ -1222,9 +1526,9 @@
       "source_file": "src/pages/Home.jsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_home_jsx",
-      "target": "src_components_home_facilitiespreview_jsx",
-      "confidence_score": 1.0
+      "target": "src_components_home_facilitiespreview_jsx"
     },
     {
       "relation": "contains",
@@ -1232,9 +1536,9 @@
       "source_file": "src/components/home/GateExperience.jsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_home_gateexperience_jsx",
-      "target": "home_gateexperience_gateexperience",
-      "confidence_score": 1.0
+      "target": "home_gateexperience_gateexperience"
     },
     {
       "relation": "imports_from",
@@ -1243,9 +1547,9 @@
       "source_file": "src/pages/Home.jsx",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_home_jsx",
-      "target": "src_components_home_gateexperience_jsx",
-      "confidence_score": 1.0
+      "target": "src_components_home_gateexperience_jsx"
     },
     {
       "relation": "contains",
@@ -1253,9 +1557,61 @@
       "source_file": "src/components/home/Hero.jsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_components_home_hero_jsx",
-      "target": "home_hero_hero",
-      "confidence_score": 1.0
+      "target": "home_hero_hero"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/context/EnquiryContext.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_context_enquirycontext_jsx",
+      "target": "context_enquirycontext_enquirycontext"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/context/EnquiryContext.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_context_enquirycontext_jsx",
+      "target": "context_enquirycontext_enquiryprovider"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/context/EnquiryContext.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_context_enquirycontext_jsx",
+      "target": "context_enquirycontext_useenquiry"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/MainLayout.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_layouts_mainlayout_jsx",
+      "target": "src_context_enquirycontext_jsx"
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/MainLayout.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "src_layouts_mainlayout_jsx",
+      "target": "context_enquirycontext_enquiryprovider"
     },
     {
       "relation": "contains",
@@ -1263,9 +1619,9 @@
       "source_file": "src/layouts/MainLayout.jsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_layouts_mainlayout_jsx",
-      "target": "layouts_mainlayout_mainlayout",
-      "confidence_score": 1.0
+      "target": "layouts_mainlayout_mainlayout"
     },
     {
       "relation": "imports_from",
@@ -1274,9 +1630,9 @@
       "source_file": "src/routes/AppRoutes.jsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_routes_approutes_jsx",
-      "target": "src_layouts_mainlayout_jsx",
-      "confidence_score": 1.0
+      "target": "src_layouts_mainlayout_jsx"
     },
     {
       "relation": "contains",
@@ -1284,9 +1640,9 @@
       "source_file": "src/pages/About.jsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_about_jsx",
-      "target": "pages_about_about",
-      "confidence_score": 1.0
+      "target": "pages_about_about"
     },
     {
       "relation": "imports_from",
@@ -1295,30 +1651,9 @@
       "source_file": "src/routes/AppRoutes.jsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_routes_approutes_jsx",
-      "target": "src_pages_about_jsx",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/pages/Contact.jsx",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "src_pages_contact_jsx",
-      "target": "pages_contact_contact",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/routes/AppRoutes.jsx",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "src_routes_approutes_jsx",
-      "target": "src_pages_contact_jsx",
-      "confidence_score": 1.0
+      "target": "src_pages_about_jsx"
     },
     {
       "relation": "contains",
@@ -1326,9 +1661,9 @@
       "source_file": "src/pages/Facilities.jsx",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_facilities_jsx",
-      "target": "pages_facilities_facilities",
-      "confidence_score": 1.0
+      "target": "pages_facilities_facilities"
     },
     {
       "relation": "imports_from",
@@ -1337,9 +1672,9 @@
       "source_file": "src/routes/AppRoutes.jsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_routes_approutes_jsx",
-      "target": "src_pages_facilities_jsx",
-      "confidence_score": 1.0
+      "target": "src_pages_facilities_jsx"
     },
     {
       "relation": "contains",
@@ -1347,9 +1682,9 @@
       "source_file": "src/pages/Gallery.jsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_gallery_jsx",
-      "target": "pages_gallery_categories",
-      "confidence_score": 1.0
+      "target": "pages_gallery_categories"
     },
     {
       "relation": "contains",
@@ -1357,9 +1692,9 @@
       "source_file": "src/pages/Gallery.jsx",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_gallery_jsx",
-      "target": "pages_gallery_gallery",
-      "confidence_score": 1.0
+      "target": "pages_gallery_gallery"
     },
     {
       "relation": "contains",
@@ -1367,9 +1702,9 @@
       "source_file": "src/pages/Gallery.jsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_gallery_jsx",
-      "target": "pages_gallery_galleryimages",
-      "confidence_score": 1.0
+      "target": "pages_gallery_galleryimages"
     },
     {
       "relation": "imports_from",
@@ -1378,9 +1713,9 @@
       "source_file": "src/routes/AppRoutes.jsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_routes_approutes_jsx",
-      "target": "src_pages_gallery_jsx",
-      "confidence_score": 1.0
+      "target": "src_pages_gallery_jsx"
     },
     {
       "relation": "contains",
@@ -1388,9 +1723,9 @@
       "source_file": "src/pages/Home.jsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_home_jsx",
-      "target": "pages_home_home",
-      "confidence_score": 1.0
+      "target": "pages_home_home"
     },
     {
       "relation": "imports_from",
@@ -1399,9 +1734,9 @@
       "source_file": "src/routes/AppRoutes.jsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_routes_approutes_jsx",
-      "target": "src_pages_home_jsx",
-      "confidence_score": 1.0
+      "target": "src_pages_home_jsx"
     },
     {
       "relation": "contains",
@@ -1409,9 +1744,9 @@
       "source_file": "src/pages/Reviews.jsx",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_pages_reviews_jsx",
-      "target": "pages_reviews_reviews",
-      "confidence_score": 1.0
+      "target": "pages_reviews_reviews"
     },
     {
       "relation": "imports_from",
@@ -1420,9 +1755,9 @@
       "source_file": "src/routes/AppRoutes.jsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_routes_approutes_jsx",
-      "target": "src_pages_reviews_jsx",
-      "confidence_score": 1.0
+      "target": "src_pages_reviews_jsx"
     },
     {
       "relation": "contains",
@@ -1430,9 +1765,9 @@
       "source_file": "src/routes/AppRoutes.jsx",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_routes_approutes_jsx",
-      "target": "routes_approutes_approutes",
-      "confidence_score": 1.0
+      "target": "routes_approutes_approutes"
     },
     {
       "relation": "contains",
@@ -1440,9 +1775,9 @@
       "source_file": "src/routes/AppRoutes.jsx",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_routes_approutes_jsx",
-      "target": "routes_approutes_pagetransition",
-      "confidence_score": 1.0
+      "target": "routes_approutes_pagetransition"
     },
     {
       "relation": "contains",
@@ -1450,9 +1785,9 @@
       "source_file": "src/routes/AppRoutes.jsx",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "src_routes_approutes_jsx",
-      "target": "routes_approutes_pagewrapper",
-      "confidence_score": 1.0
+      "target": "routes_approutes_pagewrapper"
     },
     {
       "relation": "contains",
@@ -1460,9 +1795,9 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "architecture_md",
-      "target": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal"
     },
     {
       "relation": "contains",
@@ -1470,9 +1805,9 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
-      "target": "client_ayswariya_mahal_architecture_codebase_navigation_guide",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_architecture_codebase_navigation_guide"
     },
     {
       "relation": "contains",
@@ -1480,9 +1815,9 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
-      "target": "client_ayswariya_mahal_architecture_dependency_graph",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_architecture_dependency_graph"
     },
     {
       "relation": "contains",
@@ -1490,9 +1825,9 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
-      "target": "client_ayswariya_mahal_architecture_directory_structure",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_architecture_directory_structure"
     },
     {
       "relation": "contains",
@@ -1500,9 +1835,9 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L60",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
-      "target": "client_ayswariya_mahal_architecture_key_relationships_rules",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_architecture_key_relationships_rules"
     },
     {
       "relation": "contains",
@@ -1510,9 +1845,9 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_architecture_directory_structure",
-      "target": "client_ayswariya_mahal_architecture_codeblock_1",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_architecture_codeblock_1"
     },
     {
       "relation": "contains",
@@ -1520,9 +1855,9 @@
       "source_file": "ARCHITECTURE.md",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_architecture_dependency_graph",
-      "target": "client_ayswariya_mahal_architecture_codeblock_2",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_architecture_codeblock_2"
     },
     {
       "relation": "contains",
@@ -1530,9 +1865,189 @@
       "source_file": "README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "readme_md",
-      "target": "client_ayswariya_mahal_readme_react_vite",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_readme_ayswariya_mahal_royal_union_web_application"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_md",
+      "target": "client_ayswariya_mahal_readme_react_vite"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_ayswariya_mahal_royal_union_web_application",
+      "target": "client_ayswariya_mahal_readme_branching_strategy"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_ayswariya_mahal_royal_union_web_application",
+      "target": "client_ayswariya_mahal_readme_design_guidelines"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L47",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_ayswariya_mahal_royal_union_web_application",
+      "target": "client_ayswariya_mahal_readme_getting_started"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_ayswariya_mahal_royal_union_web_application",
+      "target": "client_ayswariya_mahal_readme_tech_stack"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_tech_stack",
+      "target": "client_ayswariya_mahal_readme_animation_engines"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_tech_stack",
+      "target": "client_ayswariya_mahal_readme_core_architecture"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L18",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_tech_stack",
+      "target": "client_ayswariya_mahal_readme_styling_ui"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_branching_strategy",
+      "target": "client_ayswariya_mahal_readme_develop_branch"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_branching_strategy",
+      "target": "client_ayswariya_mahal_readme_feature_branches"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_branching_strategy",
+      "target": "client_ayswariya_mahal_readme_main_branch"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_getting_started",
+      "target": "client_ayswariya_mahal_readme_installation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_getting_started",
+      "target": "client_ayswariya_mahal_readme_prerequisites"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_getting_started",
+      "target": "client_ayswariya_mahal_readme_running_the_development_server"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L54",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_installation",
+      "target": "client_ayswariya_mahal_readme_codeblock_1"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_installation",
+      "target": "client_ayswariya_mahal_readme_codeblock_2"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L62",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_installation",
+      "target": "client_ayswariya_mahal_readme_codeblock_3"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L68",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "client_ayswariya_mahal_readme_running_the_development_server",
+      "target": "client_ayswariya_mahal_readme_codeblock_4"
     },
     {
       "relation": "contains",
@@ -1540,9 +2055,9 @@
       "source_file": "README.md",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_readme_react_vite",
-      "target": "client_ayswariya_mahal_readme_expanding_the_eslint_configuration",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_readme_expanding_the_eslint_configuration"
     },
     {
       "relation": "contains",
@@ -1550,11 +2065,11 @@
       "source_file": "README.md",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "client_ayswariya_mahal_readme_react_vite",
-      "target": "client_ayswariya_mahal_readme_react_compiler",
-      "confidence_score": 1.0
+      "target": "client_ayswariya_mahal_readme_react_compiler"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "7e187871b191e90bf4b11d9882686cdccdb282a7"
+  "built_at_commit": "8badb5795d64e312fd3cef297d9efbfd63b08522"
 }

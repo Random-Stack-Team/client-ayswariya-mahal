@@ -1,6 +1,6 @@
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
-import EnquiryModal from "../components/common/EnquiryModal";
+import FloatingEnvelope from "../components/common/FloatingEnvelope";
 import { EnquiryProvider } from "../context/EnquiryContext";
 
 export default function MainLayout({ children }) {
@@ -9,7 +9,7 @@ export default function MainLayout({ children }) {
       <Navbar />
       {children}
       <Footer />
-      <EnquiryModal />
+      <FloatingEnvelope />
     </EnquiryProvider>
   );
 }

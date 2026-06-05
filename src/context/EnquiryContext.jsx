@@ -5,13 +5,13 @@ const EnquiryContext = createContext();
 export const useEnquiry = () => useContext(EnquiryContext);
 
 export const EnquiryProvider = ({ children }) => {
-  const [isEnquiryOpen, setIsEnquiryOpen] = useState(false);
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
-  const openEnquiry = () => setIsEnquiryOpen(true);
-  const closeEnquiry = () => setIsEnquiryOpen(false);
+  const openForm = () => setIsFormOpen(true);
+  const closeForm = () => setIsFormOpen(false);
 
   return (
-    <EnquiryContext.Provider value={{ isEnquiryOpen, openEnquiry, closeEnquiry }}>
+    <EnquiryContext.Provider value={{ isFormOpen, openForm, closeForm }}>
       {children}
     </EnquiryContext.Provider>
   );

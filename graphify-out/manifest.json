@@ -30,8 +30,8 @@
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\common\\Navbar.jsx": {
-    "mtime": 1780607665.512129,
-    "ast_hash": "5812c2264ed7da1f2d86e0dbda5053a6",
+    "mtime": 1780688356.2242036,
+    "ast_hash": "c9edc677472ad1d137f6f234f7ef618a",
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\common\\SectionTitle.jsx": {
@@ -90,18 +90,13 @@
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\layouts\\MainLayout.jsx": {
-    "mtime": 1780602750.2617264,
-    "ast_hash": "d6e867143470611b025d772ba251985c",
+    "mtime": 1780688333.8083656,
+    "ast_hash": "1dc5957276dd1f0b9352e0c7a44b0ddf",
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\About.jsx": {
     "mtime": 1780602750.2617264,
     "ast_hash": "51f2dd596d8e6eb60871f1f5aed0ff29",
-    "semantic_hash": ""
-  },
-  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\Contact.jsx": {
-    "mtime": 1780683785.3524153,
-    "ast_hash": "ffadf292526aff5ffeaaa5d793a31473",
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\Facilities.jsx": {
@@ -115,8 +110,8 @@
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\Home.jsx": {
-    "mtime": 1780607642.329473,
-    "ast_hash": "56255b9abc53d8067274ac2ce8b009f8",
+    "mtime": 1780688342.0626323,
+    "ast_hash": "c448835c5b542ae1abc163984a8a4b4d",
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\Reviews.jsx": {
@@ -125,8 +120,8 @@
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\routes\\AppRoutes.jsx": {
-    "mtime": 1780608371.9850597,
-    "ast_hash": "a8635f56c8c81bb3844a1c54a7a16a3d",
+    "mtime": 1780685770.8714721,
+    "ast_hash": "271548c0e1ccc85ac5d432bdc16ed01c",
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\ARCHITECTURE.md": {
@@ -140,8 +135,8 @@
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\README.md": {
-    "mtime": 1780602750.2092533,
-    "ast_hash": "abfa161e3e5434e3e85394bf03d387a4",
+    "mtime": 1780684593.524713,
+    "ast_hash": "2341c6cca85a7d5453f25f077813bcbe",
     "semantic_hash": ""
   },
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\public\\favicon.svg": {
@@ -212,6 +207,16 @@
   "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\royal_palace_gate.png": {
     "mtime": 1780642185.6336296,
     "ast_hash": "6153d2fddf9df4d620f7e6fa4827ba11",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\context\\EnquiryContext.jsx": {
+    "mtime": 1780688283.566651,
+    "ast_hash": "738e7ef56a20e1d08c10c213ac460d76",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\common\\FloatingEnvelope.jsx": {
+    "mtime": 1780688323.5737731,
+    "ast_hash": "69af31110d79ebd307d6f22e684e2270",
     "semantic_hash": ""
   }
 }
