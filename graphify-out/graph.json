@@ -1,0 +1,1560 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {},
+  "nodes": [
+    {
+      "label": "eslint.config.js",
+      "file_type": "code",
+      "source_file": "eslint.config.js",
+      "source_location": "L1",
+      "id": "eslint_config_js",
+      "community": 9,
+      "norm_label": "eslint.config.js"
+    },
+    {
+      "label": "package.json",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L1",
+      "id": "package_json",
+      "community": 3,
+      "norm_label": "package.json"
+    },
+    {
+      "label": "name",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "id": "client_ayswariya_mahal_package_name",
+      "community": 3,
+      "norm_label": "name"
+    },
+    {
+      "label": "private",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "id": "client_ayswariya_mahal_package_private",
+      "community": 3,
+      "norm_label": "private"
+    },
+    {
+      "label": "version",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "id": "client_ayswariya_mahal_package_version",
+      "community": 3,
+      "norm_label": "version"
+    },
+    {
+      "label": "type",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "id": "client_ayswariya_mahal_package_type",
+      "community": 3,
+      "norm_label": "type"
+    },
+    {
+      "label": "scripts",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "id": "client_ayswariya_mahal_package_scripts",
+      "community": 3,
+      "norm_label": "scripts"
+    },
+    {
+      "label": "dev",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "id": "client_ayswariya_mahal_package_scripts_dev",
+      "community": 3,
+      "norm_label": "dev"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "id": "client_ayswariya_mahal_package_scripts_build",
+      "community": 3,
+      "norm_label": "build"
+    },
+    {
+      "label": "lint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "id": "client_ayswariya_mahal_package_scripts_lint",
+      "community": 3,
+      "norm_label": "lint"
+    },
+    {
+      "label": "preview",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "id": "client_ayswariya_mahal_package_scripts_preview",
+      "community": 3,
+      "norm_label": "preview"
+    },
+    {
+      "label": "dependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "id": "client_ayswariya_mahal_package_dependencies",
+      "community": 5,
+      "norm_label": "dependencies"
+    },
+    {
+      "label": "clsx",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "id": "client_ayswariya_mahal_package_dependencies_clsx",
+      "community": 5,
+      "norm_label": "clsx"
+    },
+    {
+      "label": "framer-motion",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "id": "client_ayswariya_mahal_package_dependencies_framer_motion",
+      "community": 5,
+      "norm_label": "framer-motion"
+    },
+    {
+      "label": "gsap",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "id": "client_ayswariya_mahal_package_dependencies_gsap",
+      "community": 5,
+      "norm_label": "gsap"
+    },
+    {
+      "label": "lucide-react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "id": "client_ayswariya_mahal_package_dependencies_lucide_react",
+      "community": 5,
+      "norm_label": "lucide-react"
+    },
+    {
+      "label": "react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "id": "client_ayswariya_mahal_package_dependencies_react",
+      "community": 5,
+      "norm_label": "react"
+    },
+    {
+      "label": "react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "id": "client_ayswariya_mahal_package_dependencies_react_dom",
+      "community": 5,
+      "norm_label": "react-dom"
+    },
+    {
+      "label": "react-router-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "id": "client_ayswariya_mahal_package_dependencies_react_router_dom",
+      "community": 5,
+      "norm_label": "react-router-dom"
+    },
+    {
+      "label": "devDependencies",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "id": "client_ayswariya_mahal_package_devdependencies",
+      "community": 2,
+      "norm_label": "devdependencies"
+    },
+    {
+      "label": "@eslint/js",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "id": "client_ayswariya_mahal_package_devdependencies_eslint_js",
+      "community": 2,
+      "norm_label": "@eslint/js"
+    },
+    {
+      "label": "@tailwindcss/vite",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "id": "client_ayswariya_mahal_package_devdependencies_tailwindcss_vite",
+      "community": 2,
+      "norm_label": "@tailwindcss/vite"
+    },
+    {
+      "label": "@types/react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "id": "client_ayswariya_mahal_package_devdependencies_types_react",
+      "community": 2,
+      "norm_label": "@types/react"
+    },
+    {
+      "label": "@types/react-dom",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "id": "client_ayswariya_mahal_package_devdependencies_types_react_dom",
+      "community": 2,
+      "norm_label": "@types/react-dom"
+    },
+    {
+      "label": "@vitejs/plugin-react",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "id": "client_ayswariya_mahal_package_devdependencies_vitejs_plugin_react",
+      "community": 2,
+      "norm_label": "@vitejs/plugin-react"
+    },
+    {
+      "label": "eslint",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "id": "client_ayswariya_mahal_package_devdependencies_eslint",
+      "community": 2,
+      "norm_label": "eslint"
+    },
+    {
+      "label": "eslint-plugin-react-hooks",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "id": "client_ayswariya_mahal_package_devdependencies_eslint_plugin_react_hooks",
+      "community": 2,
+      "norm_label": "eslint-plugin-react-hooks"
+    },
+    {
+      "label": "eslint-plugin-react-refresh",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "id": "client_ayswariya_mahal_package_devdependencies_eslint_plugin_react_refresh",
+      "community": 2,
+      "norm_label": "eslint-plugin-react-refresh"
+    },
+    {
+      "label": "globals",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "id": "client_ayswariya_mahal_package_devdependencies_globals",
+      "community": 2,
+      "norm_label": "globals"
+    },
+    {
+      "label": "tailwindcss",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "id": "client_ayswariya_mahal_package_devdependencies_tailwindcss",
+      "community": 2,
+      "norm_label": "tailwindcss"
+    },
+    {
+      "label": "vite",
+      "file_type": "code",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "id": "client_ayswariya_mahal_package_devdependencies_vite",
+      "community": 2,
+      "norm_label": "vite"
+    },
+    {
+      "label": "vite.config.js",
+      "file_type": "code",
+      "source_file": "vite.config.js",
+      "source_location": "L1",
+      "id": "vite_config_js",
+      "community": 10,
+      "norm_label": "vite.config.js"
+    },
+    {
+      "label": "App.jsx",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L1",
+      "id": "src_app_jsx",
+      "community": 1,
+      "norm_label": "app.jsx"
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "src/App.jsx",
+      "source_location": "L4",
+      "id": "src_app_app",
+      "community": 1,
+      "norm_label": "app()"
+    },
+    {
+      "label": "main.jsx",
+      "file_type": "code",
+      "source_file": "src/main.jsx",
+      "source_location": "L1",
+      "id": "src_main_jsx",
+      "community": 1,
+      "norm_label": "main.jsx"
+    },
+    {
+      "label": "Footer.jsx",
+      "file_type": "code",
+      "source_file": "src/components/common/Footer.jsx",
+      "source_location": "L1",
+      "id": "src_components_common_footer_jsx",
+      "community": 0,
+      "norm_label": "footer.jsx"
+    },
+    {
+      "label": "Footer()",
+      "file_type": "code",
+      "source_file": "src/components/common/Footer.jsx",
+      "source_location": "L3",
+      "id": "common_footer_footer",
+      "community": 0,
+      "norm_label": "footer()"
+    },
+    {
+      "label": "Navbar.jsx",
+      "file_type": "code",
+      "source_file": "src/components/common/Navbar.jsx",
+      "source_location": "L1",
+      "id": "src_components_common_navbar_jsx",
+      "community": 0,
+      "norm_label": "navbar.jsx"
+    },
+    {
+      "label": "Navbar()",
+      "file_type": "code",
+      "source_file": "src/components/common/Navbar.jsx",
+      "source_location": "L5",
+      "id": "common_navbar_navbar",
+      "community": 0,
+      "norm_label": "navbar()"
+    },
+    {
+      "label": "SectionTitle.jsx",
+      "file_type": "code",
+      "source_file": "src/components/common/SectionTitle.jsx",
+      "source_location": "L1",
+      "id": "src_components_common_sectiontitle_jsx",
+      "community": 11,
+      "norm_label": "sectiontitle.jsx"
+    },
+    {
+      "label": "AboutPreview.jsx",
+      "file_type": "code",
+      "source_file": "src/components/home/AboutPreview.jsx",
+      "source_location": "L1",
+      "id": "src_components_home_aboutpreview_jsx",
+      "community": 0,
+      "norm_label": "aboutpreview.jsx"
+    },
+    {
+      "label": "AboutPreview()",
+      "file_type": "code",
+      "source_file": "src/components/home/AboutPreview.jsx",
+      "source_location": "L9",
+      "id": "home_aboutpreview_aboutpreview",
+      "community": 0,
+      "norm_label": "aboutpreview()"
+    },
+    {
+      "label": "ContactCTA.jsx",
+      "file_type": "code",
+      "source_file": "src/components/home/ContactCTA.jsx",
+      "source_location": "L1",
+      "id": "src_components_home_contactcta_jsx",
+      "community": 12,
+      "norm_label": "contactcta.jsx"
+    },
+    {
+      "label": "FacilitiesPreview.jsx",
+      "file_type": "code",
+      "source_file": "src/components/home/FacilitiesPreview.jsx",
+      "source_location": "L1",
+      "id": "src_components_home_facilitiespreview_jsx",
+      "community": 0,
+      "norm_label": "facilitiespreview.jsx"
+    },
+    {
+      "label": "facilities",
+      "file_type": "code",
+      "source_file": "src/components/home/FacilitiesPreview.jsx",
+      "source_location": "L15",
+      "id": "home_facilitiespreview_facilities",
+      "community": 0,
+      "norm_label": "facilities"
+    },
+    {
+      "label": "FacilitiesPreview()",
+      "file_type": "code",
+      "source_file": "src/components/home/FacilitiesPreview.jsx",
+      "source_location": "L38",
+      "id": "home_facilitiespreview_facilitiespreview",
+      "community": 0,
+      "norm_label": "facilitiespreview()"
+    },
+    {
+      "label": "GalleryPreview.jsx",
+      "file_type": "code",
+      "source_file": "src/components/home/GalleryPreview.jsx",
+      "source_location": "L1",
+      "id": "src_components_home_gallerypreview_jsx",
+      "community": 13,
+      "norm_label": "gallerypreview.jsx"
+    },
+    {
+      "label": "GateExperience.jsx",
+      "file_type": "code",
+      "source_file": "src/components/home/GateExperience.jsx",
+      "source_location": "L1",
+      "id": "src_components_home_gateexperience_jsx",
+      "community": 0,
+      "norm_label": "gateexperience.jsx"
+    },
+    {
+      "label": "GateExperience()",
+      "file_type": "code",
+      "source_file": "src/components/home/GateExperience.jsx",
+      "source_location": "L10",
+      "id": "home_gateexperience_gateexperience",
+      "community": 0,
+      "norm_label": "gateexperience()"
+    },
+    {
+      "label": "Hero.jsx",
+      "file_type": "code",
+      "source_file": "src/components/home/Hero.jsx",
+      "source_location": "L1",
+      "id": "src_components_home_hero_jsx",
+      "community": 8,
+      "norm_label": "hero.jsx"
+    },
+    {
+      "label": "Hero()",
+      "file_type": "code",
+      "source_file": "src/components/home/Hero.jsx",
+      "source_location": "L6",
+      "id": "home_hero_hero",
+      "community": 8,
+      "norm_label": "hero()"
+    },
+    {
+      "label": "ReviewPreview.jsx",
+      "file_type": "code",
+      "source_file": "src/components/home/ReviewPreview.jsx",
+      "source_location": "L1",
+      "id": "src_components_home_reviewpreview_jsx",
+      "community": 14,
+      "norm_label": "reviewpreview.jsx"
+    },
+    {
+      "label": "facilities.js",
+      "file_type": "code",
+      "source_file": "src/data/facilities.js",
+      "source_location": "L1",
+      "id": "src_data_facilities_js",
+      "community": 15,
+      "norm_label": "facilities.js"
+    },
+    {
+      "label": "gallery.js",
+      "file_type": "code",
+      "source_file": "src/data/gallery.js",
+      "source_location": "L1",
+      "id": "src_data_gallery_js",
+      "community": 16,
+      "norm_label": "gallery.js"
+    },
+    {
+      "label": "reviews.js",
+      "file_type": "code",
+      "source_file": "src/data/reviews.js",
+      "source_location": "L1",
+      "id": "src_data_reviews_js",
+      "community": 17,
+      "norm_label": "reviews.js"
+    },
+    {
+      "label": "MainLayout.jsx",
+      "file_type": "code",
+      "source_file": "src/layouts/MainLayout.jsx",
+      "source_location": "L1",
+      "id": "src_layouts_mainlayout_jsx",
+      "community": 0,
+      "norm_label": "mainlayout.jsx"
+    },
+    {
+      "label": "MainLayout()",
+      "file_type": "code",
+      "source_file": "src/layouts/MainLayout.jsx",
+      "source_location": "L4",
+      "id": "layouts_mainlayout_mainlayout",
+      "community": 0,
+      "norm_label": "mainlayout()"
+    },
+    {
+      "label": "About.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/About.jsx",
+      "source_location": "L1",
+      "id": "src_pages_about_jsx",
+      "community": 1,
+      "norm_label": "about.jsx"
+    },
+    {
+      "label": "About()",
+      "file_type": "code",
+      "source_file": "src/pages/About.jsx",
+      "source_location": "L3",
+      "id": "pages_about_about",
+      "community": 1,
+      "norm_label": "about()"
+    },
+    {
+      "label": "Contact.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/Contact.jsx",
+      "source_location": "L1",
+      "id": "src_pages_contact_jsx",
+      "community": 1,
+      "norm_label": "contact.jsx"
+    },
+    {
+      "label": "Contact()",
+      "file_type": "code",
+      "source_file": "src/pages/Contact.jsx",
+      "source_location": "L4",
+      "id": "pages_contact_contact",
+      "community": 1,
+      "norm_label": "contact()"
+    },
+    {
+      "label": "Facilities.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/Facilities.jsx",
+      "source_location": "L1",
+      "id": "src_pages_facilities_jsx",
+      "community": 1,
+      "norm_label": "facilities.jsx"
+    },
+    {
+      "label": "Facilities",
+      "file_type": "code",
+      "source_file": "src/pages/Facilities.jsx",
+      "source_location": "L64",
+      "id": "pages_facilities_facilities",
+      "community": 1,
+      "norm_label": "facilities"
+    },
+    {
+      "label": "Gallery.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/Gallery.jsx",
+      "source_location": "L1",
+      "id": "src_pages_gallery_jsx",
+      "community": 7,
+      "norm_label": "gallery.jsx"
+    },
+    {
+      "label": "galleryImages",
+      "file_type": "code",
+      "source_file": "src/pages/Gallery.jsx",
+      "source_location": "L10",
+      "id": "pages_gallery_galleryimages",
+      "community": 7,
+      "norm_label": "galleryimages"
+    },
+    {
+      "label": "categories",
+      "file_type": "code",
+      "source_file": "src/pages/Gallery.jsx",
+      "source_location": "L19",
+      "id": "pages_gallery_categories",
+      "community": 7,
+      "norm_label": "categories"
+    },
+    {
+      "label": "Gallery()",
+      "file_type": "code",
+      "source_file": "src/pages/Gallery.jsx",
+      "source_location": "L21",
+      "id": "pages_gallery_gallery",
+      "community": 7,
+      "norm_label": "gallery()"
+    },
+    {
+      "label": "Home.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L1",
+      "id": "src_pages_home_jsx",
+      "community": 0,
+      "norm_label": "home.jsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L7",
+      "id": "pages_home_home",
+      "community": 0,
+      "norm_label": "home()"
+    },
+    {
+      "label": "Reviews.jsx",
+      "file_type": "code",
+      "source_file": "src/pages/Reviews.jsx",
+      "source_location": "L1",
+      "id": "src_pages_reviews_jsx",
+      "community": 1,
+      "norm_label": "reviews.jsx"
+    },
+    {
+      "label": "Reviews",
+      "file_type": "code",
+      "source_file": "src/pages/Reviews.jsx",
+      "source_location": "L43",
+      "id": "pages_reviews_reviews",
+      "community": 1,
+      "norm_label": "reviews"
+    },
+    {
+      "label": "AppRoutes.jsx",
+      "file_type": "code",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L1",
+      "id": "src_routes_approutes_jsx",
+      "community": 1,
+      "norm_label": "approutes.jsx"
+    },
+    {
+      "label": "pageTransition",
+      "file_type": "code",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L12",
+      "id": "routes_approutes_pagetransition",
+      "community": 1,
+      "norm_label": "pagetransition"
+    },
+    {
+      "label": "PageWrapper()",
+      "file_type": "code",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L19",
+      "id": "routes_approutes_pagewrapper",
+      "community": 1,
+      "norm_label": "pagewrapper()"
+    },
+    {
+      "label": "AppRoutes()",
+      "file_type": "code",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L25",
+      "id": "routes_approutes_approutes",
+      "community": 1,
+      "norm_label": "approutes()"
+    },
+    {
+      "label": "ARCHITECTURE.md",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L1",
+      "id": "architecture_md",
+      "community": 4,
+      "norm_label": "architecture.md"
+    },
+    {
+      "label": "Project Architecture - Ayswariya Mahal",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L1",
+      "id": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
+      "community": 4,
+      "norm_label": "project architecture - ayswariya mahal"
+    },
+    {
+      "label": "\ud83d\udcc1 Directory Structure",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L5",
+      "id": "client_ayswariya_mahal_architecture_directory_structure",
+      "community": 4,
+      "norm_label": "\ud83d\udcc1 directory structure"
+    },
+    {
+      "label": "code:text (src/)",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L7",
+      "id": "client_ayswariya_mahal_architecture_codeblock_1",
+      "community": 4,
+      "norm_label": "code:text (src/)"
+    },
+    {
+      "label": "\ud83d\udd78\ufe0f Dependency Graph",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L22",
+      "id": "client_ayswariya_mahal_architecture_dependency_graph",
+      "community": 4,
+      "norm_label": "\ud83d\udd78\ufe0f dependency graph"
+    },
+    {
+      "label": "code:mermaid (graph TD)",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L24",
+      "id": "client_ayswariya_mahal_architecture_codeblock_2",
+      "community": 4,
+      "norm_label": "code:mermaid (graph td)"
+    },
+    {
+      "label": "\ud83d\udd17 Key Relationships & Rules",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L60",
+      "id": "client_ayswariya_mahal_architecture_key_relationships_rules",
+      "community": 4,
+      "norm_label": "\ud83d\udd17 key relationships & rules"
+    },
+    {
+      "label": "\ud83d\uddfa\ufe0f Codebase Navigation Guide",
+      "file_type": "document",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L66",
+      "id": "client_ayswariya_mahal_architecture_codebase_navigation_guide",
+      "community": 4,
+      "norm_label": "\ud83d\uddfa\ufe0f codebase navigation guide"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 6,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "React + Vite",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "client_ayswariya_mahal_readme_react_vite",
+      "community": 6,
+      "norm_label": "react + vite"
+    },
+    {
+      "label": "React Compiler",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L10",
+      "id": "client_ayswariya_mahal_readme_react_compiler",
+      "community": 6,
+      "norm_label": "react compiler"
+    },
+    {
+      "label": "Expanding the ESLint configuration",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L14",
+      "id": "client_ayswariya_mahal_readme_expanding_the_eslint_configuration",
+      "community": 6,
+      "norm_label": "expanding the eslint configuration"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "client_ayswariya_mahal_package_dependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "client_ayswariya_mahal_package_devdependencies",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "client_ayswariya_mahal_package_name",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "client_ayswariya_mahal_package_private",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "client_ayswariya_mahal_package_scripts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "client_ayswariya_mahal_package_type",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "package_json",
+      "target": "client_ayswariya_mahal_package_version",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_scripts",
+      "target": "client_ayswariya_mahal_package_scripts_build",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_scripts",
+      "target": "client_ayswariya_mahal_package_scripts_dev",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_scripts",
+      "target": "client_ayswariya_mahal_package_scripts_lint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_scripts",
+      "target": "client_ayswariya_mahal_package_scripts_preview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_dependencies",
+      "target": "client_ayswariya_mahal_package_dependencies_clsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_dependencies",
+      "target": "client_ayswariya_mahal_package_dependencies_framer_motion",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_dependencies",
+      "target": "client_ayswariya_mahal_package_dependencies_gsap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_dependencies",
+      "target": "client_ayswariya_mahal_package_dependencies_lucide_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_dependencies",
+      "target": "client_ayswariya_mahal_package_dependencies_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_dependencies",
+      "target": "client_ayswariya_mahal_package_dependencies_react_dom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_dependencies",
+      "target": "client_ayswariya_mahal_package_dependencies_react_router_dom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_eslint",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_eslint_js",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L28",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_eslint_plugin_react_hooks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_eslint_plugin_react_refresh",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_globals",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_tailwindcss",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L23",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_tailwindcss_vite",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_types_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_types_react_dom",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_vite",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "package.json",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_package_devdependencies",
+      "target": "client_ayswariya_mahal_package_devdependencies_vitejs_plugin_react",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_app_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/App.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_app_jsx",
+      "target": "src_routes_approutes_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/main.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_main_jsx",
+      "target": "src_app_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/Footer.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_components_common_footer_jsx",
+      "target": "common_footer_footer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/MainLayout.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_layouts_mainlayout_jsx",
+      "target": "src_components_common_footer_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_pages_home_jsx",
+      "target": "src_components_common_footer_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/common/Navbar.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_components_common_navbar_jsx",
+      "target": "common_navbar_navbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/MainLayout.jsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_layouts_mainlayout_jsx",
+      "target": "src_components_common_navbar_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_pages_home_jsx",
+      "target": "src_components_common_navbar_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/home/AboutPreview.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "src_components_home_aboutpreview_jsx",
+      "target": "home_aboutpreview_aboutpreview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_home_jsx",
+      "target": "src_components_home_aboutpreview_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/home/FacilitiesPreview.jsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "src_components_home_facilitiespreview_jsx",
+      "target": "home_facilitiespreview_facilities",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/home/FacilitiesPreview.jsx",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "src_components_home_facilitiespreview_jsx",
+      "target": "home_facilitiespreview_facilitiespreview",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_pages_home_jsx",
+      "target": "src_components_home_facilitiespreview_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/home/GateExperience.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_components_home_gateexperience_jsx",
+      "target": "home_gateexperience_gateexperience",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_pages_home_jsx",
+      "target": "src_components_home_gateexperience_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/components/home/Hero.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_components_home_hero_jsx",
+      "target": "home_hero_hero",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/layouts/MainLayout.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_layouts_mainlayout_jsx",
+      "target": "layouts_mainlayout_mainlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "src_layouts_mainlayout_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/About.jsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_pages_about_jsx",
+      "target": "pages_about_about",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "src_pages_about_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Contact.jsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "src_pages_contact_jsx",
+      "target": "pages_contact_contact",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "src_pages_contact_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Facilities.jsx",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "src_pages_facilities_jsx",
+      "target": "pages_facilities_facilities",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "src_pages_facilities_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Gallery.jsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "src_pages_gallery_jsx",
+      "target": "pages_gallery_categories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Gallery.jsx",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "src_pages_gallery_jsx",
+      "target": "pages_gallery_gallery",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Gallery.jsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "src_pages_gallery_jsx",
+      "target": "pages_gallery_galleryimages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "src_pages_gallery_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_pages_home_jsx",
+      "target": "pages_home_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "src_pages_home_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/pages/Reviews.jsx",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "src_pages_reviews_jsx",
+      "target": "pages_reviews_reviews",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "src_pages_reviews_jsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "routes_approutes_approutes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "routes_approutes_pagetransition",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/routes/AppRoutes.jsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "src_routes_approutes_jsx",
+      "target": "routes_approutes_pagewrapper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "architecture_md",
+      "target": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
+      "target": "client_ayswariya_mahal_architecture_codebase_navigation_guide",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
+      "target": "client_ayswariya_mahal_architecture_dependency_graph",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
+      "target": "client_ayswariya_mahal_architecture_directory_structure",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L60",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_architecture_project_architecture_ayswariya_mahal",
+      "target": "client_ayswariya_mahal_architecture_key_relationships_rules",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_architecture_directory_structure",
+      "target": "client_ayswariya_mahal_architecture_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ARCHITECTURE.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_architecture_dependency_graph",
+      "target": "client_ayswariya_mahal_architecture_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "client_ayswariya_mahal_readme_react_vite",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_readme_react_vite",
+      "target": "client_ayswariya_mahal_readme_expanding_the_eslint_configuration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "client_ayswariya_mahal_readme_react_vite",
+      "target": "client_ayswariya_mahal_readme_react_compiler",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [],
+  "built_at_commit": "7e187871b191e90bf4b11d9882686cdccdb282a7"
+}

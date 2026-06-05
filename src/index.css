@@ -87,3 +87,17 @@ h1, h2, h3, h4, h5, h6 {
 .flip-horizontal {
   transform: scaleX(-1);
 }
+
+.royal-gradient {
+  background: linear-gradient(135deg, #1c0002 0%, #4A0A12 100%);
+}
+
+.gold-border-double {
+  border: 4px double var(--color-gold-leaf);
+}
+
+.input-focus-gold:focus {
+  border-color: var(--color-gold-leaf);
+  outline: none;
+  box-shadow: 0 1px 0 0 var(--color-gold-leaf);
+}

@@ -1,0 +1,217 @@
+{
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\eslint.config.js": {
+    "mtime": 1780602750.2092533,
+    "ast_hash": "fa91453358b56681481f75f81d1bfccd",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\package.json": {
+    "mtime": 1780602750.2118907,
+    "ast_hash": "2d44cc208ece48a847f277e1177810ab",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\vite.config.js": {
+    "mtime": 1780602750.2658737,
+    "ast_hash": "63659395500bee0c6e7550f972b6a314",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\App.jsx": {
+    "mtime": 1780602750.21275,
+    "ast_hash": "5c07531aad8913057640cb30ea1494ca",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\main.jsx": {
+    "mtime": 1780602750.2617264,
+    "ast_hash": "6b3033c0f6869d2d0b7647d262a8f76c",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\common\\Footer.jsx": {
+    "mtime": 1780607682.7250066,
+    "ast_hash": "2f58ca4c30cc0576d26b05784cd3783f",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\common\\Navbar.jsx": {
+    "mtime": 1780607665.512129,
+    "ast_hash": "5812c2264ed7da1f2d86e0dbda5053a6",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\common\\SectionTitle.jsx": {
+    "mtime": 1780602750.2499025,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\home\\AboutPreview.jsx": {
+    "mtime": 1780607707.8012726,
+    "ast_hash": "513ac27cd64c30f44faeebdce6574b71",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\home\\ContactCTA.jsx": {
+    "mtime": 1780602750.2499025,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\home\\FacilitiesPreview.jsx": {
+    "mtime": 1780607731.3458693,
+    "ast_hash": "8935de696679f8517cf97351a7ef868e",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\home\\GalleryPreview.jsx": {
+    "mtime": 1780602750.2499025,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\home\\GateExperience.jsx": {
+    "mtime": 1780642532.1647458,
+    "ast_hash": "7aad2a518ad2ab727a5230a92b35ae10",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\home\\Hero.jsx": {
+    "mtime": 1780602750.2586522,
+    "ast_hash": "c98354bbad36d6726007a0da34c7c32b",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\components\\home\\ReviewPreview.jsx": {
+    "mtime": 1780602750.2586522,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\data\\facilities.js": {
+    "mtime": 1780602750.259719,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\data\\gallery.js": {
+    "mtime": 1780602750.259719,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\data\\reviews.js": {
+    "mtime": 1780602750.259719,
+    "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\layouts\\MainLayout.jsx": {
+    "mtime": 1780602750.2617264,
+    "ast_hash": "d6e867143470611b025d772ba251985c",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\About.jsx": {
+    "mtime": 1780602750.2617264,
+    "ast_hash": "51f2dd596d8e6eb60871f1f5aed0ff29",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\Contact.jsx": {
+    "mtime": 1780683785.3524153,
+    "ast_hash": "ffadf292526aff5ffeaaa5d793a31473",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\Facilities.jsx": {
+    "mtime": 1780602750.264367,
+    "ast_hash": "cd9521bffa2f99dc01a51f0b3c3158b2",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\Gallery.jsx": {
+    "mtime": 1780607803.3943,
+    "ast_hash": "1d148b46a103cc913850606c13c11679",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\Home.jsx": {
+    "mtime": 1780607642.329473,
+    "ast_hash": "56255b9abc53d8067274ac2ce8b009f8",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\pages\\Reviews.jsx": {
+    "mtime": 1780602750.264367,
+    "ast_hash": "0752623b054facd201937ab70f462ea3",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\routes\\AppRoutes.jsx": {
+    "mtime": 1780608371.9850597,
+    "ast_hash": "a8635f56c8c81bb3844a1c54a7a16a3d",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\ARCHITECTURE.md": {
+    "mtime": 1780603000.787645,
+    "ast_hash": "3781c430eda04588f16f05c19960ef29",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\index.html": {
+    "mtime": 1780608267.3482049,
+    "ast_hash": "c56bc2a06d53010eb72ed00b2ae3bf29",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\README.md": {
+    "mtime": 1780602750.2092533,
+    "ast_hash": "abfa161e3e5434e3e85394bf03d387a4",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\public\\favicon.svg": {
+    "mtime": 1780602750.21275,
+    "ast_hash": "7e840862161341271697daa99a40d76b",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\public\\icons.svg": {
+    "mtime": 1780602750.21275,
+    "ast_hash": "21c7473c592c67dc87223d49892c8f0a",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\about.jpg": {
+    "mtime": 1780602750.2147563,
+    "ast_hash": "c46b42d5e1bce80575fd0e90a01c60ca",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\gallery1.jpg": {
+    "mtime": 1780602750.2174146,
+    "ast_hash": "c46b42d5e1bce80575fd0e90a01c60ca",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\gallery2.jpg": {
+    "mtime": 1780602750.2180262,
+    "ast_hash": "c46b42d5e1bce80575fd0e90a01c60ca",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\gallery3.jpg": {
+    "mtime": 1780602750.2200315,
+    "ast_hash": "c46b42d5e1bce80575fd0e90a01c60ca",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\gallery4.jpg": {
+    "mtime": 1780602750.2200315,
+    "ast_hash": "c46b42d5e1bce80575fd0e90a01c60ca",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\gallery5.jpg": {
+    "mtime": 1780602750.2220385,
+    "ast_hash": "c46b42d5e1bce80575fd0e90a01c60ca",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\gallery6.jpg": {
+    "mtime": 1780602750.2240458,
+    "ast_hash": "c46b42d5e1bce80575fd0e90a01c60ca",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\Gate image.jpg": {
+    "mtime": 1780642254.1285794,
+    "ast_hash": "6153d2fddf9df4d620f7e6fa4827ba11",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\hero.jpg": {
+    "mtime": 1780602750.2499025,
+    "ast_hash": "72009b626c9a33ee7cdb5d997529b83d",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\left_palace_gate.png": {
+    "mtime": 1780642416.6656232,
+    "ast_hash": "ab55e212f5ebabf4acd45d083ef314be",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\right_palace_gate.png": {
+    "mtime": 1780642416.727256,
+    "ast_hash": "06fc4215dad5658b4627016d34c91993",
+    "semantic_hash": ""
+  },
+  "E:\\Random Stacks\\Client-Ayswariya-Mahal\\src\\assets\\images\\royal_palace_gate.png": {
+    "mtime": 1780642185.6336296,
+    "ast_hash": "6153d2fddf9df4d620f7e6fa4827ba11",
+    "semantic_hash": ""
+  }
+}

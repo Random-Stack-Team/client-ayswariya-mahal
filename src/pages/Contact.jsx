@@ -1,187 +1,235 @@
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, CalendarDays, Users, Type } from "lucide-react";
+import { Crown, Sparkles, ConciergeBell, Star } from "lucide-react";
 
 export default function Contact() {
+  const flowVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  };
+
   return (
-    <main className="bg-surface min-h-screen pt-32 pb-24">
-      {/* Decorative BG */}
-      <div className="absolute top-0 left-0 w-full h-[600px] bg-primary rounded-b-[50%] scale-150 origin-top -translate-y-64 pointer-events-none opacity-90"></div>
-
+    <main className="bg-surface text-on-surface pt-24 pb-24 font-body overflow-x-hidden min-h-screen">
+      
       {/* Hero Section */}
-      <section className="relative z-10 px-6 mb-24">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.p
-            className="font-body text-gold-leaf font-semibold tracking-[0.4em] uppercase text-sm mb-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            Connect With Us
-          </motion.p>
-          <motion.h1
-            className="text-5xl md:text-7xl font-cinzel text-surface-bright leading-tight drop-shadow-xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            Plan Your <span className="italic text-antique-gold">Royal Celebration</span>
-          </motion.h1>
-          <div className="w-24 h-px bg-gold-leaf mx-auto mt-8 opacity-50"></div>
-        </div>
-      </section>
-
-      <section className="relative z-10 px-6">
-        <div className="max-w-[1280px] mx-auto grid lg:grid-cols-12 gap-16">
-
-          {/* Contact Details Column */}
-          <motion.div
-            className="lg:col-span-5 bg-deep-maroon text-ivory rounded-t-full rounded-b-3xl p-12 md:p-16 flex flex-col items-center text-center shadow-[0_20px_50px_rgba(74,10,18,0.2)] border border-gold-leaf/20 relative overflow-hidden"
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            {/* Inner Border */}
-            <div className="absolute inset-4 rounded-t-full rounded-b-2xl border border-gold-leaf/10 pointer-events-none"></div>
-
-            <h2 className="text-3xl md:text-4xl font-cinzel text-gold-leaf mb-12 mt-16">
-              Palace Directory
-            </h2>
-
-            <div className="space-y-10 w-full">
-              <div className="flex flex-col items-center gap-3">
-                <MapPin size={24} className="text-gold-leaf" />
-                <h3 className="font-cinzel text-xl text-antique-gold">Location</h3>
-                <p className="font-body text-ivory/80 leading-relaxed text-sm">
-                  Ayswariya Mahal,<br />
-                  Trichy Road, Arumbakkam,<br />
-                  Chennai 600106
-                </p>
-              </div>
-
-              <div className="w-12 h-px bg-gold-leaf/30 mx-auto"></div>
-
-              <div className="flex flex-col items-center gap-3">
-                <Phone size={24} className="text-gold-leaf" />
-                <h3 className="font-cinzel text-xl text-antique-gold">Direct Line</h3>
-                <p className="font-body text-ivory/80 leading-relaxed text-sm">
-                  +91 98765 43210
-                </p>
-              </div>
-
-              <div className="w-12 h-px bg-gold-leaf/30 mx-auto"></div>
-
-              <div className="flex flex-col items-center gap-3">
-                <Mail size={24} className="text-gold-leaf" />
-                <h3 className="font-cinzel text-xl text-antique-gold">Electronic Mail</h3>
-                <p className="font-body text-ivory/80 leading-relaxed text-sm">
-                  royal@ayswariyamahal.com
-                </p>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Enquiry Form Column */}
-          <motion.div
-            className="lg:col-span-7"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-white p-10 md:p-14 rounded-3xl shadow-xl border border-gold-leaf/10 relative">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 rounded-tr-3xl"></div>
-              
-              <h2 className="text-3xl md:text-4xl font-cinzel text-primary mb-2">Request an Audience</h2>
-              <p className="font-body text-on-surface-variant mb-10">We invite you to share the details of your upcoming celebration.</p>
-
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Name */}
-                  <div className="relative">
-                    <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Honorable Name</label>
-                    <input
-                      type="text"
-                      className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary placeholder-primary/30"
-                      placeholder="e.g. Anand & Priya"
-                    />
-                  </div>
-
-                  {/* Phone */}
-                  <div className="relative">
-                    <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Contact Number</label>
-                    <input
-                      type="tel"
-                      className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary placeholder-primary/30"
-                      placeholder="+91"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  {/* Event Type */}
-                  <div className="relative">
-                    <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Type of Celebration</label>
-                    <select className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary appearance-none">
-                      <option>Wedding Ceremony</option>
-                      <option>Grand Reception</option>
-                      <option>Engagement</option>
-                      <option>Corporate Event</option>
-                      <option>Other Event</option>
-                    </select>
-                  </div>
-
-                  {/* Guest Count */}
-                  <div className="relative">
-                    <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Expected Guests</label>
-                    <select className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary appearance-none">
-                      <option>Up to 500</option>
-                      <option>500 - 1000</option>
-                      <option>1000 - 1500</option>
-                      <option>1500+</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Event Date */}
-                <div className="relative">
-                  <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Auspicious Date</label>
-                  <input
-                    type="date"
-                    className="w-full bg-surface border-b-2 border-gold-leaf/30 py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary"
-                  />
-                </div>
-
-                {/* Message */}
-                <div className="relative">
-                  <label className="font-body text-xs uppercase tracking-widest text-on-surface-variant font-semibold mb-2 block">Special Requests</label>
-                  <textarea
-                    rows="4"
-                    className="w-full bg-surface border-2 border-gold-leaf/30 rounded-xl py-3 px-4 font-body focus:outline-none focus:border-gold-leaf transition-colors text-primary placeholder-primary/30 resize-none"
-                    placeholder="Tell us about any specific requirements, traditions, or catering needs..."
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full bg-gradient-to-r from-[#9e7d32] via-[#E5C76B] to-[#9e7d32] text-primary font-cinzel text-lg font-bold py-5 rounded-xl hover:shadow-[0_10px_30px_rgba(229,199,107,0.4)] hover:scale-[1.02] transition-all duration-300 tracking-wider uppercase mt-4"
-                >
-                  BOOK YOUR CELEBRATION
-                </button>
-              </form>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section className="mt-24 px-6 relative z-10">
-        <div className="max-w-[1280px] mx-auto relative rounded-3xl overflow-hidden border-8 border-gold-leaf/20 shadow-2xl">
-          <div className="absolute inset-0 bg-primary/10 pointer-events-none mix-blend-multiply"></div>
-          <iframe
-            title="Ayswariya Mahal Location"
-            src="https://maps.google.com/maps?q=Ayswariya%20Mahal%20Arumbakkam%20Chennai%20600106&output=embed"
-            className="w-full h-[500px] border-0 grayscale opacity-90 contrast-125 hover:grayscale-0 transition-all duration-1000"
-            loading="lazy"
+      <motion.section 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={flowVariants}
+        className="relative h-[400px] md:h-[614px] flex items-center justify-center overflow-hidden royal-gradient mt-8"
+      >
+        <div className="absolute inset-0 opacity-40">
+          <img 
+            alt="Palace Interior" 
+            className="w-full h-full object-cover" 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgnKElQmmR4Euto8q3MG_0Dv0SW27bqCqqL370gCqMGH6NsZ9syvHqur_V2md6_lfbHzVojmD8gVTo6fl1AyvXOSiaEqA3JKXRUnQ0AZ0KUcRyswA5kmRfHWrbbQTOhEwZJN37CQtECawMQYrqJ7ljBmk4npOlNCfTST7kF4yakT1YiYPgzrUdPGu1Tdv2Lpvt8fbVapLRg8jmllOrax7mEPGt7Z7IaJA3CYEGeQKdBfeR_qzL-2Y5ew_aoYjTlTvnJgNZtv2U-5U" 
           />
         </div>
-      </section>
+        <div className="relative z-10 text-center px-6">
+          <h1 className="font-cinzel text-4xl md:text-6xl text-gold-leaf mb-4 italic">Begin Your Legacy</h1>
+          <div className="w-24 h-px bg-gold-leaf mx-auto mb-6"></div>
+          <p className="max-w-2xl mx-auto text-white font-body text-lg opacity-90 leading-relaxed">
+            A union at Ayswariya Mahal is not merely an event; it is a chapter of history written in gold. Entrust your vision to our stewards and let the grand doors of the palace open for your story.
+          </p>
+        </div>
+      </motion.section>
+
+      {/* Main Content Area: Bento Layout */}
+      <div className="max-w-[1280px] mx-auto px-6 lg:px-16 py-16 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        {/* Left Column: The Inquiry Form (8 Cols) */}
+        <div className="lg:col-span-8 bg-white p-8 md:p-12 shadow-sm border-t-4 border-gold-leaf relative overflow-hidden">
+          <div className="absolute top-0 right-0 p-4 opacity-5">
+            <Crown size={180} />
+          </div>
+          
+          <header className="mb-12 relative z-10">
+            <h2 className="font-cinzel text-4xl text-deep-maroon mb-2">The Royal Petition</h2>
+            <p className="text-on-surface-variant font-body italic text-lg">Share the dimensions of your dream, and we shall craft the reality.</p>
+          </header>
+          
+          <form className="space-y-12 relative z-10">
+            {/* Group 1: The Essentials */}
+            <motion.section 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={flowVariants}
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <span className="text-gold-leaf font-body text-sm font-semibold tracking-widest uppercase">01. The Essentials</span>
+                <div className="flex-grow h-px bg-gold-leaf/20"></div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="relative group">
+                  <label className="block font-body text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Full Name</label>
+                  <input className="w-full bg-transparent border-0 border-b border-gold-leaf/30 py-3 px-0 focus:ring-0 input-focus-gold transition-all text-lg font-body" placeholder="Lord/Lady of the Union" type="text" />
+                </div>
+                <div className="relative group">
+                  <label className="block font-body text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Email Address</label>
+                  <input className="w-full bg-transparent border-0 border-b border-gold-leaf/30 py-3 px-0 focus:ring-0 input-focus-gold transition-all text-lg font-body" placeholder="correspondence@domain.com" type="email" />
+                </div>
+                <div className="relative group">
+                  <label className="block font-body text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Preferred Date</label>
+                  <input className="w-full bg-transparent border-0 border-b border-gold-leaf/30 py-3 px-0 focus:ring-0 input-focus-gold transition-all text-lg font-body text-primary" type="date" />
+                </div>
+                <div className="relative group">
+                  <label className="block font-body text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Estimated Guest Count</label>
+                  <select className="w-full bg-transparent border-0 border-b border-gold-leaf/30 py-3 px-0 focus:ring-0 input-focus-gold transition-all text-lg font-body text-primary">
+                    <option>Intimate (Under 100)</option>
+                    <option>Grand (100 - 300)</option>
+                    <option>Majestic (300 - 500)</option>
+                    <option>Royal Imperial (500+)</option>
+                  </select>
+                </div>
+              </div>
+            </motion.section>
+
+            {/* Group 2: The Vision */}
+            <motion.section 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={flowVariants}
+            >
+              <div className="flex items-center gap-4 mb-8">
+                <span className="text-gold-leaf font-body text-sm font-semibold tracking-widest uppercase">02. The Vision</span>
+                <div className="flex-grow h-px bg-gold-leaf/20"></div>
+              </div>
+              <div className="space-y-8">
+                <div className="relative group">
+                  <label className="block font-body text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Type of Ceremony</label>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                    <label className="cursor-pointer group">
+                      <input className="hidden peer" name="ceremony" type="radio" />
+                      <div className="border border-gold-leaf/30 p-4 text-center group-hover:border-gold-leaf peer-checked:bg-deep-maroon peer-checked:text-gold-leaf transition-all">
+                        <span className="block font-body text-sm font-semibold tracking-widest uppercase">Wedding</span>
+                      </div>
+                    </label>
+                    <label className="cursor-pointer group">
+                      <input className="hidden peer" name="ceremony" type="radio" />
+                      <div className="border border-gold-leaf/30 p-4 text-center group-hover:border-gold-leaf peer-checked:bg-deep-maroon peer-checked:text-gold-leaf transition-all">
+                        <span className="block font-body text-sm font-semibold tracking-widest uppercase">Engagement</span>
+                      </div>
+                    </label>
+                    <label className="cursor-pointer group">
+                      <input className="hidden peer" name="ceremony" type="radio" />
+                      <div className="border border-gold-leaf/30 p-4 text-center group-hover:border-gold-leaf peer-checked:bg-deep-maroon peer-checked:text-gold-leaf transition-all">
+                        <span className="block font-body text-sm font-semibold tracking-widest uppercase">Gala</span>
+                      </div>
+                    </label>
+                    <label className="cursor-pointer group">
+                      <input className="hidden peer" name="ceremony" type="radio" />
+                      <div className="border border-gold-leaf/30 p-4 text-center group-hover:border-gold-leaf peer-checked:bg-deep-maroon peer-checked:text-gold-leaf transition-all">
+                        <span className="block font-body text-sm font-semibold tracking-widest uppercase">Other</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+                <div className="relative group">
+                  <label className="block font-body text-sm font-semibold tracking-widest uppercase text-on-surface-variant mb-2">Specific Requirements & Desires</label>
+                  <textarea className="w-full bg-transparent border-0 border-b border-gold-leaf/30 py-3 px-0 focus:ring-0 input-focus-gold transition-all text-lg font-body resize-none" placeholder="Describe the atmosphere, floral preferences, or cultural nuances..." rows="4"></textarea>
+                </div>
+              </div>
+            </motion.section>
+
+            <div className="pt-8">
+              <button className="w-full md:w-auto px-12 py-5 bg-deep-maroon text-gold-leaf font-body text-sm font-semibold uppercase tracking-[0.4em] gold-border-double hover:bg-gold-leaf hover:text-deep-maroon transition-all duration-500 active:scale-95 shadow-lg flex items-center justify-center gap-4" type="submit">
+                Submit Your Vision
+                <Sparkles size={20} />
+              </button>
+              <p className="mt-4 text-center md:text-left text-on-surface-variant/70 text-sm italic">Our Heritage Concierge will respond within 24 royal hours.</p>
+            </div>
+          </form>
+        </div>
+
+        {/* Right Column: Sidebar (4 Cols) */}
+        <aside className="lg:col-span-4 space-y-8">
+          
+          {/* Concierge Card */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={flowVariants}
+            className="bg-deep-maroon text-gold-leaf p-8 gold-border-double shadow-xl relative overflow-hidden group"
+          >
+            <div className="relative z-10">
+              <ConciergeBell size={40} className="mb-6 opacity-80" />
+              <h3 className="font-cinzel text-3xl mb-4">Heritage Concierge</h3>
+              <p className="text-white/80 font-body mb-6 leading-relaxed">
+                Every union at Ayswariya is overseen by a dedicated steward who ensures that your family's heritage is honored through every detail, from the aroma of the incense to the placement of the silk.
+              </p>
+              <ul className="space-y-4 text-xs font-semibold tracking-widest uppercase">
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 bg-gold-leaf rounded-full"></span>
+                  Bespoke Floral Design
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 bg-gold-leaf rounded-full"></span>
+                  Ancestral Culinary Arts
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-1.5 h-1.5 bg-gold-leaf rounded-full"></span>
+                  Ceremonial Protocol Support
+                </li>
+              </ul>
+            </div>
+          </motion.div>
+
+          {/* Visual Flourish */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={flowVariants}
+            className="relative h-[400px] shadow-2xl group overflow-hidden"
+          >
+            <img 
+              alt="Traditional Decor" 
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100" 
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_-vg2Qi5AEmKB0XvsA3skJJluSRIuWiHCOzXN4Iwb5JHcWDDEDkOYtQEQyPg3g1zqATHJa8ivFU5UgwYN-XQu2rFkExzzP16WFRxUX2XMBHEk4scuJ-8pYJ7anDogSZmNvLRcjU3pNx_9oqx9LPyAbLjzK7rJFc53HHO7H7ZGE8MY0896H77AMbJwXbVo5WyTCM6J0d8fymZxZby9wVhYVIK3IioUjKyYd-WScy7IU34sXWsB6mtnyVq7AAPJZV3psgoVhZ_bzZc" 
+            />
+            <div className="absolute inset-0 bg-deep-maroon/40 mix-blend-multiply"></div>
+            <div className="absolute bottom-0 left-0 p-8">
+              <p className="text-white font-cinzel text-xl italic leading-tight">"Where antiquity meets your eternity."</p>
+            </div>
+          </motion.div>
+
+          {/* Testimonial Tile */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={flowVariants}
+            className="bg-white p-8 border-b-4 border-gold-leaf shadow-sm"
+          >
+            <div className="flex gap-1 text-gold-leaf mb-4">
+              <Star fill="currentColor" size={16} />
+              <Star fill="currentColor" size={16} />
+              <Star fill="currentColor" size={16} />
+              <Star fill="currentColor" size={16} />
+              <Star fill="currentColor" size={16} />
+            </div>
+            <p className="font-body italic text-on-surface-variant mb-6 text-lg">"The sheer majesty of the venue was matched only by the flawless execution of our three-day celebration. A true palace for a true union."</p>
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full overflow-hidden">
+                <img 
+                  alt="Avatar" 
+                  className="w-full h-full object-cover"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuB1HDkDsWfV0-3bDOnRGa83Tx2rBIZUJGYlHRJES644Z6JBCofPQRkzhdOkZx9ZKoYHNhXvWBwHhB1RmsBZ9nXEU_Go8LRQ94kHk9y16YxGapkJbItU7S0pgFnOirLYNSOCCO0QlBqaN3mipi5vGgsZTR0bGrNpjn7O5z3b5W6wfRfLSjBRG0ERlXm4sA6KW2RX5TcgI6nylPkLS96uPy8cIA1MUVDaZvsex5C_QfAOl8whIKtWLqWyOUYWvcry700FEiOyxqK8Y" 
+                />
+              </div>
+              <div>
+                <h4 className="font-body font-semibold tracking-widest uppercase text-deep-maroon text-xs">Priya & Arjun</h4>
+                <p className="text-[10px] text-on-surface-variant/70 uppercase tracking-widest mt-1">Royal Union 2023</p>
+              </div>
+            </div>
+          </motion.div>
+
+        </aside>
+      </div>
+
     </main>
   );
 }
