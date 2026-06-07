@@ -142,14 +142,14 @@ export default function FloatingEnvelope() {
               initial={{ y: 80, opacity: 0, scale: 0.9 }}
               animate={
                 submitStatus === "departing" 
-                  ? { y: -80, opacity: 0, scale: 0.85 } 
-                  : { y: isExpanded ? 180 : 0, opacity: 1, scale: 1 }
+                  ? { y: -80, opacity: 0, scale: 0.65 } 
+                  : { y: isExpanded ? 110 : 0, opacity: 1, scale: isExpanded ? 0.7 : 0.85 }
               }
               transition={submitStatus === "departing" ? { duration: 1, ease: "easeInOut" } : springConfig}
               exit={{ y: 80, opacity: 0, scale: 0.9 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              className="relative pointer-events-auto w-[360px] md:w-[440px] h-[240px]"
+              className="relative pointer-events-auto w-[300px] md:w-[360px] h-[190px] md:h-[220px]"
               style={{ perspective: 1200 }}
             >
               {/* Layer 1: Back of Envelope (Inside) */}
@@ -180,7 +180,7 @@ export default function FloatingEnvelope() {
                 initial={false}
                 animate={{
                   y: isPaperExpanded ? -20 : isPeeking ? -50 : 0,
-                  height: isPaperExpanded ? "min(600px, 85vh)" : "90%",
+                  height: isPaperExpanded ? "min(400px, 65vh)" : "90%",
                   width: isPaperExpanded ? "100%" : "85%",
                   left: "50%",
                   x: "-50%",
