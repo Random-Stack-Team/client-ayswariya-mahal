@@ -1,181 +1,271 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState } from "react";
-import gallery1 from "../assets/images/gallery1.webp";
-import gallery2 from "../assets/images/gallery2.webp";
-import gallery3 from "../assets/images/gallery3.webp";
-import gallery4 from "../assets/images/gallery4.webp";
-import gallery5 from "../assets/images/gallery5.webp";
-import gallery6 from "../assets/images/gallery6.webp";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-import SEO from "../components/common/SEO";
+import gsap from "gsap";
 
-const galleryImages = [
-  { image: gallery1, title: "Grand Wedding Setup", category: "Hall" },
-  { image: gallery2, title: "Elegant Stage Decoration", category: "Stage" },
-  { image: gallery3, title: "Luxury Dining Area", category: "Dining" },
-  { image: gallery4, title: "Spacious Hall Interior", category: "Hall" },
-  { image: gallery5, title: "Premium Event Ambience", category: "Events" },
-  { image: gallery6, title: "Palace Entrance", category: "Entrance" },
-];
+/* =========================
+   IMAGES
+========================= */
+import gallery1 from "../assets/images/Gallery/hall1.jpg";
+import gallery2 from "../assets/images/Gallery/hall2.jpg";
+import gallery3 from "../assets/images/Gallery/hall3.jpg";
+import gallery4 from "../assets/images/Gallery/hall4.jpeg";
+import gallery5 from "../assets/images/Gallery/hall5.png";
+import gallery6 from "../assets/images/Gallery/decor1.png";
+import gallery7 from "../assets/images/Gallery/decor2.png";
+import gallery8 from "../assets/images/Gallery/decor3.png";
+import gallery9 from "../assets/images/Gallery/decor4.png";
+import gallery10 from "../assets/images/Gallery/decor5.png";
+import gallery11 from "../assets/images/Gallery/memories1.png";
+import gallery12 from "../assets/images/Gallery/memories2.webp";
+import gallery13 from "../assets/images/Gallery/memories3.webp";
+import gallery14 from "../assets/images/Gallery/memories4.webp";
+import gallery15 from "../assets/images/Gallery/memories5.webp";
 
-const categories = ["All", "Hall", "Stage", "Entrance", "Dining", "Events"];
 
-export default function Gallery() {
-  const [activeCategory, setActiveCategory] = useState("All");
+/* =========================
+   DATA
+========================= */
+const galleryData = {
+  hall: [gallery1, gallery2, gallery3, gallery4, gallery5],
+  decor: [gallery6, gallery7, gallery8, gallery9, gallery10],
+  memories: [gallery11, gallery12, gallery13, gallery14, gallery15],
+};
 
-  const filteredImages = galleryImages.filter(
-    (item) => activeCategory === "All" || item.category === activeCategory
-  );
+const categoryMeta = {
+  hall: { title: "Hall Experience", subtitle: "Architectural Grandeur" },
+  decor: { title: "Decor Experience", subtitle: "Art of Celebration" },
+  memories: { title: "Memory Lane", subtitle: "Moments to Cherish" },
+};
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15 }
+export default function Facilities() {
+  const railRef = useRef(null);
+  const sectionRef = useRef(null);
+
+  const [category, setCategory] = useState("hall");
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const images = galleryData[category];
+
+  const camera = useRef({ x: 0, vx: 0, target: 0 });
+  const rafId = useRef(null);
+  const snapPoints = useRef([]);
+  const isInView = useRef(false);
+
+  /* =========================
+     MEASURE
+  ========================= */
+  const measure = () => {
+    const rail = railRef.current;
+    if (!rail) return;
+
+    snapPoints.current = Array.from(rail.children).map(
+      (el) => el.offsetLeft
+    );
+  };
+
+  /* =========================
+     CAMERA LOOP
+  ========================= */
+  const animate = () => {
+    const rail = railRef.current;
+    if (!rail) {
+      rafId.current = requestAnimationFrame(animate);
+      return;
     }
+
+    const cam = camera.current;
+
+    const force = (cam.target - cam.x) * 0.1;
+    cam.vx += force;
+    cam.vx *= 0.78;
+    cam.x += cam.vx;
+
+    gsap.set(rail, {
+      x: -cam.x,
+      force3D: true,
+    });
+
+    const snap = snapPoints.current;
+
+    let closest = 0;
+    let min = Infinity;
+
+    for (let i = 0; i < snap.length; i++) {
+      const d = Math.abs(cam.x - snap[i]);
+      if (d < min) {
+        min = d;
+        closest = i;
+      }
+    }
+
+    setActiveIndex(closest);
+
+    rafId.current = requestAnimationFrame(animate);
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.9, y: 30 },
-    show: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-    exit: { opacity: 0, scale: 0.9, transition: { duration: 0.4 } }
+  useEffect(() => {
+    rafId.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(rafId.current);
+  }, []);
+
+  useEffect(() => {
+    camera.current = { x: 0, vx: 0, target: 0 };
+    setActiveIndex(0);
+    requestAnimationFrame(measure);
+  }, [category]);
+
+  const scrollByStep = (dir) => {
+    const snap = snapPoints.current;
+    if (!snap.length) return;
+
+    const step = snap[1] - snap[0] || 400;
+    camera.current.target += dir * step;
   };
+
+  useEffect(() => {
+    const section = sectionRef.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isInView.current = entry.isIntersecting;
+      },
+      { threshold: 0.4 }
+    );
+
+    if (section) observer.observe(section);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const onWheel = (e) => {
+      if (!isInView.current) return;
+      camera.current.target += e.deltaY * 0.9;
+    };
+
+    window.addEventListener("wheel", onWheel, { passive: true });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, []);
+
+  const meta = categoryMeta[category];
 
   return (
-    <>
-      <SEO 
-        title="Gallery & Portfolio" 
-        description="View our extensive gallery of grand weddings, elegant receptions, and corporate events hosted at Ayswariya Mahal." 
-        path="/gallery"
-      />
-      <main className="bg-[#4A0A12] min-h-screen pt-40 pb-32 relative overflow-hidden">
-      
-      {/* Decorative BG */}
-      <div 
-        className="absolute inset-0 opacity-[0.04] pointer-events-none mix-blend-screen bg-cover bg-center bg-fixed"
-        style={{ backgroundImage: `url(${gallery3})` }}
-      ></div>
-      <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
-      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] bg-[#d4af37]/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-[-20%] left-[-10%] w-[800px] h-[800px] bg-[#801c2c]/40 rounded-full blur-[150px] pointer-events-none"></div>
+    <main className="bg-[#fdfbf7] min-h-screen">
 
-      {/* Hero Section */}
+      {/* HERO (unchanged) */}
       <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[50vh] md:min-h-[60vh] mb-16">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${gallery3})` }}
-        ></div>
-        {/* Dark Cinematic Overlay fading into deep maroon bg */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#1c0d11]/80 via-[#1c0d11]/70 to-[#4A0A12]"></div>
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1c0d11]/80 via-[#1c0d11]/70 to-[#4A0A12]" />
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="flex justify-center mb-6 text-[#d4af37]"
-          >
-            <Sparkles size={24} strokeWidth={1} />
+          <motion.div className="flex justify-center mb-6 text-[#d4af37]">
+            <Sparkles size={24} />
           </motion.div>
-          <motion.p
-            className="font-serif text-[#E5C76B] font-bold tracking-[0.4em] uppercase text-sm mb-6 drop-shadow-md"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
+
+          <motion.p className="font-serif text-[#E5C76B] font-bold tracking-[0.4em] uppercase text-sm mb-6">
             The Collection
           </motion.p>
-          <motion.h1
-            className="text-5xl md:text-7xl lg:text-8xl font-display text-[#fdfbf7] leading-tight drop-shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.8 }}
-          >
-            A Gallery of <br/><span className="italic text-[#E5C76B]">Grandeur</span>
+
+          <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-display text-[#fdfbf7] leading-tight">
+            A Gallery of <br />
+            <span className="italic text-[#E5C76B]">Grandeur</span>
           </motion.h1>
-          <motion.div 
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={{ opacity: 1, scaleX: 1 }}
-            transition={{ delay: 0.8, duration: 1 }}
-            className="w-24 h-px bg-gradient-to-r from-transparent via-[#E5C76B] to-transparent mx-auto mt-10"
-          ></motion.div>
         </div>
       </section>
 
-      {/* Category Filters */}
-      <section className="relative z-10 px-6 mb-20">
-        <div className="max-w-[1280px] mx-auto flex flex-wrap justify-center gap-4 md:gap-8">
-          {categories.map((category, index) => (
-            <motion.button
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + index * 0.1 }}
-              key={category}
-              onClick={() => setActiveCategory(category)}
-              className={`font-serif text-sm tracking-[0.2em] uppercase py-2 px-4 transition-all duration-500 border-b-2 ${
-                activeCategory === category
-                  ? "text-[#E5C76B] border-[#E5C76B] font-bold drop-shadow-[0_0_8px_rgba(229,199,107,0.5)]"
-                  : "text-[#fdfbf7]/60 border-transparent hover:text-[#d4af37] hover:border-[#d4af37]/50"
+      {/* GALLERY */}
+      <section
+        ref={sectionRef}
+        className="relative h-screen overflow-hidden"
+      >
+
+        {/* CATEGORY */}
+        <div className="absolute top-6 left-1/2 -translate-x-1/2 z-30 flex gap-2 bg-white/20 backdrop-blur-md px-5 py-2 rounded-full">
+          {Object.keys(galleryData).map((item) => (
+            <button
+              key={item}
+              onClick={() => setCategory(item)}
+              className={`px-4 py-1 rounded-full text-sm ${
+                category === item
+                  ? "bg-[#E5C76B] text-black"
+                  : "text-black/70"
               }`}
             >
-              {category}
-            </motion.button>
+              {item.toUpperCase()}
+            </button>
           ))}
         </div>
-      </section>
 
-      {/* Masonry Gallery Grid */}
-      <section className="relative z-10 px-6 pb-24">
-        <div className="max-w-[1400px] mx-auto">
-          <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 auto-rows-[350px]"
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredImages.map((item, index) => (
-                <motion.div
-                  layout
-                  variants={itemVariants}
-                  key={item.title}
-                  className={`group relative overflow-hidden rounded-sm bg-[#2A141A] shadow-2xl ${index % 3 === 0 ? 'md:col-span-2 md:row-span-2' : 'md:col-span-1 md:row-span-1'} border border-[#d4af37]/20`}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110 opacity-90 group-hover:opacity-100"
-                  />
-
-                  {/* Cinematic Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#4A0A12] via-[#4A0A12]/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
-                  
-                  {/* Glowing Border effect */}
-                  <div className="absolute inset-5 border-[1px] border-[#E5C76B]/40 scale-105 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-700 pointer-events-none z-20">
-                     {/* Corner Accents */}
-                    <div className="absolute -top-[1px] -left-[1px] w-4 h-4 border-t-2 border-l-2 border-[#E5C76B]"></div>
-                    <div className="absolute -top-[1px] -right-[1px] w-4 h-4 border-t-2 border-r-2 border-[#E5C76B]"></div>
-                    <div className="absolute -bottom-[1px] -left-[1px] w-4 h-4 border-b-2 border-l-2 border-[#E5C76B]"></div>
-                    <div className="absolute -bottom-[1px] -right-[1px] w-4 h-4 border-b-2 border-r-2 border-[#E5C76B]"></div>
-                  </div>
-
-                  {/* Text Content */}
-                  <div className="absolute bottom-0 left-0 w-full p-10 translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-out flex flex-col items-center text-center z-30">
-                    <p className="font-serif text-[10px] text-[#E5C76B] uppercase tracking-[0.4em] font-bold mb-3 drop-shadow-md">
-                      {item.category}
-                    </p>
-                    <h3 className="text-3xl font-display text-[#fdfbf7] tracking-wider drop-shadow-lg">
-                      {item.title}
-                    </h3>
-                  </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+        {/* TITLE */}
+        <div className="absolute top-20 left-1/2 -translate-x-1/2 text-center z-20">
+          <h2 className="text-2xl text-[#E5C76B]">{meta.title}</h2>
+          <p className="text-sm opacity-70">{meta.subtitle}</p>
         </div>
-      </section>
 
-      </main>
-    </>
+        {/* =========================
+            LEFT BUTTON (FIXED TO GALLERY EDGE)
+        ========================= */}
+        <button
+          onClick={() => scrollByStep(-1)}
+          className="button absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-[999]"
+        >
+          <div className="button-box">
+            <span className="button-elem">
+              <svg viewBox="0 0 46 40">
+                <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"/>
+              </svg>
+            </span>
+
+            <span className="button-elem">
+              <svg viewBox="0 0 46 40">
+                <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"/>
+              </svg>
+            </span>
+          </div>
+        </button>
+
+        {/* =========================
+            RIGHT BUTTON (FIXED TO GALLERY EDGE)
+        ========================= */}
+        <button
+          onClick={() => scrollByStep(1)}
+          className="button rotate-180 absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-[999]"
+        >
+          <div className="button-box">
+            <span className="button-elem">
+              <svg viewBox="0 0 46 40">
+                <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"/>
+              </svg>
+            </span>
+
+            <span className="button-elem">
+              <svg viewBox="0 0 46 40">
+                <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"/>
+              </svg>
+            </span>
+          </div>
+        </button>
+
+        {/* RAIL */}
+        <div
+          ref={railRef}
+          className="absolute flex gap-20 px-[25vw] h-full items-center will-change-transform"
+        >
+          {images.map((img, i) => (
+            <div
+              key={i}
+              className="relative w-[320px] h-[440px] flex-shrink-0 rounded-2xl overflow-hidden"
+            >
+              <img src={img} className="w-full h-full object-cover scale-110" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
+            </div>
+          ))}
+        </div>
+
+      </section>
+    </main>
   );
 }
