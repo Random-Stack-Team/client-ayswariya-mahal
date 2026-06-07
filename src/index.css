@@ -78,22 +78,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.app-reveal {
-  min-height: 100vh;
-  background: #fdfbf7;
-  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.app-reveal--intro {
-  opacity: 0;
-  transform: translateY(10px) scale(1.008);
-}
-
-.app-reveal--ready {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   letter-spacing: 0.02em; /* Romantic editorial feel */
@@ -182,29 +166,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .gold-shimmer-hover:hover::after {
   transform: translateX(100%);
-}
-
-.luxury-image-overlay {
-  position: relative;
-  isolation: isolate;
-}
-
-.luxury-image-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background:
-    linear-gradient(180deg, rgba(69, 14, 24, 0.05), rgba(69, 14, 24, 0.28)),
-    radial-gradient(circle at 72% 18%, rgba(229, 199, 107, 0.22), transparent 38%);
-  mix-blend-mode: multiply;
-  opacity: 0.72;
-  transition: opacity 900ms ease;
-}
-
-.luxury-image-overlay:hover::after {
-  opacity: 0.38;
 }
 @import "tailwindcss";
 
@@ -387,3 +348,129 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--color-gold-leaf);
 }
 
+.button {
+  display: block;
+  position: relative;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  overflow: hidden;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+}
+
+.button:before,
+.button:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
+}
+
+.button:before {
+  border: 4px solid #f0eeef;
+  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.button:after {
+  border: 4px solid #96daf0;
+  transform: scale(1.3);
+  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.button:hover:before,
+.button:focus:before {
+  opacity: 0;
+  transform: scale(0.7);
+}
+
+.button:hover:after,
+.button:focus:after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.button-box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.4s;
+}
+
+.button-elem {
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin: 17px 18px 0 18px;
+  transform: rotate(180deg);
+  fill: #f0eeef;
+}
+
+.button:hover .button-box,
+.button:focus .button-box {
+  transform: translateX(-56px);
+}
+
+/* Animista Logo Drawing Effect */
+.animista-logo {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  stroke: var(--color-gold-leaf);
+  stroke-width: 1px;
+  fill: transparent;
+  animation: animlogo 3.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
+}
+
+@keyframes animlogo { 
+  15% { 
+    fill: transparent; 
+  }
+  55% { 
+    stroke-dashoffset: 0; 
+  }
+  100% { 
+    fill: var(--color-gold-leaf); 
+    stroke-dashoffset: 0; 
+    stroke-width: 0;
+  }
+}
+
+@-webkit-keyframes animlogo { 
+  0% { 
+    stroke-opacity: 0.6; 
+  }
+  15% { 
+    fill: transparent; 
+  }
+  55% { 
+    stroke-dashoffset: 0; 
+    stroke-opacity: 1; 
+  }
+  100% { 
+    fill: var(--color-gold-leaf); 
+    stroke-dashoffset: 0; 
+    stroke-width: 0;
+  }
+}
+
+.slide-out-fwd-center {
+	animation: slide-out-fwd-center 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+@keyframes slide-out-fwd-center {
+  0% {
+    transform: translateZ(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateZ(800px) scale(3);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
