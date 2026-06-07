@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 import {
   Building2,
   Car,
@@ -10,212 +11,389 @@ import {
   MapPin,
   Sparkles
 } from "lucide-react";
-import facilitiesImg from "../assets/images/facility1.webp";
+
+import facility1 from "../assets/images/Facility/facility1.png";
+import facility2 from "../assets/images/Facility/facility2.png";
+import facility3 from "../assets/images/Facility/facility3.png";
+import facility4 from "../assets/images/Facility/facility4.png";
+import facility5 from "../assets/images/Facility/facility5.png";
+import facility6 from "../assets/images/Facility/facility6.png";
+import facility7 from "../assets/images/Facility/facility7.png";
+import facility8 from "../assets/images/Facility/facility8.png";
+
+import facilitiesImg from "../assets/images/Facility/facility1.png";
+
+
 import bgImg from "../assets/images/facility.webp";
+
 import SEO from "../components/common/SEO";
 
+/* =========================
+   DATA
+========================= */
 const facilities = [
   {
-    icon: <AirVent size={36} strokeWidth={1.5} />,
-    title: "Centralized Air Conditioning",
-    description: "Comfortable climate-controlled environment for guests throughout the event.",
+    image: facility1,
+    icon: <AirVent size={26} />,
+    title: "Centralized AC",
+    description: "Comfortable climate-controlled environment for guests.",
   },
   {
-    icon: <Building2 size={36} strokeWidth={1.5} />,
+    image: facility2,
+    icon: <Building2 size={26} />,
     title: "Spacious Event Hall",
-    description: "Accommodates large gatherings with ample seating and elegant interiors.",
+    description: "Elegant interiors for grand celebrations.",
   },
   {
-    icon: <UtensilsCrossed size={36} strokeWidth={1.5} />,
+    image: facility3,
+    icon: <UtensilsCrossed size={26} />,
     title: "Dining Hall",
-    description: "Dedicated dining area designed for smooth guest experience and service.",
+    description: "Royal Dining Experience Setup Grandeur.",
   },
   {
-    icon: <BedDouble size={36} strokeWidth={1.5} />,
-    title: "Guest Rooms",
-    description: "Premium, comfortable rooms available for bride, groom, and family members.",
+    image: facility4,
+    icon: <BedDouble size={26} />,
+    title: "Luxury rooms ",
+    description: "Luxury rooms for family stay with comfort.",
   },
   {
-    icon: <Car size={36} strokeWidth={1.5} />,
+    image: facility5,
+    icon: <Car size={26} />,
     title: "Ample Parking",
-    description: "Large parking area ensuring convenience and safety for all guests.",
+    description: "Spacious parking area.",
   },
   {
-    icon: <ShieldCheck size={36} strokeWidth={1.5} />,
+    image: facility6,
+    icon: <ShieldCheck size={26} />,
     title: "CCTV Security",
-    description: "24/7 surveillance and professional security systems for a safe environment.",
+    description: "24/7 surveillance system.",
   },
   {
-    icon: <Zap size={36} strokeWidth={1.5} />,
+    image: facility7,
+    icon: <Zap size={26} />,
     title: "Generator Backup",
-    description: "Uninterrupted celebrations with robust and reliable power backup facilities.",
+    description: "Power backup ensured.",
   },
   {
-    icon: <MapPin size={36} strokeWidth={1.5} />,
+    image: facility8,
+    icon: <MapPin size={26} />,
     title: "Prime Location",
-    description: "Conveniently located with excellent accessibility and transport connectivity.",
+    description: "Easily accessible venue.",
   },
 ];
 
+/* =========================
+   CARD ANIMATION
+========================= */
+const cardMotion = {
+  hidden: {
+    opacity: 0,
+    rotateX: -90,
+    scale: 0.85,
+    y: 100,
+    transformOrigin: "top",
+  },
+  show: (i) => ({
+    opacity: 1,
+    rotateX: 0,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      delay: i * 0.08,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+};
+
+/* =========================
+   TEXT SPLIT ANIMATION
+========================= */
+const textContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.02,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const wordVariant = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    rotateX: -70,
+    scale: 0.9,
+    filter: "blur(10px)",
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    rotateX: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 1.1,
+      ease: [0.19, 1, 0.22, 1], // premium elastic easing
+    },
+  },
+};
+
+
+/* =========================
+   TEXT COMPONENT
+========================= */
+const AdvancedText = ({ text }) => {
+  return (
+    <motion.div
+      variants={textContainer}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-100px" }}
+      className="inline-block"
+      style={{ perspective: "1000px" }}
+    >
+      {text.split(" ").map((word, i) => (
+        <motion.span
+          key={i}
+          variants={wordVariant}
+          className="inline-block mr-3"
+          style={{
+            transformOrigin: "bottom",
+          }}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </motion.div>
+  );
+};
+
+
 export default function Facilities() {
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  };
-
-  const fadeInUp = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
-  };
-
   return (
     <>
-      <SEO 
-        title="Premium Event Facilities" 
-        description="Explore our world-class amenities including a 1500-seater hall, spacious dining, premium guest rooms, and state-of-the-art infrastructure." 
+      <SEO
+        title="Facilities - Ayswariya Mahal"
+        description="Royal wedding hall facilities"
         path="/facilities"
       />
-      <main className="bg-[#fdfbf7] min-h-screen">
 
-      {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[60vh] md:min-h-[70vh]">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: `url(${bgImg})` }}
-        ></div>
-        {/* Dark Cinematic Overlay fading into page bg */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4A0A12]/80 via-[#1c0d11]/70 to-[#fdfbf7]"></div>
+      <main className="relative min-h-screen bg-[#fcf9f4] overflow-x-hidden">
 
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          animate="show"
-          className="relative z-10 max-w-[1280px] mx-auto text-center"
-        >
-          <motion.div variants={fadeInUp} className="flex justify-center mb-6 text-[#E5C76B]">
-            <Sparkles size={24} strokeWidth={1} />
-          </motion.div>
-          <motion.p
-            variants={fadeInUp}
-            className="font-serif uppercase tracking-[0.4em] text-[#E5C76B] mb-6 font-bold text-sm drop-shadow-md"
-          >
-            Our Facilities
-          </motion.p>
-          <motion.h1
-            variants={fadeInUp}
-            className="text-5xl md:text-7xl lg:text-8xl font-display text-[#fdfbf7] drop-shadow-2xl leading-tight"
-          >
-            Designed For <br/><span className="italic text-[#E5C76B]">Grand Celebrations</span>
-          </motion.h1>
-          <motion.p
-            variants={fadeInUp}
-            className="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-[#fdfbf7]/90 font-serif leading-relaxed drop-shadow-md"
-          >
-            Every facility at Ayswariya Mahal is thoughtfully designed
-            to ensure a comfortable, memorable, and absolutely seamless experience
-            for every guest.
-          </motion.p>
-        </motion.div>
-      </section>
+        {/* =========================
+            HERO
+        ========================= */}
+        <section className="relative h-screen flex items-center justify-center overflow-hidden">
 
-      {/* Facilities Grid */}
-      <section className="pb-32 px-6 relative z-10">
-        <div className="max-w-[1280px] mx-auto">
-          <motion.div 
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-50px" }}
-            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8"
+          <motion.div
+            initial={{ scale: 1.25 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 2 }}
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${bgImg})` }}
+          />
+
+          <div className="absolute inset-0 bg-black/55" />
+
+          <div className="relative z-10 text-center text-white px-6">
+
+  {/* ICON + TEXT SYNC WRAPPER */}
+  <motion.div
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true, amount: 0.6 }}
+  >
+
+    {/* ICON (SYNCHRONIZED FIRST) */}
+    <motion.div
+      variants={{
+        hidden: {
+          opacity: 0,
+          scale: 0.4,
+          rotate: -90,
+          filter: "blur(8px)",
+        },
+        show: {
+          opacity: 1,
+          scale: 1,
+          rotate: 0,
+          filter: "blur(0px)",
+          transition: {
+            duration: 0.9,
+            ease: [0.25, 1, 0.3, 1],
+          },
+        },
+      }}
+      className="flex justify-center mb-6 text-[#E5C76B]"
+    >
+      <Sparkles size={28} />
+    </motion.div>
+
+    {/* TITLE */}
+    <h1 className="text-6xl md:text-8xl font-serif leading-tight">
+      <AdvancedText text="Enter The Royal Palace" />
+    </h1>
+
+    {/* SUBTITLE */}
+    <p className="mt-6 text-white/80 text-lg">
+      <AdvancedText text="Scroll to experience the unfolding journey" />
+    </p>
+
+  </motion.div>
+
+</div>
+
+        </section>
+
+        {/* =========================
+            FACILITY CARDS
+        ========================= */}
+        <section className="py-32 px-6">
+
+          <div
+            className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-10"
+            style={{ perspective: "1400px" }}
           >
-            {facilities.map((facility, index) => (
+
+            {facilities.map((item, i) => (
+
               <motion.div
-                key={facility.title}
-                variants={fadeInUp}
-                className="group relative bg-white rounded-sm p-8 border-[1px] border-[#d4af37]/20 shadow-[0_5px_15px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(212,175,55,0.15)] transition-all duration-500 transform hover:-translate-y-2 overflow-hidden"
+                key={i}
+                custom={i}
+                variants={cardMotion}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.2 }}
+                className="group relative"
+                style={{ transformStyle: "preserve-3d" }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-[#fdfbf7] to-[#f9f1de] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
-                <div className="relative z-10">
-                  <div className="w-16 h-16 rounded-full bg-[#fdfbf7] border border-[#d4af37]/30 flex items-center justify-center text-[#b58c2a] mb-6 group-hover:scale-110 group-hover:bg-[#d4af37] group-hover:text-white transition-all duration-500 shadow-sm">
-                    {facility.icon}
+
+                {/* FRAME */}
+                <div className="relative rounded-[42px] bg-[#49000a] p-[4px] shadow-2xl overflow-hidden">
+
+                  {/* BORDER */}
+                  <div className="rounded-[38px] border border-[#e5c76b]/70 overflow-hidden">
+
+                    {/* INNER CARD */}
+                    <div className="relative bg-[#fcf9f4] rounded-[36px] overflow-hidden transition-all duration-500 group-hover:-translate-y-2">
+
+                      {/* IMAGE */}
+                      <div className="relative h-44 overflow-hidden">
+
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                        />
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#49000a]/70 to-transparent" />
+
+                      </div>
+
+                      {/* ICON */}
+                      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30">
+                        <div className="w-11 h-11 rounded-full bg-[#e5c76b] flex items-center justify-center text-[#49000a] shadow-md">
+                          {item.icon}
+                        </div>
+                      </div>
+
+                      {/* TEXT */}
+                      <div className="p-5 text-center relative z-30">
+
+                        <h3 className="font-serif text-[#49000a] text-lg mb-2">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-sm text-gray-600 leading-relaxed">
+                          {item.description}
+                        </p>
+
+                      </div>
+
+                    </div>
+
                   </div>
 
-                  <h3 className="font-display text-2xl mb-3 text-[#4a3623] group-hover:text-[#8a6a1c] transition-colors">
-                    {facility.title}
-                  </h3>
-
-                  <p className="font-serif text-[#5c4a3d] leading-relaxed text-sm">
-                    {facility.description}
-                  </p>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
 
-      {/* Highlight Section (Dark Maroon) */}
-      <section className="bg-[#4A0A12] py-24 md:py-32 px-6 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
-        
-        <div className="max-w-[1280px] mx-auto grid lg:grid-cols-2 gap-16 items-center relative z-10">
-          
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative"
-          >
-            <div className="absolute inset-0 bg-[#E5C76B] rounded-sm transform -translate-x-4 translate-y-4 opacity-20"></div>
-            <div className="relative overflow-hidden rounded-sm shadow-2xl border border-[#E5C76B]/20">
+              </motion.div>
+
+            ))}
+
+          </div>
+
+        </section>
+
+        {/* =========================
+            CORRIDOR SECTION
+        ========================= */}
+        <section className="relative py-40 px-6 bg-[#4A0A12] overflow-hidden">
+
+          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+            >
               <img
                 src={facilitiesImg}
-                alt="Premium Facilities"
-                className="w-full h-[500px] object-cover hover:scale-105 transition-transform duration-1000"
+                className="rounded-xl shadow-2xl"
               />
-            </div>
-          </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1 }}
+              className="text-white"
+            >
+              <h2 className="text-5xl font-serif mb-6">
+                Walking Through Royal Luxury
+              </h2>
+
+              <ul className="space-y-4 text-white/80">
+                {[
+                  "1500+ Guest Capacity",
+                  "Royal Dining Experience",
+                  "Premium Guest Rooms",
+                  "Grand Parking Space",
+                  "Traditional + Modern Blend"
+                ].map((t, i) => (
+                  <li key={i} className="flex gap-3">
+                    <span className="text-[#E5C76B]">✦</span>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+
+            </motion.div>
+
+          </div>
+
+        </section>
+
+        {/* =========================
+            EXIT
+        ========================= */}
+        <section className="h-[40vh] flex items-center justify-center bg-[#fcf9f4]">
 
           <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-center"
           >
-            <motion.p variants={fadeInUp} className="font-serif uppercase tracking-[0.3em] text-[#E5C76B] mb-4 font-bold text-sm">
-              Why Choose Us
-            </motion.p>
-            <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-display text-[#fdfbf7] mb-10 leading-tight">
-              Everything You Need <br/><span className="italic text-[#E5C76B]">Under One Roof</span>
-            </motion.h2>
-
-            <motion.ul variants={staggerContainer} className="grid sm:grid-cols-2 gap-y-6 gap-x-4 text-[#fdfbf7]/90 font-serif text-lg">
-              {[
-                "Seating Capacity up to 1500",
-                "Floating Capacity up to 2500",
-                "Fully Air Conditioned Hall",
-                "Spacious Dining Area",
-                "Premium Guest Rooms",
-                "CCTV Surveillance",
-                "Power Backup Facility",
-                "Large Parking Space"
-              ].map((item, i) => (
-                <motion.li key={i} variants={fadeInUp} className="flex items-center gap-3">
-                  <span className="flex-shrink-0 w-6 h-6 rounded-full bg-[#E5C76B]/20 flex items-center justify-center text-[#E5C76B] text-sm">✓</span>
-                  {item}
-                </motion.li>
-              ))}
-            </motion.ul>
-
+            <h2 className="text-4xl font-serif text-[#4A0A12]">
+              End of Royal Journey
+            </h2>
+            <p className="text-gray-600 mt-2">
+              Ayswariya Mahal — Where celebrations become memories
+            </p>
           </motion.div>
 
-        </div>
-      </section>
+        </section>
 
       </main>
     </>
