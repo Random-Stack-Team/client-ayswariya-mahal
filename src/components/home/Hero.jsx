@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import heroImage from "../../assets/images/hero.jpg";
+import heroImage from "../../assets/images/hero.webp";
 
 export default function Hero() {
   const textRef = useRef(null);
@@ -97,7 +97,7 @@ useEffect(() => {
             Since 2001
           </p>
 
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif drop-shadow-2xl">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-display drop-shadow-2xl">
             Ayswariya Mahal
           </h1>
 
@@ -109,14 +109,14 @@ useEffect(() => {
 
             <button
          onClick={() => navigate("/facilities")}
-         className="px-8 py-4 bg-[#C8A97E] text-white rounded-full hover:scale-105 transition"
+         className="px-8 py-4 bg-gold-leaf text-white rounded-2xl hover:scale-105 transition"
          >
           Explore Venue
          </button>
 
           <button
          onClick={() => navigate("/contact")}
-         className="px-8 py-4 border border-white text-white rounded-full hover:bg-white hover:text-black transition"
+         className="px-8 py-4 border border-white text-white rounded-2xl hover:bg-white hover:text-black transition"
          >
           Plan Your Event
          </button>
