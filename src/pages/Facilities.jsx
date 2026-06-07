@@ -99,8 +99,8 @@ const cardMotion = {
     scale: 1,
     y: 0,
     transition: {
-      duration: 1,
-      delay: i * 0.08,
+      duration: 1.25,
+      delay: i * 0.12,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -113,8 +113,8 @@ const textContainer = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.02,
-      delayChildren: 0.2,
+      staggerChildren: 0.035,
+      delayChildren: 0.28,
     },
   },
 };
@@ -134,7 +134,7 @@ const wordVariant = {
     scale: 1,
     filter: "blur(0px)",
     transition: {
-      duration: 1.1,
+      duration: 1.35,
       ease: [0.19, 1, 0.22, 1], // premium elastic easing
     },
   },

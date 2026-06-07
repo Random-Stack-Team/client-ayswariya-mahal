@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
-import { useEnquiry } from "../context/EnquiryContext";
+import { useEnquiry } from "../context/useEnquiry";
 import heroImg from "../assets/images/facility1.webp";
 import SEO from "../components/common/SEO";
 
@@ -69,7 +69,7 @@ export default function Reviews() {
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
             className="flex justify-center mb-6 text-[#E5C76B]"
           >
             <Star size={24} strokeWidth={1} />
@@ -150,8 +150,9 @@ export default function Reviews() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{
-                  duration: 0.5,
+                  duration: 0.95,
                   delay: index * 0.1,
+                  ease: [0.16, 1, 0.3, 1],
                 }}
               >
 

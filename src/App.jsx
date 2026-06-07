@@ -14,13 +14,6 @@ const Gallery = lazy(() => import("./pages/Gallery"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Reviews = lazy(() => import("./pages/Reviews"));
 
-// A simple fallback spinner for lazy loaded routes
-const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-[#fdfbf7]">
-    <div className="w-12 h-12 border-4 border-[#E5C76B] border-t-transparent rounded-full animate-spin"></div>
-  </div>
-);
-
 const shouldShowOpeningAnimation = () => {
   const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
 
@@ -38,22 +31,20 @@ const shouldShowOpeningAnimation = () => {
 };
 
 function App() {
-  const [showSplash, setShowSplash] = useState(shouldShowOpeningAnimation);
+  const [showOpening, setShowOpening] = useState(shouldShowOpeningAnimation);
 
-  const handleSplashComplete = () => {
-    setShowSplash(false);
+  const handleOpeningComplete = () => {
+    setShowOpening(false);
   };
 
   return (
     <HelmetProvider>
       <EnquiryProvider>
-        {showSplash ? (
-          <OpeningAnimation onComplete={handleSplashComplete} />
-        ) : (
-          <Router>
+        <Router>
+          <div className={`app-reveal ${showOpening ? "app-reveal--intro" : "app-reveal--ready"}`}>
             <ScrollToTop />
             <MainLayout>
-              <Suspense fallback={<PageLoader />}>
+              <Suspense fallback={null}>
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/about" element={<About />} />
@@ -64,8 +55,10 @@ function App() {
                 </Routes>
               </Suspense>
             </MainLayout>
-          </Router>
-        )}
+          </div>
+
+          {showOpening && <OpeningAnimation onComplete={handleOpeningComplete} />}
+        </Router>
       </EnquiryProvider>
     </HelmetProvider>
   );

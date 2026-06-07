@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Heart, Sparkles } from "lucide-react";
 import { useLocation } from "react-router-dom";
-import { useEnquiry } from "../../context/EnquiryContext";
+import { useEnquiry } from "../../context/useEnquiry";
 
 const QUOTES = [
   "Every love story deserves\na beautiful beginning.",
@@ -18,14 +18,7 @@ export default function FloatingEnvelope() {
   const [isEnvelopeVisible, setIsEnvelopeVisible] = useState(false);
   const [quote, setQuote] = useState("");
   const [isHovered, setIsHovered] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(typeof window !== "undefined" ? window.innerWidth : 1024);
   const [submitStatus, setSubmitStatus] = useState("idle");
-
-  useEffect(() => {
-    const handleResize = () => setWindowWidth(window.innerWidth);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   // Scroll-Based Random Appearance Logic
   useEffect(() => {
@@ -108,8 +101,8 @@ export default function FloatingEnvelope() {
   const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
   const isFlapOpen = submitStatus !== "sealing_flap" && submitStatus !== "departing";
 
-  const springConfig = { type: "tween", ease: [0.16, 1, 0.3, 1], duration: 0.8 };
-  const paperSpringConfig = { type: "tween", ease: [0.16, 1, 0.3, 1], duration: 0.9 };
+  const springConfig = { type: "spring", damping: 22, stiffness: 130, mass: 1 };
+  const paperSpringConfig = { type: "spring", damping: 20, stiffness: 110, mass: 0.8 };
 
   const plaqueClipPath = "polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)";
   const plaqueInnerClipPath = "polygon(6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)";
@@ -142,8 +135,8 @@ export default function FloatingEnvelope() {
               initial={{ y: 80, opacity: 0, scale: 0.9 }}
               animate={
                 submitStatus === "departing" 
-                  ? { y: -80, opacity: 0, scale: 0.65 } 
-                  : { y: isExpanded ? 110 : 0, opacity: 1, scale: isExpanded ? 0.7 : 0.85 }
+                  ? { y: -80, opacity: 0, scale: 0.5 } 
+                  : { y: isExpanded ? 120 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
               }
               transition={submitStatus === "departing" ? { duration: 1, ease: "easeInOut" } : springConfig}
               exit={{ y: 80, opacity: 0, scale: 0.9 }}
@@ -179,9 +172,9 @@ export default function FloatingEnvelope() {
               <motion.div
                 initial={false}
                 animate={{
-                  y: isPaperExpanded ? -20 : isPeeking ? -50 : 0,
-                  height: isPaperExpanded ? "min(400px, 65vh)" : "90%",
-                  width: isPaperExpanded ? "100%" : "85%",
+                  y: isPaperExpanded ? -40 : isPeeking ? -50 : 0,
+                  height: isPaperExpanded ? "min(540px, 85vh)" : "90%",
+                  width: isPaperExpanded ? "min(460px, 95vw)" : "85%",
                   left: "50%",
                   x: "-50%",
                   boxShadow: isPaperExpanded ? "0 40px 80px -15px rgba(0,0,0,0.7)" : "0 -10px 20px rgba(0,0,0,0.15)",
@@ -312,7 +305,7 @@ export default function FloatingEnvelope() {
                               <div className="absolute inset-0 bg-gradient-to-r from-[#E5C76B] via-[#f9f1de] to-[#E5C76B] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                               <div className="relative z-10 flex items-center justify-center">
                                 <span className="font-sans text-[11px] text-[#4A0A12] font-bold tracking-[0.25em] uppercase flex items-center gap-2 whitespace-nowrap drop-shadow-sm">
-                                  Seal & Submit <span className="font-sans text-[9px] font-black opacity-80">❯</span>
+                                  Seal & Submit <span className="font-sans text-[9px] font-black opacity-80">&gt;</span>
                                 </span>
                               </div>
                             </button>
@@ -347,24 +340,7 @@ export default function FloatingEnvelope() {
                   </div>
                 </div>
 
-                <AnimatePresence>
-                  {(!isExpanded || submitStatus === "sealing_flap" || submitStatus === "departing") && (
-                    <motion.div 
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      exit={{ scale: 0, opacity: 0 }}
-                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                      className="absolute bottom-[65%] md:bottom-[70%] left-1/2 -translate-x-1/2 w-14 h-14 bg-gradient-to-br from-[#fceabb] via-[#d4af37] to-[#8c6b16] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[0_5px_15px_rgba(0,0,0,0.3)] border-[2px] border-[#fdfbf7]"
-                    >
-                      <div className="w-[36px] h-[36px] rounded-full border-[1px] border-[#8c6b16]/40 flex flex-col items-center justify-center shadow-inner bg-gradient-to-tl from-[#fdfbf7]/40 to-transparent">
-                        <Heart size={10} className="text-[#4a3623] fill-[#4a3623] mb-0.5 opacity-80" />
-                        <div className="flex gap-0.5 opacity-80">
-                          <span className="text-[#4a3623] text-[8px]">🤵👰</span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+
 
                 <AnimatePresence>
                   {!isExpanded && (
@@ -382,7 +358,7 @@ export default function FloatingEnvelope() {
                         <div className="absolute inset-[2px] border-[0.5px] border-[#a67c00]/60 pointer-events-none" style={{ clipPath: plaqueInnerClipPath }}></div>
                         <div className="relative z-10 flex flex-col items-center justify-center">
                           <span className="font-serif text-xs text-[#4a3623] font-bold tracking-[0.2em] uppercase drop-shadow-sm flex items-center gap-2">
-                            Enquire Now <span className="font-sans text-[10px] font-black">❯</span>
+                            Enquire Now <span className="font-sans text-[10px] font-black">&gt;</span>
                           </span>
                         </div>
                       </button>
@@ -390,6 +366,26 @@ export default function FloatingEnvelope() {
                   )}
                 </AnimatePresence>
               </div>
+
+              {/* Layer 6: The Seal */}
+              <AnimatePresence>
+                {(!isExpanded || submitStatus === "sealing_flap" || submitStatus === "departing") && (
+                  <motion.div 
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-br from-[#fceabb] via-[#d4af37] to-[#8c6b16] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[0_5px_15px_rgba(0,0,0,0.3)] border-[2px] border-[#fdfbf7]"
+                  >
+                    <div className="w-[36px] h-[36px] rounded-full border-[1px] border-[#8c6b16]/40 flex flex-col items-center justify-center shadow-inner bg-gradient-to-tl from-[#fdfbf7]/40 to-transparent">
+                      <Heart size={10} className="text-[#4a3623] fill-[#4a3623] mb-0.5 opacity-80" />
+                      <div className="flex gap-0.5 opacity-80">
+                        <span className="text-[#4a3623] text-[8px] font-serif font-bold">AM</span>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
 
               {!isExpanded && (
                 <button

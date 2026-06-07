@@ -1,163 +1,156 @@
-import { NavLink, useNavigate, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useEnquiry } from "../../context/EnquiryContext";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEnquiry } from "../../context/useEnquiry";
 import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
+
+const links = [
+  { to: "/", label: "Home" },
+  { to: "/about", label: "About" },
+  { to: "/facilities", label: "Facilities" },
+  { to: "/gallery", label: "Gallery" },
+  { to: "/reviews", label: "Reviews" },
+  { to: "/contact", label: "Contact" },
+];
 
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { openForm } = useEnquiry();
   const [scrollY, setScrollY] = useState(0);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isHome = location.pathname === "/";
+  const isScrolled = scrollY > 42;
+  const navVisible = isMobileMenuOpen || scrollY < 50 || isScrollingUp;
+  const solidNav = isScrolled || isMobileMenuOpen || !isHome;
 
   useEffect(() => {
+    let previousY = window.scrollY;
+
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      setScrollY(currentScrollY);
-      
-      if (currentScrollY < 50) {
-        setIsScrollingUp(true);
-      } else if (currentScrollY < lastScrollY) {
-        setIsScrollingUp(true);
-      } else if (currentScrollY > lastScrollY) {
-        setIsScrollingUp(false);
-      }
-      
-      setLastScrollY(currentScrollY);
+      const currentY = window.scrollY;
+      setScrollY(currentY);
+      setIsScrollingUp(currentY < 50 || currentY < previousY);
+      previousY = currentY;
     };
-    
-    window.addEventListener("scroll", handleScroll);
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
-  // Close mobile menu on route change
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location]);
-
-  // Determine visibility logic
-  let navVisible = true;
-  if (isMobileMenuOpen) {
-    navVisible = true;
-  } else {
-    // Show if at the top OR scrolling up
-    navVisible = scrollY < 50 || isScrollingUp;
-  }
-
-  // Light theme link styles
   const linkClass = ({ isActive }) =>
-    `font-serif text-sm font-bold tracking-[0.2em] uppercase pb-1 transition-all duration-500 ${
+    [
+      "relative px-2 py-2 font-serif text-[12px] font-bold uppercase tracking-[0.24em]",
+      "transition-colors duration-700 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-[#e5c76b] after:transition-all after:duration-700",
       isActive
-        ? "text-[#b58c2a] border-b-2 border-[#b58c2a]"
-        : "text-[#4a3623]/80 hover:text-[#b58c2a]"
-    }`;
+        ? `${solidNav ? "text-[#b58c2a]" : "text-[#f3d76c]"} after:w-full`
+        : `${solidNav ? "text-[#4a3623]/76 hover:text-[#8b1518]" : "text-white/88 hover:text-[#f3d76c]"}`,
+    ].join(" ");
 
   const mobileLinkClass = ({ isActive }) =>
-    `block font-serif text-lg font-bold tracking-[0.2em] uppercase py-4 transition-all duration-300 ${
-      isActive ? "text-[#b58c2a]" : "text-[#4a3623]/80 hover:text-[#b58c2a]"
-    }`;
+    [
+      "block py-4 text-center font-display text-2xl transition-colors duration-300",
+      isActive ? "text-[#b58c2a]" : "text-[#4a3623] hover:text-[#b58c2a]",
+    ].join(" ");
 
-  // If we are at the absolute top of a non-home page, maybe we want it transparent, 
-  // but if we want the light redesign universally, we use the light background.
-  // Actually, a subtle transparent-to-light effect is best, but since text is dark, transparent only works on light headers.
-  // Let's just give it a permanent light glassmorphism to look premium and guarantee readability.
-  const isScrolled = scrollY > 50;
+  const handleLogoClick = () => {
+    setIsMobileMenuOpen(false);
+    navigate("/");
+  };
 
   return (
-    <div className={`fixed top-0 left-0 w-full z-50 pointer-events-none transition-transform duration-500 ease-in-out ${!navVisible ? '-translate-y-[150%]' : 'translate-y-0'}`}>
+    <div
+      className={`pointer-events-none fixed left-0 top-0 z-50 w-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        navVisible ? "translate-y-0" : "-translate-y-[130%]"
+      }`}
+    >
       <header
         id="main-nav"
-        className={`pointer-events-auto w-full transition-all duration-500 ease-in-out border-b ${
-          isScrolled || isMobileMenuOpen || !isHome
-            ? "bg-[#fdfbf7]/95 backdrop-blur-xl border-[#d4af37]/30 shadow-[0_5px_20px_rgba(0,0,0,0.05)] py-3 md:py-4" 
-            : "bg-[#fdfbf7]/95 backdrop-blur-xl border-transparent py-4 md:py-6"
+        className={`pointer-events-auto border-b transition-all duration-700 ${
+          solidNav
+            ? "border-[#d4af37]/24 bg-[#fff8ed]/90 py-3 shadow-[0_12px_32px_rgba(48,20,12,0.08)] backdrop-blur-2xl"
+            : "border-white/10 bg-gradient-to-b from-[#22080c]/62 via-[#22080c]/24 to-transparent py-5 backdrop-blur-[2px]"
         }`}
       >
-        <div className="max-w-[1280px] mx-auto w-full h-full flex items-center justify-between px-6 md:px-12">
-          {/* Logo on the left corner */}
-          <div 
-            onClick={() => navigate("/")}
-            className="cursor-pointer flex-shrink-0"
-          >
-            {/* Note: Ensure the logo image itself doesn't have white text if the background is light. If it does, we may need a CSS filter to invert it or use a different logo version. Assuming it's gold/dark. */}
-            <img src={logoImg} alt="Ayswariya Mahal" className="h-10 md:h-14 object-contain drop-shadow-sm" />
-          </div>
+        <div
+          className="mx-auto flex h-full w-full max-w-[1320px] items-center justify-between px-5 md:px-10 lg:px-16"
+        >
+          <button onClick={handleLogoClick} className="flex min-w-0 items-center gap-3 lg:min-w-[220px]">
+            <img
+              src={logoImg}
+              alt="Ayswariya Mahal"
+              className={`h-10 object-contain transition duration-700 md:h-12 ${
+                solidNav ? "drop-shadow-sm" : "brightness-[1.18] drop-shadow-[0_6px_18px_rgba(0,0,0,0.32)]"
+              }`}
+            />
+          </button>
 
-          {/* Desktop Links */}
-          <nav className="hidden lg:flex gap-6 xl:gap-8 items-center flex-1 justify-center">
-            <NavLink to="/" className={linkClass}>Home</NavLink>
-            <NavLink to="/about" className={linkClass}>About</NavLink>
-            <NavLink to="/facilities" className={linkClass}>Facilities</NavLink>
-            <NavLink to="/gallery" className={linkClass}>Gallery</NavLink>
-            <NavLink to="/reviews" className={linkClass}>Reviews</NavLink>
-            <NavLink to="/contact" className={linkClass}>Contact</NavLink>
+          <nav className="hidden items-center gap-7 lg:flex xl:gap-10">
+            {links.map((link) => (
+              <NavLink key={link.to} to={link.to} className={linkClass}>
+                {link.label}
+              </NavLink>
+            ))}
           </nav>
 
-        {/* CTA (Desktop) */}
-        <button
-          onClick={openForm}
-          className="hidden lg:block relative px-8 py-2.5 overflow-hidden group rounded-full shadow-[0_2px_10px_rgba(212,175,55,0.2)] hover:shadow-[0_5px_15px_rgba(212,175,55,0.4)] transition-all duration-500 transform hover:-translate-y-0.5 whitespace-nowrap flex-shrink-0"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-[#e8d5b5] via-[#d4af37] to-[#e8d5b5] opacity-90 group-hover:opacity-100 transition-opacity"></div>
-          <div className="absolute inset-[1px] border border-[#a67c00]/30 rounded-full pointer-events-none"></div>
-          <div className="relative z-10 flex items-center justify-center">
-            <span className="font-serif text-[11px] text-[#4a3623] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
-              Enquire
-            </span>
-          </div>
-        </button>
-
-        {/* Mobile Menu Toggle */}
-        <button 
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden text-[#4a3623] hover:text-[#d4af37] p-2 transition-colors"
-        >
-          {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "100vh" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden absolute top-full left-0 w-full bg-[#fdfbf7]/95 backdrop-blur-xl border-t border-[#d4af37]/20 overflow-hidden"
+          <button
+            onClick={openForm}
+            className={`hidden min-w-[150px] border px-7 py-3 font-serif text-[11px] font-bold uppercase tracking-[0.24em] transition duration-700 lg:block ${
+              solidNav
+                ? "border-[#b58c2a]/55 bg-[#7f1115] text-[#f3d76c] shadow-[0_10px_24px_rgba(128,28,44,0.16)] hover:bg-[#9a1c22] hover:text-white"
+                : "border-[#e5c76b]/80 bg-[#7f1115]/72 text-[#f3d76c] shadow-[0_12px_32px_rgba(0,0,0,0.2)] hover:bg-[#9a1c22] hover:text-white"
+            }`}
           >
-            <div className="flex flex-col items-center justify-start pt-12 h-[calc(100vh-80px)] px-6 space-y-6">
-              <NavLink to="/" className={mobileLinkClass}>Home</NavLink>
-              <NavLink to="/about" className={mobileLinkClass}>About</NavLink>
-              <NavLink to="/facilities" className={mobileLinkClass}>Facilities</NavLink>
-              <NavLink to="/gallery" className={mobileLinkClass}>Gallery</NavLink>
-              <NavLink to="/reviews" className={mobileLinkClass}>Reviews</NavLink>
-              <NavLink to="/contact" className={mobileLinkClass}>Contact</NavLink>
-              
-              <div className="w-24 h-px bg-[#d4af37]/30 my-4"></div>
-              
-              <button
-                onClick={openForm}
-                className="relative px-12 py-4 overflow-hidden group rounded-full shadow-[0_5px_15px_rgba(212,175,55,0.3)] w-full max-w-sm"
-              >
-                <div className="absolute inset-0 bg-gradient-to-r from-[#e8d5b5] via-[#d4af37] to-[#e8d5b5] opacity-90 group-hover:opacity-100 transition-opacity"></div>
-                <div className="absolute inset-[2px] border border-[#a67c00]/30 rounded-full pointer-events-none"></div>
-                <div className="relative z-10 flex items-center justify-center">
-                  <span className="font-serif text-sm text-[#4a3623] font-bold tracking-[0.2em] uppercase">
-                    Enquire Now
-                  </span>
-                </div>
-              </button>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+            Enquire
+          </button>
+
+          <button
+            onClick={() => setIsMobileMenuOpen((open) => !open)}
+            className={`lg:hidden transition-colors duration-300 ${solidNav ? "text-[#4a3623]" : "text-white"}`}
+            aria-label="Toggle navigation"
+          >
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.28, ease: "easeOut" }}
+              className="absolute left-0 top-full w-full border-t border-[#d4af37]/20 bg-[#fdf7ed]/96 px-6 py-10 shadow-[0_20px_44px_rgba(48,20,12,0.12)] backdrop-blur-2xl lg:hidden"
+            >
+              <div className="mx-auto flex max-w-sm flex-col">
+                {links.map((link) => (
+                  <NavLink
+                    key={link.to}
+                    to={link.to}
+                    className={mobileLinkClass}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.label}
+                  </NavLink>
+                ))}
+
+                <button
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    openForm();
+                  }}
+                  className="mt-8 border border-[#b58c2a]/60 bg-[#801c2c] px-8 py-4 font-body text-xs font-bold uppercase tracking-[0.24em] text-[#f3d76c]"
+                >
+                  Enquire Now
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </header>
     </div>
   );
 }

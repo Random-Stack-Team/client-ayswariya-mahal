@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 export default function RoyalStatistics() {
@@ -22,7 +21,7 @@ export default function RoyalStatistics() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
+              transition={{ delay: index * 0.16, duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center justify-center"
             >
               <h3 className="font-display text-4xl md:text-4xl mb-4 font-medium tracking-wider">

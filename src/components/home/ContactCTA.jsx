@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useEnquiry } from "../../context/EnquiryContext";
+import { useEnquiry } from "../../context/useEnquiry";
 
 export default function ContactCTA() {
   const { openForm } = useEnquiry();

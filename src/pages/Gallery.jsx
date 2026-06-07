@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import gsap from "gsap";
 
 /* =========================
@@ -43,7 +43,6 @@ export default function Facilities() {
   const sectionRef = useRef(null);
 
   const [category, setCategory] = useState("hall");
-  const [activeIndex, setActiveIndex] = useState(0);
 
   const images = galleryData[category];
 
@@ -55,65 +54,46 @@ export default function Facilities() {
   /* =========================
      MEASURE
   ========================= */
-  const measure = () => {
+  const measure = useCallback(() => {
     const rail = railRef.current;
     if (!rail) return;
 
     snapPoints.current = Array.from(rail.children).map(
       (el) => el.offsetLeft
     );
-  };
-
-  /* =========================
-     CAMERA LOOP
-  ========================= */
-  const animate = () => {
-    const rail = railRef.current;
-    if (!rail) {
-      rafId.current = requestAnimationFrame(animate);
-      return;
-    }
-
-    const cam = camera.current;
-
-    const force = (cam.target - cam.x) * 0.1;
-    cam.vx += force;
-    cam.vx *= 0.78;
-    cam.x += cam.vx;
-
-    gsap.set(rail, {
-      x: -cam.x,
-      force3D: true,
-    });
-
-    const snap = snapPoints.current;
-
-    let closest = 0;
-    let min = Infinity;
-
-    for (let i = 0; i < snap.length; i++) {
-      const d = Math.abs(cam.x - snap[i]);
-      if (d < min) {
-        min = d;
-        closest = i;
-      }
-    }
-
-    setActiveIndex(closest);
-
-    rafId.current = requestAnimationFrame(animate);
-  };
+  }, []);
 
   useEffect(() => {
+    const animate = () => {
+      const rail = railRef.current;
+      if (!rail) {
+        rafId.current = requestAnimationFrame(animate);
+        return;
+      }
+
+      const cam = camera.current;
+      const force = (cam.target - cam.x) * 0.1;
+
+      cam.vx += force;
+      cam.vx *= 0.78;
+      cam.x += cam.vx;
+
+      gsap.set(rail, {
+        x: -cam.x,
+        force3D: true,
+      });
+
+      rafId.current = requestAnimationFrame(animate);
+    };
+
     rafId.current = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(rafId.current);
   }, []);
 
   useEffect(() => {
     camera.current = { x: 0, vx: 0, target: 0 };
-    setActiveIndex(0);
     requestAnimationFrame(measure);
-  }, [category]);
+  }, [category, measure]);
 
   const scrollByStep = (dir) => {
     const snap = snapPoints.current;
@@ -210,21 +190,10 @@ export default function Facilities() {
         ========================= */}
         <button
           onClick={() => scrollByStep(-1)}
-          className="button absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-[999]"
+          className="absolute left-2 top-1/2 z-[999] grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-black/35 text-[#E5C76B] backdrop-blur-md transition duration-300 hover:bg-[#801c2c] hover:text-white sm:left-6"
+          aria-label="Previous gallery item"
         >
-          <div className="button-box">
-            <span className="button-elem">
-              <svg viewBox="0 0 46 40">
-                <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"/>
-              </svg>
-            </span>
-
-            <span className="button-elem">
-              <svg viewBox="0 0 46 40">
-                <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"/>
-              </svg>
-            </span>
-          </div>
+          <ChevronLeft size={24} strokeWidth={1.7} />
         </button>
 
         {/* =========================
@@ -232,21 +201,10 @@ export default function Facilities() {
         ========================= */}
         <button
           onClick={() => scrollByStep(1)}
-          className="button rotate-180 absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-[999]"
+          className="absolute right-2 top-1/2 z-[999] grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-black/35 text-[#E5C76B] backdrop-blur-md transition duration-300 hover:bg-[#801c2c] hover:text-white sm:right-6"
+          aria-label="Next gallery item"
         >
-          <div className="button-box">
-            <span className="button-elem">
-              <svg viewBox="0 0 46 40">
-                <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"/>
-              </svg>
-            </span>
-
-            <span className="button-elem">
-              <svg viewBox="0 0 46 40">
-                <path d="M46 20.038c0-.7-.3-1.5-.8-2.1l-16-17c-1.1-1-3.2-1.4-4.4-.3-1.2 1.1-1.2 3.3 0 4.4l11.3 11.9H3c-1.7 0-3 1.3-3 3s1.3 3 3 3h33.1l-11.3 11.9c-1 1-1.2 3.3 0 4.4 1.2 1.1 3.3.8 4.4-.3l16-17c.5-.5.8-1.1.8-1.9z"/>
-              </svg>
-            </span>
-          </div>
+          <ChevronRight size={24} strokeWidth={1.7} />
         </button>
 
         {/* RAIL */}

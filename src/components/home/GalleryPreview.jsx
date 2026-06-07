@@ -38,17 +38,17 @@ export default function GalleryPreview() {
           {images.map((src, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
-              className={`relative overflow-hidden rounded-2xl group ${index === 1 || index === 3 ? 'md:mt-12' : ''}`}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+              transition={{ delay: index * 0.16, duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
+              className={`relative overflow-hidden rounded-2xl group luxury-image-overlay ${index === 1 || index === 3 ? 'md:mt-12' : ''}`}
             >
               <div className="aspect-[3/4]">
                 <img
                   src={src}
                   alt={`Gallery Preview ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                  className="w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               </div>

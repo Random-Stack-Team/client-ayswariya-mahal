@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock, Sparkles } from "lucide-react";
-import { useEnquiry } from "../context/EnquiryContext";
+import { useEnquiry } from "../context/useEnquiry";
 import heroImg from "../assets/images/hero.webp";
 import SEO from "../components/common/SEO";
 
@@ -28,7 +28,7 @@ export default function Contact() {
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
             className="flex justify-center mb-6 text-[#E5C76B]"
           >
             <Sparkles size={24} strokeWidth={1} />
@@ -60,7 +60,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col space-y-12"
           >
             <div>
@@ -126,7 +126,7 @@ export default function Contact() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col h-full space-y-8"
           >
             {/* Quick Enquiry Card */}
