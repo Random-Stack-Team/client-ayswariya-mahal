@@ -6,11 +6,10 @@ import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
-import hallImage from "../../assets/images/facility1.webp";
-import diningImage from "../../assets/images/facility2.webp";
-import suitesImage from "../../assets/images/facility3.webp";
-import valetImage from "../../assets/images/facility4.webp";
-
+import hallImage from "../../assets/images/Facility/facility2.png";
+import diningImage from "../../assets/images/Facility/facility3.png"
+import suitesImage from "../../assets/images/Facility/facility4.png";
+import valetImage from "../../assets/images/Facility/facility5.png";
 const IMAGES = {
   hall: hallImage,
   dining: diningImage,

@@ -1,10 +1,10 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
-import img1 from "../../assets/images/gallery1.webp";
-import img2 from "../../assets/images/gallery2.webp";
-import img3 from "../../assets/images/gallery3.webp";
-import img4 from "../../assets/images/gallery4.webp";
+import img1 from "../../assets/images/Gallery/decor1.png";
+import img2 from "../../assets/images/Gallery/memories1.png";
+import img3 from "../../assets/images/Gallery/hall4.jpeg";
+import img4 from "../../assets/images/Gallery/memories5.webp";
 
 export default function GalleryPreview() {
   const navigate = useNavigate();
