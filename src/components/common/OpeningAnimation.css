@@ -1,0 +1,213 @@
+.opening-animation {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 247, 222, 0.72), rgba(248, 244, 236, 0.7) 36%, rgba(236, 218, 185, 0.48) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(248, 244, 236, 0.18) 40%, rgba(231, 206, 159, 0.28)),
+    #efe3d1;
+  color: #4a2b1f;
+  isolation: isolate;
+  animation: opening-intro-in 520ms ease-out both;
+}
+
+.opening-animation::before,
+.opening-animation::after {
+  content: "";
+  position: absolute;
+  inset-inline: clamp(18px, 6vw, 86px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 162, 39, 0.42), transparent);
+  opacity: 0.75;
+}
+
+.opening-animation::before {
+  top: clamp(32px, 8vh, 82px);
+}
+
+.opening-animation::after {
+  bottom: clamp(32px, 8vh, 82px);
+}
+
+.opening-animation--exit {
+  pointer-events: none;
+  animation: opening-screen-out 650ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.opening-animation__frame {
+  position: relative;
+  width: min(82vw, 880px);
+  display: grid;
+  justify-items: center;
+  gap: clamp(18px, 3vw, 30px);
+  transform: translateY(-1vh);
+}
+
+.opening-animation__rule {
+  width: min(240px, 44vw);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(128, 28, 44, 0.28), rgba(201, 162, 39, 0.72), rgba(128, 28, 44, 0.28), transparent);
+  opacity: 0;
+  animation: opening-rule-in 700ms ease-out 220ms forwards;
+}
+
+.opening-animation__title-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 760 / 175;
+}
+
+.opening-animation__title {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.opening-animation__line--top {
+  transform: translateX(197px);
+}
+
+.opening-animation__glyph {
+  --path-length: 1;
+  fill: transparent;
+  stroke: rgba(91, 42, 31, 0.86);
+  stroke-width: 0.56;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: var(--path-length);
+  stroke-dashoffset: var(--path-length);
+  vector-effect: non-scaling-stroke;
+  animation:
+    opening-draw-glyph 1.55s cubic-bezier(0.64, 0, 0.24, 1) var(--letter-delay) forwards,
+    opening-fill-glyph 680ms ease-out 2.38s forwards,
+    opening-glyph-shimmer 900ms ease-out 2.95s forwards;
+}
+
+.opening-animation__line--bottom .opening-animation__glyph {
+  stroke-width: 0.64;
+}
+
+.opening-animation__shine {
+  display: none;
+}
+
+.opening-animation__tagline {
+  margin: 0;
+  color: rgba(69, 14, 24, 0.72);
+  font-family: var(--font-body, "Be Vietnam Pro", sans-serif);
+  font-size: clamp(0.68rem, 1.7vw, 0.92rem);
+  font-weight: 600;
+  letter-spacing: clamp(0.16em, 0.8vw, 0.34em);
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(16px);
+  animation: opening-tagline-in 620ms ease-out 2.72s forwards;
+}
+
+@keyframes opening-intro-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes opening-draw-glyph {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes opening-fill-glyph {
+  0% {
+    fill: rgba(201, 162, 39, 0);
+    stroke: #6b372d;
+  }
+  100% {
+    fill: #c9a227;
+    stroke: rgba(93, 32, 29, 0.12);
+  }
+}
+
+@keyframes opening-glyph-shimmer {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(201, 162, 39, 0));
+  }
+  45% {
+    fill: #e6c353;
+    filter: drop-shadow(0 0 7px rgba(201, 162, 39, 0.26));
+  }
+  100% {
+    fill: #c9a227;
+    filter: drop-shadow(0 4px 8px rgba(93, 32, 29, 0.13));
+  }
+}
+
+@keyframes opening-rule-in {
+  from {
+    opacity: 0;
+    transform: scaleX(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes opening-tagline-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes opening-screen-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.035);
+    filter: blur(7px);
+  }
+}
+
+@media (max-width: 640px) {
+  .opening-animation__frame {
+    gap: 16px;
+  }
+
+  .opening-animation__title-wrap {
+    aspect-ratio: 760 / 220;
+  }
+
+  .opening-animation__title {
+    transform: translateY(20px);
+  }
+
+  .opening-animation__tagline {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opening-animation,
+  .opening-animation *,
+  .opening-animation::before,
+  .opening-animation::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
+}

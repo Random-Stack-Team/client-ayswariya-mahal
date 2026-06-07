@@ -1,4 +1,4 @@
-import GateExperience from "../components/home/GateExperience";
+import Hero from "../components/home/Hero";
 import AboutPreview from "../components/home/AboutPreview";
 import RoyalStatistics from "../components/home/RoyalStatistics";
 import FacilitiesPreview from "../components/home/FacilitiesPreview";
@@ -13,9 +13,7 @@ export default function Home() {
         title="Luxury Wedding Hall in Chennai" 
         description="Experience grandeur at Ayswariya Mahal. The perfect destination for royal weddings, grand receptions, and premium corporate events." 
       />
-      <div className="hidden md:block">
-        <GateExperience />
-      </div>
+      <Hero />
       <AboutPreview />
       <RoyalStatistics />
       <FacilitiesPreview />
