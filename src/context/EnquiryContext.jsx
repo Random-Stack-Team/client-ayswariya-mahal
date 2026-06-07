@@ -1,10 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { useState } from "react";
+import { EnquiryContext } from "./EnquiryContextValue";
 
-const EnquiryContext = createContext();
-
-export const useEnquiry = () => useContext(EnquiryContext);
-
-export const EnquiryProvider = ({ children }) => {
+export function EnquiryProvider({ children }) {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
   const openForm = () => setIsFormOpen(true);
@@ -15,4 +12,4 @@ export const EnquiryProvider = ({ children }) => {
       {children}
     </EnquiryContext.Provider>
   );
-};
+}

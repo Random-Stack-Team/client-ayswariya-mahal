@@ -19,15 +19,31 @@ export default function About() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.24,
+        delayChildren: 0.08
       }
     }
   };
 
   const fadeInUp = {
-    hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    hidden: { opacity: 0, y: 28 },
+    show: { opacity: 1, y: 0, transition: { duration: 1.15, ease: [0.16, 1, 0.3, 1] } }
   };
+
+  const pillars = [
+    {
+      title: "Thoughtful Hospitality",
+      body: "From the first enquiry to the final send-off, our team keeps every guest movement, family ritual, and event moment cared for with calm attention.",
+    },
+    {
+      title: "Flexible Celebration Spaces",
+      body: "Our halls are planned for weddings, receptions, engagements, corporate gatherings, and intimate family ceremonies with practical flow and elegant ambience.",
+    },
+    {
+      title: "Tradition With Comfort",
+      body: "Ayswariya Mahal blends ceremonial warmth with modern essentials, giving families a venue that feels familiar, refined, and easy to host in.",
+    },
+  ];
 
   return (
     <>
@@ -87,11 +103,11 @@ export default function About() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
             <div className="absolute inset-0 bg-[#d4af37] rounded-sm transform translate-x-4 translate-y-4 opacity-20"></div>
-            <div className="relative overflow-hidden rounded-sm shadow-2xl">
+            <div className="relative overflow-hidden rounded-sm shadow-2xl luxury-image-overlay">
               <motion.img
                 style={{ y: parallaxY }}
                 src={aboutImg}
@@ -118,7 +134,7 @@ export default function About() {
             <motion.div variants={fadeInUp} className="w-16 h-[1px] bg-[#d4af37] mb-8"></motion.div>
             <motion.p variants={fadeInUp} className="text-[#5c4a3d] font-serif text-lg leading-loose mb-6">
               Ayswariya Mahal was established with a vision to provide
-              families with a beautiful venue where life’s most cherished
+              families with a beautiful venue where life's most cherished
               celebrations can take place.
             </motion.p>
             <motion.p variants={fadeInUp} className="text-[#5c4a3d] font-serif text-lg leading-loose">
@@ -129,6 +145,39 @@ export default function About() {
           </motion.div>
 
         </div>
+      </section>
+
+      {/* Experience Pillars */}
+      <section className="py-24 md:py-32 px-6 bg-[#f5ead9] relative overflow-hidden">
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(128,28,44,0.08),transparent_42%,rgba(229,199,107,0.16))]"></div>
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-100px" }}
+          className="max-w-[1280px] mx-auto relative z-10"
+        >
+          <motion.p variants={fadeInUp} className="font-serif text-[#8b1518] uppercase tracking-[0.3em] font-bold text-sm mb-4 text-center">
+            Why Families Choose Us
+          </motion.p>
+          <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-6xl text-[#4a3623] text-center mb-16 leading-tight">
+            Designed for Graceful, <span className="italic text-[#b58c2a]">Effortless Hosting</span>
+          </motion.h2>
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {pillars.map((pillar) => (
+              <motion.article
+                key={pillar.title}
+                variants={fadeInUp}
+                className="border border-[#d4af37]/28 bg-[#fff8ed]/72 p-8 shadow-[0_18px_44px_rgba(74,10,18,0.08)] backdrop-blur-sm"
+              >
+                <div className="mb-6 h-px w-16 bg-[#b58c2a]"></div>
+                <h3 className="font-display text-2xl text-[#7f1115] mb-4">{pillar.title}</h3>
+                <p className="font-serif text-[#5c4a3d] leading-loose">{pillar.body}</p>
+              </motion.article>
+            ))}
+          </div>
+        </motion.div>
       </section>
 
       {/* Dark Maroon Statistics */}
