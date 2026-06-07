@@ -45,16 +45,8 @@ function Navbar() {
   let navVisible = true;
   if (isMobileMenuOpen) {
     navVisible = true;
-  } else if (isHome) {
-    if (scrollY < 2800) {
-      navVisible = false;
-    } else if (scrollY >= 2800 && scrollY < 3200) {
-      navVisible = true; // Show exactly after gate opens
-    } else {
-      navVisible = isScrollingUp; // Disappear when scrolling down the rest of the page
-    }
   } else {
-    // Other pages: Show if at the top OR scrolling up
+    // Show if at the top OR scrolling up
     navVisible = scrollY < 50 || isScrollingUp;
   }
 

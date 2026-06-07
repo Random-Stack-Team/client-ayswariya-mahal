@@ -1,9 +1,10 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import MainLayout from "./layouts/MainLayout";
 import { EnquiryProvider } from "./context/EnquiryContext";
 import ScrollToTop from "./components/common/ScrollToTop";
+import OpeningAnimation from "./components/common/OpeningAnimation";
 
 // Lazy-loaded routes for Fast Loading Speed
 const Home = lazy(() => import("./pages/Home"));
@@ -20,25 +21,51 @@ const PageLoader = () => (
   </div>
 );
 
+const shouldShowOpeningAnimation = () => {
+  const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
+
+  // The intro is controlled at the app shell level, not by the Home route.
+  // That keeps navbar Home clicks and internal navigation from replaying it.
+  const navigationEntry = window.performance?.getEntriesByType("navigation")?.[0];
+  const navType = navigationEntry?.type || "";
+  const shouldShow = !hasSeenIntro || navType === "reload";
+
+  if (shouldShow) {
+    sessionStorage.setItem("hasSeenIntro", "true");
+  }
+
+  return shouldShow;
+};
+
 function App() {
+  const [showSplash, setShowSplash] = useState(shouldShowOpeningAnimation);
+
+  const handleSplashComplete = () => {
+    setShowSplash(false);
+  };
+
   return (
     <HelmetProvider>
       <EnquiryProvider>
-        <Router>
-          <ScrollToTop />
-          <MainLayout>
-            <Suspense fallback={<PageLoader />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/facilities" element={<Facilities />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/contact" element={<Contact />} />
-                <Route path="/reviews" element={<Reviews />} />
-              </Routes>
-            </Suspense>
-          </MainLayout>
-        </Router>
+        {showSplash ? (
+          <OpeningAnimation onComplete={handleSplashComplete} />
+        ) : (
+          <Router>
+            <ScrollToTop />
+            <MainLayout>
+              <Suspense fallback={<PageLoader />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/facilities" element={<Facilities />} />
+                  <Route path="/gallery" element={<Gallery />} />
+                  <Route path="/contact" element={<Contact />} />
+                  <Route path="/reviews" element={<Reviews />} />
+                </Routes>
+              </Suspense>
+            </MainLayout>
+          </Router>
+        )}
       </EnquiryProvider>
     </HelmetProvider>
   );
