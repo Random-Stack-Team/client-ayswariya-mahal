@@ -1,5 +1,6 @@
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import { HelmetProvider } from "react-helmet-async";
 import MainLayout from "./layouts/MainLayout";
 import { EnquiryProvider } from "./context/EnquiryContext";
@@ -30,6 +31,23 @@ const shouldShowOpeningAnimation = () => {
   return shouldShow;
 };
 
+function AnimatedRoutes() {
+  const location = useLocation();
+  
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/facilities" element={<Facilities />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/reviews" element={<Reviews />} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   const [showOpening, setShowOpening] = useState(shouldShowOpeningAnimation);
 
@@ -45,14 +63,7 @@ function App() {
             <ScrollToTop />
             <MainLayout>
               <Suspense fallback={null}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/facilities" element={<Facilities />} />
-                  <Route path="/gallery" element={<Gallery />} />
-                  <Route path="/contact" element={<Contact />} />
-                  <Route path="/reviews" element={<Reviews />} />
-                </Routes>
+                <AnimatedRoutes />
               </Suspense>
             </MainLayout>
           </div>

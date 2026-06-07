@@ -101,8 +101,8 @@ export default function FloatingEnvelope() {
   const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
   const isFlapOpen = submitStatus !== "sealing_flap" && submitStatus !== "departing";
 
-  const springConfig = { type: "spring", damping: 22, stiffness: 130, mass: 1 };
-  const paperSpringConfig = { type: "spring", damping: 20, stiffness: 110, mass: 0.8 };
+  const springConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
+  const paperSpringConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
 
   const plaqueClipPath = "polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)";
   const plaqueInnerClipPath = "polygon(6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)";
@@ -124,7 +124,7 @@ export default function FloatingEnvelope() {
           </AnimatePresence>
 
           <div
-            className={`fixed z-[101] transition-all duration-700 ease-in-out ${
+            className={`fixed z-[101] ${
               isExpanded
                 ? "inset-0 flex items-center justify-center pointer-events-none"
                 : "bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:bottom-10 md:right-10 pointer-events-none"
@@ -142,7 +142,7 @@ export default function FloatingEnvelope() {
               exit={{ y: 80, opacity: 0, scale: 0.9 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              className="relative pointer-events-auto w-[300px] md:w-[360px] h-[190px] md:h-[220px]"
+              className="relative pointer-events-auto w-[280px] md:w-[340px] h-[180px] md:h-[210px]"
               style={{ perspective: 1200 }}
             >
               {/* Layer 1: Back of Envelope (Inside) */}
@@ -173,8 +173,8 @@ export default function FloatingEnvelope() {
                 initial={false}
                 animate={{
                   y: isPaperExpanded ? -40 : isPeeking ? -50 : 0,
-                  height: isPaperExpanded ? "min(540px, 85vh)" : "90%",
-                  width: isPaperExpanded ? "min(460px, 95vw)" : "85%",
+                  height: isPaperExpanded ? 540 : "90%",
+                  width: isPaperExpanded ? 460 : "85%",
                   left: "50%",
                   x: "-50%",
                   boxShadow: isPaperExpanded ? "0 40px 80px -15px rgba(0,0,0,0.7)" : "0 -10px 20px rgba(0,0,0,0.15)",
@@ -183,6 +183,8 @@ export default function FloatingEnvelope() {
                 className="absolute bottom-3 bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border border-[#d4af37]/30 antialiased"
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
                 style={{ 
+                  maxWidth: "95vw",
+                  maxHeight: "85vh",
                   cursor: isExpanded ? "default" : "pointer",
                   zIndex: isPaperExpanded ? 60 : 20,
                   WebkitFontSmoothing: "antialiased",
@@ -218,7 +220,7 @@ export default function FloatingEnvelope() {
                         <div className="text-[#a67c00] mb-2"><Sparkles size={16} strokeWidth={1} /></div>
                         {/* Elegant Serif Fonts for the Envelope */}
                         <h4 className="font-serif text-[#4a3623] text-xs tracking-[0.25em] uppercase mb-1 font-semibold">Planning Your</h4>
-                        <h3 className="font-serif text-[#b58c2a] text-xl md:text-2xl tracking-[0.05em] uppercase mb-3 drop-shadow-sm font-medium">Dream Wedding?</h3>
+                        <h3 className="font-serif text-[#b58c2a] text-lg md:text-xl tracking-[0.05em] uppercase mb-3 drop-shadow-sm font-medium">Dream Wedding?</h3>
                         
                         <div className="flex items-center justify-center gap-3 mb-4 w-full px-8">
                           <div className="h-[1px] bg-gradient-to-r from-transparent via-[#c2a153]/50 to-transparent flex-1"></div>
@@ -261,7 +263,7 @@ export default function FloatingEnvelope() {
                       >
                         <header className="mb-6 text-center">
                           <div className="text-[#d4af37] flex justify-center mb-2"><Sparkles size={14} strokeWidth={1} /></div>
-                          <h2 className="font-serif font-bold text-lg text-[#4a3623] tracking-[0.2em] uppercase">The Royal Petition</h2>
+                          <h2 className="font-serif font-bold text-base md:text-lg text-[#4a3623] tracking-[0.2em] uppercase">The Royal Petition</h2>
                           <div className="flex items-center justify-center gap-4 mt-2">
                             <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/60"></div>
                             <div className="w-1.5 h-1.5 rotate-45 bg-[#c2a153]"></div>
@@ -304,8 +306,8 @@ export default function FloatingEnvelope() {
                             >
                               <div className="absolute inset-0 bg-gradient-to-r from-[#E5C76B] via-[#f9f1de] to-[#E5C76B] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                               <div className="relative z-10 flex items-center justify-center">
-                                <span className="font-sans text-[11px] text-[#4A0A12] font-bold tracking-[0.25em] uppercase flex items-center gap-2 whitespace-nowrap drop-shadow-sm">
-                                  Seal & Submit <span className="font-sans text-[9px] font-black opacity-80">&gt;</span>
+                                <span className="font-sans text-[10px] md:text-[11px] text-[#4A0A12] font-bold tracking-[0.25em] uppercase flex items-center gap-2 whitespace-nowrap drop-shadow-sm">
+                                  Seal & Submit <span className="font-sans text-[8px] md:text-[9px] font-black opacity-80">&gt;</span>
                                 </span>
                               </div>
                             </button>

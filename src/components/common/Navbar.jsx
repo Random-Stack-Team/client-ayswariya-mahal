@@ -98,10 +98,10 @@ function Navbar() {
 
           <button
             onClick={openForm}
-            className={`hidden min-w-[150px] border px-7 py-3 font-serif text-[11px] font-bold uppercase tracking-[0.24em] transition duration-700 lg:block ${
+            className={`hidden min-w-[150px] border px-7 py-2.5 rounded-full font-serif text-[11px] font-bold uppercase tracking-[0.24em] transition duration-700 lg:block ${
               solidNav
-                ? "border-[#b58c2a]/55 bg-[#7f1115] text-[#f3d76c] shadow-[0_10px_24px_rgba(128,28,44,0.16)] hover:bg-[#9a1c22] hover:text-white"
-                : "border-[#e5c76b]/80 bg-[#7f1115]/72 text-[#f3d76c] shadow-[0_12px_32px_rgba(0,0,0,0.2)] hover:bg-[#9a1c22] hover:text-white"
+                ? "border-[#8C2230] text-[#8C2230] hover:bg-[#8C2230] hover:text-[#f3d76c]"
+                : "border-[#e5c76b]/80 bg-[#8C2230]/40 text-[#f3d76c] backdrop-blur-md hover:bg-[#8C2230] hover:border-[#8C2230] hover:text-white"
             }`}
           >
             Enquire

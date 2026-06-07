@@ -17,9 +17,9 @@
   --color-outline: #887271;
   --color-outline-variant: #dcc0bf;
   --color-surface-tint: #9e3f42;
-  --color-primary: #450e18;
+  --color-primary: #7A1B29;
   --color-on-primary: #ffffff;
-  --color-primary-container: #75202c;
+  --color-primary-container: #8C2230;
   --color-on-primary-container: #ffd9dd;
   --color-inverse-primary: #ffb3b2;
   --color-secondary: #725c05;
@@ -51,13 +51,14 @@
   --color-surface-variant: #e5e2dd;
   
   /* Brand Specific Accents */
-  --color-deep-maroon: #801c2c;
+  --color-deep-maroon: #8C2230;
   --color-gold-leaf: #E5C76B;
   --color-surface-warm: #FAF7F2;
   --color-on-surface-muted: #564241;
   
   --font-display: 'Playfair Display', serif;
-  --font-body: 'Be Vietnam Pro', sans-serif;
+  --font-body: 'Lora', serif;
+  --font-serif: 'Lora', serif;
 }
 
 html {

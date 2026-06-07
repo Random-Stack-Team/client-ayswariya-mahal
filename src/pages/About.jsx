@@ -4,6 +4,7 @@ import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/hero.webp";
 import { Sparkles } from "lucide-react";
 import SEO from "../components/common/SEO";
+import PageTransition from "../components/common/PageTransition";
 
 export default function About() {
   const containerRef = useRef(null);
@@ -52,7 +53,8 @@ export default function About() {
         description="Discover the story behind Ayswariya Mahal. Over two decades of architectural excellence and unforgettable celebrations." 
         path="/about"
       />
-      <main className="bg-[#fdfbf7] min-h-screen overflow-hidden" ref={containerRef}>
+      <PageTransition>
+        <main className="bg-[#fdfbf7] min-h-screen overflow-hidden" ref={containerRef}>
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[60vh] md:min-h-[70vh]">
@@ -102,7 +104,7 @@ export default function About() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
             className="relative"
           >
@@ -112,6 +114,7 @@ export default function About() {
                 style={{ y: parallaxY }}
                 src={aboutImg}
                 alt="Ayswariya Mahal Story"
+                loading="lazy"
                 className="w-full h-[600px] object-cover scale-110"
               />
             </div>
@@ -122,7 +125,7 @@ export default function About() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
             className="relative z-10"
           >
             <motion.p variants={fadeInUp} className="font-serif text-[#b58c2a] uppercase tracking-[0.3em] font-bold text-sm mb-4">
@@ -154,7 +157,7 @@ export default function About() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
           className="max-w-[1280px] mx-auto relative z-10"
         >
           <motion.p variants={fadeInUp} className="font-serif text-[#8b1518] uppercase tracking-[0.3em] font-bold text-sm mb-4 text-center">
@@ -189,7 +192,7 @@ export default function About() {
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true, amount: 0.1 }}
             className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center"
           >
             <motion.div variants={fadeInUp}>
@@ -221,7 +224,7 @@ export default function About() {
           variants={staggerContainer}
           initial="hidden"
           whileInView="show"
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, amount: 0.1 }}
           className="max-w-4xl mx-auto text-center px-6 relative z-10"
         >
           <motion.div variants={fadeInUp} className="flex justify-center mb-6 text-[#E5C76B]">
@@ -243,6 +246,7 @@ export default function About() {
       </section>
 
       </main>
+      </PageTransition>
     </>
   );
 }

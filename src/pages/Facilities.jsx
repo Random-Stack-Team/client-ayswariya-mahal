@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import PageTransition from "../components/common/PageTransition";
 
 import {
   Building2,
@@ -150,7 +151,7 @@ const AdvancedText = ({ text }) => {
       variants={textContainer}
       initial="hidden"
       whileInView="show"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, amount: 0.1 }}
       className="inline-block"
       style={{ perspective: "1000px" }}
     >
@@ -180,7 +181,8 @@ export default function Facilities() {
         path="/facilities"
       />
 
-      <main className="relative min-h-screen bg-[#fcf9f4] overflow-x-hidden">
+      <PageTransition>
+        <main className="relative min-h-screen bg-[#fcf9f4] overflow-x-hidden">
 
         {/* =========================
             HERO
@@ -285,6 +287,7 @@ export default function Facilities() {
                         <img
                           src={item.image}
                           alt={item.title}
+                          loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                         />
 
@@ -340,7 +343,9 @@ export default function Facilities() {
             >
               <img
                 src={facilitiesImg}
-                className="rounded-xl shadow-2xl"
+                loading="lazy"
+                alt="Facilities Corridor"
+                className="rounded-xl shadow-2xl w-full h-full object-cover"
               />
             </motion.div>
 
@@ -395,7 +400,8 @@ export default function Facilities() {
 
         </section>
 
-      </main>
+        </main>
+      </PageTransition>
     </>
   );
 }

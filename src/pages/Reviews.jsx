@@ -3,6 +3,7 @@ import { Star } from "lucide-react";
 import { useEnquiry } from "../context/useEnquiry";
 import heroImg from "../assets/images/facility1.webp";
 import SEO from "../components/common/SEO";
+import PageTransition from "../components/common/PageTransition";
 
 const reviews = [
   {
@@ -53,7 +54,8 @@ export default function Reviews() {
         description="Read reviews from thousands of happy families who celebrated their weddings and events at Ayswariya Mahal." 
         path="/reviews"
       />
-      <main className="bg-[#fdfbf7] min-h-screen">
+      <PageTransition>
+        <main className="bg-[#fdfbf7] min-h-screen">
 
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[50vh] md:min-h-[60vh] mb-12">
@@ -148,7 +150,7 @@ export default function Reviews() {
                 className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-[#E5C76B]/20"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{
                   duration: 0.95,
                   delay: index * 0.1,
@@ -204,7 +206,8 @@ export default function Reviews() {
         </div>
       </section>
 
-      </main>
+        </main>
+      </PageTransition>
     </>
   );
 }

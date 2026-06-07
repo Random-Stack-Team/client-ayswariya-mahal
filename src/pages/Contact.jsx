@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock, Sparkles } from "lucide-react";
 import { useEnquiry } from "../context/useEnquiry";
 import heroImg from "../assets/images/hero.webp";
 import SEO from "../components/common/SEO";
+import PageTransition from "../components/common/PageTransition";
 
 export default function Contact() {
   const { openForm } = useEnquiry();
@@ -14,7 +15,8 @@ export default function Contact() {
         description="Get in touch with the Heritage Concierge team at Ayswariya Mahal to plan your grand event. Send us a royal petition." 
         path="/contact"
       />
-      <main className="bg-[#fdfbf7] min-h-screen">
+      <PageTransition>
+        <main className="bg-[#fdfbf7] min-h-screen">
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[50vh] md:min-h-[60vh]">
         <div 
@@ -59,7 +61,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col space-y-12"
           >
@@ -125,7 +127,7 @@ export default function Contact() {
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col h-full space-y-8"
           >
@@ -162,7 +164,8 @@ export default function Contact() {
         </div>
       </section>
 
-      </main>
+        </main>
+      </PageTransition>
     </>
   );
 }

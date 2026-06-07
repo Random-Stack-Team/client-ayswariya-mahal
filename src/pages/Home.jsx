@@ -6,6 +6,8 @@ import GalleryPreview from "../components/home/GalleryPreview";
 import ContactCTA from "../components/home/ContactCTA";
 import SEO from "../components/common/SEO";
 
+import PageTransition from "../components/common/PageTransition";
+
 export default function Home() {
   return (
     <>
@@ -13,12 +15,14 @@ export default function Home() {
         title="Luxury Wedding Hall in Chennai" 
         description="Experience grandeur at Ayswariya Mahal. The perfect destination for royal weddings, grand receptions, and premium corporate events." 
       />
-      <Hero />
-      <AboutPreview />
-      <RoyalStatistics />
-      <FacilitiesPreview />
-      <GalleryPreview />
-      <ContactCTA />
+      <PageTransition>
+        <Hero />
+        <AboutPreview />
+        <RoyalStatistics />
+        <FacilitiesPreview />
+        <GalleryPreview />
+        <ContactCTA />
+      </PageTransition>
     </>
   );
 }

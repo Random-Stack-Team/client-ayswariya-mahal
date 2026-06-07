@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import PageTransition from "../components/common/PageTransition";
 import gsap from "gsap";
 
 /* =========================
@@ -130,7 +131,8 @@ export default function Facilities() {
   const meta = categoryMeta[category];
 
   return (
-    <main className="bg-[#fdfbf7] min-h-screen">
+    <PageTransition>
+      <main className="bg-[#fdfbf7] min-h-screen">
 
       {/* HERO (unchanged) */}
       <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[50vh] md:min-h-[60vh] mb-16">
@@ -217,13 +219,14 @@ export default function Facilities() {
               key={i}
               className="relative w-[320px] h-[440px] flex-shrink-0 rounded-2xl overflow-hidden"
             >
-              <img src={img} className="w-full h-full object-cover scale-110" />
+              <img src={img} loading="lazy" className="w-full h-full object-cover scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
             </div>
           ))}
         </div>
 
       </section>
-    </main>
+      </main>
+    </PageTransition>
   );
 }
