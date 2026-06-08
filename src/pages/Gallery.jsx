@@ -113,7 +113,7 @@ export default function Gallery() {
 
           <div
             ref={railRef}
-            className="custom-scrollbar flex min-h-screen snap-x snap-mandatory gap-8 overflow-x-auto scroll-smooth px-[10vw] py-40 md:gap-12 md:px-[18vw]"
+            className="custom-scrollbar flex min-h-screen snap-x snap-mandatory gap-8 overflow-x-auto overflow-y-hidden scroll-smooth px-[10vw] py-40 md:gap-12 md:px-[18vw]"
           >
             {images.map((img, index) => (
               <motion.div

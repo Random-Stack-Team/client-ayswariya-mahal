@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Sparkles } from "lucide-react";
+import { Heart, Sparkles, X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useEnquiry } from "../../context/useEnquiry";
 import coupleIllustration from '../../assets/images/couple-illustration.png';
@@ -124,9 +124,6 @@ export default function FloatingEnvelope() {
 
   const springConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
   const paperSpringConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
-
-  const plaqueClipPath = "polygon(8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px), calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px)";
-  const plaqueInnerClipPath = "polygon(6px 0, calc(100% - 6px) 0, 100% 6px, 100% calc(100% - 6px), calc(100% - 6px) 100%, 6px 100%, 0 calc(100% - 6px), 0 6px)";
 
   return (
     <AnimatePresence>

@@ -1,5 +1,5 @@
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { HelmetProvider } from "react-helmet-async";
 import MainLayout from "./layouts/MainLayout";
@@ -49,16 +49,21 @@ function AnimatedRoutes() {
 function App() {
   const [showOpening, setShowOpening] = useState(shouldShowOpeningAnimation);
 
-  useEffect(() => {
-    if (!showOpening) return undefined;
+  useLayoutEffect(() => {
+    if (!showOpening) {
+      document.documentElement.classList.remove("intro-scroll-lock");
+      return undefined;
+    }
 
     const previousBodyOverflow = document.body.style.overflow;
     const previousHtmlOverflow = document.documentElement.style.overflow;
 
+    document.documentElement.classList.add("intro-scroll-lock");
     document.body.style.overflow = "hidden";
     document.documentElement.style.overflow = "hidden";
 
     return () => {
+      document.documentElement.classList.remove("intro-scroll-lock");
       document.body.style.overflow = previousBodyOverflow;
       document.documentElement.style.overflow = previousHtmlOverflow;
     };
