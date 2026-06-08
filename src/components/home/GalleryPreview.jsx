@@ -47,18 +47,16 @@ export default function GalleryPreview() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.22 }}
               transition={{ delay: index * 0.1, duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-              className={`relative overflow-hidden rounded-2xl group luxury-image-overlay shadow-[0_26px_70px_rgba(0,0,0,0.2)] ${index === 1 || index === 3 ? 'md:mt-12' : ''}`}
+              className={`luxury-image-overlay relative aspect-[3/4] overflow-hidden rounded-2xl group shadow-[0_26px_70px_rgba(0,0,0,0.2)] ${index === 1 || index === 3 ? 'md:mt-12' : ''}`}
             >
-              <div className="aspect-[3/4]">
-                <img
-                  src={src}
-                  alt={`Gallery Preview ${index + 1}`}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
+              <img
+                src={src}
+                alt={`Gallery Preview ${index + 1}`}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 block h-full w-full object-cover object-center transition-transform duration-[1600ms] group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             </motion.div>
           ))}
         </div>

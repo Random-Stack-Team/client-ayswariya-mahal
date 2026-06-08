@@ -128,7 +128,7 @@ export default function Gallery() {
                   src={img}
                   alt={`${meta.title} ${index + 1}`}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-[1400ms] hover:scale-105"
+                  className="block h-full w-full object-cover object-center transition-transform duration-[1400ms] hover:scale-105"
                   onError={(event) => {
                     event.currentTarget.style.opacity = "0";
                   }}
