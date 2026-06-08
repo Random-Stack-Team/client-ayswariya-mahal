@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { EnquiryContext } from "./EnquiryContextValue";
 
 export function EnquiryProvider({ children }) {
@@ -13,3 +13,4 @@ export function EnquiryProvider({ children }) {
     </EnquiryContext.Provider>
   );
 }
+export const useEnquiry = () => useContext(EnquiryContext);
