@@ -3,13 +3,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, UtensilsCrossed, Crown, Car } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
-gsap.registerPlugin(ScrollTrigger);
-
 import hallImage from "../../assets/images/Facility/facility2.png";
-import diningImage from "../../assets/images/Facility/facility3.png"
+import diningImage from "../../assets/images/Facility/facility3.png";
 import suitesImage from "../../assets/images/Facility/facility4.png";
 import valetImage from "../../assets/images/Facility/facility5.png";
+
+gsap.registerPlugin(ScrollTrigger);
 const IMAGES = {
   hall: hallImage,
   dining: diningImage,
@@ -37,7 +36,8 @@ export default function FacilitiesPreview() {
           scrollTrigger: {
             trigger: el,
             start: "top 72%",
-          }
+            once: true,
+          },
         }
       );
     }, el);
@@ -47,7 +47,6 @@ export default function FacilitiesPreview() {
 
   return (
     <section ref={sectionRef} className="py-24 md:py-32 bg-[#fdfbf7] relative overflow-hidden">
-      {/* Decorative Gold Pattern Background */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
@@ -73,15 +72,12 @@ export default function FacilitiesPreview() {
           </button>
         </div>
 
-        {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:h-[600px]">
           
-          {/* Main Feature: Grand Hall (Left 60%) */}
           <div className="bento-item md:col-span-12 lg:col-span-7 relative group overflow-hidden bg-primary h-[400px] lg:h-full cursor-pointer luxury-image-overlay" onClick={() => navigate("/facilities")}>
             <img src={IMAGES.hall} alt="Grand Marriage Hall" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-110 opacity-90" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
             
-            {/* Elegant Double Border */}
             <div className="absolute inset-4 border border-gold-leaf/20 group-hover:border-gold-leaf/60 transition-colors duration-700 pointer-events-none mix-blend-overlay"></div>
             
             <div className="absolute bottom-0 left-0 p-8 md:p-12 w-full">
@@ -93,10 +89,8 @@ export default function FacilitiesPreview() {
             </div>
           </div>
 
-          {/* Right Side Column (40%) */}
           <div className="md:col-span-12 lg:col-span-5 grid grid-rows-2 gap-4 md:gap-6 h-full">
             
-            {/* Royal Dining (Top half) */}
             <div className="bento-item relative group overflow-hidden bg-primary h-[300px] lg:h-auto cursor-pointer luxury-image-overlay" onClick={() => navigate("/facilities")}>
               <img src={IMAGES.dining} alt="Royal Dining Hall" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 opacity-[0.86]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/20"></div>
@@ -111,10 +105,8 @@ export default function FacilitiesPreview() {
               </div>
             </div>
 
-            {/* Bottom Row: Suites & Valet */}
             <div className="grid grid-cols-2 gap-4 md:gap-6 h-[250px] lg:h-auto">
               
-              {/* Luxury Suites */}
               <div className="bento-item relative group overflow-hidden bg-primary cursor-pointer luxury-image-overlay" onClick={() => navigate("/facilities")}>
                 <img src={IMAGES.suites} alt="Luxury Suites" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 opacity-70 grayscale-[20%] group-hover:grayscale-0" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
@@ -125,11 +117,9 @@ export default function FacilitiesPreview() {
                 </div>
               </div>
 
-              {/* Valet Parking */}
               <div className="bento-item relative group overflow-hidden bg-deep-maroon cursor-pointer luxury-image-overlay" onClick={() => navigate("/facilities")}>
                 <img src={IMAGES.valet} alt="Valet Parking" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 opacity-55 mix-blend-luminosity" />
                 
-                {/* Gold corner accents */}
                 <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-gold-leaf/50"></div>
                 <div className="absolute bottom-4 right-4 w-4 h-4 border-b border-r border-gold-leaf/50"></div>
 
@@ -144,7 +134,6 @@ export default function FacilitiesPreview() {
           </div>
         </div>
         
-        {/* Mobile View All Button */}
         <div className="mt-12 text-center md:hidden bento-item">
           <button 
             onClick={() => navigate("/facilities")}

@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Heart, Sparkles } from "lucide-react";
+import { X, Sparkles } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useEnquiry } from "../../context/useEnquiry";
+import coupleIllustration from '../../assets/images/couple-illustration.png';
 
 const QUOTES = [
   "Every love story deserves\na beautiful beginning.",
@@ -166,8 +167,7 @@ export default function FloatingEnvelope() {
               style={{ perspective: 1200 }}
             >
               {/* Layer 1: Back of Envelope (Inside) */}
-              <div className="absolute inset-0 bg-[#e0d0b0] border-[1px] border-[#c2a153] rounded-sm z-10 shadow-[inset_0_15px_30px_rgba(0,0,0,0.15)] overflow-hidden">
-                <div className="absolute inset-0 opacity-[0.25] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay pointer-events-none"></div>
+              <div className="absolute inset-0 bg-[#e0d0b0] border-[2px] border-[#4a3623] rounded-sm z-10 overflow-hidden shadow-[inset_0_4px_0_rgba(0,0,0,0.1)]">
               </div>
 
               {/* Layer 5: Top Flap */}
@@ -176,13 +176,12 @@ export default function FloatingEnvelope() {
                 animate={{ rotateX: isFlapOpen ? 180 : 0, zIndex: isFlapOpen ? 15 : 70 }}
                 transition={springConfig}
                 style={{ transformOrigin: "top" }}
-                className="absolute top-0 inset-x-0 h-[55%] pointer-events-none drop-shadow-[0_-5px_15px_rgba(0,0,0,0.2)] flex justify-center"
+                className="absolute top-0 inset-x-0 h-[55%] pointer-events-none drop-shadow-[0_4px_0_rgba(74,54,35,0.2)] flex justify-center"
               >
-                <div className="absolute w-full h-full bg-gradient-to-b from-[#f8b500] to-[#d4af37]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
-                  <div className="absolute top-0 left-[3px] right-[3px] w-[calc(100%-6px)] h-[calc(100%-3px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
-                    <div className="absolute inset-0 opacity-[0.35] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
+                <div className="absolute w-full h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
+                  <div className="absolute top-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
                     <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[#d4af37] rotate-180 flex flex-col items-center">
-                      <Sparkles size={36} strokeWidth={1} />
+                      <Sparkles size={36} strokeWidth={2} />
                     </div>
                   </div>
                 </div>
@@ -194,10 +193,10 @@ export default function FloatingEnvelope() {
                 initial={false}
                 animate={{
                   y: isPaperExpanded ? -40 : isPeeking ? -50 : 0,
-                  boxShadow: isPaperExpanded ? "0 40px 80px -15px rgba(0,0,0,0.7)" : "0 -10px 20px rgba(0,0,0,0.15)",
+                  boxShadow: isPaperExpanded ? "8px 8px 0px rgba(74,54,35,0.2)" : "0 0 0 transparent",
                 }}
                 transition={paperSpringConfig}
-                className="absolute bottom-3 bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border border-[#d4af37]/30 antialiased"
+                className="absolute bottom-3 bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border-[2px] border-[#4a3623] antialiased pointer-events-auto shrink-0"
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
                 style={{ 
                   width: isPaperExpanded ? 460 : "85%",
@@ -212,14 +211,8 @@ export default function FloatingEnvelope() {
                   transformOrigin: "bottom center"
                 }}
               >
-                {/* Ornate Inner Border */}
-                <div className="absolute inset-[8px] border-[1px] border-[#d4af37]/50 pointer-events-none">
-                  {/* Corner Accents */}
-                  <div className="absolute -top-[1px] -left-[1px] w-3 h-3 border-t-2 border-l-2 border-[#d4af37]"></div>
-                  <div className="absolute -top-[1px] -right-[1px] w-3 h-3 border-t-2 border-r-2 border-[#d4af37]"></div>
-                  <div className="absolute -bottom-[1px] -left-[1px] w-3 h-3 border-b-2 border-l-2 border-[#d4af37]"></div>
-                  <div className="absolute -bottom-[1px] -right-[1px] w-3 h-3 border-b-2 border-r-2 border-[#d4af37]"></div>
-                </div>
+                {/* Flat Inner Border */}
+                <div className="absolute inset-[6px] border-[2px] border-[#d4af37] pointer-events-none rounded-sm"></div>
 
                 {isExpanded && submitStatus === "idle" && (
                   <button onClick={(e) => { e.stopPropagation(); handleClose(); }} className="absolute top-5 right-5 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/70 backdrop-blur-md rounded-2xl p-1.5 shadow-sm">
@@ -244,9 +237,9 @@ export default function FloatingEnvelope() {
                         <h3 className="font-serif text-[#b58c2a] text-lg md:text-xl tracking-[0.05em] uppercase mb-3 drop-shadow-sm font-medium">Dream Wedding?</h3>
                         
                         <div className="flex items-center justify-center gap-3 mb-4 w-full px-8">
-                          <div className="h-[1px] bg-gradient-to-r from-transparent via-[#c2a153]/50 to-transparent flex-1"></div>
-                          <div className="w-1.5 h-1.5 rotate-45 bg-[#c2a153]"></div>
-                          <div className="h-[1px] bg-gradient-to-l from-transparent via-[#c2a153]/50 to-transparent flex-1"></div>
+                          <div className="h-[2px] bg-[#4a3623] flex-1"></div>
+                          <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
+                          <div className="h-[2px] bg-[#4a3623] flex-1"></div>
                         </div>
 
                         <p className="font-serif text-[#4a3623] text-sm md:text-base italic leading-relaxed px-4 whitespace-pre-line font-medium">
@@ -258,8 +251,8 @@ export default function FloatingEnvelope() {
                         key="loading"
                         className="w-full h-full flex flex-col items-center justify-center z-30 space-y-5"
                       >
-                        <div className="w-12 h-12 border-[1.5px] border-[#d4af37]/20 border-t-[#D4AF37] rounded-full animate-spin"></div>
-                        <p className="font-serif text-[10px] tracking-[0.3em] text-[#d4af37] uppercase font-semibold">Sealing Petition...</p>
+                        <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
+                        <p className="font-serif text-[10px] tracking-[0.3em] text-[#4a3623] uppercase font-bold">Sealing Petition...</p>
                       </motion.div>
                     ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
                       <motion.div
@@ -268,11 +261,11 @@ export default function FloatingEnvelope() {
                         transition={{ duration: 0.3 }}
                         className="w-full h-full flex flex-col items-center justify-center text-center p-8 z-30"
                       >
-                        <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#E5C76B] to-[#b38b22] flex items-center justify-center shadow-[0_10px_25px_rgba(212,175,55,0.4)] mb-8 border-[3px] border-white/60">
-                          <Heart size={20} className="text-white fill-white" />
+                        <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-8 border-[2px] border-[#4a3623]">
+                          <Heart size={20} className="text-[#4a3623] fill-[#4a3623]" />
                         </div>
                         <h2 className="font-serif text-lg text-[#4a3623] tracking-[0.25em] uppercase mb-4 font-bold">Petition Received</h2>
-                        <div className="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent mb-6"></div>
+                        <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
                         <p className="font-serif text-[#4a3623] text-sm max-w-xs leading-loose italic">
                           Your royal request has been elegantly sealed. Our Heritage Concierge will contact you shortly.
                         </p>
@@ -283,52 +276,51 @@ export default function FloatingEnvelope() {
                         className="w-full h-full px-6 py-6 z-30 flex flex-col justify-center"
                       >
                         <header className="mb-6 text-center">
-                          <div className="text-[#d4af37] flex justify-center mb-2"><Sparkles size={14} strokeWidth={1} /></div>
+                          <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={18} strokeWidth={2} /></div>
                           <h2 className="font-serif font-bold text-base md:text-lg text-[#4a3623] tracking-[0.2em] uppercase">The Royal Petition</h2>
-                          <div className="flex items-center justify-center gap-4 mt-2">
-                            <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-[#d4af37]/60"></div>
-                            <div className="w-1.5 h-1.5 rotate-45 bg-[#c2a153]"></div>
-                            <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-[#d4af37]/60"></div>
+                          <div className="flex items-center justify-center gap-4 mt-3">
+                            <div className="w-12 h-[2px] bg-[#4a3623]"></div>
+                            <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
+                            <div className="w-12 h-[2px] bg-[#4a3623]"></div>
                           </div>
                         </header>
 
                         <form className="space-y-6" onSubmit={handleSubmit}>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-6">
                             <div className="relative group">
-                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#8a6a1c] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
-                              <input type="text" required className="w-full bg-transparent border-0 border-b-[1.5px] border-[#d4af37]/30 py-2 px-1 focus:ring-0 focus:border-[#b58c2a] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#d0c5a8]" placeholder="e.g. Anand & Priya" />
+                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
+                              <input type="text" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="e.g. Anand & Priya" />
                             </div>
 
                             <div className="relative group">
-                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#8a6a1c] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
-                              <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="w-full bg-transparent border-0 border-b-[1.5px] border-[#d4af37]/30 py-2 px-1 focus:ring-0 focus:border-[#b58c2a] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#d0c5a8]" placeholder="+91" />
+                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
+                              <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="+91" />
                             </div>
 
                             <div className="relative group">
-                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#8a6a1c] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
-                              <input type="email" required className="w-full bg-transparent border-0 border-b-[1.5px] border-[#d4af37]/30 py-2 px-1 focus:ring-0 focus:border-[#b58c2a] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#d0c5a8]" placeholder="your@email.com" />
+                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
+                              <input type="email" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="your@email.com" />
                             </div>
 
                             <div className="relative group">
-                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#8a6a1c] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
-                              <input type="date" required className="w-full bg-transparent border-0 border-b-[1.5px] border-[#d4af37]/30 py-2 px-1 focus:ring-0 focus:border-[#b58c2a] transition-all font-sans text-sm md:text-base text-[#4a3623] cursor-pointer" />
+                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
+                              <input type="date" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] cursor-pointer" />
                             </div>
                           </div>
 
-                          <div className="relative group">
-                            <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#8a6a1c] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
-                            <textarea rows="2" required className="w-full bg-transparent border-0 border-b-[1.5px] border-[#d4af37]/30 py-2 px-1 focus:ring-0 focus:border-[#b58c2a] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#d0c5a8] resize-none" placeholder="Tell us about your requirements..."></textarea>
+                          <div className="relative group pt-1">
+                            <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
+                            <textarea rows="2" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#a89d8c] resize-none" placeholder="Tell us about your requirements..."></textarea>
                           </div>
 
-                          <div className="pt-6 pb-4 flex justify-center">
+                          <div className="pt-6 pb-2 flex justify-center">
                             <button 
                               type="submit" 
-                              className="relative px-12 py-3.5 overflow-hidden group border border-[#a67c00] rounded-full shadow-[0_5px_15px_rgba(212,175,55,0.3)] hover:shadow-[0_8px_25px_rgba(212,175,55,0.5)] transition-all duration-500 transform hover:-translate-y-1 w-full max-w-[280px] bg-gradient-to-r from-[#d4af37] via-[#E5C76B] to-[#d4af37]"
+                              className="relative px-12 py-3.5 group bg-[#d4af37] border-[2px] border-[#4a3623] rounded-sm shadow-[4px_4px_0_#4a3623] hover:shadow-[2px_2px_0_#4a3623] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300 w-full max-w-[280px]"
                             >
-                              <div className="absolute inset-0 bg-gradient-to-r from-[#E5C76B] via-[#f9f1de] to-[#E5C76B] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                               <div className="relative z-10 flex items-center justify-center">
-                                <span className="font-sans text-[10px] md:text-[11px] text-[#4A0A12] font-bold tracking-[0.25em] uppercase flex items-center gap-2 whitespace-nowrap drop-shadow-sm">
-                                  Seal & Submit <span className="font-sans text-[8px] md:text-[9px] font-black opacity-80">&gt;</span>
+                                <span className="font-sans text-[10px] md:text-[11px] text-[#4a3623] font-bold tracking-[0.25em] uppercase flex items-center gap-2 whitespace-nowrap">
+                                  Seal & Submit <span className="font-sans text-[8px] md:text-[9px] font-black">&gt;</span>
                                 </span>
                               </div>
                             </button>
@@ -341,25 +333,22 @@ export default function FloatingEnvelope() {
               </motion.div>
 
               {/* Layer 3: Left & Right Flaps */}
-              <div className="absolute inset-0 z-30 pointer-events-none rounded-sm overflow-hidden drop-shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
-                <div className="absolute left-0 top-0 w-[55%] h-full bg-gradient-to-br from-[#f8b500] to-[#d4af37]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
+              <div className="absolute inset-0 z-30 pointer-events-none rounded-sm overflow-hidden drop-shadow-[0_4px_0_rgba(74,54,35,0.15)]">
+                <div className="absolute left-0 top-0 w-[55%] h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
                   <div className="absolute left-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
-                    <div className="absolute inset-0 opacity-[0.4] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
                   </div>
                 </div>
-                <div className="absolute right-0 top-0 w-[55%] h-full bg-gradient-to-bl from-[#f8b500] to-[#d4af37]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
+                <div className="absolute right-0 top-0 w-[55%] h-full bg-[#4a3623]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
                   <div className="absolute right-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
-                    <div className="absolute inset-0 opacity-[0.4] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
                   </div>
                 </div>
               </div>
 
               {/* Layer 4: Bottom Flap & Button */}
-              <div className="absolute bottom-0 inset-x-0 h-[65%] z-40 pointer-events-none drop-shadow-[0_-5px_20px_rgba(0,0,0,0.3)] flex justify-center">
+              <div className="absolute bottom-0 inset-x-0 h-[65%] z-40 pointer-events-none drop-shadow-[0_-4px_0_rgba(74,54,35,0.15)] flex justify-center">
                 
-                <div className="absolute bottom-0 w-full h-full bg-gradient-to-t from-[#d4af37] to-[#fceabb]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
-                  <div className="absolute bottom-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-3px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
-                    <div className="absolute inset-0 opacity-[0.5] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
+                <div className="absolute bottom-0 w-full h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
+                  <div className="absolute bottom-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
                   </div>
                 </div>
 
@@ -374,13 +363,10 @@ export default function FloatingEnvelope() {
                     >
                       <button 
                         onClick={handleEnquireClick}
-                        className="relative px-12 py-3 overflow-hidden group shadow-[0_5px_20px_rgba(212,175,55,0.4)] transition-all duration-500 transform hover:-translate-y-1"
-                        style={{ clipPath: plaqueClipPath }}
+                        className="relative px-12 py-3 group shadow-[4px_4px_0_#4a3623] hover:shadow-[2px_2px_0_#4a3623] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300 pointer-events-auto bg-[#d4af37] border-[2px] border-[#4a3623] rounded-sm"
                       >
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#fceabb] to-[#d4af37] opacity-90 group-hover:opacity-100 transition-opacity"></div>
-                        <div className="absolute inset-[2px] border-[0.5px] border-[#a67c00]/60 pointer-events-none" style={{ clipPath: plaqueInnerClipPath }}></div>
                         <div className="relative z-10 flex flex-col items-center justify-center">
-                          <span className="font-serif text-xs text-[#4a3623] font-bold tracking-[0.2em] uppercase drop-shadow-sm flex items-center gap-2">
+                          <span className="font-serif text-xs text-[#4a3623] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
                             Enquire Now <span className="font-sans text-[10px] font-black">&gt;</span>
                           </span>
                         </div>
@@ -398,13 +384,10 @@ export default function FloatingEnvelope() {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-gradient-to-br from-[#fceabb] via-[#d4af37] to-[#8c6b16] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[0_5px_15px_rgba(0,0,0,0.3)] border-[2px] border-[#fdfbf7]"
+                    className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#d4af37] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[3px_3px_0_rgba(74,54,35,0.3)] border-[2px] border-[#4a3623]"
                   >
-                    <div className="w-[36px] h-[36px] rounded-full border-[1px] border-[#8c6b16]/40 flex flex-col items-center justify-center shadow-inner bg-gradient-to-tl from-[#fdfbf7]/40 to-transparent">
-                      <Heart size={10} className="text-[#4a3623] fill-[#4a3623] mb-0.5 opacity-80" />
-                      <div className="flex gap-0.5 opacity-80">
-                        <span className="text-[#4a3623] text-[8px] font-serif font-bold">AM</span>
-                      </div>
+                    <div className="w-[36px] h-[36px] rounded-full border-[2px] border-[#4a3623] flex flex-col items-center justify-center bg-[#fdfbf7] overflow-hidden p-0.5">
+                      <img src={coupleIllustration} alt="Seal" className="w-full h-full object-contain" />
                     </div>
                   </motion.div>
                 )}

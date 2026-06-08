@@ -26,7 +26,8 @@ export default function AboutPreview() {
           scrollTrigger: {
             trigger: el,
             start: "top 72%",
-          }
+            once: true,
+          },
         }
       );
     }, el);
@@ -36,14 +37,12 @@ export default function AboutPreview() {
 
   return (
     <section ref={sectionRef} className="relative bg-[#5A111C] py-32 overflow-hidden border-b border-[#E5C76B]/20">
-      {/* Decorative Gold Pattern Background */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
       <div className="max-w-[1280px] mx-auto px-8 md:px-16 grid lg:grid-cols-12 gap-16 items-center">
         
-        {/* Text Content */}
         <div className="lg:col-span-5 space-y-8 z-10">
           <div className="order-2 lg:order-1 text-center lg:text-left stagger-reveal">
             <h2 className="text-5xl lg:text-7xl font-display text-[#fdfbf7] mb-8 leading-tight drop-shadow-sm">
@@ -65,10 +64,8 @@ export default function AboutPreview() {
           </div>
         </div>
 
-        {/* Image Content */}
         <div className="lg:col-span-7 relative stagger-reveal">
           <div className="aspect-[4/5] lg:aspect-square overflow-hidden border-double border-8 border-gold-leaf/30 p-4 bg-white/50 backdrop-blur-sm shadow-2xl relative luxury-image-overlay">
-            {/* Decorative Corner Borders */}
             <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold-leaf m-2"></div>
             <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold-leaf m-2"></div>
             <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold-leaf m-2"></div>

@@ -1,7 +1,7 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useEnquiry } from "../../context/useEnquiry";
 import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
 
@@ -18,28 +18,19 @@ function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
   const { openForm } = useEnquiry();
-  const [scrollY, setScrollY] = useState(0);
+  const { scrollY } = useScroll();
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isHome = location.pathname === "/";
-  const isScrolled = scrollY > 42;
-  const navVisible = isMobileMenuOpen || scrollY < 50 || isScrollingUp;
+  const navVisible = isMobileMenuOpen || !isScrolled || isScrollingUp;
   const solidNav = isScrolled || isMobileMenuOpen || !isHome;
 
-  useEffect(() => {
-    let previousY = window.scrollY;
-
-    const handleScroll = () => {
-      const currentY = window.scrollY;
-      setScrollY(currentY);
-      setIsScrollingUp(currentY < 50 || currentY < previousY);
-      previousY = currentY;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() || 0;
+    setIsScrolled(latest > 42);
+    setIsScrollingUp(latest < 50 || latest < previous);
+  });
 
   const linkClass = ({ isActive }) =>
     [
@@ -82,6 +73,8 @@ function Navbar() {
             <img
               src={logoImg}
               alt="Ayswariya Mahal"
+              loading="eager"
+              fetchPriority="high"
               className={`h-10 object-contain transition duration-700 md:h-12 ${
                 solidNav ? "drop-shadow-sm" : "brightness-[1.18] drop-shadow-[0_6px_18px_rgba(0,0,0,0.32)]"
               }`}

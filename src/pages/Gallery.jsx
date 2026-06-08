@@ -50,6 +50,8 @@ export default function Gallery() {
           <img
             src={gallery3}
             alt="Ayswariya Mahal gallery"
+            loading="eager"
+            fetchPriority="high"
             className="absolute inset-0 h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/78 via-[#3F0C15]/62 to-[#5A111C]" />

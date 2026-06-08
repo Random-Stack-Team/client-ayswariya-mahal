@@ -1,19 +1,17 @@
 import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-import { lazy, Suspense, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { HelmetProvider } from "react-helmet-async";
 import MainLayout from "./layouts/MainLayout";
 import { EnquiryProvider } from "./context/EnquiryContext";
-import ScrollToTop from "./components/common/ScrollToTop";
 import OpeningAnimation from "./components/common/OpeningAnimation";
 
-// Lazy-loaded routes for Fast Loading Speed
-const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
-const Facilities = lazy(() => import("./pages/Facilities"));
-const Gallery = lazy(() => import("./pages/Gallery"));
-const Contact = lazy(() => import("./pages/Contact"));
-const Reviews = lazy(() => import("./pages/Reviews"));
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Facilities from "./pages/Facilities";
+import Gallery from "./pages/Gallery";
+import Contact from "./pages/Contact";
+import Reviews from "./pages/Reviews";
 
 const shouldShowOpeningAnimation = () => {
   const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
@@ -35,7 +33,7 @@ function AnimatedRoutes() {
   const location = useLocation();
   
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -51,6 +49,21 @@ function AnimatedRoutes() {
 function App() {
   const [showOpening, setShowOpening] = useState(shouldShowOpeningAnimation);
 
+  useEffect(() => {
+    if (!showOpening) return undefined;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, [showOpening]);
+
   const handleOpeningComplete = () => {
     setShowOpening(false);
   };
@@ -60,11 +73,8 @@ function App() {
       <EnquiryProvider>
         <Router>
           <div className={`app-reveal ${showOpening ? "app-reveal--intro" : "app-reveal--ready"}`}>
-            <ScrollToTop />
             <MainLayout>
-              <Suspense fallback={null}>
-                <AnimatedRoutes />
-              </Suspense>
+              <AnimatedRoutes />
             </MainLayout>
           </div>
 

@@ -70,6 +70,8 @@ export default function Hero() {
           ref={imageRef}
           src={heroImage}
           alt="Ayswariya Mahal wedding stage"
+          loading="eager"
+          fetchPriority="high"
           className="h-full w-full object-cover will-change-transform"
         />
       </div>
