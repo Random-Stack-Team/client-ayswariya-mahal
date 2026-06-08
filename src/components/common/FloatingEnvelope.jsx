@@ -198,9 +198,11 @@ export default function FloatingEnvelope() {
                 className="absolute top-0 inset-x-0 h-[55%] pointer-events-none drop-shadow-[0_4px_0_rgba(74,54,35,0.2)] flex justify-center"
               >
                 <div className="absolute w-full h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
-                  <div className="absolute top-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
-                    <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[#d4af37] rotate-180 flex flex-col items-center">
-                      <Sparkles size={36} strokeWidth={2} />
+                  <div className="absolute top-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#d4af37]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
+                    <div className="absolute top-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
+                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-[#d4af37] rotate-180 flex flex-col items-center">
+                        <Sparkles size={36} strokeWidth={2} />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -335,11 +337,11 @@ export default function FloatingEnvelope() {
                           <div className="pt-6 pb-2 flex justify-center">
                             <button 
                               type="submit" 
-                              className="relative px-12 py-3.5 group bg-[#d4af37] border-[2px] border-[#4a3623] rounded-sm shadow-[4px_4px_0_#4a3623] hover:shadow-[2px_2px_0_#4a3623] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300 w-full max-w-[280px]"
+                              className="relative px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
                             >
                               <div className="relative z-10 flex items-center justify-center">
-                                <span className="font-sans text-[10px] md:text-[11px] text-[#4a3623] font-bold tracking-[0.25em] uppercase flex items-center gap-2 whitespace-nowrap">
-                                  Seal & Submit <span className="font-sans text-[8px] md:text-[9px] font-black">&gt;</span>
+                                <span className="font-sans text-[10px] md:text-[11px] text-[#4a3623] font-bold tracking-[0.25em] uppercase flex items-center justify-center whitespace-nowrap">
+                                  Seal & Submit
                                 </span>
                               </div>
                             </button>
@@ -354,11 +356,15 @@ export default function FloatingEnvelope() {
               {/* Layer 3: Left & Right Flaps */}
               <div className="absolute inset-0 z-30 pointer-events-none rounded-sm overflow-hidden drop-shadow-[0_4px_0_rgba(74,54,35,0.15)]">
                 <div className="absolute left-0 top-0 w-[55%] h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
-                  <div className="absolute left-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
+                  <div className="absolute left-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#d4af37]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
+                    <div className="absolute left-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
+                    </div>
                   </div>
                 </div>
                 <div className="absolute right-0 top-0 w-[55%] h-full bg-[#4a3623]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
-                  <div className="absolute right-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
+                  <div className="absolute right-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#d4af37]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
+                    <div className="absolute right-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -367,7 +373,9 @@ export default function FloatingEnvelope() {
               <div className="absolute bottom-0 inset-x-0 h-[65%] z-40 pointer-events-none drop-shadow-[0_-4px_0_rgba(74,54,35,0.15)] flex justify-center">
                 
                 <div className="absolute bottom-0 w-full h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
-                  <div className="absolute bottom-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
+                  <div className="absolute bottom-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#d4af37]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
+                    <div className="absolute bottom-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
+                    </div>
                   </div>
                 </div>
 
@@ -378,15 +386,15 @@ export default function FloatingEnvelope() {
                     <motion.div
                       initial={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute bottom-8 z-50 pointer-events-auto"
+                      className="absolute bottom-4 md:bottom-5 z-50 pointer-events-auto"
                     >
                       <button 
                         onClick={handleEnquireClick}
-                        className="relative px-12 py-3 group shadow-[4px_4px_0_#4a3623] hover:shadow-[2px_2px_0_#4a3623] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-300 pointer-events-auto bg-[#d4af37] border-[2px] border-[#4a3623] rounded-sm"
+                        className="relative px-10 py-2.5 group pointer-events-auto bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300"
                       >
                         <div className="relative z-10 flex flex-col items-center justify-center">
-                          <span className="font-serif text-xs text-[#4a3623] font-bold tracking-[0.2em] uppercase flex items-center gap-2">
-                            Enquire Now <span className="font-sans text-[10px] font-black">&gt;</span>
+                          <span className="font-serif text-[11px] text-[#4a3623] font-bold tracking-[0.2em] uppercase flex items-center justify-center">
+                            Enquire Now
                           </span>
                         </div>
                       </button>
