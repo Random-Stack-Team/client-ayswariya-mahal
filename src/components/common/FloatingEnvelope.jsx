@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Sparkles, X } from "lucide-react";
 import { useLocation } from "react-router-dom";
@@ -9,7 +9,7 @@ const QUOTES = [
   "Every love story deserves\na beautiful beginning.",
   "Your perfect wedding starts\nwith the perfect venue.",
   "Where traditions become\ntimeless celebrations.",
-  "Begin your forever in\nroyal elegance."
+  "Begin your forever in\nroyal elegance.",
 ];
 
 export default function FloatingEnvelope() {
@@ -20,6 +20,25 @@ export default function FloatingEnvelope() {
   const [quote, setQuote] = useState("");
   const [isHovered, setIsHovered] = useState(false);
   const [submitStatus, setSubmitStatus] = useState("idle");
+  const timersRef = useRef([]);
+
+  const clearSubmitTimers = () => {
+    timersRef.current.forEach(window.clearTimeout);
+    timersRef.current = [];
+  };
+
+  const runLater = (callback, delay) => {
+    const timerId = window.setTimeout(callback, delay);
+    timersRef.current.push(timerId);
+    return timerId;
+  };
+
+  useEffect(() => {
+    return () => {
+      timersRef.current.forEach(window.clearTimeout);
+      timersRef.current = [];
+    };
+  }, []);
 
   // Scroll-Based Random Appearance Logic
   useEffect(() => {
@@ -60,33 +79,33 @@ export default function FloatingEnvelope() {
   }, [isEnvelopeVisible, isFormOpen, submitStatus, isHome]);
 
   useEffect(() => {
-    if (isFormOpen || submitStatus !== "idle") {
-      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-      if (scrollbarWidth > 0) {
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-      }
-    } else {
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-      document.body.style.paddingRight = "";
+    if (!isFormOpen && submitStatus === "idle") return undefined;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+    const previousBodyPaddingRight = document.body.style.paddingRight;
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     }
+
     return () => {
-      document.body.style.overflow = "";
-      document.documentElement.style.overflow = "";
-      document.body.style.paddingRight = "";
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.paddingRight = previousBodyPaddingRight;
     };
   }, [isFormOpen, submitStatus]);
 
   const handleClose = (e) => {
     if (e) e.stopPropagation();
+    clearSubmitTimers();
     setIsEnvelopeVisible(false);
-    closeForm();
     setIsHovered(false);
-    if (submitStatus !== "idle") {
-      setTimeout(() => setSubmitStatus("idle"), 500);
-    }
+    setSubmitStatus("idle");
+    closeForm();
   };
 
   const handleEnquireClick = (e) => {
@@ -96,27 +115,30 @@ export default function FloatingEnvelope() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    clearSubmitTimers();
     setSubmitStatus("submitting");
-    setTimeout(() => {
+    runLater(() => {
       setSubmitStatus("success");
-      setTimeout(() => {
+      runLater(() => {
         setSubmitStatus("sealing_paper");
-        setTimeout(() => {
+        runLater(() => {
           setSubmitStatus("sealing_flap");
-          setTimeout(() => {
+          runLater(() => {
             setSubmitStatus("departing");
-            setTimeout(() => {
-              handleClose();
-              setTimeout(() => setSubmitStatus("idle"), 500);
+            runLater(() => {
+              setIsEnvelopeVisible(false);
+              setIsHovered(false);
+              closeForm();
+              setSubmitStatus("idle");
             }, 1000);
           }, 1200);
-        }, 700); 
+        }, 700);
       }, 2500);
     }, 1000);
   };
 
-  const isExpanded = isFormOpen;
-  const isVisible = isEnvelopeVisible || isFormOpen || submitStatus !== "idle";
+  const isExpanded = isFormOpen || submitStatus !== "idle";
+  const isVisible = isEnvelopeVisible || isExpanded;
   const isPeeking = isHovered && !isExpanded;
 
   const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
