@@ -25,20 +25,24 @@ export default function FacilitiesPreview() {
     const el = sectionRef.current;
     if (!el) return;
 
-    gsap.fromTo(el.querySelectorAll(".bento-item"), 
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1, 
-        y: 0,
-        stagger: 0.2,
-        duration: 1.45,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 70%",
+    const ctx = gsap.context(() => {
+      gsap.fromTo(el.querySelectorAll(".bento-item"), 
+        { opacity: 0, y: 36 },
+        {
+          opacity: 1, 
+          y: 0,
+          stagger: 0.14,
+          duration: 1.05,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 72%",
+          }
         }
-      }
-    );
+      );
+    }, el);
+
+    return () => ctx.revert();
   }, []);
 
   return (
@@ -74,7 +78,7 @@ export default function FacilitiesPreview() {
           
           {/* Main Feature: Grand Hall (Left 60%) */}
           <div className="bento-item md:col-span-12 lg:col-span-7 relative group overflow-hidden bg-primary h-[400px] lg:h-full cursor-pointer luxury-image-overlay" onClick={() => navigate("/facilities")}>
-            <img src={IMAGES.hall} alt="Grand Marriage Hall" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-110 opacity-90" />
+            <img src={IMAGES.hall} alt="Grand Marriage Hall" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1600ms] group-hover:scale-110 opacity-90" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
             
             {/* Elegant Double Border */}
@@ -94,7 +98,7 @@ export default function FacilitiesPreview() {
             
             {/* Royal Dining (Top half) */}
             <div className="bento-item relative group overflow-hidden bg-primary h-[300px] lg:h-auto cursor-pointer luxury-image-overlay" onClick={() => navigate("/facilities")}>
-              <img src={IMAGES.dining} alt="Royal Dining Hall" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 opacity-[0.86]" />
+              <img src={IMAGES.dining} alt="Royal Dining Hall" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 opacity-[0.86]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/20"></div>
               
               <div className="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-gold-leaf">
@@ -112,7 +116,7 @@ export default function FacilitiesPreview() {
               
               {/* Luxury Suites */}
               <div className="bento-item relative group overflow-hidden bg-primary cursor-pointer luxury-image-overlay" onClick={() => navigate("/facilities")}>
-                <img src={IMAGES.suites} alt="Luxury Suites" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 opacity-70 grayscale-[20%] group-hover:grayscale-0" />
+                <img src={IMAGES.suites} alt="Luxury Suites" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 opacity-70 grayscale-[20%] group-hover:grayscale-0" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
@@ -123,7 +127,7 @@ export default function FacilitiesPreview() {
 
               {/* Valet Parking */}
               <div className="bento-item relative group overflow-hidden bg-deep-maroon cursor-pointer luxury-image-overlay" onClick={() => navigate("/facilities")}>
-                <img src={IMAGES.valet} alt="Valet Parking" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 opacity-55 mix-blend-luminosity" />
+                <img src={IMAGES.valet} alt="Valet Parking" loading="lazy" decoding="async" className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1500ms] group-hover:scale-105 opacity-55 mix-blend-luminosity" />
                 
                 {/* Gold corner accents */}
                 <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-gold-leaf/50"></div>

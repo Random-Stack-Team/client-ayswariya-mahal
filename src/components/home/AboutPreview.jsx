@@ -14,24 +14,28 @@ export default function AboutPreview() {
     const el = sectionRef.current;
     if (!el) return;
 
-    gsap.fromTo(el.querySelectorAll(".stagger-reveal"), 
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1, 
-        y: 0,
-        stagger: 0.18,
-        duration: 1.35,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 70%",
+    const ctx = gsap.context(() => {
+      gsap.fromTo(el.querySelectorAll(".stagger-reveal"), 
+        { opacity: 0, y: 26 },
+        {
+          opacity: 1, 
+          y: 0,
+          stagger: 0.16,
+          duration: 1.05,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: el,
+            start: "top 72%",
+          }
         }
-      }
-    );
+      );
+    }, el);
+
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#4A0A12] py-32 overflow-hidden border-b border-[#E5C76B]/20">
+    <section ref={sectionRef} className="relative bg-[#5A111C] py-32 overflow-hidden border-b border-[#E5C76B]/20">
       {/* Decorative Gold Pattern Background */}
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
@@ -73,6 +77,8 @@ export default function AboutPreview() {
             <img
               src={aboutImg}
               alt="Ayswariya Mahal Interior"
+              loading="lazy"
+              decoding="async"
               className="w-full h-full object-cover grayscale-[12%] contrast-110 hover:grayscale-0 hover:scale-105 transition-all duration-[1600ms]"
             />
           </div>

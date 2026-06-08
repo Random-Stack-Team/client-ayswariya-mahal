@@ -153,7 +153,7 @@
     stroke: rgba(127, 17, 21, 0.88);
   }
   100% {
-    fill: #7f1115;
+    fill: #821917;
     stroke: rgba(49, 49, 49, 0.2);
   }
 }
@@ -189,7 +189,7 @@
     filter: drop-shadow(0 0 6px rgba(128, 28, 44, 0.18));
   }
   100% {
-    fill: #7f1115;
+    fill: #821917;
     filter: drop-shadow(0 4px 7px rgba(49, 49, 49, 0.14));
   }
 }

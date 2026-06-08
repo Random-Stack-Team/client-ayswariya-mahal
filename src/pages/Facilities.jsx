@@ -89,19 +89,16 @@ const facilities = [
 const cardMotion = {
   hidden: {
     opacity: 0,
-    rotateX: -90,
-    scale: 0.85,
-    y: 100,
-    transformOrigin: "top",
+    scale: 0.96,
+    y: 46,
   },
   show: (i) => ({
     opacity: 1,
-    rotateX: 0,
     scale: 1,
     y: 0,
     transition: {
-      duration: 1.25,
-      delay: i * 0.12,
+      duration: 0.9,
+      delay: i * 0.07,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -123,20 +120,16 @@ const textContainer = {
 const wordVariant = {
   hidden: {
     opacity: 0,
-    y: 40,
-    rotateX: -70,
-    scale: 0.9,
-    filter: "blur(10px)",
+    y: 24,
+    scale: 0.98,
   },
   show: {
     opacity: 1,
     y: 0,
-    rotateX: 0,
     scale: 1,
-    filter: "blur(0px)",
     transition: {
-      duration: 1.35,
-      ease: [0.19, 1, 0.22, 1], // premium elastic easing
+      duration: 0.92,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
@@ -269,11 +262,10 @@ export default function Facilities() {
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
                 className="group relative"
-                style={{ transformStyle: "preserve-3d" }}
               >
 
                 {/* FRAME */}
-                <div className="relative rounded-[42px] bg-[#49000a] p-[4px] shadow-2xl overflow-hidden">
+                <div className="relative rounded-[42px] bg-[#5A111C] p-[4px] shadow-2xl overflow-hidden">
 
                   {/* BORDER */}
                   <div className="rounded-[38px] border border-[#e5c76b]/70 overflow-hidden">
@@ -291,13 +283,13 @@ export default function Facilities() {
                           className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                         />
 
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#49000a]/70 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#5A111C]/70 to-transparent" />
 
                       </div>
 
                       {/* ICON */}
                       <div className="absolute top-4 left-1/2 -translate-x-1/2 z-30">
-                        <div className="w-11 h-11 rounded-full bg-[#e5c76b] flex items-center justify-center text-[#49000a] shadow-md">
+                        <div className="w-11 h-11 rounded-full bg-[#e5c76b] flex items-center justify-center text-[#5A111C] shadow-md">
                           {item.icon}
                         </div>
                       </div>
@@ -305,7 +297,7 @@ export default function Facilities() {
                       {/* TEXT */}
                       <div className="p-5 text-center relative z-30">
 
-                        <h3 className="font-serif text-[#49000a] text-lg mb-2">
+                        <h3 className="font-serif text-[#5A111C] text-lg mb-2">
                           {item.title}
                         </h3>
 
@@ -332,7 +324,7 @@ export default function Facilities() {
         {/* =========================
             CORRIDOR SECTION
         ========================= */}
-        <section className="relative py-40 px-6 bg-[#4A0A12] overflow-hidden">
+        <section className="relative py-40 px-6 bg-[#5A111C] overflow-hidden">
 
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
@@ -390,11 +382,11 @@ export default function Facilities() {
             whileInView={{ opacity: 1 }}
             className="text-center"
           >
-            <h2 className="text-4xl font-serif text-[#4A0A12]">
+            <h2 className="text-4xl font-serif text-[#5A111C]">
               End of Royal Journey
             </h2>
             <p className="text-gray-600 mt-2">
-              Ayswariya Mahal — Where celebrations become memories
+              Ayswariya Mahal - Where celebrations become memories
             </p>
           </motion.div>
 

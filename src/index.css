@@ -17,9 +17,9 @@
   --color-outline: #887271;
   --color-outline-variant: #dcc0bf;
   --color-surface-tint: #9e3f42;
-  --color-primary: #7A1B29;
+  --color-primary: #5A111C;
   --color-on-primary: #ffffff;
-  --color-primary-container: #8C2230;
+  --color-primary-container: #6A1724;
   --color-on-primary-container: #ffd9dd;
   --color-inverse-primary: #ffb3b2;
   --color-secondary: #725c05;
@@ -51,7 +51,7 @@
   --color-surface-variant: #e5e2dd;
   
   /* Brand Specific Accents */
-  --color-deep-maroon: #8C2230;
+  --color-deep-maroon: #6A1724;
   --color-gold-leaf: #E5C76B;
   --color-surface-warm: #FAF7F2;
   --color-on-surface-muted: #564241;
@@ -79,6 +79,22 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.app-reveal {
+  min-height: 100vh;
+  background: #fdfbf7;
+  transition: opacity 900ms cubic-bezier(0.22, 1, 0.36, 1), transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.app-reveal--intro {
+  opacity: 0;
+  transform: translateY(10px) scale(1.008);
+}
+
+.app-reveal--ready {
+  opacity: 1;
+  transform: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   letter-spacing: 0.02em; /* Romantic editorial feel */
@@ -91,6 +107,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .font-body {
   font-family: var(--font-body);
+}
+
+.font-serif {
+  font-family: var(--font-serif);
 }
 
 /* 3D Gate Scene Styles */
@@ -137,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .royal-gradient {
-  background: linear-gradient(135deg, #1c0002 0%, #4A0A12 100%);
+  background: linear-gradient(135deg, #4f111d 0%, #8c2230 100%);
 }
 
 .gold-border-double {
@@ -168,310 +188,61 @@ h1, h2, h3, h4, h5, h6 {
 .gold-shimmer-hover:hover::after {
   transform: translateX(100%);
 }
-@import "tailwindcss";
 
-@theme {
-  /* Royal Heritage Luxe Palette */
-  --color-surface: #fcf9f4;
-  --color-surface-dim: #dcdad5;
-  --color-surface-bright: #fcf9f4;
-  --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f6f3ee;
-  --color-surface-container: #f0ede9;
-  --color-surface-container-high: #ebe8e3;
-  --color-surface-container-highest: #e5e2dd;
-  --color-on-surface: #1c1c19;
-  --color-on-surface-variant: #554241;
-  --color-inverse-surface: #31302d;
-  --color-inverse-on-surface: #f3f0eb;
-  --color-outline: #887271;
-  --color-outline-variant: #dcc0bf;
-  --color-surface-tint: #9e3f42;
-  --color-primary: #450e18;
-  --color-on-primary: #ffffff;
-  --color-primary-container: #75202c;
-  --color-on-primary-container: #ffd9dd;
-  --color-inverse-primary: #ffb3b2;
-  --color-secondary: #725c05;
-  --color-on-secondary: #ffffff;
-  --color-secondary-container: #fddd7f;
-  --color-on-secondary-container: #77600a;
-  --color-tertiary: #735c00;
-  --color-on-tertiary: #ffffff;
-  --color-tertiary-container: #c6a94e;
-  --color-on-tertiary-container: #4e3e00;
-  --color-error: #ba1a1a;
-  --color-on-error: #ffffff;
-  --color-error-container: #ffdad6;
-  --color-on-error-container: #93000a;
-  --color-primary-fixed: #ffdad9;
-  --color-primary-fixed-dim: #ffb3b2;
-  --color-on-primary-fixed: #410008;
-  --color-on-primary-fixed-variant: #7f282d;
-  --color-secondary-fixed: #ffe084;
-  --color-secondary-fixed-dim: #e2c468;
-  --color-on-secondary-fixed: #231b00;
-  --color-on-secondary-fixed-variant: #574500;
-  --color-tertiary-fixed: #ffe085;
-  --color-tertiary-fixed-dim: #e3c466;
-  --color-on-tertiary-fixed: #231b00;
-  --color-on-tertiary-fixed-variant: #574500;
-  --color-background: #fcf9f4;
-  --color-on-background: #1c1c19;
-  --color-surface-variant: #e5e2dd;
-  
-  /* Brand Specific Accents */
-  --color-deep-maroon: #801c2c;
-  --color-gold-leaf: #E5C76B;
-  --color-surface-warm: #FAF7F2;
-  --color-on-surface-muted: #564241;
-  
-  --font-display: 'Playfair Display', serif;
-  --font-body: 'Be Vietnam Pro', sans-serif;
+.luxury-image-overlay {
+  position: relative;
+  isolation: isolate;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-:root {
-  background-color: var(--color-surface);
-  color: var(--color-on-surface);
-  overflow-x: hidden;
-}
-
-body {
-  font-family: var(--font-body);
-  margin: 0;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  letter-spacing: 0.02em; /* Romantic editorial feel */
-  text-rendering: optimizeLegibility;
-}
-
-.font-display {
-  font-family: var(--font-display);
-}
-
-.font-body {
-  font-family: var(--font-body);
-}
-
-/* 3D Gate Scene Styles */
-.gate-container {
-  perspective: 2000px;
-  overflow: hidden;
-}
-
-.gate-door {
-  transition: transform 0.1s ease-out;
-  transform-style: preserve-3d;
-}
-
-.gold-text-gradient {
-  background: linear-gradient(to bottom, var(--color-gold-leaf) 20%, #9e7d32 50%, var(--color-gold-leaf) 80%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 15px rgba(229, 199, 107, 0.4));
-}
-
-.petal {
+.luxury-image-overlay::after {
+  content: '';
   position: absolute;
+  inset: 0;
+  z-index: 1;
   pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(122, 27, 41, 0.04), rgba(122, 27, 41, 0.24)),
+    radial-gradient(circle at 72% 18%, rgba(229, 199, 107, 0.2), transparent 38%);
+  mix-blend-mode: multiply;
+  opacity: 0.64;
+  transition: opacity 900ms ease;
 }
 
-.god-ray {
-  background: linear-gradient(0deg, transparent, rgba(229, 199, 107, 0.3), transparent);
-  filter: blur(40px);
-  transform: rotate(-25deg);
+.luxury-image-overlay:hover::after {
+  opacity: 0.34;
 }
 
-.scroll-indicator {
-  animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-  40% {transform: translateY(-10px);}
-  60% {transform: translateY(-5px);}
-}
-
-.flip-horizontal {
-  transform: scaleX(-1);
-}
-
-.royal-gradient {
-  background: linear-gradient(135deg, #1c0002 0%, #4A0A12 100%);
-}
-
-.gold-border-double {
-  border: 3px double var(--color-gold-leaf);
-}
-
-.input-focus-gold:focus {
-  border-color: var(--color-gold-leaf);
-  outline: none;
-}
-
-/* Gold Shimmer interactive state */
-.gold-shimmer-hover {
-  position: relative;
-  overflow: hidden;
-}
-.gold-shimmer-hover::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(45deg, transparent 40%, rgba(229,199,107,0.4) 50%, transparent 60%);
-  transform: translateX(-100%);
-  transition: transform 0.5s ease-out;
-}
-.gold-shimmer-hover:hover::after {
-  transform: translateX(100%);
-}
-
-/* Base custom scrollbar */
 .custom-scrollbar::-webkit-scrollbar {
   width: 6px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: var(--color-gold-leaf);
 }
 
-.button {
-  display: block;
-  position: relative;
-  width: 56px;
-  height: 56px;
-  margin: 0;
-  overflow: hidden;
-  outline: none;
-  background-color: transparent;
-  cursor: pointer;
+.envelope-form-input {
+  width: 100%;
   border: 0;
+  border-bottom: 1.5px solid rgba(212, 175, 55, 0.34);
+  background: transparent;
+  padding: 0.48rem 0.25rem;
+  color: #4a3623;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  line-height: 1.45;
+  outline: none;
+  transition: border-color 420ms ease, background-color 420ms ease;
 }
 
-.button:before,
-.button:after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  inset: 7px;
+.envelope-form-input::placeholder {
+  color: rgba(138, 106, 28, 0.42);
 }
 
-.button:before {
-  border: 4px solid #f0eeef;
-  transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
-    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
-}
-
-.button:after {
-  border: 4px solid #96daf0;
-  transform: scale(1.3);
-  transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
-    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  opacity: 0;
-}
-
-.button:hover:before,
-.button:focus:before {
-  opacity: 0;
-  transform: scale(0.7);
-}
-
-.button:hover:after,
-.button:focus:after {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.button-box {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: 0.4s;
-}
-
-.button-elem {
-  display: block;
-  width: 20px;
-  height: 20px;
-  margin: 17px 18px 0 18px;
-  transform: rotate(180deg);
-  fill: #f0eeef;
-}
-
-.button:hover .button-box,
-.button:focus .button-box {
-  transform: translateX(-56px);
-}
-
-/* Animista Logo Drawing Effect */
-.animista-logo {
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-  stroke: var(--color-gold-leaf);
-  stroke-width: 1px;
-  fill: transparent;
-  animation: animlogo 3.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
-}
-
-@keyframes animlogo { 
-  15% { 
-    fill: transparent; 
-  }
-  55% { 
-    stroke-dashoffset: 0; 
-  }
-  100% { 
-    fill: var(--color-gold-leaf); 
-    stroke-dashoffset: 0; 
-    stroke-width: 0;
-  }
-}
-
-@-webkit-keyframes animlogo { 
-  0% { 
-    stroke-opacity: 0.6; 
-  }
-  15% { 
-    fill: transparent; 
-  }
-  55% { 
-    stroke-dashoffset: 0; 
-    stroke-opacity: 1; 
-  }
-  100% { 
-    fill: var(--color-gold-leaf); 
-    stroke-dashoffset: 0; 
-    stroke-width: 0;
-  }
-}
-
-.slide-out-fwd-center {
-	animation: slide-out-fwd-center 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-}
-
-@keyframes slide-out-fwd-center {
-  0% {
-    transform: translateZ(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateZ(800px) scale(3);
-    opacity: 0;
-    pointer-events: none;
-  }
+.envelope-form-input:focus {
+  border-color: #b58c2a;
+  background: rgba(255, 248, 237, 0.52);
 }

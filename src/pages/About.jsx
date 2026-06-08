@@ -59,11 +59,11 @@ export default function About() {
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[60vh] md:min-h-[70vh]">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImg})` }}
         ></div>
         {/* Dark Cinematic Overlay fading into page bg */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4A0A12]/80 via-[#1c0d11]/70 to-[#fdfbf7]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/80 via-[#3F0C15]/70 to-[#fdfbf7]"></div>
         
         <motion.div 
           variants={staggerContainer}
@@ -160,7 +160,7 @@ export default function About() {
           viewport={{ once: true, amount: 0.1 }}
           className="max-w-[1280px] mx-auto relative z-10"
         >
-          <motion.p variants={fadeInUp} className="font-serif text-[#8b1518] uppercase tracking-[0.3em] font-bold text-sm mb-4 text-center">
+          <motion.p variants={fadeInUp} className="font-serif text-[#6A1724] uppercase tracking-[0.3em] font-bold text-sm mb-4 text-center">
             Why Families Choose Us
           </motion.p>
           <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-6xl text-[#4a3623] text-center mb-16 leading-tight">
@@ -175,7 +175,7 @@ export default function About() {
                 className="border border-[#d4af37]/28 bg-[#fff8ed]/72 p-8 shadow-[0_18px_44px_rgba(74,10,18,0.08)] backdrop-blur-sm"
               >
                 <div className="mb-6 h-px w-16 bg-[#b58c2a]"></div>
-                <h3 className="font-display text-2xl text-[#7f1115] mb-4">{pillar.title}</h3>
+                <h3 className="font-display text-2xl text-[#821917] mb-4">{pillar.title}</h3>
                 <p className="font-serif text-[#5c4a3d] leading-loose">{pillar.body}</p>
               </motion.article>
             ))}
@@ -184,7 +184,7 @@ export default function About() {
       </section>
 
       {/* Dark Maroon Statistics */}
-      <section className="py-24 md:py-32 bg-[#4A0A12] relative overflow-hidden">
+      <section className="py-24 md:py-32 bg-[#5A111C] relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
         <div className="max-w-[1280px] mx-auto px-6 relative z-10">
 
@@ -217,7 +217,7 @@ export default function About() {
       </section>
 
       {/* Deep Maroon Mission */}
-      <section className="py-32 md:py-48 bg-[#4A0A12] relative overflow-hidden border-t border-[#d4af37]/20">
+      <section className="py-32 md:py-48 bg-[#5A111C] relative overflow-hidden border-t border-[#d4af37]/20">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none"></div>
         
         <motion.div 

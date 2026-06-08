@@ -58,6 +58,26 @@ export default function FloatingEnvelope() {
     };
   }, [isEnvelopeVisible, isFormOpen, submitStatus, isHome]);
 
+  useEffect(() => {
+    if (isFormOpen || submitStatus !== "idle") {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+      }
+    } else {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.paddingRight = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+      document.body.style.paddingRight = "";
+    };
+  }, [isFormOpen, submitStatus]);
+
   const handleClose = (e) => {
     if (e) e.stopPropagation();
     setIsEnvelopeVisible(false);
@@ -136,7 +156,7 @@ export default function FloatingEnvelope() {
               animate={
                 submitStatus === "departing" 
                   ? { y: -80, opacity: 0, scale: 0.5 } 
-                  : { y: isExpanded ? 120 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
+                  : { y: isExpanded ? 180 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
               }
               transition={submitStatus === "departing" ? { duration: 1, ease: "easeInOut" } : springConfig}
               exit={{ y: 80, opacity: 0, scale: 0.9 }}
@@ -170,25 +190,26 @@ export default function FloatingEnvelope() {
 
               {/* Layer 2: The Inner Paper */}
               <motion.div
+                layout
                 initial={false}
                 animate={{
                   y: isPaperExpanded ? -40 : isPeeking ? -50 : 0,
-                  height: isPaperExpanded ? 540 : "90%",
-                  width: isPaperExpanded ? 460 : "85%",
-                  left: "50%",
-                  x: "-50%",
                   boxShadow: isPaperExpanded ? "0 40px 80px -15px rgba(0,0,0,0.7)" : "0 -10px 20px rgba(0,0,0,0.15)",
                 }}
                 transition={paperSpringConfig}
                 className="absolute bottom-3 bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border border-[#d4af37]/30 antialiased"
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
                 style={{ 
+                  width: isPaperExpanded ? 460 : "85%",
+                  height: isPaperExpanded ? 540 : "90%",
                   maxWidth: "95vw",
                   maxHeight: "85vh",
+                  left: "50%",
+                  x: "-50%",
                   cursor: isExpanded ? "default" : "pointer",
                   zIndex: isPaperExpanded ? 60 : 20,
                   WebkitFontSmoothing: "antialiased",
-                  transform: "translateZ(0)"
+                  transformOrigin: "bottom center"
                 }}
               >
                 {/* Ornate Inner Border */}

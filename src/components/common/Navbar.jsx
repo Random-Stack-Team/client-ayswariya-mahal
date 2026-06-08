@@ -43,16 +43,16 @@ function Navbar() {
 
   const linkClass = ({ isActive }) =>
     [
-      "relative px-2 py-2 font-serif text-[12px] font-bold uppercase tracking-[0.24em]",
-      "transition-colors duration-700 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-[#e5c76b] after:transition-all after:duration-700",
+      "relative px-2 py-2 font-serif text-[13px] font-semibold uppercase tracking-[0.18em]",
+      "antialiased transition-colors duration-700 after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-[#e5c76b] after:transition-all after:duration-700",
       isActive
         ? `${solidNav ? "text-[#b58c2a]" : "text-[#f3d76c]"} after:w-full`
-        : `${solidNav ? "text-[#4a3623]/76 hover:text-[#8b1518]" : "text-white/88 hover:text-[#f3d76c]"}`,
+        : `${solidNav ? "text-[#4a3623]/76 hover:text-[#6A1724]" : "text-white/88 hover:text-[#f3d76c]"}`,
     ].join(" ");
 
   const mobileLinkClass = ({ isActive }) =>
     [
-      "block py-4 text-center font-display text-2xl transition-colors duration-300",
+      "block py-4 text-center font-serif text-2xl font-medium transition-colors duration-300",
       isActive ? "text-[#b58c2a]" : "text-[#4a3623] hover:text-[#b58c2a]",
     ].join(" ");
 
@@ -71,8 +71,8 @@ function Navbar() {
         id="main-nav"
         className={`pointer-events-auto border-b transition-all duration-700 ${
           solidNav
-            ? "border-[#d4af37]/24 bg-[#fff8ed]/90 py-3 shadow-[0_12px_32px_rgba(48,20,12,0.08)] backdrop-blur-2xl"
-            : "border-white/10 bg-gradient-to-b from-[#22080c]/62 via-[#22080c]/24 to-transparent py-5 backdrop-blur-[2px]"
+            ? "border-[#d4af37]/24 bg-[#fff8ed]/92 py-3 shadow-[0_12px_32px_rgba(48,20,12,0.08)] backdrop-blur-2xl"
+            : "border-white/10 bg-gradient-to-b from-[#3F0C15]/58 via-[#3F0C15]/22 to-transparent py-5 backdrop-blur-[2px]"
         }`}
       >
         <div
@@ -98,13 +98,13 @@ function Navbar() {
 
           <button
             onClick={openForm}
-            className={`hidden min-w-[150px] border px-7 py-2.5 rounded-full font-serif text-[11px] font-bold uppercase tracking-[0.24em] transition duration-700 lg:block ${
+            className={`hidden min-w-[164px] rounded-full border px-7 py-3 font-serif text-[11px] font-bold uppercase tracking-[0.2em] shadow-[0_12px_30px_rgba(122,27,41,0.12)] transition duration-700 lg:block ${
               solidNav
-                ? "border-[#8C2230] text-[#8C2230] hover:bg-[#8C2230] hover:text-[#f3d76c]"
-                : "border-[#e5c76b]/80 bg-[#8C2230]/40 text-[#f3d76c] backdrop-blur-md hover:bg-[#8C2230] hover:border-[#8C2230] hover:text-white"
+                ? "border-[#6A1724]/70 bg-[#fff8ed]/70 text-[#6A1724] hover:bg-[#6A1724] hover:text-[#f3d76c]"
+                : "border-[#e5c76b]/80 bg-[#6A1724]/48 text-[#f3d76c] backdrop-blur-md hover:bg-[#6A1724] hover:border-[#6A1724] hover:text-white"
             }`}
           >
-            Enquire
+            Enquire Now
           </button>
 
           <button
@@ -142,7 +142,7 @@ function Navbar() {
                     setIsMobileMenuOpen(false);
                     openForm();
                   }}
-                  className="mt-8 border border-[#b58c2a]/60 bg-[#801c2c] px-8 py-4 font-body text-xs font-bold uppercase tracking-[0.24em] text-[#f3d76c]"
+                  className="mt-8 rounded-full border border-[#b58c2a]/60 bg-[#6A1724] px-8 py-4 font-serif text-xs font-bold uppercase tracking-[0.2em] text-[#f3d76c]"
                 >
                   Enquire Now
                 </button>

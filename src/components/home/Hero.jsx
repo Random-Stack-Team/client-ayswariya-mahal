@@ -23,7 +23,7 @@ export default function Hero() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       gsap.set(imageRef.current, { scale: 1.08, filter: "brightness(0.74) saturate(1.05)" });
-      gsap.set(contentRef.current?.children || [], { opacity: 1, y: 14 });
+      gsap.set(contentRef.current?.children || [], { opacity: 0, y: 20 });
 
       gsap
         .timeline({ defaults: { ease: "power3.out" } })
@@ -115,14 +115,14 @@ export default function Hero() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <button
               onClick={() => navigate("/facilities")}
-              className="border border-[#e5c76b] bg-[#801c2c]/88 px-9 py-4 font-body text-xs font-bold uppercase tracking-[0.28em] text-[#f3d76c] shadow-[0_18px_38px_rgba(44,4,12,0.25)] transition duration-500 hover:-translate-y-1 hover:bg-[#9a2335] hover:text-white"
+              className="border border-[#e5c76b] bg-[#6A1724]/88 px-9 py-4 font-body text-xs font-bold uppercase tracking-[0.28em] text-[#f3d76c] shadow-[0_18px_38px_rgba(44,4,12,0.25)] transition duration-500 hover:-translate-y-1 hover:bg-[#9a2335] hover:text-white"
             >
               Explore the Grounds
             </button>
 
             <button
               onClick={() => navigate("/about")}
-              className="border border-[#e5c76b]/80 bg-black/10 px-9 py-4 font-body text-xs font-bold uppercase tracking-[0.28em] text-[#f3d76c] backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:bg-[#f8f4ec] hover:text-[#5d201d]"
+              className="border border-[#e5c76b]/80 bg-black/10 px-9 py-4 font-body text-xs font-bold uppercase tracking-[0.28em] text-[#f3d76c] backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:bg-[#f8f4ec] hover:text-[#5A111C]"
             >
               The Story
             </button>

@@ -20,11 +20,11 @@ export default function Contact() {
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[50vh] md:min-h-[60vh]">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImg})` }}
         ></div>
         {/* Dark Cinematic Overlay fading into cream bg */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4A0A12]/80 via-[#1c0d11]/70 to-[#fdfbf7]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/80 via-[#3F0C15]/70 to-[#fdfbf7]"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
           <motion.div 
@@ -139,7 +139,7 @@ export default function Contact() {
               </p>
               <button
                 onClick={openForm}
-                className="w-full bg-deep-maroon text-gold-leaf py-4 rounded-full font-semibold uppercase tracking-[0.2em] text-sm hover:bg-[#E5C76B] hover:text-[#4A0A12] transition-colors duration-300 shadow-md hover:shadow-lg"
+                className="w-full bg-deep-maroon text-gold-leaf py-4 rounded-full font-semibold uppercase tracking-[0.2em] text-sm hover:bg-[#E5C76B] hover:text-[#5A111C] transition-colors duration-300 shadow-md hover:shadow-lg"
               >
                 Send an Enquiry
               </button>

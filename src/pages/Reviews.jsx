@@ -60,11 +60,11 @@ export default function Reviews() {
       {/* Hero Section */}
       <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[50vh] md:min-h-[60vh] mb-12">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImg})` }}
         ></div>
         {/* Dark Cinematic Overlay fading into cream bg */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#4A0A12]/80 via-[#1c0d11]/70 to-[#fdfbf7]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/80 via-[#3F0C15]/70 to-[#fdfbf7]"></div>
 
         <div className="relative z-10 max-w-[1280px] mx-auto text-center">
 
@@ -107,7 +107,13 @@ export default function Reviews() {
 
       {/* Google Rating Section */}
       <section className="px-6 pb-20">
-        <div className="max-w-5xl mx-auto bg-white rounded-2xl p-10 shadow-sm text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.28 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-5xl mx-auto bg-white rounded-2xl p-10 shadow-sm text-center"
+        >
 
           <div className="flex justify-center gap-1 mb-4">
             {[...Array(5)].map((_, index) => (
@@ -130,12 +136,12 @@ export default function Reviews() {
 
           <a
             href="#"
-            className="inline-block bg-[#E5C76B] text-[#4A0A12] font-serif font-bold uppercase tracking-widest px-8 py-4 rounded-full hover:bg-[#d4af37] transition shadow-md hover:shadow-lg"
+            className="inline-block bg-[#E5C76B] text-[#5A111C] font-serif font-bold uppercase tracking-widest px-8 py-4 rounded-full hover:bg-[#d4af37] transition shadow-md hover:shadow-lg"
           >
             View Google Reviews
           </a>
 
-        </div>
+        </motion.div>
       </section>
 
       {/* Review Cards */}
@@ -173,7 +179,7 @@ export default function Reviews() {
                   "{review.review}"
                 </p>
 
-                <h3 className="font-semibold text-lg text-[#4A0A12]">
+                <h3 className="font-semibold text-lg text-[#5A111C]">
                   {review.name}
                 </h3>
 
@@ -186,8 +192,14 @@ export default function Reviews() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#4A0A12] py-20 md:py-[120px] px-6 text-center border-t-4 border-double border-[#E5C76B]">
-        <div className="max-w-4xl mx-auto">
+      <section className="bg-[#5A111C] py-20 md:py-[120px] px-6 text-center border-t-4 border-double border-[#E5C76B]">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.24 }}
+          transition={{ duration: 0.92, ease: [0.16, 1, 0.3, 1] }}
+          className="max-w-4xl mx-auto"
+        >
           <p className="uppercase tracking-[0.4em] text-[#E5C76B] mb-6 font-serif font-bold text-sm">
             Celebrate With Us
           </p>
@@ -199,11 +211,11 @@ export default function Reviews() {
           </p>
           <button
             onClick={openForm}
-            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#d4af37] via-[#E5C76B] to-[#d4af37] text-[#4A0A12] px-12 py-5 font-serif text-sm font-bold tracking-[0.25em] uppercase rounded-full hover:shadow-[0_8px_30px_rgba(229,199,107,0.4)] transition-all duration-500 transform hover:-translate-y-1"
+            className="inline-flex items-center gap-3 bg-gradient-to-r from-[#d4af37] via-[#E5C76B] to-[#d4af37] text-[#5A111C] px-12 py-5 font-serif text-sm font-bold tracking-[0.25em] uppercase rounded-full hover:shadow-[0_8px_30px_rgba(229,199,107,0.4)] transition-all duration-500 transform hover:-translate-y-1"
           >
             Enquire Availability
           </button>
-        </div>
+        </motion.div>
       </section>
 
         </main>

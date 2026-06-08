@@ -5,7 +5,7 @@ import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
 
 export default function Footer() {
   return (
-    <footer className="flex flex-col items-center justify-center w-full py-8 md:py-10 px-6 md:px-12 bg-[#4A0A12] border-t border-[#d4af37]/30 text-[#d4af37] shadow-[0_-5px_20px_rgba(0,0,0,0.1)] relative z-50">
+    <footer className="flex flex-col items-center justify-center w-full py-8 md:py-10 px-6 md:px-12 bg-[#5A111C] border-t border-[#d4af37]/30 text-[#d4af37] shadow-[0_-5px_20px_rgba(0,0,0,0.1)] relative z-50">
       <Link to="/" className="mb-5 inline-flex">
         <img
           src={logoImg}

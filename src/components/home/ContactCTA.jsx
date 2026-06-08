@@ -13,12 +13,18 @@ export default function ContactCTA() {
       
       <div className="max-w-[800px] mx-auto px-6 text-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 34, scale: 0.98 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, amount: 0.45 }}
+          transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="w-16 h-px bg-gold-leaf mx-auto mb-8"></div>
+          <motion.div
+            initial={{ scaleX: 0, opacity: 0 }}
+            whileInView={{ scaleX: 1, opacity: 1 }}
+            viewport={{ once: true, amount: 0.7 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="w-16 h-px bg-gold-leaf mx-auto mb-8 origin-center"
+          />
           
           <h2 className="font-display text-4xl md:text-4xl text-gold-leaf mb-6">
             Begin Your Forever
@@ -29,12 +35,14 @@ export default function ContactCTA() {
             Reach out to our event specialists to reserve your date at Ayswariya Mahal.
           </p>
 
-          <button
+          <motion.button
+            whileHover={{ y: -4, scale: 1.015 }}
+            whileTap={{ scale: 0.98 }}
             onClick={openForm}
-            className="bg-gold-leaf text-primary px-12 py-5 font-body text-sm font-semibold tracking-[0.2em] uppercase rounded-full hover:bg-white transition-colors duration-500 shadow-[0_0_30px_rgba(229,199,107,0.3)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)]"
+            className="bg-gold-leaf text-primary px-12 py-5 font-serif text-sm font-bold tracking-[0.2em] uppercase rounded-full hover:bg-white transition-colors duration-500 shadow-[0_0_30px_rgba(229,199,107,0.3)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)]"
           >
             Enquire Availability
-          </button>
+          </motion.button>
         </motion.div>
       </div>
     </section>
