@@ -10,21 +10,25 @@ export default function Footer() {
         <img
           src={logoImg}
           alt="Ayswariya Mahal"
+          loading="eager"
+          decoding="async"
+          width="654"
+          height="293"
           className="h-14 w-auto brightness-[1.32] contrast-[1.08] drop-shadow-[0_8px_22px_rgba(0,0,0,0.24)]"
         />
       </Link>
       
       <div className="flex flex-wrap justify-center gap-6 md:gap-10 mb-6 text-center">
-        <Link to="/about" className="font-serif text-xs md:text-sm text-[#fdfbf7]/80 hover:text-[#E5C76B] transition-all duration-300 uppercase tracking-widest font-bold">
+        <Link to="/about" className="type-cta text-[#fdfbf7]/80 hover:text-[#E5C76B] transition-all duration-300">
           The Legacy
         </Link>
-        <Link to="/facilities" className="font-serif text-xs md:text-sm text-[#fdfbf7]/80 hover:text-[#E5C76B] transition-all duration-300 uppercase tracking-widest font-bold">
+        <Link to="/facilities" className="type-cta text-[#fdfbf7]/80 hover:text-[#E5C76B] transition-all duration-300">
           Facilities
         </Link>
-        <Link to="/gallery" className="font-serif text-xs md:text-sm text-[#fdfbf7]/80 hover:text-[#E5C76B] transition-all duration-300 uppercase tracking-widest font-bold">
+        <Link to="/gallery" className="type-cta text-[#fdfbf7]/80 hover:text-[#E5C76B] transition-all duration-300">
           Gallery
         </Link>
-        <Link to="/contact" className="font-serif text-xs md:text-sm text-[#fdfbf7]/80 hover:text-[#E5C76B] transition-all duration-300 uppercase tracking-widest font-bold">
+        <Link to="/contact" className="type-cta text-[#fdfbf7]/80 hover:text-[#E5C76B] transition-all duration-300">
           Private Tours
         </Link>
       </div>
@@ -44,7 +48,7 @@ export default function Footer() {
 
       <div className="w-16 h-px bg-[#E5C76B]/20 mb-5"></div>
       
-      <p className="font-serif text-[10px] md:text-xs text-[#fdfbf7]/50 tracking-[0.1em] uppercase">
+      <p className="font-body text-xs text-[#fdfbf7]/62 tracking-[0.08em] uppercase">
         Copyright MMXXVI Ayswariya Mahal. All Rights Reserved.
       </p>
     </footer>

@@ -1,8 +1,8 @@
 const siteConfig = {
   title: 'Ayswariya Mahal',
-  description: 'A Legacy of Celebrations. Experience the ultimate destination for unforgettable weddings, receptions, and family celebrations in a palatial setting.',
+  description: 'Ayswariya Mahal is a premium wedding and event venue in Chennai with elegant interiors, spacious guest capacity, dining facilities, and celebration spaces for weddings, receptions, engagements, and family events.',
   url: 'https://ayswariyamahal.com',
-  ogImage: 'https://ayswariyamahal.com/og-image.jpg',
+  ogImage: 'https://ayswariyamahal.com/images/ayswariya-mahal-og.webp',
   contact: {
     email: 'am2001chennai@gmail.com',
     phonePrimary: '+91 87545 14611',

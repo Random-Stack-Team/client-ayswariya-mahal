@@ -49,8 +49,8 @@ export default function About() {
   return (
     <>
       <SEO 
-        title="Our Heritage & Legacy" 
-        description="Discover the story behind Ayswariya Mahal. Over two decades of architectural excellence and unforgettable celebrations." 
+        title="About Us - Premium Wedding Venue Legacy" 
+        description="Discover Ayswariya Mahal, a trusted Chennai wedding venue with over two decades of celebrations, elegant event spaces, thoughtful hospitality, and facilities for weddings, receptions, and family functions." 
         path="/about"
       />
       <PageTransition>
@@ -76,19 +76,19 @@ export default function About() {
           </motion.div>
           <motion.p
             variants={fadeInUp}
-            className="font-serif uppercase tracking-[0.4em] text-[#E5C76B] mb-6 font-bold text-sm drop-shadow-md"
+            className="type-eyebrow text-[#E5C76B] mb-6 drop-shadow-md"
           >
             About Us
           </motion.p>
           <motion.h1
             variants={fadeInUp}
-            className="text-5xl md:text-7xl lg:text-8xl font-display text-[#fdfbf7] leading-tight drop-shadow-2xl"
+            className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl"
           >
             A Legacy of <br/><span className="italic text-[#E5C76B]">Celebrations</span>
           </motion.h1>
           <motion.p
             variants={fadeInUp}
-            className="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-[#fdfbf7]/90 font-serif leading-relaxed drop-shadow-md"
+            className="mt-8 max-w-2xl mx-auto type-body text-[#fdfbf7]/90 drop-shadow-md"
           >
             For over two decades, Ayswariya Mahal has been the
             destination for unforgettable weddings, receptions,
@@ -115,6 +115,9 @@ export default function About() {
                 src={aboutImg}
                 alt="Ayswariya Mahal Story"
                 loading="lazy"
+                decoding="async"
+                width="1360"
+                height="1020"
                 className="w-full h-[600px] object-cover scale-110"
               />
             </div>
@@ -128,19 +131,19 @@ export default function About() {
             viewport={{ once: true, amount: 0.1 }}
             className="relative z-10"
           >
-            <motion.p variants={fadeInUp} className="font-serif text-[#b58c2a] uppercase tracking-[0.3em] font-bold text-sm mb-4">
+            <motion.p variants={fadeInUp} className="type-eyebrow text-[#b58c2a] mb-4">
               Our Story
             </motion.p>
-            <motion.h2 variants={fadeInUp} className="text-4xl md:text-5xl lg:text-6xl font-display text-[#4a3623] leading-tight mb-8">
+            <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] mb-8">
               Creating Memorable Moments <span className="italic text-[#b58c2a]">Since 2001</span>
             </motion.h2>
             <motion.div variants={fadeInUp} className="w-16 h-[1px] bg-[#d4af37] mb-8"></motion.div>
-            <motion.p variants={fadeInUp} className="text-[#5c4a3d] font-serif text-lg leading-loose mb-6">
+            <motion.p variants={fadeInUp} className="type-body text-[#4f4038] mb-6">
               Ayswariya Mahal was established with a vision to provide
               families with a beautiful venue where life's most cherished
               celebrations can take place.
             </motion.p>
-            <motion.p variants={fadeInUp} className="text-[#5c4a3d] font-serif text-lg leading-loose">
+            <motion.p variants={fadeInUp} className="type-body text-[#4f4038]">
               With spacious interiors, modern facilities, and a commitment
               to excellence, we have proudly hosted thousands of successful
               weddings and events over the years, becoming a cornerstone of joyous celebrations.
@@ -160,10 +163,10 @@ export default function About() {
           viewport={{ once: true, amount: 0.1 }}
           className="max-w-[1280px] mx-auto relative z-10"
         >
-          <motion.p variants={fadeInUp} className="font-serif text-[#6A1724] uppercase tracking-[0.3em] font-bold text-sm mb-4 text-center">
+          <motion.p variants={fadeInUp} className="type-eyebrow text-[#6A1724] mb-4 text-center">
             Why Families Choose Us
           </motion.p>
-          <motion.h2 variants={fadeInUp} className="font-display text-4xl md:text-6xl text-[#4a3623] text-center mb-16 leading-tight">
+          <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] text-center mb-16">
             Designed for Graceful, <span className="italic text-[#b58c2a]">Effortless Hosting</span>
           </motion.h2>
 
@@ -175,8 +178,8 @@ export default function About() {
                 className="border border-[#d4af37]/28 bg-[#fff8ed]/72 p-8 shadow-[0_18px_44px_rgba(74,10,18,0.08)] backdrop-blur-sm"
               >
                 <div className="mb-6 h-px w-16 bg-[#b58c2a]"></div>
-                <h3 className="font-display text-2xl text-[#821917] mb-4">{pillar.title}</h3>
-                <p className="font-serif text-[#5c4a3d] leading-loose">{pillar.body}</p>
+                <h3 className="font-serif text-2xl font-semibold leading-[1.2] tracking-[0.01em] text-[#821917] mb-4">{pillar.title}</h3>
+                <p className="type-body text-[#4f4038]">{pillar.body}</p>
               </motion.article>
             ))}
           </div>
@@ -196,20 +199,20 @@ export default function About() {
             className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center"
           >
             <motion.div variants={fadeInUp}>
-              <h3 className="text-5xl md:text-7xl font-display text-[#E5C76B] mb-4">25<span className="text-3xl">+</span></h3>
-              <p className="font-serif tracking-[0.2em] text-[#fdfbf7]/80 uppercase text-xs font-bold">Years Experience</p>
+              <h3 className="font-display text-5xl md:text-7xl font-bold leading-[1.1] tracking-[-0.02em] text-[#E5C76B] mb-4">25<span className="text-3xl">+</span></h3>
+              <p className="type-eyebrow text-[#fdfbf7]/84">Years Experience</p>
             </motion.div>
             <motion.div variants={fadeInUp}>
-              <h3 className="text-5xl md:text-7xl font-display text-[#E5C76B] mb-4">10k<span className="text-3xl">+</span></h3>
-              <p className="font-serif tracking-[0.2em] text-[#fdfbf7]/80 uppercase text-xs font-bold">Events Hosted</p>
+              <h3 className="font-display text-5xl md:text-7xl font-bold leading-[1.1] tracking-[-0.02em] text-[#E5C76B] mb-4">10k<span className="text-3xl">+</span></h3>
+              <p className="type-eyebrow text-[#fdfbf7]/84">Events Hosted</p>
             </motion.div>
             <motion.div variants={fadeInUp}>
-              <h3 className="text-5xl md:text-7xl font-display text-[#E5C76B] mb-4">1500</h3>
-              <p className="font-serif tracking-[0.2em] text-[#fdfbf7]/80 uppercase text-xs font-bold">Seating Capacity</p>
+              <h3 className="font-display text-5xl md:text-7xl font-bold leading-[1.1] tracking-[-0.02em] text-[#E5C76B] mb-4">1500</h3>
+              <p className="type-eyebrow text-[#fdfbf7]/84">Seating Capacity</p>
             </motion.div>
             <motion.div variants={fadeInUp}>
-              <h3 className="text-5xl md:text-7xl font-display text-[#E5C76B] mb-4">2500</h3>
-              <p className="font-serif tracking-[0.2em] text-[#fdfbf7]/80 uppercase text-xs font-bold">Floating Guests</p>
+              <h3 className="font-display text-5xl md:text-7xl font-bold leading-[1.1] tracking-[-0.02em] text-[#E5C76B] mb-4">2500</h3>
+              <p className="type-eyebrow text-[#fdfbf7]/84">Floating Guests</p>
             </motion.div>
           </motion.div>
 
@@ -230,13 +233,13 @@ export default function About() {
           <motion.div variants={fadeInUp} className="flex justify-center mb-6 text-[#E5C76B]">
             <Sparkles size={24} strokeWidth={1} />
           </motion.div>
-          <motion.p variants={fadeInUp} className="font-serif uppercase tracking-[0.3em] text-[#E5C76B] mb-6 font-bold text-sm">
+          <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-6">
             Our Mission
           </motion.p>
-          <motion.h2 variants={fadeInUp} className="text-4xl md:text-6xl font-display text-[#fdfbf7] leading-tight mb-10 drop-shadow-lg">
+          <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] mb-10 drop-shadow-lg">
             Turning Special Moments Into <br/><span className="italic text-[#E5C76B]">Lifelong Memories</span>
           </motion.h2>
-          <motion.p variants={fadeInUp} className="text-[#fdfbf7]/80 font-serif text-xl leading-loose max-w-3xl mx-auto font-medium">
+          <motion.p variants={fadeInUp} className="type-body text-[#fdfbf7]/82 max-w-3xl mx-auto">
             We strive to provide exceptional hospitality, premium
             facilities, and a welcoming environment that helps every
             family celebrate their most important milestones with joy

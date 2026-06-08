@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Heart, Sparkles, X } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useEnquiry } from "../../context/useEnquiry";
-import coupleIllustration from '../../assets/images/couple-illustration.png';
+import coupleIllustration from '../../assets/images/couple-illustration.webp';
 
 const QUOTES = [
   "Every love story deserves\na beautiful beginning.",
@@ -153,7 +153,9 @@ export default function FloatingEnvelope() {
         <>
           <AnimatePresence>
             {isExpanded && (
-              <motion.div
+              <motion.button
+                type="button"
+                aria-label="Close enquiry form"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -172,14 +174,14 @@ export default function FloatingEnvelope() {
           >
             <motion.div
               layout
-              initial={{ y: 80, opacity: 0, scale: 0.9 }}
+              initial={{ x: 300, y: 0, opacity: 0, scale: 0.9 }}
               animate={
                 submitStatus === "departing" 
-                  ? { y: -80, opacity: 0, scale: 0.5 } 
-                  : { y: isExpanded ? 180 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
+                  ? { x: 0, y: -80, opacity: 0, scale: 0.5 } 
+                  : { x: 0, y: isExpanded ? 180 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
               }
               transition={submitStatus === "departing" ? { duration: 1, ease: "easeInOut" } : springConfig}
-              exit={{ y: 80, opacity: 0, scale: 0.9 }}
+              exit={{ x: 300, y: 0, opacity: 0, scale: 0.9 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="relative pointer-events-auto w-[280px] md:w-[340px] h-[180px] md:h-[210px]"
@@ -236,7 +238,7 @@ export default function FloatingEnvelope() {
                 <div className="absolute inset-[6px] border-[2px] border-[#d4af37] pointer-events-none rounded-sm"></div>
 
                 {isExpanded && submitStatus === "idle" && (
-                  <button onClick={(e) => { e.stopPropagation(); handleClose(); }} className="absolute top-5 right-5 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/70 backdrop-blur-md rounded-2xl p-1.5 shadow-sm">
+                  <button aria-label="Close enquiry form" onClick={(e) => { e.stopPropagation(); handleClose(); }} className="absolute top-5 right-5 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/70 backdrop-blur-md rounded-2xl p-1.5 shadow-sm">
                     <X size={16} strokeWidth={1.5} />
                   </button>
                 )}
@@ -253,9 +255,8 @@ export default function FloatingEnvelope() {
                         className="flex flex-col items-center justify-start text-center pt-4 px-6 h-full"
                       >
                         <div className="text-[#a67c00] mb-2"><Sparkles size={16} strokeWidth={1} /></div>
-                        {/* Elegant Serif Fonts for the Envelope */}
-                        <h4 className="font-serif text-[#4a3623] text-xs tracking-[0.25em] uppercase mb-1 font-semibold">Planning Your</h4>
-                        <h3 className="font-serif text-[#b58c2a] text-lg md:text-xl tracking-[0.05em] uppercase mb-3 drop-shadow-sm font-medium">Dream Wedding?</h3>
+                        <h4 className="type-eyebrow text-[#4a3623] mb-1">Planning Your</h4>
+                        <h3 className="font-serif text-[#b58c2a] text-[22px] md:text-2xl tracking-[0.01em] mb-3 drop-shadow-sm font-semibold">Dream Wedding?</h3>
                         
                         <div className="flex items-center justify-center gap-3 mb-4 w-full px-8">
                           <div className="h-[2px] bg-[#4a3623] flex-1"></div>
@@ -263,7 +264,7 @@ export default function FloatingEnvelope() {
                           <div className="h-[2px] bg-[#4a3623] flex-1"></div>
                         </div>
 
-                        <p className="font-serif text-[#4a3623] text-sm md:text-base italic leading-relaxed px-4 whitespace-pre-line font-medium">
+                        <p className="type-body text-[#4a3623] italic px-4 whitespace-pre-line">
                           "{quote}"
                         </p>
                       </motion.div>
@@ -273,7 +274,7 @@ export default function FloatingEnvelope() {
                         className="w-full h-full flex flex-col items-center justify-center z-30 space-y-5"
                       >
                         <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
-                        <p className="font-serif text-[10px] tracking-[0.3em] text-[#4a3623] uppercase font-bold">Sealing Petition...</p>
+                        <p className="type-eyebrow text-[#4a3623]">Sealing Petition...</p>
                       </motion.div>
                     ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
                       <motion.div
@@ -285,9 +286,9 @@ export default function FloatingEnvelope() {
                         <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-8 border-[2px] border-[#4a3623]">
                           <Heart size={20} className="text-[#4a3623] fill-[#4a3623]" />
                         </div>
-                        <h2 className="font-serif text-lg text-[#4a3623] tracking-[0.25em] uppercase mb-4 font-bold">Petition Received</h2>
+                        <h2 className="font-serif text-2xl text-[#4a3623] tracking-[0.01em] mb-4 font-semibold">Petition Received</h2>
                         <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
-                        <p className="font-serif text-[#4a3623] text-sm max-w-xs leading-loose italic">
+                        <p className="type-body text-[#4a3623] max-w-xs italic">
                           Your royal request has been elegantly sealed. Our Heritage Concierge will contact you shortly.
                         </p>
                       </motion.div>
@@ -298,7 +299,7 @@ export default function FloatingEnvelope() {
                       >
                         <header className="mb-6 text-center">
                           <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={18} strokeWidth={2} /></div>
-                          <h2 className="font-serif font-bold text-base md:text-lg text-[#4a3623] tracking-[0.2em] uppercase">The Royal Petition</h2>
+                          <h2 className="font-serif font-semibold text-2xl text-[#4a3623] tracking-[0.01em]">The Royal Petition</h2>
                           <div className="flex items-center justify-center gap-4 mt-3">
                             <div className="w-12 h-[2px] bg-[#4a3623]"></div>
                             <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
@@ -309,29 +310,29 @@ export default function FloatingEnvelope() {
                         <form className="space-y-6" onSubmit={handleSubmit}>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-6">
                             <div className="relative group">
-                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
-                              <input type="text" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="e.g. Anand & Priya" />
+                              <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
+                              <input type="text" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="e.g. Anand & Priya" />
                             </div>
 
                             <div className="relative group">
-                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
-                              <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="+91" />
+                              <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
+                              <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="+91" />
                             </div>
 
                             <div className="relative group">
-                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
-                              <input type="email" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="your@email.com" />
+                              <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
+                              <input type="email" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="your@email.com" />
                             </div>
 
                             <div className="relative group">
-                              <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
-                              <input type="date" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] cursor-pointer" />
+                              <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
+                              <input type="date" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] cursor-pointer" />
                             </div>
                           </div>
 
                           <div className="relative group pt-1">
-                            <label className="block font-sans text-[11px] tracking-[0.15em] uppercase text-[#4a3623] mb-1.5 font-bold transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
-                            <textarea rows="2" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-sm md:text-base text-[#4a3623] placeholder:text-[#a89d8c] resize-none" placeholder="Tell us about your requirements..."></textarea>
+                            <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
+                            <textarea rows="2" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c] resize-none" placeholder="Tell us about your requirements..."></textarea>
                           </div>
 
                           <div className="pt-6 pb-2 flex justify-center">
@@ -340,7 +341,7 @@ export default function FloatingEnvelope() {
                               className="relative px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
                             >
                               <div className="relative z-10 flex items-center justify-center">
-                                <span className="font-sans text-[10px] md:text-[11px] text-[#4a3623] font-bold tracking-[0.25em] uppercase flex items-center justify-center whitespace-nowrap">
+                                <span className="type-cta text-[#4a3623] flex items-center justify-center whitespace-nowrap">
                                   Seal & Submit
                                 </span>
                               </div>
@@ -390,10 +391,11 @@ export default function FloatingEnvelope() {
                     >
                       <button 
                         onClick={handleEnquireClick}
+                        aria-label="Open enquiry form"
                         className="relative px-10 py-2.5 group pointer-events-auto bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300"
                       >
                         <div className="relative z-10 flex flex-col items-center justify-center">
-                          <span className="font-serif text-[11px] text-[#4a3623] font-bold tracking-[0.2em] uppercase flex items-center justify-center">
+                          <span className="type-cta text-[#4a3623] flex items-center justify-center">
                             Enquire Now
                           </span>
                         </div>
@@ -414,7 +416,7 @@ export default function FloatingEnvelope() {
                     className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#d4af37] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[3px_3px_0_rgba(74,54,35,0.3)] border-[2px] border-[#4a3623]"
                   >
                     <div className="w-[36px] h-[36px] rounded-full border-[2px] border-[#4a3623] flex flex-col items-center justify-center bg-[#fdfbf7] overflow-hidden p-0.5">
-                      <img src={coupleIllustration} alt="Seal" className="w-full h-full object-contain" />
+                      <img src={coupleIllustration} alt="Seal" loading="lazy" decoding="async" width="150" height="150" className="w-full h-full object-contain" />
                     </div>
                   </motion.div>
                 )}
@@ -423,6 +425,7 @@ export default function FloatingEnvelope() {
               {!isExpanded && (
                 <button
                   onClick={handleClose}
+                  aria-label="Close enquiry prompt"
                   className="absolute -top-2 -right-2 text-[#d4af37] hover:text-[#4a3623] z-[60] bg-[#fdfbf7] border border-[#d4af37]/40 rounded-full p-1.5 transition-colors pointer-events-auto shadow-md"
                 >
                   <X size={14} strokeWidth={2} />

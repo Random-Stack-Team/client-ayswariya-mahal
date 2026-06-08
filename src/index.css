@@ -57,8 +57,10 @@
   --color-on-surface-muted: #564241;
   
   --font-display: 'Playfair Display', serif;
-  --font-body: 'Lora', serif;
-  --font-serif: 'Lora', serif;
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-body: 'Manrope', sans-serif;
+  --font-sans: 'Manrope', sans-serif;
+  --font-nav: 'Marcellus', serif;
 }
 
 html {
@@ -96,6 +98,9 @@ body {
   text-rendering: optimizeLegibility;
   font-synthesis: none;
   overflow-x: clip;
+  font-size: 16px;
+  line-height: 1.8;
+  letter-spacing: 0;
 }
 
 button,
@@ -103,6 +108,23 @@ input,
 textarea,
 select {
   font: inherit;
+}
+
+p,
+li,
+address,
+input,
+textarea,
+select {
+  font-family: var(--font-body);
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+
+a,
+button,
+label {
+  font-family: var(--font-body);
 }
 
 .app-reveal {
@@ -126,9 +148,19 @@ select {
   opacity: 1;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1 {
   font-family: var(--font-display);
-  letter-spacing: 0.02em; /* Romantic editorial feel */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-rendering: optimizeLegibility;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
   text-rendering: optimizeLegibility;
 }
 
@@ -142,6 +174,46 @@ h1, h2, h3, h4, h5, h6 {
 
 .font-serif {
   font-family: var(--font-serif);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+.font-nav {
+  font-family: var(--font-nav);
+}
+
+.type-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.type-cta {
+  font-family: var(--font-body);
+  font-size: clamp(0.875rem, 1vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.type-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+
+.type-small {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  letter-spacing: 0;
 }
 
 .luxury-image-overlay {

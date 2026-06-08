@@ -121,7 +121,7 @@
 .opening-animation__tagline {
   margin: clamp(2px, 0.8vw, 8px) 0 0;
   color: rgba(69, 14, 24, 0.72);
-  font-family: var(--font-body, "Be Vietnam Pro", sans-serif);
+  font-family: var(--font-body, "Manrope", sans-serif);
   font-size: clamp(0.66rem, 1.35vw, 0.88rem);
   font-weight: 600;
   letter-spacing: clamp(0.14em, 0.65vw, 0.28em);

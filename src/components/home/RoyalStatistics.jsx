@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 
 export default function RoyalStatistics() {
   const stats = [
-    { number: "25+", label: "Years of Legacy" },
-    { number: "10,000+", label: "Events Hosted" },
-    { number: "1500", label: "Seating Capacity" },
-    { number: "2500", label: "Floating Guests" },
+    { number: "25+", label: "Years of Excellence" },
+    { number: "10,000+", label: "Celebrations Hosted" },
+    { number: "1500", label: "Guest Seating Capacity" },
+    { number: "2500+", label: "Floating Guest Capacity" },
   ];
 
   return (
@@ -24,10 +24,10 @@ export default function RoyalStatistics() {
               transition={{ delay: index * 0.16, duration: 1.05, ease: [0.16, 1, 0.3, 1] }}
               className="flex flex-col items-center justify-center"
             >
-              <h3 className="font-display text-4xl md:text-4xl mb-4 font-medium tracking-wider">
+              <h3 className="font-display text-4xl md:text-5xl mb-4 font-bold leading-[1.1] tracking-[-0.02em]">
                 {stat.number}
               </h3>
-              <p className="font-body text-sm md:text-base uppercase tracking-[0.2em] text-surface-warm/80">
+              <p className="type-eyebrow max-w-[220px] text-surface-warm/84">
                 {stat.label}
               </p>
             </motion.div>

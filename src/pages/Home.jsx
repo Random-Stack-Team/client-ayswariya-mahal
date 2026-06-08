@@ -12,8 +12,8 @@ export default function Home() {
   return (
     <>
       <SEO 
-        title="Luxury Wedding Hall in Chennai" 
-        description="Experience grandeur at Ayswariya Mahal. The perfect destination for royal weddings, grand receptions, and premium corporate events." 
+        title="Premium Wedding & Event Venue in Chennai" 
+        description="Ayswariya Mahal is a premium wedding and event venue in Chennai for weddings, receptions, engagements, and family celebrations with elegant interiors, spacious seating, dining facilities, and refined hospitality." 
       />
       <PageTransition>
         <Hero />

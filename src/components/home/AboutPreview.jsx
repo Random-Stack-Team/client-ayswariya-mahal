@@ -45,18 +45,18 @@ export default function AboutPreview() {
         
         <div className="lg:col-span-5 space-y-8 z-10">
           <div className="order-2 lg:order-1 text-center lg:text-left stagger-reveal">
-            <h2 className="text-5xl lg:text-7xl font-display text-[#fdfbf7] mb-8 leading-tight drop-shadow-sm">
+            <h2 className="font-serif text-[32px] md:text-5xl lg:text-6xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] mb-8 drop-shadow-sm">
               A Legacy of <br />
               <span className="italic text-[#E5C76B]">Celebrations</span>
             </h2>
             
-            <p className="font-serif text-lg text-[#fdfbf7]/80 leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0">
+            <p className="type-body text-[#fdfbf7]/82 mb-8 max-w-2xl mx-auto lg:mx-0">
               For over two decades, Ayswariya Mahal has been the backdrop to life's most precious moments. With our palatial architecture and unwavering commitment to excellence, we transform your dreams into timeless memories.
             </p>
 
             <button 
               onClick={() => navigate("/about")}
-              className="inline-flex items-center gap-3 font-serif text-sm font-bold tracking-[0.2em] uppercase text-[#E5C76B] hover:text-white transition-colors group"
+              className="inline-flex items-center gap-3 type-cta text-[#E5C76B] hover:text-white transition-colors group"
             >
               Discover Our Story
               <span className="w-12 h-px bg-[#E5C76B] group-hover:w-16 group-hover:bg-white transition-all"></span>
@@ -76,6 +76,8 @@ export default function AboutPreview() {
               alt="Ayswariya Mahal Interior"
               loading="lazy"
               decoding="async"
+              width="1360"
+              height="1020"
               className="w-full h-full object-cover grayscale-[12%] contrast-110 hover:grayscale-0 hover:scale-105 transition-all duration-[1600ms]"
             />
           </div>

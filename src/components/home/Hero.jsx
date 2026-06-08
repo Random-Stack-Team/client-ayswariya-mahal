@@ -71,7 +71,10 @@ export default function Hero() {
           src={heroImage}
           alt="Ayswariya Mahal wedding stage"
           loading="eager"
+          decoding="async"
           fetchPriority="high"
+          width="1920"
+          height="1440"
           className="h-full w-full object-cover will-change-transform"
         />
       </div>
@@ -100,31 +103,31 @@ export default function Hero() {
 
       <div className="relative z-10 flex min-h-screen items-end px-6 pb-24 pt-32 md:items-center md:px-12 md:pb-0 lg:px-20">
         <div ref={contentRef} className="max-w-[880px] text-left text-white">
-          <p className="mb-6 font-body text-xs font-semibold uppercase tracking-[0.46em] text-[#f1d56d] md:text-sm">
+          <p className="mb-6 type-eyebrow text-[#f1d56d]">
             Established 2001
           </p>
 
-          <h1 className="font-display text-[clamp(3.1rem,4.6vw,5rem)] font-semibold leading-[1.02] text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
+          <h1 className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)]">
             Where Ancestral Echoes
             <br />
             Meet <span className="italic">Eternal Vows.</span>
           </h1>
 
-          <p className="mt-7 max-w-xl font-body text-base leading-8 text-white/78 md:text-lg">
+          <p className="mt-7 max-w-xl type-body text-white/82">
             A refined wedding destination for timeless ceremonies, grand receptions, and celebrations shaped with grace.
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <button
               onClick={() => navigate("/facilities")}
-              className="border border-[#e5c76b] bg-[#6A1724]/88 px-9 py-4 font-body text-xs font-bold uppercase tracking-[0.28em] text-[#f3d76c] shadow-[0_18px_38px_rgba(44,4,12,0.25)] transition duration-500 hover:-translate-y-1 hover:bg-[#9a2335] hover:text-white"
+              className="border border-[#e5c76b] bg-[#6A1724]/88 px-9 py-4 type-cta text-[#f3d76c] shadow-[0_18px_38px_rgba(44,4,12,0.25)] transition duration-500 hover:-translate-y-1 hover:bg-[#9a2335] hover:text-white"
             >
               Explore the Grounds
             </button>
 
             <button
               onClick={() => navigate("/about")}
-              className="border border-[#e5c76b]/80 bg-black/10 px-9 py-4 font-body text-xs font-bold uppercase tracking-[0.28em] text-[#f3d76c] backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:bg-[#f8f4ec] hover:text-[#5A111C]"
+              className="border border-[#e5c76b]/80 bg-black/10 px-9 py-4 type-cta text-[#f3d76c] backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:bg-[#f8f4ec] hover:text-[#5A111C]"
             >
               The Story
             </button>

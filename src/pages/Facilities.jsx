@@ -13,16 +13,16 @@ import {
   Sparkles
 } from "lucide-react";
 
-import facility1 from "../assets/images/Facility/facility1.png";
-import facility2 from "../assets/images/Facility/facility2.png";
-import facility3 from "../assets/images/Facility/facility3.png";
-import facility4 from "../assets/images/Facility/facility4.png";
-import facility5 from "../assets/images/Facility/facility5.png";
-import facility6 from "../assets/images/Facility/facility6.png";
-import facility7 from "../assets/images/Facility/facility7.png";
-import facility8 from "../assets/images/Facility/facility8.png";
+import facility1 from "../assets/images/Facility/facility1.webp";
+import facility2 from "../assets/images/Facility/facility2.webp";
+import facility3 from "../assets/images/Facility/facility3.webp";
+import facility4 from "../assets/images/Facility/facility4.webp";
+import facility5 from "../assets/images/Facility/facility5.webp";
+import facility6 from "../assets/images/Facility/facility6.webp";
+import facility7 from "../assets/images/Facility/facility7.webp";
+import facility8 from "../assets/images/Facility/facility8.webp";
 
-import facilitiesImg from "../assets/images/Facility/facility1.png";
+import facilitiesImg from "../assets/images/Facility/facility1.webp";
 
 
 import bgImg from "../assets/images/facility.webp";
@@ -35,48 +35,64 @@ import SEO from "../components/common/SEO";
 const facilities = [
   {
     image: facility1,
+    width: 1537,
+    height: 1023,
     icon: <AirVent size={26} />,
     title: "Centralized AC",
     description: "Comfortable climate-controlled environment for guests.",
   },
   {
     image: facility2,
+    width: 1448,
+    height: 1086,
     icon: <Building2 size={26} />,
     title: "Spacious Event Hall",
     description: "Elegant interiors for grand celebrations.",
   },
   {
     image: facility3,
+    width: 1448,
+    height: 1086,
     icon: <UtensilsCrossed size={26} />,
     title: "Dining Hall",
     description: "Royal Dining Experience Setup Grandeur.",
   },
   {
     image: facility4,
+    width: 1536,
+    height: 1024,
     icon: <BedDouble size={26} />,
     title: "Luxury rooms ",
     description: "Luxury rooms for family stay with comfort.",
   },
   {
     image: facility5,
+    width: 1536,
+    height: 1024,
     icon: <Car size={26} />,
     title: "Ample Parking",
     description: "Spacious parking area.",
   },
   {
     image: facility6,
+    width: 1536,
+    height: 1024,
     icon: <ShieldCheck size={26} />,
     title: "CCTV Security",
     description: "24/7 surveillance system.",
   },
   {
     image: facility7,
+    width: 1536,
+    height: 1024,
     icon: <Zap size={26} />,
     title: "Generator Backup",
     description: "Power backup ensured.",
   },
   {
     image: facility8,
+    width: 1536,
+    height: 1024,
     icon: <MapPin size={26} />,
     title: "Prime Location",
     description: "Easily accessible venue.",
@@ -169,8 +185,8 @@ export default function Facilities() {
   return (
     <>
       <SEO
-        title="Facilities - Ayswariya Mahal"
-        description="Royal wedding hall facilities"
+        title="Wedding Hall Facilities & Guest Amenities"
+        description="Explore Ayswariya Mahal facilities including spacious event halls, centralized air conditioning, royal dining, luxury rooms, ample parking, CCTV security, generator backup, and prime Chennai access."
         path="/facilities"
       />
 
@@ -227,12 +243,12 @@ export default function Facilities() {
     </motion.div>
 
     {/* TITLE */}
-    <h1 className="text-6xl md:text-8xl font-serif leading-tight">
+    <h1 className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em]">
       <AdvancedText text="Enter The Royal Palace" />
     </h1>
 
     {/* SUBTITLE */}
-    <p className="mt-6 text-white/80 text-lg">
+    <p className="mt-6 type-body text-white/84">
       <AdvancedText text="Scroll to experience the unfolding journey" />
     </p>
 
@@ -280,6 +296,9 @@ export default function Facilities() {
                           src={item.image}
                           alt={item.title}
                           loading="lazy"
+                          decoding="async"
+                          width={item.width}
+                          height={item.height}
                           className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
                         />
 
@@ -297,11 +316,11 @@ export default function Facilities() {
                       {/* TEXT */}
                       <div className="p-5 text-center relative z-30">
 
-                        <h3 className="font-serif text-[#5A111C] text-lg mb-2">
+                        <h3 className="font-serif text-[22px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-2">
                           {item.title}
                         </h3>
 
-                        <p className="text-sm text-gray-600 leading-relaxed">
+                        <p className="type-body text-[#4f4038]">
                           {item.description}
                         </p>
 
@@ -336,6 +355,9 @@ export default function Facilities() {
               <img
                 src={facilitiesImg}
                 loading="lazy"
+                decoding="async"
+                width="1537"
+                height="1023"
                 alt="Facilities Corridor"
                 className="rounded-xl shadow-2xl w-full h-full object-cover"
               />
@@ -347,11 +369,11 @@ export default function Facilities() {
               transition={{ duration: 1 }}
               className="text-white"
             >
-              <h2 className="text-5xl font-serif mb-6">
+              <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] mb-6">
                 Walking Through Royal Luxury
               </h2>
 
-              <ul className="space-y-4 text-white/80">
+              <ul className="space-y-4 type-body text-white/84">
                 {[
                   "1500+ Guest Capacity",
                   "Royal Dining Experience",
@@ -382,10 +404,10 @@ export default function Facilities() {
             whileInView={{ opacity: 1 }}
             className="text-center"
           >
-            <h2 className="text-4xl font-serif text-[#5A111C]">
+            <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C]">
               End of Royal Journey
             </h2>
-            <p className="text-gray-600 mt-2">
+            <p className="type-body text-[#4f4038] mt-2">
               Ayswariya Mahal - Where celebrations become memories
             </p>
           </motion.div>

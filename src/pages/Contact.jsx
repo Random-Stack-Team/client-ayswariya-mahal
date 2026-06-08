@@ -11,8 +11,8 @@ export default function Contact() {
   return (
     <>
       <SEO 
-        title="Contact Us & Booking" 
-        description="Get in touch with the Heritage Concierge team at Ayswariya Mahal to plan your grand event. Send us a royal petition." 
+        title="Contact & Enquiry - Book Your Wedding Visit" 
+        description="Contact Ayswariya Mahal in Chennai to enquire about wedding hall availability, guest capacity, dining facilities, event packages, and venue visits for weddings, receptions, and family celebrations." 
         path="/contact"
       />
       <PageTransition>
@@ -36,7 +36,7 @@ export default function Contact() {
             <Sparkles size={24} strokeWidth={1} />
           </motion.div>
           <motion.p
-            className="font-serif uppercase tracking-[0.4em] text-[#E5C76B] mb-6 font-bold text-sm drop-shadow-md"
+            className="type-eyebrow text-[#E5C76B] mb-6 drop-shadow-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -44,7 +44,7 @@ export default function Contact() {
           </motion.p>
 
           <motion.h1
-            className="text-5xl md:text-7xl font-display text-[#fdfbf7] drop-shadow-2xl"
+            className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -66,8 +66,8 @@ export default function Contact() {
             className="flex flex-col space-y-12"
           >
             <div>
-              <h2 className="text-4xl font-display text-on-surface mb-6">We'd Love to Hear From You</h2>
-              <p className="text-gray-600 leading-8">
+              <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-6">We'd Love to Hear From You</h2>
+              <p className="type-body text-[#4f4038]">
                 Whether you're planning a grand wedding, a corporate event, or a family gathering, our Heritage Concierge team is here to assist you in making your event truly unforgettable.
               </p>
             </div>
@@ -78,12 +78,12 @@ export default function Contact() {
                   <MapPin size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
-                  <h4 className="font-display text-xl text-on-surface mb-1">Our Location</h4>
-                  <p className="text-gray-600 leading-relaxed">
+                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-on-surface mb-1">Our Location</h4>
+                  <p className="type-body text-[#4f4038]">
                     151, Jawaharlal Nehru Road,<br />
                     (100 Feet Road) MMDA Signal,<br />
                     Arumbakkam, Chennai - 600106<br />
-                    <span className="italic text-sm">Landmark: Arumbakkam Metro Station</span>
+                    <span className="italic text-base">Landmark: Arumbakkam Metro Station</span>
                   </p>
                 </div>
               </div>
@@ -93,9 +93,9 @@ export default function Contact() {
                   <Phone size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
-                  <h4 className="font-display text-xl text-on-surface mb-1">Phone</h4>
-                  <p className="text-gray-600">+91 87545 14611</p>
-                  <p className="text-gray-600">044-24756619 / 044-24756627</p>
+                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-on-surface mb-1">Phone</h4>
+                  <p className="type-body text-[#4f4038]">+91 87545 14611</p>
+                  <p className="type-body text-[#4f4038]">044-24756619 / 044-24756627</p>
                 </div>
               </div>
 
@@ -104,8 +104,8 @@ export default function Contact() {
                   <Mail size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
-                  <h4 className="font-display text-xl text-on-surface mb-1">Email</h4>
-                  <p className="text-gray-600">am2001chennai@gmail.com</p>
+                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-on-surface mb-1">Email</h4>
+                  <p className="type-body text-[#4f4038]">am2001chennai@gmail.com</p>
                 </div>
               </div>
 
@@ -114,9 +114,9 @@ export default function Contact() {
                   <Clock size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
-                  <h4 className="font-display text-xl text-on-surface mb-1">Office Hours</h4>
-                  <p className="text-gray-600">Monday - Saturday: 9:00 AM - 7:00 PM</p>
-                  <p className="text-gray-600">Sunday: 10:00 AM - 2:00 PM</p>
+                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-on-surface mb-1">Office Hours</h4>
+                  <p className="type-body text-[#4f4038]">Monday - Saturday: 9:00 AM - 7:00 PM</p>
+                  <p className="type-body text-[#4f4038]">Sunday: 10:00 AM - 2:00 PM</p>
                 </div>
               </div>
             </div>
@@ -133,13 +133,13 @@ export default function Contact() {
           >
             {/* Quick Enquiry Card */}
             <div className="bg-white p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20 text-center">
-              <h3 className="font-display text-3xl text-on-surface mb-4">Plan Your Celebration</h3>
-              <p className="text-gray-600 mb-8 leading-relaxed">
+              <h3 className="font-serif text-2xl md:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-4">Plan Your Celebration</h3>
+              <p className="type-body text-[#4f4038] mb-8">
                 Send us a royal petition and our Heritage Concierge will get back to you with venue availability and bespoke packages.
               </p>
               <button
                 onClick={openForm}
-                className="w-full bg-deep-maroon text-gold-leaf py-4 rounded-full font-semibold uppercase tracking-[0.2em] text-sm hover:bg-[#E5C76B] hover:text-[#5A111C] transition-colors duration-300 shadow-md hover:shadow-lg"
+                className="w-full bg-deep-maroon text-gold-leaf py-4 rounded-full type-cta hover:bg-[#E5C76B] hover:text-[#5A111C] transition-colors duration-300 shadow-md hover:shadow-lg"
               >
                 Send an Enquiry
               </button>
