@@ -15,10 +15,10 @@ import PageTransition from "../components/common/PageTransition";
 import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
 import { useEnquiry } from "../context/useEnquiry";
 
-import sowCrop from "../assets/images/sow-crop.webp";
-import sowCrop2 from "../assets/images/sow-crop2.webp";
-import sowCrop3 from "../assets/images/sow-crop3.webp";
-import sowCrop5 from "../assets/images/sow-crop5.webp";
+import sowCrop from "../assets/images/sow-crop.jpg";
+import sowCrop2 from "../assets/images/sow-crop2.jpg";
+import sowCrop3 from "../assets/images/sow-crop3.jpg";
+import sowCrop5 from "../assets/images/sow-crop5.jpg";
 import facility1 from "../assets/images/Facility/facility1.webp";
 import facility2 from "../assets/images/Facility/facility2.webp";
 import facility3 from "../assets/images/Facility/facility3.webp";

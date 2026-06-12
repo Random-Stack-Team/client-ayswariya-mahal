@@ -3,7 +3,8 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/hero.webp";
-import sowCrop3 from "../assets/images/sow-crop3.webp";
+import sowCrop3 from "../assets/images/sow-crop3.jpg";
+import animationVideo from "../assets/videos/animation.webm";
 import { Sparkles } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
@@ -188,59 +189,96 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* Our Philosophy */}
-      <section className="py-24 md:py-32 bg-[#5A111C] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(229,199,107,0.1),transparent_50%)]"></div>
-        <div className="max-w-site mx-auto px-6 relative z-10 text-center">
+      {/* Philosophy & Mission Redesign - Maroon Theme */}
+      <section className="py-12 md:py-16 lg:py-20 px-6 bg-[#5A111C] relative overflow-hidden">
+        {/* Animated Background Elements */}
+        <motion.div 
+          animate={{ rotate: 360 }}
+          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(229,199,107,0.15),transparent_50%)] pointer-events-none"
+        />
+        <motion.div 
+          animate={{ rotate: -360 }}
+          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
+          className="absolute -bottom-[50%] -left-[50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_50%_100%,rgba(229,199,107,0.08),transparent_40%)] pointer-events-none"
+        />
+
+        <div className="max-w-site mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 relative z-10">
+          
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
-            className="max-w-4xl mx-auto"
+            className="w-full lg:w-[55%] space-y-8"
           >
-            <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-4">Our Philosophy</motion.p>
-            <motion.h3 variants={fadeInUp} className="font-serif text-4xl md:text-5xl font-semibold leading-[1.2] text-[#fdfbf7] mb-8">
-              A commitment to elegance, a legacy of trust.
-            </motion.h3>
-            <motion.div variants={fadeInUp} className="w-16 h-px bg-[#E5C76B] mx-auto mb-8"></motion.div>
-            <motion.p variants={fadeInUp} className="type-body text-[#fdfbf7]/80 md:text-lg mb-6">
-              At Ayswariya Mahal, we believe that every celebration should be treated with the utmost care and devotion, as if it were our own family's. It is not just about providing a venue; it is about creating an atmosphere where traditions flourish, joy resonates, and memories are etched into eternity.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="type-body text-[#fdfbf7]/80 md:text-lg">
-              Through meticulous planning, exceptional facilities, and heartfelt hospitality, we ensure that the only thing our guests need to focus on is celebrating their most precious moments.
-            </motion.p>
-          </motion.div>
-        </div>
-      </section>
+            {/* Philosophy Card */}
+            <motion.div 
+              variants={fadeInUp}
+              className="relative p-8 md:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
+            >
+              <div className="absolute top-0 left-8 w-12 h-px bg-[#D4A843] transition-all duration-500 group-hover:w-20" />
+              <div className="absolute top-8 left-0 w-px h-12 bg-[#D4A843]/50" />
+              <div className="absolute bottom-0 right-8 w-12 h-px bg-[#D4A843] transition-all duration-500 group-hover:w-20" />
+              <div className="absolute bottom-8 right-0 w-px h-12 bg-[#D4A843]/50" />
+              
+              <div className="flex items-center gap-3 mb-5">
+                <Sparkles size={20} className="text-[#D4A843]" strokeWidth={1.5} />
+                <h2 className="font-serif text-[28px] md:text-4xl font-semibold leading-[1.2] text-[#fdfbf7]">
+                  Our Philosophy
+                </h2>
+              </div>
+              <p className="type-body text-[#fdfbf7]/85 leading-relaxed">
+                Every celebration deserves to feel personal, graceful, and unforgettable. At Ayswariya Mahal, we craft each event with care, tradition, and attention to every meaningful detail.
+              </p>
+            </motion.div>
 
-      {/* Deep Maroon Mission */}
-      <section className="py-16 md:py-24 bg-[#5A111C] relative overflow-hidden border-t border-[#d4af37]/20">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none"></div>
-        
-        <motion.div 
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
-          className="max-w-3xl mx-auto text-center px-6 relative z-10"
-        >
-          <motion.div variants={fadeInUp} className="flex justify-center mb-4 text-[#E5C76B]">
-            <Sparkles size={20} strokeWidth={1} />
+            {/* Mission Card */}
+            <motion.div 
+              variants={fadeInUp}
+              className="relative p-8 md:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
+            >
+              <div className="absolute top-0 left-8 w-12 h-px bg-[#D4A843] transition-all duration-500 group-hover:w-20" />
+              <div className="absolute top-8 left-0 w-px h-12 bg-[#D4A843]/50" />
+              <div className="absolute bottom-0 right-8 w-12 h-px bg-[#D4A843] transition-all duration-500 group-hover:w-20" />
+              <div className="absolute bottom-8 right-0 w-px h-12 bg-[#D4A843]/50" />
+
+              <div className="flex items-center gap-3 mb-5">
+                <Sparkles size={20} className="text-[#D4A843]" strokeWidth={1.5} />
+                <h2 className="font-serif text-[28px] md:text-4xl font-semibold leading-[1.2] text-[#fdfbf7]">
+                  Our Mission
+                </h2>
+              </div>
+              <p className="type-body text-[#fdfbf7]/85 leading-relaxed">
+                To create elegant celebration spaces where families gather, memories are made, and every occasion is handled with warmth, dignity, and excellence.
+              </p>
+            </motion.div>
           </motion.div>
-          <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-4">
-            Our Mission
-          </motion.p>
-          <motion.h2 variants={fadeInUp} className="font-serif text-[30px] md:text-4xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] mb-6 drop-shadow-lg">
-            Turning Special Moments Into <br/><span className="italic text-[#E5C76B]">Lifelong Memories</span>
-          </motion.h2>
-          <motion.p variants={fadeInUp} className="type-body text-[#fdfbf7]/82 max-w-2xl mx-auto">
-            We strive to provide exceptional hospitality, premium
-            facilities, and a welcoming environment that helps every
-            family celebrate their most important milestones with joy
-            and absolute confidence.
-          </motion.p>
-        </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.85, rotate: -5 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+            className="w-full lg:w-[45%] flex justify-center items-center relative"
+          >
+            <motion.div 
+              animate={{ y: [-12, 12, -12] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-full max-w-[280px] lg:max-w-[380px] aspect-square rounded-full overflow-hidden isolate bg-[#FAF7F2] border-4 border-[#D4A843]/30 flex items-center justify-center shadow-[0_0_60px_rgba(212,168,67,0.2)]"
+            >
+              <video 
+                src={animationVideo} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                className="w-[85%] h-[85%] object-contain mix-blend-multiply opacity-90"
+              />
+            </motion.div>
+          </motion.div>
+
+        </div>
       </section>
 
       {/* Sowbhagya Mahal Intro Section */}
