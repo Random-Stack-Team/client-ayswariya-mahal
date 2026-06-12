@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/hero.webp";
+import sowCrop3 from "../assets/images/sow-crop3.webp";
 import { Sparkles } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
@@ -213,6 +214,82 @@ export default function About() {
             <motion.div variants={fadeInUp}>
               <h3 className="font-display text-5xl md:text-7xl font-bold leading-[1.1] tracking-[-0.02em] text-[#E5C76B] mb-4">2500</h3>
               <p className="type-eyebrow text-[#fdfbf7]/84">Floating Guests</p>
+            </motion.div>
+          </motion.div>
+
+        </div>
+      </section>
+
+      {/* Sowbhagya Mahal Intro Section */}
+      <section className="py-24 md:py-32 px-6 bg-[#f5ead9]">
+        <div className="max-w-[1280px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
+
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.1 }}
+            transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
+            className="relative"
+          >
+            <div className="absolute inset-0 bg-[#d4af37] rounded-sm transform translate-x-4 translate-y-4 opacity-20"></div>
+            <div className="relative overflow-hidden rounded-sm shadow-2xl luxury-image-overlay">
+              <motion.img
+                initial={{ scale: 1 }}
+                whileInView={{ scale: 1 }}
+                viewport={{ once: true, amount: 0.1 }}
+                src={sowCrop3}
+                alt="Sowbhagya Mahal"
+                loading="lazy"
+                decoding="async"
+                width="1360"
+                height="1020"
+                className="w-full h-[600px] object-cover scale-110"
+              />
+            </div>
+            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 pointer-events-none"></div>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.1 }}
+            className="relative z-10"
+          >
+            <motion.p variants={fadeInUp} className="type-eyebrow text-[#b58c2a] mb-4">
+              Introducing Sowbhagya Mahal
+            </motion.p>
+            <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] mb-8">
+              A Premium Mini Hall for <span className="italic text-[#b58c2a]">Beautiful Celebrations</span>
+            </motion.h2>
+            <motion.div variants={fadeInUp} className="w-16 h-[1px] bg-[#d4af37] mb-8"></motion.div>
+            <motion.p variants={fadeInUp} className="type-body text-[#4f4038] mb-6">
+              Sowbhagya Mahal is a proud part of Ayswariya Mahal, located in the same building. It is an equally grand mini hall with excellent facilities at an affordable cost, perfect for weddings, engagements, receptions, birthday functions, family gatherings, and special celebrations.
+            </motion.p>
+            
+            {/* Capacity Highlights */}
+            <motion.div variants={fadeInUp} className="mb-8 grid grid-cols-3 gap-4">
+              <div className="text-center p-4 border border-[#d4af37]/28 rounded-sm bg-[#fff8ed]/72">
+                <p className="font-display text-2xl font-bold text-[#6A1724] mb-1">500</p>
+                <p className="type-eyebrow text-[#b58c2a] text-xs">Seating Capacity</p>
+              </div>
+              <div className="text-center p-4 border border-[#d4af37]/28 rounded-sm bg-[#fff8ed]/72">
+                <p className="font-display text-2xl font-bold text-[#6A1724] mb-1">200</p>
+                <p className="type-eyebrow text-[#b58c2a] text-xs">Dining Capacity</p>
+              </div>
+              <div className="text-center p-4 border border-[#d4af37]/28 rounded-sm bg-[#fff8ed]/72">
+                <p className="font-display text-2xl font-bold text-[#6A1724] mb-1">1000</p>
+                <p className="type-eyebrow text-[#b58c2a] text-xs">Floating Guests</p>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeInUp}>
+              <a
+                href="/#/sowbhagya-mahal"
+                className="inline-block px-8 py-3 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300"
+              >
+                Explore Sowbhagya Mahal
+              </a>
             </motion.div>
           </motion.div>
 

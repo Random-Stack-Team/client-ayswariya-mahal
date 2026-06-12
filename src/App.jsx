@@ -12,6 +12,7 @@ import Facilities from "./pages/Facilities";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
 import Reviews from "./pages/Reviews";
+import SowbhagyaMahal from "./pages/SowbhagyaMahal";
 
 const shouldShowOpeningAnimation = () => {
   const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
@@ -41,6 +42,7 @@ function AnimatedRoutes() {
         <Route path="/gallery" element={<Gallery />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/reviews" element={<Reviews />} />
+        <Route path="/sowbhagya-mahal" element={<SowbhagyaMahal />} />
       </Routes>
     </AnimatePresence>
   );
