@@ -123,31 +123,28 @@ export default function Hero() {
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <button
               onClick={() => navigate("/facilities")}
-              className="border border-[#e5c76b] bg-[#6A1724]/88 px-9 py-4 type-cta text-[#f3d76c] shadow-[0_18px_38px_rgba(44,4,12,0.25)] transition duration-500 hover:-translate-y-1 hover:bg-[#9a2335] hover:text-white"
+              className="relative overflow-hidden group border border-[#e5c76b] bg-[#6A1724]/88 px-9 py-4 type-cta text-[#f3d76c] shadow-[0_18px_38px_rgba(44,4,12,0.25)] transition duration-500 hover:-translate-y-1 hover:bg-[#9a2335] hover:text-white"
             >
-              Explore the Grounds
+              <span className="relative z-10">Explore the Grounds</span>
+              <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-[#E5C76B]/40 to-transparent -translate-x-[150%] skew-x-[-20deg] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></div>
             </button>
 
             <button
               onClick={() => openForm()}
-              className="border border-[#e5c76b]/80 bg-black/10 px-9 py-4 type-cta text-[#f3d76c] backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:bg-[#f8f4ec] hover:text-[#5A111C]"
+              className="relative overflow-hidden group bg-gradient-to-r from-[#E5C76B] via-[#F3D76C] to-[#C9973B] px-10 py-4 type-cta text-[#3F0C15] font-bold shadow-[0_0_20px_rgba(229,199,107,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(243,215,108,0.7)] hover:scale-[1.02]"
             >
-              Check Availability
+              <span className="relative z-10 flex items-center gap-2">
+                Check Availability
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </span>
             </button>
           </div>
-          <p className="mt-4 type-small text-white/70">📍 Arumbakkam, Chennai</p>
+          <p className="mt-6 type-small text-white/70">📍 Arumbakkam, Chennai</p>
         </div>
       </div>
     </section>
 
-    <div className="w-full bg-[#1c0d11] py-4 text-center text-white">
-      <div className="max-w-[880px] mx-auto flex justify-center gap-6 items-center text-sm font-semibold">
-        <span>★ 4.2 Google Rating</span>
-        <span>• 25+ Years</span>
-        <span>• 10,000+ Events</span>
-        <span>• 1500 Guest Capacity</span>
-      </div>
-    </div>
+
     </>
   );
 }

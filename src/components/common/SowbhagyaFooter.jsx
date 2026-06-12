@@ -17,7 +17,7 @@ const venueHighlights = [
   "Weddings & receptions",
   "Premium dining halls",
   "Centralized air conditioning",
-  "Sowbhagya mini hall",
+  "Ayswariya Mahal main hall",
 ];
 
 const socialIcons = {
@@ -46,7 +46,7 @@ function FooterHeading({ children }) {
   );
 }
 
-export default function Footer() {
+export default function SowbhagyaFooter() {
   const { openForm } = useEnquiry();
   const encodedAddress = encodeURIComponent(siteConfig.contact.address);
 
@@ -58,10 +58,10 @@ export default function Footer() {
       <div className="relative mx-auto max-w-[1280px] px-5 pt-10 pb-6 sm:px-8 md:pt-12 md:pb-8 lg:px-12">
         <div className="grid gap-5 lg:grid-cols-[1.15fr_0.75fr_0.9fr_1fr] lg:gap-x-8">
           <div>
-            <Link to="/" className="inline-flex" aria-label="Ayswariya Mahal home">
+            <Link to="/" className="inline-flex" aria-label="Sowbhagya Mahal home">
               <img
                 src={logoImg}
-                alt="Ayswariya Mahal"
+                alt="Sowbhagya Mahal"
                 loading="lazy"
                 decoding="async"
                 width="400"
@@ -70,8 +70,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 max-w-[420px] font-body text-base leading-8 text-[#fdfbf7]/76">
-              A refined wedding and event destination in Arumbakkam, Chennai, crafted for weddings,
-              receptions, engagements, and family celebrations with graceful hospitality.
+              An elegant mini hall for intimate celebrations, offering premium facilities with the trusted care of Ayswariya Mahal.
             </p>
             <button
               type="button"
@@ -108,10 +107,10 @@ export default function Footer() {
               ))}
             </ul>
             <Link
-              to="/sowbhagya-mahal"
+              to="/"
               className="mt-4 inline-flex min-h-12 items-center font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.14em] text-[#D4A843] transition-colors duration-300 hover:text-[#fdfbf7]"
             >
-              View Sowbhagya Mahal
+              View Ayswariya Mahal
             </Link>
           </div>
 
@@ -151,7 +150,7 @@ export default function Footer() {
 
         <div className="mt-5 flex flex-col gap-5 border-t border-[#D4A843]/18 pt-5 md:flex-row md:items-center md:justify-between">
           <p className="font-body text-sm leading-6 text-[#fdfbf7]/56">
-            Copyright 2026 Ayswariya Mahal. All Rights Reserved.
+            Copyright 2026 Sowbhagya Mahal. All Rights Reserved.
           </p>
 
           <div className="flex items-center gap-2">
@@ -159,7 +158,7 @@ export default function Footer() {
               href={siteConfig.socials.facebook}
               target="_blank"
               rel="noreferrer"
-              aria-label="Visit Ayswariya Mahal on Facebook"
+              aria-label="Visit Sowbhagya Mahal on Facebook"
               className="grid h-12 w-12 place-items-center rounded-full border border-[#D4A843]/24 text-[#fdfbf7]/78 transition duration-300 hover:border-[#D4A843] hover:bg-[#D4A843] hover:text-[#3F0C15]"
             >
               {socialIcons.facebook}
@@ -168,7 +167,7 @@ export default function Footer() {
               href={siteConfig.socials.instagram}
               target="_blank"
               rel="noreferrer"
-              aria-label="Visit Ayswariya Mahal on Instagram"
+              aria-label="Visit Sowbhagya Mahal on Instagram"
               className="grid h-12 w-12 place-items-center rounded-full border border-[#D4A843]/24 text-[#fdfbf7]/78 transition duration-300 hover:border-[#D4A843] hover:bg-[#D4A843] hover:text-[#3F0C15]"
             >
               {socialIcons.instagram}
@@ -177,7 +176,7 @@ export default function Footer() {
               href={siteConfig.socials.youtube}
               target="_blank"
               rel="noreferrer"
-              aria-label="Visit Ayswariya Mahal on YouTube"
+              aria-label="Visit Sowbhagya Mahal on YouTube"
               className="grid h-12 w-12 place-items-center rounded-full border border-[#D4A843]/24 text-[#fdfbf7]/78 transition duration-300 hover:border-[#D4A843] hover:bg-[#D4A843] hover:text-[#3F0C15]"
             >
               {socialIcons.youtube}

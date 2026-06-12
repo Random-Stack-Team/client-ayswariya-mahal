@@ -188,36 +188,29 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* Dark Maroon Statistics */}
+      {/* Our Philosophy */}
       <section className="py-24 md:py-32 bg-[#5A111C] relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
-        <div className="max-w-site mx-auto px-6 relative z-10">
-
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(229,199,107,0.1),transparent_50%)]"></div>
+        <div className="max-w-site mx-auto px-6 relative z-10 text-center">
           <motion.div 
             variants={staggerContainer}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center"
+            className="max-w-4xl mx-auto"
           >
-            <motion.div variants={fadeInUp}>
-              <h3 className="font-display text-5xl md:text-7xl font-bold leading-[1.1] tracking-[-0.02em] text-[#E5C76B] mb-4">25<span className="text-3xl">+</span></h3>
-              <p className="type-eyebrow text-[#fdfbf7]/84">Years Experience</p>
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <h3 className="font-display text-5xl md:text-7xl font-bold leading-[1.1] tracking-[-0.02em] text-[#E5C76B] mb-4">10k<span className="text-3xl">+</span></h3>
-              <p className="type-eyebrow text-[#fdfbf7]/84">Events Hosted</p>
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <h3 className="font-display text-5xl md:text-7xl font-bold leading-[1.1] tracking-[-0.02em] text-[#E5C76B] mb-4">1500</h3>
-              <p className="type-eyebrow text-[#fdfbf7]/84">Seating Capacity</p>
-            </motion.div>
-            <motion.div variants={fadeInUp}>
-              <h3 className="font-display text-5xl md:text-7xl font-bold leading-[1.1] tracking-[-0.02em] text-[#E5C76B] mb-4">2500</h3>
-              <p className="type-eyebrow text-[#fdfbf7]/84">Floating Guests</p>
-            </motion.div>
+            <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-4">Our Philosophy</motion.p>
+            <motion.h3 variants={fadeInUp} className="font-serif text-4xl md:text-5xl font-semibold leading-[1.2] text-[#fdfbf7] mb-8">
+              A commitment to elegance, a legacy of trust.
+            </motion.h3>
+            <motion.div variants={fadeInUp} className="w-16 h-px bg-[#E5C76B] mx-auto mb-8"></motion.div>
+            <motion.p variants={fadeInUp} className="type-body text-[#fdfbf7]/80 md:text-lg mb-6">
+              At Ayswariya Mahal, we believe that every celebration should be treated with the utmost care and devotion, as if it were our own family's. It is not just about providing a venue; it is about creating an atmosphere where traditions flourish, joy resonates, and memories are etched into eternity.
+            </motion.p>
+            <motion.p variants={fadeInUp} className="type-body text-[#fdfbf7]/80 md:text-lg">
+              Through meticulous planning, exceptional facilities, and heartfelt hospitality, we ensure that the only thing our guests need to focus on is celebrating their most precious moments.
+            </motion.p>
           </motion.div>
-
         </div>
       </section>
 
@@ -314,7 +307,7 @@ export default function About() {
               className="absolute -bottom-6 left-5 border border-[#D4A843]/40 bg-[#5A111C] px-5 py-4 text-[#fdfbf7] shadow-[0_18px_36px_rgba(63,12,21,0.24)] sm:left-8"
             >
               <p className="font-display text-3xl font-bold leading-none text-[#D4A843]">500</p>
-              <p className="mt-1 font-nav text-[11px] uppercase tracking-[0.16em]">Seated Guests</p>
+              <p className="mt-1 font-sans font-medium uppercase tracking-[0.08em] text-[11px] uppercase tracking-[0.16em]">Seated Guests</p>
             </motion.div>
           </motion.div>
 
@@ -351,7 +344,7 @@ export default function About() {
                   className="border border-[#D4A843]/28 bg-[#fff8ed]/74 p-4 text-center shadow-[0_14px_34px_rgba(90,17,28,0.08)]"
                 >
                   <p className="mb-1 font-display text-2xl font-bold text-[#5A111C]">{number}</p>
-                  <p className="font-nav text-[11px] uppercase tracking-[0.14em] text-[#B8860B]">{label} Capacity</p>
+                  <p className="font-sans font-medium uppercase tracking-[0.08em] text-[11px] uppercase tracking-[0.14em] text-[#B8860B]">{label} Capacity</p>
                 </motion.div>
               ))}
             </motion.div>
@@ -359,7 +352,7 @@ export default function About() {
             <motion.div variants={fadeInUp}>
               <Link
                 to="/sowbhagya-mahal"
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#D4A843] px-8 font-nav text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(90,17,28,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7]"
+                className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#D4A843] px-8 font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(90,17,28,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7]"
               >
                 Explore Sowbhagya Mahal
               </Link>

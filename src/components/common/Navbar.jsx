@@ -111,17 +111,6 @@ function Navbar() {
               ))}
             </nav>
 
-            <button
-              onClick={openForm}
-              className={`group relative ml-0 inline-flex h-11 min-w-[124px] items-center justify-center overflow-hidden rounded-full border px-5 py-0 font-nav text-[12px] font-normal uppercase tracking-[0.09em] transition duration-700 ${
-                solidNav
-                  ? "border-[#c99f36]/80 bg-[linear-gradient(135deg,#f4dc86_0%,#d4af37_52%,#b98a1a_100%)] text-[#4A0A12] shadow-[0_12px_26px_rgba(90,17,28,0.16),inset_0_1px_0_rgba(255,255,255,0.48)] hover:border-[#6A1724] hover:bg-[#6A1724] hover:text-[#fff8ed] hover:shadow-[0_14px_30px_rgba(90,17,28,0.24)]"
-                  : "border-[#f1d56d]/80 bg-[linear-gradient(135deg,#fff0a8_0%,#e5c76b_48%,#c79b2e_100%)] text-[#4A0A12] shadow-[0_14px_32px_rgba(0,0,0,0.2),inset_0_1px_0_rgba(255,255,255,0.55)] hover:border-[#fff8ed] hover:bg-[#fff8ed] hover:text-[#6A1724] hover:shadow-[0_16px_36px_rgba(0,0,0,0.24)]"
-              }`}
-            >
-              <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_15%,rgba(255,255,255,0.5),transparent_32%)] opacity-75 transition-opacity duration-700 group-hover:opacity-35" />
-              <span className="relative z-10 whitespace-nowrap">Book Now</span>
-            </button>
           </div>
 
           <button
@@ -177,16 +166,7 @@ function Navbar() {
                     </NavLink>
                   ))}
 
-                  <button
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      openForm();
-                    }}
-                    className="group relative mt-8 overflow-hidden rounded-full border border-[#c99f36]/80 bg-[linear-gradient(135deg,#f4dc86_0%,#d4af37_52%,#b98a1a_100%)] px-6 py-3 font-nav text-[13px] font-normal uppercase tracking-[0.095em] text-[#4A0A12] shadow-[0_14px_30px_rgba(122,27,41,0.18),inset_0_1px_0_rgba(255,255,255,0.5)] transition-colors duration-300 hover:border-[#6A1724] hover:bg-[#6A1724] hover:text-[#fff8ed]"
-                  >
-                    <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_15%,rgba(255,255,255,0.5),transparent_32%)] opacity-75 transition-opacity duration-700 group-hover:opacity-35" />
-                    <span className="relative z-10">Book Now</span>
-                  </button>
+
                 </div>
               </motion.div>
             </>

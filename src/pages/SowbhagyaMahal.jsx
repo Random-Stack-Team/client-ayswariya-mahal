@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
+import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
 import { useEnquiry } from "../context/useEnquiry";
 
 import sowCrop from "../assets/images/sow-crop.webp";
@@ -135,7 +136,7 @@ export default function SowbhagyaMahal() {
                   >
                     <span className="absolute inset-y-0 -left-10 w-8 rotate-12 bg-white/28 blur-sm transition-transform duration-700 group-hover:translate-x-48" />
                     <span className="relative font-display text-3xl font-bold text-[#D4A843]">{item.value}</span>
-                    <span className="relative ml-2 font-nav text-[12px] uppercase tracking-[0.12em] text-[#fdfbf7]/82">{item.label}</span>
+                    <span className="relative ml-2 font-sans font-medium uppercase tracking-[0.08em] text-[12px] uppercase tracking-[0.12em] text-[#fdfbf7]/82">{item.label}</span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -253,7 +254,7 @@ export default function SowbhagyaMahal() {
                   <span className="absolute inset-y-0 -left-12 w-10 rotate-12 bg-white/16 blur-sm transition-transform duration-700 group-hover:translate-x-[360px]" />
                   <div className="relative flex min-h-[204px] flex-col items-center justify-center">
                     <p className="font-display text-5xl font-bold leading-none text-[#D4A843] md:text-6xl">{item.value}</p>
-                    <p className="mt-4 font-nav text-[12px] uppercase tracking-[0.16em] text-[#fdfbf7]/78">{item.label}</p>
+                    <p className="mt-4 font-sans font-medium uppercase tracking-[0.08em] text-[12px] uppercase tracking-[0.16em] text-[#fdfbf7]/78">{item.label}</p>
                     <p className="mt-3 type-body text-[#fdfbf7]/68">{item.note}</p>
                   </div>
                 </motion.div>
@@ -458,6 +459,7 @@ export default function SowbhagyaMahal() {
             </motion.div>
           </section>
         </main>
+        <SowbhagyaFooter />
       </PageTransition>
     </>
   );

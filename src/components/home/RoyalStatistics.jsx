@@ -27,7 +27,7 @@ export default function RoyalStatistics() {
               <h3 className="font-display text-4xl md:text-5xl mb-4 font-bold leading-[1.1] tracking-[-0.02em]">
                 {stat.number}
               </h3>
-              <p className="type-eyebrow max-w-[220px] text-surface-warm/84">
+              <p className="type-eyebrow max-w-[220px] text-[#D4A843]">
                 {stat.label}
               </p>
             </motion.div>
