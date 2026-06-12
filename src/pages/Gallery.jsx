@@ -320,7 +320,7 @@ export default function Gallery() {
                     "Real Celebration Memories",
                   ].map((item) => (
                     <li key={item} className="flex gap-3">
-                      <span className="text-[#E5C76B]">*</span>
+                      <span className="text-[#E5C76B]">✦</span>
                       {item}
                     </li>
                   ))}
@@ -332,9 +332,9 @@ export default function Gallery() {
           <section className="flex h-[40vh] items-center justify-center bg-[#fcf9f4]">
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center">
               <h2 className="font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4A0A12] md:text-5xl">
-                End of Visual Journey
+                Imagine Your Event Here
               </h2>
-              <p className="mt-2 type-body text-[#4f4038]">Ayswariya Mahal - Every frame tells a royal story</p>
+              <p className="mt-2 type-body text-[#4f4038]">Every celebration at Ayswariya Mahal becomes a story worth sharing.</p>
             </motion.div>
           </section>
         </main>

@@ -299,7 +299,7 @@ export default function FloatingEnvelope() {
                       >
                         <header className="mb-6 text-center">
                           <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={18} strokeWidth={2} /></div>
-                          <h2 className="font-serif font-semibold text-2xl text-[#4a3623] tracking-[0.01em]">The Royal Petition</h2>
+                          <h2 className="font-serif font-semibold text-2xl text-[#4a3623] tracking-[0.01em]">Send an Enquiry</h2>
                           <div className="flex items-center justify-center gap-4 mt-3">
                             <div className="w-12 h-[2px] bg-[#4a3623]"></div>
                             <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>

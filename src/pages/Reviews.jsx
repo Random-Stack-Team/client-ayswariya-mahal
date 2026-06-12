@@ -13,31 +13,37 @@ const reviews = [
     name: "Karthik & Priya",
     review: "A beautiful wedding hall with excellent facilities. The management was very supportive throughout our event.",
     rating: 5,
+    date: "March 2026",
   },
   {
     name: "Suresh Kumar",
     review: "Spacious hall, ample parking, and excellent dining arrangements. Highly recommended for weddings and receptions.",
-    rating: 5,
+    rating: 4,
+    date: "January 2026",
   },
   {
     name: "Meena Raj",
     review: "The ambience and decoration support were amazing. Our guests were impressed with the facilities.",
     rating: 5,
+    date: "February 2026",
   },
   {
     name: "Arun & Divya",
     review: "Everything was well organized and the hall looked stunning. A memorable experience for our family.",
     rating: 5,
+    date: "April 2026",
   },
   {
     name: "Vignesh",
     review: "Excellent maintenance, good seating capacity, and a prime location. Worth every penny.",
     rating: 5,
+    date: "May 2026",
   },
   {
     name: "Ramya",
     review: "Very professional team and beautiful venue. We received many compliments from our guests.",
-    rating: 5,
+    rating: 4,
+    date: "December 2025",
   },
 ];
 
@@ -49,7 +55,7 @@ export default function Reviews() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveReview((prev) => (prev + 1) % reviews.length);
-    }, 3500);
+    }, 7000);
 
     return () => clearInterval(timer);
   }, []);
@@ -239,6 +245,7 @@ export default function Reviews() {
                       <h3 className="relative z-10 font-serif text-[22px] font-semibold leading-[1.2] text-[#4A0A12]">
                         {currentReview.name}
                       </h3>
+                      <p className="type-small text-[#4f4038] mt-1">{currentReview.date}</p>
                     </motion.div>
                   </AnimatePresence>
 

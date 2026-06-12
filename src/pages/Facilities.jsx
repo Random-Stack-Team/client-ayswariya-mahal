@@ -22,7 +22,7 @@ import facility6 from "../assets/images/Facility/facility6.webp";
 import facility7 from "../assets/images/Facility/facility7.webp";
 import facility8 from "../assets/images/Facility/facility8.webp";
 
-import facilitiesImg from "../assets/images/Facility/facility1.webp";
+
 
 
 import bgImg from "../assets/images/facility.webp";
@@ -353,7 +353,7 @@ export default function Facilities() {
               transition={{ duration: 1 }}
             >
               <img
-                src={facilitiesImg}
+                src={facility1}
                 loading="lazy"
                 decoding="async"
                 width="1537"
@@ -405,10 +405,10 @@ export default function Facilities() {
             className="text-center"
           >
             <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C]">
-              End of Royal Journey
+              Begin Your Celebration
             </h2>
             <p className="type-body text-[#4f4038] mt-2">
-              Ayswariya Mahal - Where celebrations become memories
+              Ready to host your next event? Contact us to check availability.
             </p>
           </motion.div>
 

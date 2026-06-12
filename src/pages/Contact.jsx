@@ -135,7 +135,7 @@ export default function Contact() {
             <div className="bg-white p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20 text-center">
               <h3 className="font-serif text-2xl md:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-4">Plan Your Celebration</h3>
               <p className="type-body text-[#4f4038] mb-8">
-                Send us a royal petition and our Heritage Concierge will get back to you with venue availability and bespoke packages.
+                Share your event details and our team will get back to you with venue availability and tailored packages.
               </p>
               <button
                 onClick={openForm}
