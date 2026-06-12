@@ -19,20 +19,25 @@ import sowCrop2 from "../assets/images/sow-crop2.webp";
 import sowCrop3 from "../assets/images/sow-crop3.webp";
 import sowCrop5 from "../assets/images/sow-crop5.webp";
 import facility1 from "../assets/images/Facility/facility1.webp";
+import facility2 from "../assets/images/Facility/facility2.webp";
+import facility3 from "../assets/images/Facility/facility3.webp";
+import facility4 from "../assets/images/Facility/facility4.webp";
+import facility5 from "../assets/images/Facility/facility5.webp";
+import facility6 from "../assets/images/Facility/facility6.webp";
 
 const capacities = [
-  { value: "500", label: "Seated Guests", note: "Main hall comfort" },
-  { value: "200", label: "Dining Capacity", note: "Service-ready dining" },
-  { value: "1000", label: "Floating Guests", note: "Flexible celebration flow" },
+  { value: "500", label: "Seated Guests", note: "Main hall comfort", image: sowCrop5 },
+  { value: "200", label: "Dining Capacity", note: "Service-ready dining", image: facility1 },
+  { value: "1000", label: "Floating Guests", note: "Flexible celebration flow", image: sowCrop3 },
 ];
 
 const facilities = [
-  { icon: Snowflake, title: "Centralized AC", body: "Comfortable climate control across the building for long celebrations." },
-  { icon: ChefHat, title: "Modern Kitchen", body: "A fully equipped kitchen planned for smooth event catering." },
-  { icon: DoorOpen, title: "Guest Rooms", body: "Luxurious rooms for families and important guests to refresh." },
-  { icon: Zap, title: "Power Backup", body: "Generator support to keep functions running without interruption." },
-  { icon: ShieldCheck, title: "CCTV Coverage", body: "Security coverage for a confident, well-managed venue experience." },
-  { icon: Utensils, title: "Dining Hall", body: "A spacious dining area with practical guest movement and service flow." },
+  { icon: Snowflake, image: facility2, title: "Centralized AC", body: "Comfortable climate control across the building for long celebrations." },
+  { icon: ChefHat, image: facility3, title: "Modern Kitchen", body: "A fully equipped kitchen planned for smooth event catering." },
+  { icon: DoorOpen, image: facility4, title: "Guest Rooms", body: "Luxurious rooms for families and important guests to refresh." },
+  { icon: Zap, image: facility5, title: "Power Backup", body: "Generator support to keep functions running without interruption." },
+  { icon: ShieldCheck, image: facility6, title: "CCTV Coverage", body: "Security coverage for a confident, well-managed venue experience." },
+  { icon: Utensils, image: facility1, title: "Dining Hall", body: "A spacious dining area with practical guest movement and service flow." },
 ];
 
 const highlights = [
@@ -139,14 +144,14 @@ export default function SowbhagyaMahal() {
                 <button
                   type="button"
                   onClick={() => document.getElementById("sowbhagya-facilities")?.scrollIntoView({ behavior: "smooth" })}
-                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#D4A843] px-8 font-nav text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_18px_38px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_52%,#B8860B_100%)] px-8 type-cta text-[#3F0C15] shadow-[0_18px_38px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.5)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(0,0,0,0.3)]"
                 >
                   Explore Facilities
                 </button>
                 <button
                   type="button"
                   onClick={openForm}
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#D4A843]/80 px-8 font-nav text-[13px] uppercase tracking-[0.12em] text-[#D4A843] transition duration-300 hover:-translate-y-0.5 hover:bg-[#D4A843] hover:text-[#3F0C15]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#fdfbf7]/70 bg-[#fdfbf7]/12 px-8 type-cta text-[#fdfbf7] shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur-md transition duration-300 hover:-translate-y-0.5 hover:border-[#D4A843] hover:bg-[#D4A843] hover:text-[#3F0C15]"
                 >
                   Enquire Now
                 </button>
@@ -230,16 +235,26 @@ export default function SowbhagyaMahal() {
                   key={item.label}
                   variants={fadeInUp}
                   whileHover={{ y: -9, scale: 1.015 }}
-                  className="group relative overflow-hidden border border-[#D4A843]/24 bg-[#fdfbf7]/5 p-7 text-center shadow-[0_18px_44px_rgba(0,0,0,0.12)]"
+                  className="group relative min-h-[260px] overflow-hidden border border-[#D4A843]/28 bg-[#1A0A02] p-7 text-center shadow-[0_24px_58px_rgba(0,0,0,0.22)]"
                 >
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,168,67,0.2),transparent_42%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <img
+                    src={item.image}
+                    alt={`${item.label} at Sowbhagya Mahal`}
+                    loading="lazy"
+                    decoding="async"
+                    width="1360"
+                    height="1020"
+                    className="absolute inset-0 h-full w-full object-cover opacity-36 transition duration-700 group-hover:scale-105 group-hover:opacity-48"
+                  />
+                  <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,10,2,0.52),rgba(63,12,21,0.9))]" />
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,168,67,0.28),transparent_44%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="absolute left-4 top-4 h-8 w-8 border-l border-t border-[#D4A843]/45" />
                   <div className="absolute bottom-4 right-4 h-8 w-8 border-b border-r border-[#D4A843]/45" />
                   <span className="absolute inset-y-0 -left-12 w-10 rotate-12 bg-white/16 blur-sm transition-transform duration-700 group-hover:translate-x-[360px]" />
-                  <div className="relative">
+                  <div className="relative flex min-h-[204px] flex-col items-center justify-center">
                     <p className="font-display text-5xl font-bold leading-none text-[#D4A843] md:text-6xl">{item.value}</p>
                     <p className="mt-4 font-nav text-[12px] uppercase tracking-[0.16em] text-[#fdfbf7]/78">{item.label}</p>
-                    <p className="mt-3 font-body text-sm leading-6 text-[#fdfbf7]/56">{item.note}</p>
+                    <p className="mt-3 type-body text-[#fdfbf7]/68">{item.note}</p>
                   </div>
                 </motion.div>
               ))}
@@ -270,16 +285,29 @@ export default function SowbhagyaMahal() {
                       key={facility.title}
                       variants={fadeInUp}
                       whileHover={{ y: -10, scale: 1.012 }}
-                      className="group relative overflow-hidden border border-[#D4A843]/22 bg-[#fff8ed]/72 p-7 shadow-[0_18px_44px_rgba(90,17,28,0.07)] transition-colors duration-300 hover:border-[#B8860B]/55"
+                      className="group relative min-h-[420px] overflow-hidden border border-[#D4A843]/24 bg-[#fff8ed] shadow-[0_22px_54px_rgba(90,17,28,0.1)] transition-colors duration-300 hover:border-[#B8860B]/55"
                     >
-                      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(212,168,67,0.16),transparent_36%,rgba(90,17,28,0.05))] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                      <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full border border-[#D4A843]/28 transition-transform duration-700 group-hover:scale-125" />
-                      <div className="absolute left-0 top-0 h-1 w-0 bg-[#B8860B] transition-all duration-500 group-hover:w-full" />
-                      <div className="relative mb-6 grid h-14 w-14 place-items-center rounded-full bg-[#5A111C] text-[#D4A843] shadow-[0_14px_28px_rgba(90,17,28,0.18)] transition duration-500 group-hover:bg-[#D4A843] group-hover:text-[#5A111C]">
-                        <Icon size={22} strokeWidth={1.7} aria-hidden="true" />
+                      <div className="relative h-52 overflow-hidden">
+                        <img
+                          src={facility.image}
+                          alt={`${facility.title} at Sowbhagya Mahal`}
+                          loading="lazy"
+                          decoding="async"
+                          width="1360"
+                          height="1020"
+                          className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.08]"
+                        />
+                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(26,10,2,0.02),rgba(63,12,21,0.62))]" />
+                        <div className="absolute bottom-4 left-5 grid h-14 w-14 place-items-center rounded-full border border-[#D4A843]/55 bg-[#5A111C] text-[#D4A843] shadow-[0_14px_28px_rgba(26,10,2,0.28)] transition duration-500 group-hover:bg-[#D4A843] group-hover:text-[#5A111C]">
+                          <Icon size={22} strokeWidth={1.7} aria-hidden="true" />
+                        </div>
                       </div>
-                      <h3 className="relative mb-3 font-serif text-2xl font-semibold leading-[1.15] text-[#5A111C]">{facility.title}</h3>
-                      <p className="relative type-body text-[#4f4038]">{facility.body}</p>
+                      <div className="relative p-7">
+                        <div className="absolute left-7 top-0 h-px w-16 bg-[#B8860B]" />
+                        <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full border border-[#D4A843]/28 transition-transform duration-700 group-hover:scale-125" />
+                        <h3 className="relative mb-3 font-serif text-2xl font-semibold leading-[1.15] text-[#5A111C]">{facility.title}</h3>
+                        <p className="relative type-body text-[#4f4038]">{facility.body}</p>
+                      </div>
                     </motion.article>
                   );
                 })}
@@ -356,7 +384,7 @@ export default function SowbhagyaMahal() {
                 <button
                   type="button"
                   onClick={openForm}
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#B8860B]/60 px-7 font-nav text-[13px] uppercase tracking-[0.12em] text-[#5A111C] transition duration-300 hover:bg-[#5A111C] hover:text-[#fdfbf7]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#5A111C] px-7 type-cta text-[#D4A843] shadow-[0_14px_30px_rgba(90,17,28,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#3F0C15] hover:text-[#fdfbf7]"
                 >
                   Book a Visit
                 </button>
@@ -413,7 +441,7 @@ export default function SowbhagyaMahal() {
                 <button
                   type="button"
                   onClick={openForm}
-                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#D4A843] px-9 font-nav text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7]"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_52%,#B8860B_100%)] px-9 type-cta text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(0,0,0,0.3)]"
                 >
                   Enquire Now
                 </button>
@@ -421,7 +449,7 @@ export default function SowbhagyaMahal() {
                   href="https://www.google.com/maps/search/?api=1&query=Ayswariya%20Mahal%20Arumbakkam%20Chennai"
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#D4A843]/70 px-9 font-nav text-[13px] uppercase tracking-[0.12em] text-[#D4A843] transition duration-300 hover:bg-[#D4A843] hover:text-[#3F0C15]"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#fdfbf7]/70 bg-[#fdfbf7]/10 px-9 type-cta text-[#fdfbf7] backdrop-blur-md transition duration-300 hover:bg-[#D4A843] hover:text-[#3F0C15]"
                 >
                   <MapPin size={17} aria-hidden="true" />
                   Get Directions
