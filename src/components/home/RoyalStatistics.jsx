@@ -13,7 +13,7 @@ export default function RoyalStatistics() {
       {/* Decorative ambient lighting */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40 pointer-events-none"></div>
       
-      <div className="max-w-[1280px] mx-auto px-6 relative z-10">
+      <div className="max-w-site mx-auto px-6 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center divide-x-0 md:divide-x divide-gold-leaf/20">
           {stats.map((stat, index) => (
             <motion.div 

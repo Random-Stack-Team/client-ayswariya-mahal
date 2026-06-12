@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import heroImage from "../../assets/images/hero.webp";
+import { useEnquiry } from "../../context/useEnquiry";
 
 const petals = [
   { left: "9%", top: "72%", size: 20, delay: 0.1, drift: 24 },
@@ -16,6 +17,7 @@ const petals = [
 
 export default function Hero() {
   const navigate = useNavigate();
+  const { openForm } = useEnquiry();
   const imageRef = useRef(null);
   const contentRef = useRef(null);
   const petalsRef = useRef([]);
@@ -64,6 +66,7 @@ export default function Hero() {
   }, []);
 
   return (
+    <>
     <section className="relative min-h-screen overflow-hidden bg-[#2a1116]">
       <div className="absolute inset-0">
         <img
@@ -126,14 +129,25 @@ export default function Hero() {
             </button>
 
             <button
-              onClick={() => navigate("/about")}
+              onClick={() => openForm()}
               className="border border-[#e5c76b]/80 bg-black/10 px-9 py-4 type-cta text-[#f3d76c] backdrop-blur-sm transition duration-500 hover:-translate-y-1 hover:bg-[#f8f4ec] hover:text-[#5A111C]"
             >
-              The Story
+              Check Availability
             </button>
           </div>
+          <p className="mt-4 type-small text-white/70">📍 Arumbakkam, Chennai</p>
         </div>
       </div>
     </section>
+
+    <div className="w-full bg-[#1c0d11] py-4 text-center text-white">
+      <div className="max-w-[880px] mx-auto flex justify-center gap-6 items-center text-sm font-semibold">
+        <span>★ 4.2 Google Rating</span>
+        <span>• 25+ Years</span>
+        <span>• 10,000+ Events</span>
+        <span>• 1500 Guest Capacity</span>
+      </div>
+    </div>
+    </>
   );
 }

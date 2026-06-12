@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import PageTransition from "../components/common/PageTransition";
 import SEO from "../components/common/SEO";
+import { useEnquiry } from "../context/useEnquiry";
 
 import gallery1 from "../assets/images/Gallery/hall1.webp";
 import gallery2 from "../assets/images/Gallery/hall2.webp";
@@ -53,6 +54,7 @@ const categoryMeta = {
 
 export default function Gallery() {
   const railRef = useRef(null);
+  const { openForm } = useEnquiry();
   const sectionRef = useRef(null);
   const camera = useRef({ x: 0, vx: 0, target: 0 });
   const rafId = useRef(null);
@@ -335,6 +337,11 @@ export default function Gallery() {
                 Imagine Your Event Here
               </h2>
               <p className="mt-2 type-body text-[#4f4038]">Every celebration at Ayswariya Mahal becomes a story worth sharing.</p>
+              <div className="mt-6">
+                <button onClick={openForm} className="px-8 py-3 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300">
+                  Enquire Now
+                </button>
+              </div>
             </motion.div>
           </section>
         </main>

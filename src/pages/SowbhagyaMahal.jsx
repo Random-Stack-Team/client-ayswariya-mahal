@@ -1,469 +1,434 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { MapPin } from "lucide-react";
+import {
+  ChefHat,
+  DoorOpen,
+  MapPin,
+  ShieldCheck,
+  Snowflake,
+  Sparkles,
+  Utensils,
+  Zap,
+} from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 import { useEnquiry } from "../context/useEnquiry";
 
-// Import images
-
+import sowCrop from "../assets/images/sow-crop.webp";
 import sowCrop2 from "../assets/images/sow-crop2.webp";
+import sowCrop3 from "../assets/images/sow-crop3.webp";
 import sowCrop5 from "../assets/images/sow-crop5.webp";
 import facility1 from "../assets/images/Facility/facility1.webp";
 
+const capacities = [
+  { value: "500", label: "Seated Guests", note: "Main hall comfort" },
+  { value: "200", label: "Dining Capacity", note: "Service-ready dining" },
+  { value: "1000", label: "Floating Guests", note: "Flexible celebration flow" },
+];
+
+const facilities = [
+  { icon: Snowflake, title: "Centralized AC", body: "Comfortable climate control across the building for long celebrations." },
+  { icon: ChefHat, title: "Modern Kitchen", body: "A fully equipped kitchen planned for smooth event catering." },
+  { icon: DoorOpen, title: "Guest Rooms", body: "Luxurious rooms for families and important guests to refresh." },
+  { icon: Zap, title: "Power Backup", body: "Generator support to keep functions running without interruption." },
+  { icon: ShieldCheck, title: "CCTV Coverage", body: "Security coverage for a confident, well-managed venue experience." },
+  { icon: Utensils, title: "Dining Hall", body: "A spacious dining area with practical guest movement and service flow." },
+];
+
+const highlights = [
+  "Located in the same building as Ayswariya Mahal",
+  "Affordable mini hall option with premium essentials",
+  "Suitable for weddings, engagements, receptions and family events",
+  "Easy access by road and metro for guests across Chennai",
+];
+
+const galleryImages = [
+  { src: sowCrop, title: "Celebration Hall" },
+  { src: sowCrop3, title: "Event Ambience" },
+  { src: facility1, title: "Guest Facilities" },
+];
 
 export default function SowbhagyaMahal() {
   const containerRef = useRef(null);
+  const { openForm } = useEnquiry();
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start end", "end start"]
+    offset: ["start end", "end start"],
   });
 
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [-100, 100]);
-  const { openForm } = useEnquiry();
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [-70, 70]);
 
   const staggerContainer = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.24,
-        delayChildren: 0.08
-      }
-    }
+        staggerChildren: 0.16,
+        delayChildren: 0.08,
+      },
+    },
   };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 28 },
-    show: { opacity: 1, y: 0, transition: { duration: 1.15, ease: [0.16, 1, 0.3, 1] } }
+    show: { opacity: 1, y: 0, transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] } },
   };
-
-
-
-  const facilities = [
-    { title: "500 Guests", subtitle: "Seating Capacity" },
-    { title: "200 Guests", subtitle: "Dining Capacity" },
-    { title: "1000", subtitle: "Floating Guest Capacity" },
-    { title: "Centralized AC", subtitle: "Building" },
-  ];
-
-  const facilityCards = [
-    { icon: "🌬️", title: "Centralized Air Conditioning" },
-    { icon: "🍽️", title: "Fully Equipped Modern Kitchen" },
-    { icon: "🛏️", title: "Luxurious Guest Rooms" },
-    { icon: "⚡", title: "Backup Generator" },
-    { icon: "🚿", title: "Geysers" },
-    { icon: "📹", title: "CCTV Coverage" },
-    { icon: "🪑", title: "Spacious Dining Hall" },
-    { icon: "🌳", title: "Separate Rooftop Garden" },
-    { icon: "🚗", title: "Easy Road Connectivity" },
-    { icon: "🚇", title: "Metro Accessibility" },
-  ];
-
-  const whyChoosePoints = [
-    "Same trusted management as Ayswariya Mahal",
-    "Located in the same building",
-    "Affordable cost without compromising comfort",
-    "Modern architecture",
-    "Suitable for weddings and family functions",
-    "Easy accessibility by metro and road transport",
-    "Peaceful and auspicious ambience",
-    "Family-like hospitality from the management"
-  ];
-
-  const galleryItems = [
-    { title: "Hall Interior", icon: "🏛️" },
-    { title: "Wedding Stage", icon: "🎭" },
-    { title: "Dining Area", icon: "🍴" },
-    { title: "Rooftop Garden", icon: "🌺" },
-    { title: "Guest Rooms", icon: "🛏️" },
-    { title: "Lighting & Decor", icon: "✨" },
-  ];
 
   return (
     <>
-      <SEO 
-        title="Sowbhagya Mahal - Premium Mini Hall for Beautiful Celebrations" 
-        description="Sowbhagya Mahal is a proud part of Ayswariya Mahal. An equally grand mini hall with excellent facilities at affordable cost, perfect for weddings, engagements, receptions, birthday functions, and family gatherings."
+      <SEO
+        title="Sowbhagya Mahal - Premium Mini Hall for Beautiful Celebrations"
+        description="Sowbhagya Mahal is a premium mini hall by Ayswariya Mahal in Chennai, offering spacious seating, dining facilities, centralized AC, modern kitchen, guest rooms, and refined hospitality for weddings and family events."
         path="/sowbhagya-mahal"
       />
       <PageTransition>
-        <main className="bg-[#fdfbf7] min-h-screen overflow-hidden" ref={containerRef}>
-
-          {/* 1. Hero Section */}
-          <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[60vh] md:min-h-[70vh]">
-            <div 
+        <main ref={containerRef} className="min-h-screen overflow-hidden bg-[#fdfbf7] text-[#4a3623]">
+          <section className="relative flex min-h-[92svh] items-center overflow-hidden px-5 pb-20 pt-32 text-center md:px-8 lg:px-12">
+            <motion.div
+              initial={{ scale: 1.12 }}
+              animate={{ scale: 1.03 }}
+              transition={{ duration: 8, ease: "easeOut" }}
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${sowCrop2})` }}
-            ></div>
-            <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/80 via-[#3F0C15]/70 to-[#fdfbf7]"></div>
-            
-            <motion.div 
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(165deg,rgba(26,10,2,0.88)_0%,rgba(90,17,28,0.72)_48%,rgba(63,12,21,0.44)_100%)]" />
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#fdfbf7] to-transparent" />
+
+            <motion.div
               variants={staggerContainer}
               initial="hidden"
               animate="show"
-              className="relative z-10 max-w-[1280px] mx-auto text-center"
+              className="relative z-10 mx-auto max-w-5xl"
             >
-              <motion.p
-                variants={fadeInUp}
-                className="type-eyebrow text-[#E5C76B] mb-6 drop-shadow-md"
-              >
-                Premium Mini Hall
+              <motion.p variants={fadeInUp} className="type-eyebrow mb-5 text-[#D4A843]">
+                Ayswariya Mahal Mini Hall
               </motion.p>
+              <motion.div variants={fadeInUp} className="mx-auto mb-7 h-px w-28 bg-gradient-to-r from-transparent via-[#D4A843] to-transparent" />
               <motion.h1
                 variants={fadeInUp}
-                className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl"
+                className="font-display text-[clamp(42px,8vw,88px)] font-bold leading-[1.04] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl"
               >
                 Sowbhagya Mahal
               </motion.h1>
-              <motion.h2
-                variants={fadeInUp}
-                className="font-serif text-[clamp(20px,4vw,36px)] font-semibold leading-[1.2] text-[#E5C76B] mt-4 drop-shadow-lg"
-              >
-                A Premium Mini Hall for Beautiful Celebrations
-              </motion.h2>
               <motion.p
                 variants={fadeInUp}
-                className="mt-8 max-w-2xl mx-auto type-body text-[#fdfbf7]/90 drop-shadow-md"
+                className="mx-auto mt-7 max-w-3xl font-serif text-[clamp(24px,4vw,42px)] font-semibold leading-[1.18] text-[#D4A843]"
               >
-                Sowbhagya Mahal is a proud part of Ayswariya Mahal. It is an equally grand mini hall with excellent facilities at an affordable cost, perfect for weddings, engagements, receptions, birthday functions, family gatherings, and special celebrations.
+                A graceful mini hall for intimate, comfortable and memorable celebrations.
+              </motion.p>
+              <motion.p variants={fadeInUp} className="mx-auto mt-6 max-w-2xl type-body text-[#fdfbf7]/86">
+                Located in the same building as Ayswariya Mahal, Sowbhagya Mahal offers refined facilities,
+                spacious planning and warm hospitality at an accessible cost.
               </motion.p>
 
-              {/* Highlight Badges */}
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                animate="show"
-                className="mt-12 flex flex-wrap gap-4 justify-center"
-              >
-                {[
-                  { label: "500 Seating Capacity" },
-                  { label: "200 Dining Capacity" },
-                  { label: "1000 Floating Guests" }
-                ].map((badge) => (
+              <motion.div variants={fadeInUp} className="mt-10 flex flex-wrap justify-center gap-3">
+                {capacities.map((item) => (
                   <motion.div
-                    key={badge.label}
-                    variants={fadeInUp}
-                    className="px-6 py-3 bg-[#d4af37]/20 border border-[#d4af37]/40 rounded-full backdrop-blur-sm"
+                    key={item.label}
+                    whileHover={{ y: -5, scale: 1.03 }}
+                    className="group relative overflow-hidden border border-[#D4A843]/38 bg-[#fdfbf7]/10 px-5 py-3 backdrop-blur-md"
                   >
-                    <p className="text-[#E5C76B] font-semibold text-sm">{badge.label}</p>
+                    <span className="absolute inset-y-0 -left-10 w-8 rotate-12 bg-white/28 blur-sm transition-transform duration-700 group-hover:translate-x-48" />
+                    <span className="relative font-display text-3xl font-bold text-[#D4A843]">{item.value}</span>
+                    <span className="relative ml-2 font-nav text-[12px] uppercase tracking-[0.12em] text-[#fdfbf7]/82">{item.label}</span>
                   </motion.div>
                 ))}
               </motion.div>
 
-              {/* CTA Buttons */}
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                animate="show"
-                className="mt-12 flex flex-wrap gap-4 justify-center"
-              >
-                <motion.button
-                  variants={fadeInUp}
-                  onClick={() => document.getElementById('facilities')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="px-8 py-3 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300"
+              <motion.div variants={fadeInUp} className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={() => document.getElementById("sowbhagya-facilities")?.scrollIntoView({ behavior: "smooth" })}
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#D4A843] px-8 font-nav text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_18px_38px_rgba(0,0,0,0.22)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7]"
                 >
                   Explore Facilities
-                </motion.button>
-                <motion.button
-                  variants={fadeInUp}
+                </button>
+                <button
+                  type="button"
                   onClick={openForm}
-                  className="px-8 py-3 border-2 border-[#d4af37] text-[#d4af37] font-semibold rounded-full hover:bg-[#d4af37]/10 transition-colors duration-300"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#D4A843]/80 px-8 font-nav text-[13px] uppercase tracking-[0.12em] text-[#D4A843] transition duration-300 hover:-translate-y-0.5 hover:bg-[#D4A843] hover:text-[#3F0C15]"
                 >
                   Enquire Now
-                </motion.button>
-              </motion.div>
-            </motion.div>
-          </section>
-
-          {/* 2. About Section */}
-          <section className="py-24 md:py-32 px-6">
-            <div className="max-w-[1280px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
-                className="relative"
-              >
-                <div className="absolute inset-0 bg-[#d4af37] rounded-sm transform translate-x-4 translate-y-4 opacity-20"></div>
-                <div className="relative overflow-hidden rounded-sm shadow-2xl">
-                  <motion.img
-                    style={{ y: parallaxY }}
-                    src={sowCrop5}
-                    alt="Sowbhagya Mahal About"
-                    loading="lazy"
-                    decoding="async"
-                    width="1360"
-                    height="1020"
-                    className="w-full h-[600px] object-cover scale-110"
-                  />
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.1 }}
-                className="relative z-10"
-              >
-                <motion.p variants={fadeInUp} className="type-eyebrow text-[#b58c2a] mb-4">
-                  About Sowbhagya Mahal
-                </motion.p>
-                <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] mb-8">
-                  A Grand Mini Hall with <span className="italic text-[#b58c2a]">Modern Comfort</span>
-                </motion.h2>
-                <motion.div variants={fadeInUp} className="w-16 h-[1px] bg-[#d4af37] mb-8"></motion.div>
-                <motion.p variants={fadeInUp} className="type-body text-[#4f4038] mb-6">
-                  Sowbhagya Mahal is located in the same building as Ayswariya Mahal and offers a spacious, elegant, and comfortable celebration space. It is designed for families who want a premium venue experience with modern facilities and warm hospitality at an affordable cost.
-                </motion.p>
-                <motion.p variants={fadeInUp} className="type-body text-[#4f4038]">
-                  The hall includes centralized air conditioning, a fully equipped modern kitchen, luxurious guest rooms, backup generator, geysers, CCTV coverage, spacious dining hall, and a separate rooftop garden.
-                </motion.p>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* 3. Capacity Section */}
-          <section id="facilities" className="py-24 md:py-32 px-6 bg-[#f5ead9]">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.1 }}
-              className="max-w-[1280px] mx-auto"
-            >
-              <motion.p variants={fadeInUp} className="type-eyebrow text-[#6A1724] mb-4 text-center">
-                Venue Capacity
-              </motion.p>
-              <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] text-center mb-16">
-                Premium Capacity for <span className="italic text-[#b58c2a]">Every Celebration</span>
-              </motion.h2>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {facilities.map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    variants={fadeInUp}
-                    className="relative overflow-hidden rounded-sm bg-white/60 backdrop-blur-sm p-8 border border-[#d4af37]/28 text-center shadow-lg hover:shadow-xl transition-shadow duration-300"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#d4af37]/10 to-transparent pointer-events-none"></div>
-                    <div className="relative z-10">
-                      <h3 className="font-display text-[clamp(28px,4vw,48px)] font-bold text-[#6A1724] mb-2">
-                        {item.title}
-                      </h3>
-                      <p className="type-eyebrow text-[#b58c2a]">{item.subtitle}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </section>
-
-          {/* 4. Facilities Section */}
-          <section className="py-24 md:py-32 px-6">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.1 }}
-              className="max-w-[1280px] mx-auto"
-            >
-              <motion.p variants={fadeInUp} className="type-eyebrow text-[#b58c2a] mb-4 text-center">
-                What We Offer
-              </motion.p>
-              <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] text-center mb-16">
-                Comprehensive Facilities for <span className="italic text-[#b58c2a]">Seamless Events</span>
-              </motion.h2>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
-                {facilityCards.map((facility, idx) => (
-                  <motion.div
-                    key={idx}
-                    variants={fadeInUp}
-                    className="p-6 rounded-sm bg-[#fff8ed] border border-[#d4af37]/20 hover:border-[#d4af37]/60 hover:shadow-lg transition-all duration-300 text-center"
-                  >
-                    <div className="text-4xl mb-4">{facility.icon}</div>
-                    <p className="font-semibold text-[#4a3623] text-sm">{facility.title}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </section>
-
-          {/* 5. Why Choose Sowbhagya Mahal */}
-          <section className="py-24 md:py-32 px-6 bg-[#f5ead9]">
-            <div className="max-w-[1280px] mx-auto grid lg:grid-cols-2 gap-16 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
-                className="relative"
-              >
-                <div className="absolute inset-0 bg-[#d4af37] rounded-sm transform translate-x-4 translate-y-4 opacity-20"></div>
-                <div className="relative overflow-hidden rounded-sm shadow-2xl">
-                  <img
-                    src={facility1}
-                    alt="Why Choose Sowbhagya Mahal"
-                    loading="lazy"
-                    decoding="async"
-                    width="1360"
-                    height="1020"
-                    className="w-full h-[600px] object-cover"
-                  />
-                </div>
-              </motion.div>
-
-              <motion.div
-                variants={staggerContainer}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.1 }}
-              >
-                <motion.p variants={fadeInUp} className="type-eyebrow text-[#6A1724] mb-4">
-                  Why Choose Us
-                </motion.p>
-                <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] mb-8">
-                  Trusted Excellence, <span className="italic text-[#b58c2a]">Affordable Luxury</span>
-                </motion.h2>
-                <motion.div variants={fadeInUp} className="w-16 h-[1px] bg-[#d4af37] mb-8"></motion.div>
-
-                <ul className="space-y-4">
-                  {whyChoosePoints.map((point, idx) => (
-                    <motion.li
-                      key={idx}
-                      variants={fadeInUp}
-                      className="flex items-start gap-4 type-body text-[#4f4038]"
-                    >
-                      <span className="text-[#d4af37] font-bold mt-1">•</span>
-                      <span>{point}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </motion.div>
-            </div>
-          </section>
-
-          {/* 6. Experience Section */}
-          <section className="py-32 md:py-48 bg-[#5A111C] relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/30 pointer-events-none"></div>
-            
-            <motion.div 
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.1 }}
-              className="max-w-4xl mx-auto text-center px-6 relative z-10"
-            >
-              <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-6">
-                Our Promise
-              </motion.p>
-              <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] mb-10 drop-shadow-lg">
-                Celebrate Peacefully, Remember <span className="italic text-[#E5C76B]">Forever</span>
-              </motion.h2>
-              <motion.p variants={fadeInUp} className="type-body text-[#fdfbf7]/82 max-w-3xl mx-auto">
-                Our management believes every function should be treated like our own family celebration. From the moment you book your event, we take care of the comfort, coordination, and hospitality needed to create a happy, peaceful, and memorable experience.
-              </motion.p>
-            </motion.div>
-          </section>
-
-          {/* 7. Gallery Preview */}
-          <section className="py-24 md:py-32 px-6">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.1 }}
-              className="max-w-[1280px] mx-auto"
-            >
-              <motion.p variants={fadeInUp} className="type-eyebrow text-[#b58c2a] mb-4 text-center">
-                Gallery Preview
-              </motion.p>
-              <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] text-center mb-16">
-                Visual Stories of <span className="italic text-[#b58c2a]">Beautiful Events</span>
-              </motion.h2>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                {galleryItems.map((item, idx) => (
-                  <motion.div
-                    key={idx}
-                    variants={fadeInUp}
-                    className="relative h-64 rounded-sm overflow-hidden bg-gradient-to-br from-[#d4af37]/20 to-[#917B7B]/20 border border-[#d4af37]/20 flex items-center justify-center cursor-pointer hover:border-[#d4af37]/60 transition-all duration-300 group"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#5A111C]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <div className="relative z-10 text-center">
-                      <div className="text-5xl mb-4">{item.icon}</div>
-                      <p className="font-semibold text-[#4a3623] group-hover:text-[#d4af37] transition-colors">{item.title}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <motion.div variants={fadeInUp} className="text-center">
-                <button className="px-8 py-3 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300">
-                  View Gallery
                 </button>
               </motion.div>
             </motion.div>
           </section>
 
-          {/* 8. Location Section */}
-          <section className="py-24 md:py-32 px-6 bg-[#f5ead9]">
+          <section className="px-5 py-18 md:px-8 md:py-24 lg:px-12">
+            <div className="mx-auto grid max-w-[1240px] items-center gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+              <motion.div
+                initial={{ opacity: 0, x: -42 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="relative"
+              >
+                <motion.div
+                  initial={{ x: 0, y: 0, opacity: 0 }}
+                  whileInView={{ x: 16, y: 16, opacity: 0.24 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.9 }}
+                  className="absolute inset-0 bg-[#D4A843]"
+                />
+                <motion.div
+                  initial={{ clipPath: "inset(0 100% 0 0)" }}
+                  whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+                  viewport={{ once: true, amount: 0.24 }}
+                  transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                  className="relative overflow-hidden shadow-2xl"
+                >
+                  <motion.img
+                    style={{ y: parallaxY }}
+                    src={sowCrop5}
+                    alt="Sowbhagya Mahal celebration hall"
+                    loading="lazy"
+                    decoding="async"
+                    width="1360"
+                    height="1020"
+                    className="h-[360px] w-full scale-110 object-cover sm:h-[460px] lg:h-[620px]"
+                  />
+                </motion.div>
+              </motion.div>
+
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.18 }}
+              >
+                <motion.p variants={fadeInUp} className="type-eyebrow mb-4 text-[#B8860B]">
+                  About the Hall
+                </motion.p>
+                <motion.h2 variants={fadeInUp} className="mb-7 font-serif text-[34px] font-semibold leading-[1.16] text-[#5A111C] md:text-5xl">
+                  Equally grand, thoughtfully sized and easy to host.
+                </motion.h2>
+                <motion.div variants={fadeInUp} className="mb-8 h-px w-20 bg-[#B8860B]" />
+                <motion.p variants={fadeInUp} className="type-body mb-5 text-[#4f4038]">
+                  Sowbhagya Mahal is a stable part of Ayswariya Mahal. It is an equally grand Mahal
+                  with excellent facilities at an affordable cost, created for families who want a refined
+                  celebration experience in a more compact setting.
+                </motion.p>
+                <motion.p variants={fadeInUp} className="type-body text-[#4f4038]">
+                  The hall is spacious, well architected and supported by centralized air conditioning,
+                  a modern kitchen, guest rooms, generator backup, geysers, CCTV coverage, dining hall
+                  and a separate rooftop garden.
+                </motion.p>
+              </motion.div>
+            </div>
+          </section>
+
+          <section className="bg-[#5A111C] px-5 py-16 text-[#fdfbf7] md:px-8 md:py-20 lg:px-12">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.1 }}
-              className="max-w-[1280px] mx-auto text-center"
+              viewport={{ once: true, amount: 0.18 }}
+              className="mx-auto grid max-w-[1120px] gap-5 min-[390px]:grid-cols-3"
             >
-              <motion.p variants={fadeInUp} className="type-eyebrow text-[#6A1724] mb-4">
-                Location
-              </motion.p>
-              <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] mb-8">
-                Easy to Reach, Convenient for <span className="italic text-[#b58c2a]">Every Guest</span>
-              </motion.h2>
-              <motion.p variants={fadeInUp} className="type-body text-[#4f4038] max-w-2xl mx-auto mb-8">
-                Sowbhagya Mahal has excellent connectivity through road and metro, making it convenient for guests arriving from different parts of the city.
-              </motion.p>
-              <motion.button
-                variants={fadeInUp}
-                className="px-8 py-3 border-2 border-[#d4af37] text-[#d4af37] font-semibold rounded-full hover:bg-[#d4af37]/10 transition-colors duration-300 inline-flex items-center gap-2"
-              >
-                <MapPin size={20} />
-                Get Directions
-              </motion.button>
+              {capacities.map((item) => (
+                <motion.div
+                  key={item.label}
+                  variants={fadeInUp}
+                  whileHover={{ y: -9, scale: 1.015 }}
+                  className="group relative overflow-hidden border border-[#D4A843]/24 bg-[#fdfbf7]/5 p-7 text-center shadow-[0_18px_44px_rgba(0,0,0,0.12)]"
+                >
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,168,67,0.2),transparent_42%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute left-4 top-4 h-8 w-8 border-l border-t border-[#D4A843]/45" />
+                  <div className="absolute bottom-4 right-4 h-8 w-8 border-b border-r border-[#D4A843]/45" />
+                  <span className="absolute inset-y-0 -left-12 w-10 rotate-12 bg-white/16 blur-sm transition-transform duration-700 group-hover:translate-x-[360px]" />
+                  <div className="relative">
+                    <p className="font-display text-5xl font-bold leading-none text-[#D4A843] md:text-6xl">{item.value}</p>
+                    <p className="mt-4 font-nav text-[12px] uppercase tracking-[0.16em] text-[#fdfbf7]/78">{item.label}</p>
+                    <p className="mt-3 font-body text-sm leading-6 text-[#fdfbf7]/56">{item.note}</p>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
           </section>
 
-          {/* 9. Final Enquiry CTA */}
-          <section className="py-32 md:py-48 bg-gradient-to-br from-[#5A111C] to-[#3F0C15] relative overflow-hidden">
-            <div className="absolute inset-0 opacity-[0.05] bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] mix-blend-overlay"></div>
-            
-            <motion.div 
+          <section id="sowbhagya-facilities" className="px-5 py-20 md:px-8 md:py-28 lg:px-12">
+            <motion.div
               variants={staggerContainer}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.1 }}
-              className="max-w-4xl mx-auto text-center px-6 relative z-10"
+              viewport={{ once: true, amount: 0.14 }}
+              className="mx-auto max-w-[1240px]"
             >
-              <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] mb-8">
-                Plan Your Celebration at <span className="italic text-[#E5C76B]">Sowbhagya Mahal</span>
-              </motion.h2>
-              <motion.p variants={fadeInUp} className="type-body text-[#fdfbf7]/82 max-w-3xl mx-auto mb-10">
-                Book your wedding, reception, engagement, birthday function, or family event with Sowbhagya Mahal and enjoy a premium celebration experience with comfort, elegance, and care.
-              </motion.p>
-              <motion.button
-                variants={fadeInUp}
-                onClick={openForm}
-                className="px-12 py-4 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300 text-lg"
-              >
-                Enquire Now
-              </motion.button>
+              <motion.div variants={fadeInUp} className="mx-auto mb-14 max-w-3xl text-center">
+                <p className="type-eyebrow mb-4 text-[#B8860B]">Facilities</p>
+                <h2 className="font-serif text-[34px] font-semibold leading-[1.16] text-[#5A111C] md:text-5xl">
+                  Essential comforts for a complete celebration.
+                </h2>
+              </motion.div>
+
+              <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                {facilities.map((facility) => {
+                  const Icon = facility.icon;
+
+                  return (
+                    <motion.article
+                      key={facility.title}
+                      variants={fadeInUp}
+                      whileHover={{ y: -10, scale: 1.012 }}
+                      className="group relative overflow-hidden border border-[#D4A843]/22 bg-[#fff8ed]/72 p-7 shadow-[0_18px_44px_rgba(90,17,28,0.07)] transition-colors duration-300 hover:border-[#B8860B]/55"
+                    >
+                      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(212,168,67,0.16),transparent_36%,rgba(90,17,28,0.05))] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                      <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full border border-[#D4A843]/28 transition-transform duration-700 group-hover:scale-125" />
+                      <div className="absolute left-0 top-0 h-1 w-0 bg-[#B8860B] transition-all duration-500 group-hover:w-full" />
+                      <div className="relative mb-6 grid h-14 w-14 place-items-center rounded-full bg-[#5A111C] text-[#D4A843] shadow-[0_14px_28px_rgba(90,17,28,0.18)] transition duration-500 group-hover:bg-[#D4A843] group-hover:text-[#5A111C]">
+                        <Icon size={22} strokeWidth={1.7} aria-hidden="true" />
+                      </div>
+                      <h3 className="relative mb-3 font-serif text-2xl font-semibold leading-[1.15] text-[#5A111C]">{facility.title}</h3>
+                      <p className="relative type-body text-[#4f4038]">{facility.body}</p>
+                    </motion.article>
+                  );
+                })}
+              </div>
             </motion.div>
           </section>
 
+          <section className="bg-[#F0E8D8] px-5 py-20 md:px-8 md:py-28 lg:px-12">
+            <div className="mx-auto grid max-w-[1240px] items-center gap-14 lg:grid-cols-[1fr_0.9fr]">
+              <motion.div
+                variants={staggerContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.18 }}
+              >
+                <motion.p variants={fadeInUp} className="type-eyebrow mb-4 text-[#B8860B]">
+                  Why Choose Sowbhagya
+                </motion.p>
+                <motion.h2 variants={fadeInUp} className="mb-7 font-serif text-[34px] font-semibold leading-[1.16] text-[#5A111C] md:text-5xl">
+                  Affordable luxury with the same trusted care.
+                </motion.h2>
+                <motion.div variants={fadeInUp} className="mb-8 h-px w-20 bg-[#B8860B]" />
+                <motion.ul variants={staggerContainer} className="space-y-4">
+                  {highlights.map((point) => (
+                    <motion.li
+                      key={point}
+                      variants={fadeInUp}
+                      whileHover={{ x: 8 }}
+                      className="group flex gap-4 border-b border-[#B8860B]/12 pb-4 type-body text-[#4f4038]"
+                    >
+                      <span className="mt-3 h-px w-8 shrink-0 bg-[#B8860B] transition-all duration-300 group-hover:w-12" />
+                      <span>{point}</span>
+                    </motion.li>
+                  ))}
+                </motion.ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 42 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.18 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="relative"
+              >
+                <div className="absolute inset-0 translate-x-4 translate-y-4 bg-[#D4A843]/22" />
+                <img
+                  src={facility1}
+                  alt="Sowbhagya Mahal guest facilities"
+                  loading="lazy"
+                  decoding="async"
+                  width="1360"
+                  height="1020"
+                  className="relative h-[360px] w-full object-cover shadow-2xl sm:h-[480px]"
+                />
+              </motion.div>
+            </div>
+          </section>
+
+          <section className="px-5 py-20 md:px-8 md:py-28 lg:px-12">
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.14 }}
+              className="mx-auto max-w-[1240px]"
+            >
+              <motion.div variants={fadeInUp} className="mb-12 flex flex-col justify-between gap-5 md:flex-row md:items-end">
+                <div>
+                  <p className="type-eyebrow mb-4 text-[#B8860B]">Venue Glimpses</p>
+                  <h2 className="font-serif text-[34px] font-semibold leading-[1.16] text-[#5A111C] md:text-5xl">
+                    Spaces made for warm family moments.
+                  </h2>
+                </div>
+                <button
+                  type="button"
+                  onClick={openForm}
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#B8860B]/60 px-7 font-nav text-[13px] uppercase tracking-[0.12em] text-[#5A111C] transition duration-300 hover:bg-[#5A111C] hover:text-[#fdfbf7]"
+                >
+                  Book a Visit
+                </button>
+              </motion.div>
+
+              <div className="grid gap-5 md:grid-cols-3">
+                {galleryImages.map((image, index) => (
+                  <motion.figure
+                    key={image.title}
+                    variants={fadeInUp}
+                    whileHover={{ y: -10, scale: 1.01 }}
+                    className={`group relative overflow-hidden shadow-[0_20px_48px_rgba(90,17,28,0.1)] ${index === 1 ? "md:mt-10" : ""}`}
+                  >
+                    <div className="absolute inset-0 z-10 border border-[#D4A843]/22 transition-all duration-500 group-hover:inset-3 group-hover:border-[#D4A843]/55" />
+                    <img
+                      src={image.src}
+                      alt={image.title}
+                      loading="lazy"
+                      decoding="async"
+                      width="1360"
+                      height="1020"
+                      className="h-[340px] w-full object-cover transition duration-700 group-hover:scale-105"
+                    />
+                    <figcaption className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-[#3F0C15]/90 to-transparent px-5 pb-5 pt-20">
+                      <span className="mb-3 block h-px w-12 bg-[#D4A843] transition-all duration-500 group-hover:w-20" />
+                      <span className="font-serif text-2xl font-semibold text-[#fdfbf7]">{image.title}</span>
+                    </figcaption>
+                  </motion.figure>
+                ))}
+              </div>
+            </motion.div>
+          </section>
+
+          <section className="relative overflow-hidden bg-[#5A111C] px-5 py-20 text-center text-[#fdfbf7] md:px-8 md:py-28 lg:px-12">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,168,67,0.22),transparent_34%)]" />
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.18 }}
+              className="relative z-10 mx-auto max-w-4xl"
+            >
+              <motion.div variants={fadeInUp} className="mx-auto mb-6 grid h-12 w-12 place-items-center rounded-full border border-[#D4A843]/40 text-[#D4A843]">
+                <Sparkles size={20} strokeWidth={1.6} aria-hidden="true" />
+              </motion.div>
+              <motion.h2 variants={fadeInUp} className="font-serif text-[34px] font-semibold leading-[1.16] md:text-5xl">
+                Plan your celebration at <span className="italic text-[#D4A843]">Sowbhagya Mahal</span>
+              </motion.h2>
+              <motion.p variants={fadeInUp} className="mx-auto mt-6 max-w-2xl type-body text-[#fdfbf7]/78">
+                Our management assures you that once your function is booked with us, we treat it
+                with the care and attention of our own family celebration.
+              </motion.p>
+              <motion.div variants={fadeInUp} className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+                <button
+                  type="button"
+                  onClick={openForm}
+                  className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#D4A843] px-9 font-nav text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7]"
+                >
+                  Enquire Now
+                </button>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Ayswariya%20Mahal%20Arumbakkam%20Chennai"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[#D4A843]/70 px-9 font-nav text-[13px] uppercase tracking-[0.12em] text-[#D4A843] transition duration-300 hover:bg-[#D4A843] hover:text-[#3F0C15]"
+                >
+                  <MapPin size={17} aria-hidden="true" />
+                  Get Directions
+                </a>
+              </motion.div>
+            </motion.div>
+          </section>
         </main>
       </PageTransition>
     </>

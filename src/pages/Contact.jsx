@@ -1,12 +1,30 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Sparkles } from "lucide-react";
-import { useEnquiry } from "../context/useEnquiry";
 import heroImg from "../assets/images/hero.webp";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 
 export default function Contact() {
-  const { openForm } = useEnquiry();
+
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    eventType: "Wedding",
+    date: "",
+    message: "",
+  });
+
+  const handleChange = (e) => setForm((s) => ({ ...s, [e.target.name]: e.target.value }));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Endpoint not configured — UI only. Wire to Google Apps Script URL when provided.
+    alert("Form submitted (UI only). Provide Apps Script URL to enable submission.");
+    console.log("Contact form payload:", form);
+    setForm({ name: "", phone: "", email: "", eventType: "Wedding", date: "", message: "" });
+  };
 
   return (
     <>
@@ -55,7 +73,7 @@ export default function Contact() {
 
       {/* Content Section */}
       <section className="pt-32 lg:pt-40 pb-16 md:py-[96px] px-6">
-        <div className="max-w-[1280px] mx-auto grid md:grid-cols-2 gap-16">
+        <div className="max-w-site mx-auto grid md:grid-cols-2 gap-16">
           
           {/* Contact Information */}
           <motion.div
@@ -131,19 +149,31 @@ export default function Contact() {
             transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col h-full space-y-8"
           >
-            {/* Quick Enquiry Card */}
-            <div className="bg-white p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20 text-center">
-              <h3 className="font-serif text-2xl md:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-4">Plan Your Celebration</h3>
-              <p className="type-body text-[#4f4038] mb-8">
-                Share your event details and our team will get back to you with venue availability and tailored packages.
-              </p>
-              <button
-                onClick={openForm}
-                className="w-full bg-deep-maroon text-gold-leaf py-4 rounded-full type-cta hover:bg-[#E5C76B] hover:text-[#5A111C] transition-colors duration-300 shadow-md hover:shadow-lg"
-              >
-                Send an Enquiry
-              </button>
-            </div>
+            {/* Inline Enquiry Form */}
+            <form onSubmit={handleSubmit} className="bg-white p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20">
+              <h3 className="font-serif text-2xl md:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-4 text-center">Plan Your Celebration</h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" className="p-3 border border-[#e8e2d7] rounded" />
+                <input name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone" className="p-3 border border-[#e8e2d7] rounded" />
+                <input name="email" value={form.email} onChange={handleChange} required placeholder="Email" type="email" className="p-3 border border-[#e8e2d7] rounded" />
+                <select name="eventType" value={form.eventType} onChange={handleChange} className="p-3 border border-[#e8e2d7] rounded">
+                  <option>Wedding</option>
+                  <option>Reception</option>
+                  <option>Engagement</option>
+                  <option>Birthday</option>
+                  <option>Other</option>
+                </select>
+                <input name="date" value={form.date} onChange={handleChange} type="date" className="p-3 border border-[#e8e2d7] rounded md:col-span-2" />
+                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" rows={3} className="p-3 border border-[#e8e2d7] rounded md:col-span-2" />
+              </div>
+
+              <div className="flex justify-center">
+                <button type="submit" className="w-full max-w-[240px] bg-deep-maroon text-gold-leaf py-3 rounded-full type-cta hover:bg-[#E5C76B] hover:text-[#5A111C] transition-colors duration-300 shadow-md">
+                  Send Enquiry
+                </button>
+              </div>
+            </form>
 
             {/* Google Map Embed */}
             <div className="flex-1 min-h-[300px] md:min-h-[400px] bg-[#E3D5B8] rounded-2xl overflow-hidden relative border border-gold-leaf/30 shadow-inner group">

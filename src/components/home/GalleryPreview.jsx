@@ -16,7 +16,7 @@ export default function GalleryPreview() {
       <div className="absolute inset-0 opacity-[0.08] bg-[radial-gradient(circle_at_50%_0%,#E5C76B_0_1px,transparent_1px)] [background-size:34px_34px]" />
       <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#E5C76B]/10 to-transparent" />
 
-      <div className="max-w-[1280px] mx-auto px-6 relative z-10">
+      <div className="max-w-site mx-auto px-6 relative z-10">
         
         <div className="text-center mb-16">
           <motion.p

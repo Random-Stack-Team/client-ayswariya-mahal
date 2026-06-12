@@ -41,7 +41,7 @@ export default function AboutPreview() {
            style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-8 md:px-16 grid lg:grid-cols-12 gap-16 items-center">
+      <div className="max-w-site mx-auto px-8 md:px-16 grid lg:grid-cols-12 gap-16 items-center">
         
         <div className="lg:col-span-5 space-y-8 z-10">
           <div className="order-2 lg:order-1 text-center lg:text-left stagger-reveal">

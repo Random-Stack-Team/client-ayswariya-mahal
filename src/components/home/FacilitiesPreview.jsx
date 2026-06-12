@@ -51,7 +51,7 @@ export default function FacilitiesPreview() {
            style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
-      <div className="max-w-[1280px] mx-auto px-6 relative z-10">
+      <div className="max-w-site mx-auto px-6 relative z-10">
         
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 bento-item">
           <div>

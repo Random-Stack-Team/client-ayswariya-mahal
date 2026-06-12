@@ -28,6 +28,7 @@ import facility8 from "../assets/images/Facility/facility8.webp";
 import bgImg from "../assets/images/facility.webp";
 
 import SEO from "../components/common/SEO";
+import { useEnquiry } from "../context/useEnquiry";
 
 /* =========================
    DATA
@@ -182,6 +183,7 @@ const AdvancedText = ({ text }) => {
 
 
 export default function Facilities() {
+  const { openForm } = useEnquiry();
   return (
     <>
       <SEO
@@ -410,6 +412,11 @@ export default function Facilities() {
             <p className="type-body text-[#4f4038] mt-2">
               Ready to host your next event? Contact us to check availability.
             </p>
+            <div className="mt-6">
+              <button onClick={openForm} className="px-8 py-3 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300">
+                Book a Visit
+              </button>
+            </div>
           </motion.div>
 
         </section>
