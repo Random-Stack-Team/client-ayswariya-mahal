@@ -1,16 +1,16 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import { MapPin, Phone } from "lucide-react";
+import { MapPin } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 import { useEnquiry } from "../context/useEnquiry";
 
 // Import images
-import sowCrop1 from "../assets/images/sow-crop1.webp";
+
 import sowCrop2 from "../assets/images/sow-crop2.webp";
 import sowCrop5 from "../assets/images/sow-crop5.webp";
 import facility1 from "../assets/images/Facility/facility1.webp";
-import facility2 from "../assets/images/Facility/facility2.webp";
+
 
 export default function SowbhagyaMahal() {
   const containerRef = useRef(null);
@@ -38,10 +38,7 @@ export default function SowbhagyaMahal() {
     show: { opacity: 1, y: 0, transition: { duration: 1.15, ease: [0.16, 1, 0.3, 1] } }
   };
 
-  const fadeInLeft = {
-    hidden: { opacity: 0, x: -50 },
-    show: { opacity: 1, x: 0, transition: { duration: 1.15, ease: [0.16, 1, 0.3, 1] } }
-  };
+
 
   const facilities = [
     { title: "500 Guests", subtitle: "Seating Capacity" },
