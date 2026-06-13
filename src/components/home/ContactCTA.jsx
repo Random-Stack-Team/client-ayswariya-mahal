@@ -1,49 +1,191 @@
 import { motion } from "framer-motion";
-import { useEnquiry } from "../../context/useEnquiry";
+
+const initialPetals = [...Array(8)].map((_, i) => ({
+  id: `petal-${i}`,
+  duration: 15 + Math.random() * 10,
+  delay: Math.random() * 5,
+  left: `${10 + Math.random() * 80}%`,
+  top: `${10 + Math.random() * 80}%`,
+}));
+
+
 
 export default function ContactCTA() {
-  const { openForm } = useEnquiry();
 
   return (
-    <section className="relative py-24 md:py-32 bg-primary overflow-hidden border-t border-gold-leaf/20">
-      {/* Decorative Gold Elements */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none" 
-           style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
-      </div>
-      
-      <div className="max-w-[800px] mx-auto px-6 text-center relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 34, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.45 }}
-          transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            whileInView={{ scaleX: 1, opacity: 1 }}
-            viewport={{ once: true, amount: 0.7 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-            className="w-16 h-px bg-gold-leaf mx-auto mb-8 origin-center"
-          />
-          
-          <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-gold-leaf mb-6">
-            Begin Your Forever
-          </h2>
-          
-          <p className="type-body text-surface-warm/82 mb-12">
-            Let us craft the perfect backdrop for your most precious memories. 
-            Reach out to our event specialists to reserve your date at Ayswariya Mahal.
-          </p>
+    <section 
+      className="relative py-[56px] md:py-[80px] overflow-hidden"
+      style={{ background: "linear-gradient(180deg, #faf7f2 0%, #f7f2eb 100%)" }}
+    >
+      {/* Subtle Glows */}
+      <motion.div 
+        animate={{ opacity: [0.3, 0.6, 0.3], scale: [0.95, 1.05, 0.95] }}
+        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute top-1/4 left-1/4 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-[#D4A843]/10 rounded-full blur-[100px] pointer-events-none"
+      />
+      <motion.div 
+        animate={{ opacity: [0.15, 0.4, 0.15], scale: [1, 1.1, 1] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+        className="absolute bottom-1/4 right-1/4 w-[400px] md:w-[500px] h-[400px] md:h-[500px] bg-[#5A111C]/5 rounded-full blur-[120px] pointer-events-none"
+      />
 
-          <motion.button
-            whileHover={{ y: -4, scale: 1.015 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={openForm}
-            className="bg-gold-leaf text-primary px-12 py-5 type-cta rounded-full hover:bg-white transition-colors duration-500 shadow-[0_0_30px_rgba(229,199,107,0.3)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)]"
+      {/* Floating Petals Animation Container (Behind illustration) */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
+         {initialPetals.map((petal) => (
+           <motion.div
+             key={petal.id}
+             animate={{ 
+               y: [0, -30, 0, 30, 0],
+               x: [0, 20, 0, -20, 0],
+               rotate: [0, 90, 180, 270, 360]
+             }}
+             transition={{ 
+               duration: petal.duration, 
+               repeat: Infinity, 
+               ease: "linear",
+               delay: petal.delay
+             }}
+             className="absolute w-3 h-3 md:w-4 md:h-4 bg-gradient-to-br from-[#D4A843]/30 to-transparent rounded-[40%_60%_60%_40%]"
+             style={{
+               left: petal.left,
+               top: petal.top,
+             }}
+           />
+         ))}
+      </div>
+
+      <div className="max-w-[1100px] mx-auto px-6 relative z-10">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-[48px] items-center text-center md:text-left">
+          
+          {/* Left: Premium Celebration Promise Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+            className="order-1 md:order-1 flex flex-col justify-center items-center p-10 md:p-14 bg-[#fdfbf7] border border-[#D4A843]/30 rounded-[20px] shadow-[0_15px_50px_rgba(90,17,28,0.06)] w-full max-w-[500px] mx-auto relative overflow-hidden"
           >
-            Enquire Availability
-          </motion.button>
-        </motion.div>
+            {/* Decorative Custom Handwritten Heart SVG */}
+            <svg width="60" height="60" viewBox="0 0 1024 1024" fill="#D4A843" className="mb-4 opacity-90 drop-shadow-sm">
+              <path d="M626.447998,695.460083 
+	C662.293945,653.167114 701.442993,614.605164 741.730652,577.121277 
+	C776.660278,544.622437 814.398560,515.485229 850.863098,484.822479 
+	C877.883423,462.101410 899.834839,435.405914 913.201172,402.293396 
+	C920.098938,385.205536 925.107544,367.826660 924.831421,349.056854 
+	C924.140015,302.071625 895.646790,260.331665 851.898254,243.295212 
+	C816.646790,229.567673 782.219910,234.023987 748.602661,248.932343 
+	C698.601379,271.106659 662.353943,308.268402 634.939209,354.774841 
+	C623.150146,374.773865 613.617249,395.861511 605.419617,417.558075 
+	C604.099976,421.050781 602.578064,424.220276 598.175964,423.697388 
+	C593.810791,423.178894 592.825256,419.704041 592.396362,416.051971 
+	C591.232117,406.137726 593.668640,396.546967 595.168396,386.885742 
+	C596.573975,377.831390 598.928833,368.986603 601.744080,360.273071 
+	C602.694702,357.330750 602.795044,354.544006 601.999695,351.482147 
+	C595.567444,326.718750 581.075439,307.038208 562.802795,289.928833 
+	C539.318359,267.939514 512.466492,252.031219 479.985931,247.861877 
+	C446.330017,243.541626 413.554138,245.770004 384.640137,266.013397 
+	C355.250885,286.589539 339.068512,315.316223 335.285431,350.875183 
+	C331.611237,385.410645 336.966309,418.287537 355.075623,448.423279 
+	C369.258698,472.025391 389.119476,490.129303 411.663818,505.466614 
+	C440.647247,525.184570 472.423462,539.305969 505.019806,551.772461 
+	C508.114380,552.955933 511.787720,553.254761 514.029663,556.282715 
+	C512.826416,558.027161 511.511505,557.322205 510.317047,556.914734 
+	C473.706879,544.427612 437.427155,531.149597 404.235382,510.823944 
+	C369.986511,489.850891 341.795624,463.127869 325.014496,425.878387 
+	C313.602173,400.546143 308.375061,373.866150 309.921387,346.160614 
+	C313.208679,287.261993 355.409454,236.359406 413.440918,223.948120 
+	C481.200928,209.456207 538.779724,228.870163 585.047791,280.767120 
+	C596.879456,294.038208 606.747498,308.613098 613.340637,325.247040 
+	C613.687256,326.121552 614.252380,326.909485 614.944153,328.145996 
+	C620.198242,320.070282 624.562561,312.034821 629.992188,304.686340 
+	C663.822266,258.900543 708.106201,228.981186 764.429443,219.181747 
+	C819.843811,209.540405 868.967285,223.597900 909.116638,263.915009 
+	C932.289978,287.185211 945.430115,315.810059 949.394287,348.488159 
+	C955.455444,398.453064 939.817078,441.239807 906.608765,478.345459 
+	C886.123230,501.235199 861.135620,518.334473 835.362854,534.383667 
+	C791.167480,561.904907 748.483215,591.472351 709.265747,625.827759 
+	C673.734436,656.954041 639.895081,689.691528 611.810425,727.955994 
+	C608.908386,731.909973 608.878357,734.458313 611.914185,738.152649 
+	C617.305542,744.713501 622.186584,751.697815 626.562622,758.995911 
+	C631.536560,767.291199 634.957886,776.184265 633.918213,785.987427 
+	C632.638123,798.058044 625.605774,805.960632 614.608582,808.801575 
+	C603.200867,811.748596 590.567322,807.643921 583.739929,798.309082 
+	C576.297852,788.133850 575.134460,776.902771 579.390259,765.135620 
+	C582.408203,756.791443 586.760193,749.083740 591.567505,741.670471 
+	C593.555054,738.605652 593.709290,736.324646 591.477478,733.217102 
+	C558.496643,687.295898 516.330383,652.898926 463.992096,631.201355 
+	C432.414612,618.110474 399.508881,610.393860 365.629608,606.129028 
+	C284.406372,595.904236 208.286301,611.479858 136.677826,650.518616 
+	C117.475838,660.986938 99.267036,672.985962 82.105171,686.557556 
+	C81.452522,687.073608 80.782440,687.574524 80.080978,688.020447 
+	C78.789307,688.841492 77.389343,689.754456 76.124573,688.113220 
+	C75.027153,686.689148 75.510124,685.215271 76.642441,684.048279 
+	C80.354767,680.222290 84.007690,676.327087 87.894829,672.684082 
+	C129.471390,633.718323 177.680054,606.886475 233.159149,593.343506 
+	C265.240112,585.512207 297.815491,582.258728 330.736450,583.928833 
+	C411.402405,588.021179 482.917236,615.934082 545.104370,667.564026 
+	C564.900146,683.999084 583.083130,702.057800 599.584290,721.805237 
+	C600.520325,722.925537 601.581726,723.941040 602.949158,725.391968 
+	C610.616760,715.122131 618.119507,705.187134 626.447998,695.460083 
+M614.589172,770.941284 
+	C610.595093,761.993591 605.296692,753.833984 599.991211,745.532043 
+	C593.859314,751.083496 587.941772,765.103088 588.371033,772.349976 
+	C588.991455,782.822205 594.913696,790.354431 604.062866,792.307556 
+	C612.569702,794.123474 618.626099,788.356384 617.031433,779.831238 
+	C616.515381,777.072021 615.590088,774.389343 614.589172,770.941284 
+z"/>
+            </svg>
+            
+            <h3 className="font-serif text-[26px] md:text-3xl text-center text-[#5A111C] mb-6 leading-[1.3] font-medium">
+              A Place Where Promises Become Memories
+            </h3>
+            
+            <div className="w-16 h-px bg-[#D4A843]/60 mb-8"></div>
+            
+            <ul className="space-y-5 text-center md:text-left w-full px-2">
+              <li className="flex items-center justify-center md:justify-start gap-4">
+                <span className="w-1.5 h-1.5 bg-[#D4A843] rounded-full shrink-0"></span>
+                <span className="font-serif text-[#554241] text-[17px] md:text-lg">Engagements filled with warmth</span>
+              </li>
+              <li className="flex items-center justify-center md:justify-start gap-4">
+                <span className="w-1.5 h-1.5 bg-[#D4A843] rounded-full shrink-0"></span>
+                <span className="font-serif text-[#554241] text-[17px] md:text-lg">Weddings crafted with tradition</span>
+              </li>
+              <li className="flex items-center justify-center md:justify-start gap-4">
+                <span className="w-1.5 h-1.5 bg-[#D4A843] rounded-full shrink-0"></span>
+                <span className="font-serif text-[#554241] text-[17px] md:text-lg">Celebrations remembered for generations</span>
+              </li>
+            </ul>
+            
+            {/* Subtle overlay gradients for depth */}
+            <div className="absolute top-0 left-0 w-full h-[100px] bg-gradient-to-b from-white/40 to-transparent pointer-events-none"></div>
+          </motion.div>
+
+          {/* Right: Emotional Story Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center md:items-start order-2 md:order-2"
+          >
+            <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] text-[#5A111C] mb-6 md:mb-8">
+              Crafting Memories <br className="hidden md:block"/>
+              <span className="italic font-light text-[#C9973B]">That Last Forever</span>
+            </h2>
+            
+            <div className="w-12 h-px bg-[#C9973B] mb-6 md:mb-8 mx-auto md:mx-0"></div>
+
+            <p className="font-body text-[#554241] text-lg md:text-xl leading-relaxed mb-6 font-medium">
+              Every celebration begins with a promise and becomes a memory cherished for generations.
+            </p>
+            
+            <p className="font-body text-[#554241]/85 text-base md:text-lg leading-[1.8] font-light">
+              At Ayswariya Mahal, we believe the most beautiful moments are not measured in hours, but in the emotions they leave behind. From engagements and weddings to family celebrations, we provide a setting where stories unfold, relationships grow, and memories are treasured forever.
+            </p>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

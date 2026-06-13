@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/hero.webp";
 import sowCrop3 from "../assets/images/sow-crop3.jpg";
-import animationVideo from "../assets/videos/animation.webm";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Flower2, HeartHandshake, Gem } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 
@@ -36,16 +35,19 @@ export default function About() {
 
   const pillars = [
     {
-      title: "Thoughtful Hospitality",
-      body: "From the first enquiry to the final send-off, our team keeps every guest movement, family ritual, and event moment cared for with calm attention.",
+      title: "Tradition with Grace",
+      body: "We honour the beauty of Indian celebrations with spaces designed for rituals, family gatherings, and timeless memories.",
+      icon: Flower2,
     },
     {
-      title: "Flexible Celebration Spaces",
-      body: "Our halls are planned for weddings, receptions, engagements, corporate gatherings, and intimate family ceremonies with practical flow and elegant ambience.",
+      title: "Care in Every Detail",
+      body: "From the first welcome to the final farewell, every moment is handled with warmth, attention, and quiet elegance.",
+      icon: HeartHandshake,
     },
     {
-      title: "Tradition With Comfort",
-      body: "Ayswariya Mahal blends ceremonial warmth with modern essentials, giving families a venue that feels familiar, refined, and easy to host in.",
+      title: "Memories That Last",
+      body: "We create the setting where promises are made, families come together, and celebrations become stories remembered for generations.",
+      icon: Gem,
     },
   ];
 
@@ -156,37 +158,73 @@ export default function About() {
         </div>
       </section>
 
-      {/* Experience Pillars */}
-      <section className="py-24 md:py-32 px-6 bg-[#f5ead9] relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(128,28,44,0.08),transparent_42%,rgba(229,199,107,0.16))]"></div>
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.1 }}
-          className="max-w-site mx-auto relative z-10"
-        >
-          <motion.p variants={fadeInUp} className="type-eyebrow text-[#6A1724] mb-4 text-center">
-            Why Families Choose Us
-          </motion.p>
-          <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] text-center mb-16">
-            Designed for Graceful, <span className="italic text-[#b58c2a]">Effortless Hosting</span>
-          </motion.h2>
+      {/* Celebration Pillars - Premium Wedding Card Layout */}
+      <section className="py-[52px] md:py-[72px] px-6 bg-[#f5ead9] relative overflow-hidden">
+        {/* Subtle background texture */}
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-5 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_center,rgba(212,168,67,0.05),transparent_60%)] pointer-events-none"></div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {pillars.map((pillar) => (
-              <motion.article
-                key={pillar.title}
-                variants={fadeInUp}
-                className="border border-[#d4af37]/28 bg-[#fff8ed]/72 p-8 shadow-[0_18px_44px_rgba(74,10,18,0.08)] backdrop-blur-sm"
-              >
-                <div className="mb-6 h-px w-16 bg-[#b58c2a]"></div>
-                <h3 className="font-serif text-2xl font-semibold leading-[1.2] tracking-[0.01em] text-[#821917] mb-4">{pillar.title}</h3>
-                <p className="type-body text-[#4f4038]">{pillar.body}</p>
-              </motion.article>
-            ))}
+        <div className="max-w-site mx-auto relative z-10">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.1 }}
+            className="text-center mb-12 md:mb-16"
+          >
+            <motion.h2 variants={fadeInUp} className="font-serif text-[32px] md:text-[44px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-4">
+              Our Promise to Every Celebration
+            </motion.h2>
+            <motion.div variants={fadeInUp} className="w-16 h-px bg-[#D4A843] mx-auto mb-6"></motion.div>
+            <motion.p variants={fadeInUp} className="font-body text-[#4f4038] text-lg md:text-xl max-w-2xl mx-auto italic font-light">
+              Every event at Ayswariya Mahal is shaped with care, tradition, and the warmth of family.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            {pillars.map((pillar, index) => {
+              const Icon = pillar.icon;
+              return (
+                <motion.article
+                  key={pillar.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 }}
+                  className="group relative flex flex-col items-center text-center p-[22px] md:p-[28px] bg-[#fdfbf7] rounded-[12px] border border-[#d4af37]/40 shadow-[0_12px_30px_rgba(90,17,28,0.06)] hover:shadow-[0_20px_40px_rgba(212,168,67,0.15)] transition-all duration-500 hover:-translate-y-1 overflow-hidden"
+                >
+                  {/* Decorative thin gold top border glow */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  
+                  {/* Subtle corner ornaments */}
+                  <div className="absolute top-3 left-3 w-4 h-4 border-t border-l border-[#d4af37]/30 rounded-tl-sm opacity-50"></div>
+                  <div className="absolute top-3 right-3 w-4 h-4 border-t border-r border-[#d4af37]/30 rounded-tr-sm opacity-50"></div>
+                  <div className="absolute bottom-3 left-3 w-4 h-4 border-b border-l border-[#d4af37]/30 rounded-bl-sm opacity-50"></div>
+                  <div className="absolute bottom-3 right-3 w-4 h-4 border-b border-r border-[#d4af37]/30 rounded-br-sm opacity-50"></div>
+                  
+                  {/* Soft background glow on hover */}
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,168,67,0.08),transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+
+                  <div className="relative z-10 flex flex-col items-center">
+                    <div className="w-12 h-12 rounded-full border border-[#d4af37]/30 flex items-center justify-center bg-[#fff8ed] mb-6 group-hover:scale-110 transition-transform duration-500 shadow-sm">
+                      <Icon className="text-[#d4af37]" size={20} strokeWidth={1.5} />
+                    </div>
+                    
+                    <h3 className="font-serif text-2xl font-semibold leading-[1.2] text-[#5A111C] mb-4">
+                      {pillar.title}
+                    </h3>
+                    
+                    <div className="w-10 h-px bg-[#d4af37]/50 mb-5"></div>
+                    
+                    <p className="font-body text-[#4f4038] leading-[1.7] text-[15px] md:text-[16px]">
+                      {pillar.body}
+                    </p>
+                  </div>
+                </motion.article>
+              );
+            })}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Philosophy & Mission Redesign - Maroon Theme */}
@@ -210,7 +248,7 @@ export default function About() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.1 }}
-            className="w-full lg:w-[55%] space-y-8"
+            className="w-full max-w-5xl mx-auto space-y-8"
           >
             {/* Philosophy Card */}
             <motion.div 
@@ -252,29 +290,6 @@ export default function About() {
               <p className="type-body text-[#fdfbf7]/85 leading-relaxed">
                 To create elegant celebration spaces where families gather, memories are made, and every occasion is handled with warmth, dignity, and excellence.
               </p>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.85, rotate: -5 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full lg:w-[45%] flex justify-center items-center relative"
-          >
-            <motion.div 
-              animate={{ y: [-12, 12, -12] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-full max-w-[280px] lg:max-w-[380px] aspect-square rounded-full overflow-hidden isolate bg-[#FAF7F2] border-4 border-[#D4A843]/30 flex items-center justify-center shadow-[0_0_60px_rgba(212,168,67,0.2)]"
-            >
-              <video 
-                src={animationVideo} 
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                className="w-[85%] h-[85%] object-contain mix-blend-multiply opacity-90"
-              />
             </motion.div>
           </motion.div>
 

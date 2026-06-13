@@ -2,7 +2,6 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useEnquiry } from "../../context/useEnquiry";
 import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
 
 const links = [
@@ -20,7 +19,6 @@ const rightLinks = links.slice(3);
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { openForm } = useEnquiry();
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(true);

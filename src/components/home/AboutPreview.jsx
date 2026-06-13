@@ -64,7 +64,7 @@ export default function AboutPreview() {
           </div>
         </div>
 
-        <div className="lg:col-span-7 relative stagger-reveal">
+        <div className="lg:col-span-7 relative stagger-reveal mt-12 lg:mt-0">
           <div className="aspect-[4/5] lg:aspect-square overflow-hidden border-double border-8 border-gold-leaf/30 p-4 bg-white/50 backdrop-blur-sm shadow-2xl relative luxury-image-overlay">
             <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold-leaf m-2"></div>
             <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold-leaf m-2"></div>
@@ -81,6 +81,8 @@ export default function AboutPreview() {
               className="w-full h-full object-cover grayscale-[12%] contrast-110 hover:grayscale-0 hover:scale-105 transition-all duration-[1600ms]"
             />
           </div>
+
+
         </div>
 
       </div>
