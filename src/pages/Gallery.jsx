@@ -210,7 +210,7 @@ export default function Gallery() {
       />
       <PageTransition>
         <main className="min-h-screen overflow-hidden bg-[#fdfbf7]">
-          <section className="relative flex min-h-[50vh] items-center justify-center overflow-hidden px-6 pb-28 pt-40 md:min-h-[60vh] md:pb-36">
+          <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[60vh] md:pb-36 md:pt-40">
             <div
               className="absolute inset-0 bg-cover bg-center bg-fixed"
               style={{ backgroundImage: `url(${gallery3})` }}
@@ -277,7 +277,7 @@ export default function Gallery() {
             onKeyDown={handleKeyDown}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
-            className="relative flex min-h-screen flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(229,199,107,0.22),transparent_30%),linear-gradient(180deg,#fdfbf7_0%,#fbf3e7_52%,#f8efe1_100%)] px-4 pb-16 pt-12 outline-none md:px-8 md:pb-24 md:pt-16"
+            className="relative flex min-h-screen flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(229,199,107,0.22),transparent_30%),linear-gradient(180deg,#fdfbf7_0%,#fbf3e7_52%,#f8efe1_100%)] px-4 pb-16 pt-10 outline-none md:px-8 md:pb-20 md:pt-14 lg:pb-24 lg:pt-16"
             aria-label="Scrollable wedding gallery slider"
           >
             <div className="relative z-30 mx-auto flex max-w-5xl flex-col items-center text-center">
@@ -299,7 +299,7 @@ export default function Gallery() {
                 </div>
               </div>
 
-              <div className="mt-10 max-w-2xl md:mt-14">
+              <div className="mt-8 max-w-2xl md:mt-10 lg:mt-14">
                 <div className="mx-auto mb-4 h-px w-20 bg-gradient-to-r from-transparent via-[#C9973B] to-transparent" />
                 <p className="type-eyebrow mb-3 text-[#C9973B]">{meta.subtitle}</p>
                 <h2 className="font-serif text-[34px] font-semibold leading-[1.08] tracking-[0.01em] text-[#6A1724] md:text-5xl">
@@ -310,7 +310,7 @@ export default function Gallery() {
 
             <button
               onClick={() => scrollByStep(-1)}
-              className="absolute left-3 top-[68%] z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/70 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:left-8 md:top-[70%] md:h-12 md:w-12"
+              className="absolute left-3 top-[68%] z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/70 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:left-8 md:h-12 md:w-12"
               aria-label="Previous gallery item"
             >
               <ChevronLeft size={24} strokeWidth={1.7} />
@@ -318,7 +318,7 @@ export default function Gallery() {
 
             <button
               onClick={() => scrollByStep(1)}
-              className="absolute right-3 top-[68%] z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/70 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:right-8 md:top-[70%] md:h-12 md:w-12"
+              className="absolute right-3 top-[68%] z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/70 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:right-8 md:h-12 md:w-12"
               aria-label="Next gallery item"
             >
               <ChevronRight size={24} strokeWidth={1.7} />
@@ -326,7 +326,7 @@ export default function Gallery() {
 
             <div
               ref={railRef}
-              className="relative z-10 mt-12 flex h-[min(54vh,470px)] items-center gap-8 px-[18vw] will-change-transform sm:gap-12 md:mt-16 md:gap-20 md:px-[25vw]"
+              className="relative z-10 mt-10 flex h-[min(50vh,430px)] items-center gap-8 px-[18vw] will-change-transform sm:gap-12 md:mt-12 md:h-[min(52vh,450px)] md:gap-14 md:px-[22vw] lg:mt-16 lg:h-[min(54vh,470px)] lg:gap-20 lg:px-[25vw]"
             >
               {images.map((img, index) => (
                 <motion.div
@@ -335,7 +335,7 @@ export default function Gallery() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.24 }}
                   transition={{ duration: 0.85, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                  className="luxury-image-frame luxury-image-overlay relative h-[min(54vh,470px)] w-[min(76vw,360px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_28px_70px_rgba(122,27,41,0.18)] transition duration-500 hover:-translate-y-1"
+                  className="luxury-image-frame luxury-image-overlay relative h-[min(50vh,430px)] w-[min(76vw,340px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_28px_70px_rgba(122,27,41,0.18)] transition duration-500 hover:-translate-y-1 md:h-[min(52vh,450px)] md:w-[min(42vw,350px)] lg:h-[min(54vh,470px)] lg:w-[min(76vw,360px)]"
                 >
                   <img
                     src={img.src}
@@ -352,8 +352,8 @@ export default function Gallery() {
             </div>
           </section>
 
-          <section className="relative overflow-hidden bg-[#4A0A12] px-6 py-40">
-            <div className="mx-auto grid max-w-6xl items-center gap-16 lg:grid-cols-2">
+          <section className="relative overflow-hidden bg-[#4A0A12] px-5 py-16 sm:px-6 md:py-24 lg:py-40">
+            <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -367,7 +367,7 @@ export default function Gallery() {
                   width="1500"
                   height="996"
                   alt="Ayswariya Mahal visual elegance"
-                  className="h-full w-full rounded-xl object-cover shadow-2xl"
+                  className="h-[320px] w-full rounded-xl object-cover shadow-2xl sm:h-[380px] md:h-full"
                 />
               </motion.div>
 
@@ -400,14 +400,14 @@ export default function Gallery() {
             </div>
           </section>
 
-          <section className="flex h-[40vh] items-center justify-center bg-[#fcf9f4]">
+          <section className="flex min-h-[320px] items-center justify-center bg-[#fcf9f4] px-5 py-14 sm:px-6 md:min-h-[40vh]">
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center">
               <h2 className="font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4A0A12] md:text-5xl">
                 Imagine Your Event Here
               </h2>
               <p className="mt-2 type-body text-[#4f4038]">Every celebration at Ayswariya Mahal becomes a story worth sharing.</p>
               <div className="mt-6">
-                <button onClick={openForm} className="px-8 py-3 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300">
+                <button onClick={openForm} className="min-h-12 w-full px-8 py-3 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300 sm:w-auto">
                   Enquire Now
                 </button>
               </div>

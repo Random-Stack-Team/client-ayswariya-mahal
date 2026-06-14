@@ -137,7 +137,7 @@ export default function Facilities() {
         {/* =========================
             HERO
         ========================= */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative flex min-h-[600px] items-center justify-center overflow-hidden md:min-h-screen">
 
           <motion.div
             initial={{ scale: 1.25 }}
@@ -150,7 +150,7 @@ export default function Facilities() {
           <div className="absolute inset-0 bg-black/55" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42vh] bg-[linear-gradient(180deg,rgba(253,251,247,0)_0%,rgba(253,251,247,0.12)_24%,rgba(253,251,247,0.42)_58%,rgba(253,251,247,1)_100%)]" />
 
-          <div className="relative z-10 text-center text-white px-6">
+          <div className="relative z-10 text-center text-white px-5 sm:px-6">
 
   {/* ICON + TEXT SYNC WRAPPER */}
   <motion.div
@@ -212,10 +212,10 @@ export default function Facilities() {
         {/* =========================
             FACILITY CARDS
         ========================= */}
-        <section className="py-32 px-6">
+        <section className="py-16 px-5 sm:px-6 md:py-24 lg:py-32">
 
           <div
-            className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-10"
+            className="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-10"
             style={{ perspective: "1400px" }}
           >
 
@@ -232,16 +232,16 @@ export default function Facilities() {
               >
 
                 {/* FRAME */}
-                <div className="relative h-full rounded-[40px] bg-[#5A111C]/92 p-[3px] shadow-[0_20px_50px_rgba(63,12,21,0.12)] overflow-hidden">
+                <div className="relative h-full rounded-[28px] bg-[#5A111C]/92 p-[3px] shadow-[0_20px_50px_rgba(63,12,21,0.12)] overflow-hidden lg:rounded-[40px]">
 
                   {/* BORDER */}
-                  <div className="h-full rounded-[37px] border border-[#e5c76b]/42 overflow-hidden">
+                  <div className="h-full rounded-[25px] border border-[#e5c76b]/42 overflow-hidden lg:rounded-[37px]">
 
                     {/* INNER CARD */}
-                    <div className="relative h-full bg-[#fcf9f4] rounded-[35px] overflow-hidden transition-all duration-500 group-hover:-translate-y-1 flex flex-col">
+                    <div className="relative h-full bg-[#fcf9f4] rounded-[23px] overflow-hidden transition-all duration-500 group-hover:-translate-y-1 flex flex-col lg:rounded-[35px]">
 
                       {/* IMAGE */}
-                      <div className="relative h-44 overflow-hidden flex-shrink-0">
+                      <div className="relative h-40 overflow-hidden flex-shrink-0 md:h-44">
 
                         <img
                           src={item.image}
@@ -265,7 +265,7 @@ export default function Facilities() {
                       </div>
 
                       {/* TEXT */}
-                      <div className="p-5 text-center relative z-30 flex-1 flex flex-col justify-between">
+                      <div className="p-5 text-center relative z-30 flex-1 flex flex-col justify-start gap-3 lg:justify-between">
 
                         <h3 className="font-serif text-[22px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-2">
                           {item.title}
@@ -294,9 +294,9 @@ export default function Facilities() {
         {/* =========================
             CORRIDOR SECTION
         ========================= */}
-        <section className="relative py-40 px-6 bg-gradient-to-b from-[#5A111C] via-[#5A111C] to-[#4a0f18] overflow-hidden">
+        <section className="relative py-16 px-5 sm:px-6 md:py-24 lg:py-40 bg-gradient-to-b from-[#5A111C] via-[#5A111C] to-[#4a0f18] overflow-hidden">
 
-          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
 
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -310,7 +310,7 @@ export default function Facilities() {
                 width="1537"
                 height="1023"
                 alt="Facilities Corridor"
-                className="rounded-xl shadow-2xl w-full h-full object-cover"
+                className="h-[320px] w-full rounded-xl object-cover shadow-2xl sm:h-[380px] md:h-full"
               />
             </motion.div>
 
@@ -344,7 +344,7 @@ export default function Facilities() {
               </ul>
 
               <div className="mt-8">
-                <button onClick={openForm} className="px-8 py-3.5 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-all duration-300 shadow-lg shadow-[#3F0C15]/20">
+                <button onClick={openForm} className="min-h-12 w-full px-8 py-3.5 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-all duration-300 shadow-lg shadow-[#3F0C15]/20 sm:w-auto">
                   Book a Visit
                 </button>
               </div>

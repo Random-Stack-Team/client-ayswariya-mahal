@@ -20,6 +20,7 @@ export default function FloatingEnvelope() {
   const [quote, setQuote] = useState("");
   const [isHovered, setIsHovered] = useState(false);
   const [submitStatus, setSubmitStatus] = useState("idle");
+  const [isCompactViewport, setIsCompactViewport] = useState(false);
   const timersRef = useRef([]);
 
   const clearSubmitTimers = () => {
@@ -38,6 +39,16 @@ export default function FloatingEnvelope() {
       timersRef.current.forEach(window.clearTimeout);
       timersRef.current = [];
     };
+  }, []);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1023px), (max-height: 760px)");
+    const syncViewport = () => setIsCompactViewport(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener("change", syncViewport);
+
+    return () => mediaQuery.removeEventListener("change", syncViewport);
   }, []);
 
   // Scroll-Based Random Appearance Logic
@@ -178,13 +189,13 @@ export default function FloatingEnvelope() {
               animate={
                 submitStatus === "departing" 
                   ? { x: 0, y: -80, opacity: 0, scale: 0.5 } 
-                  : { x: 0, y: isExpanded ? 180 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
+                  : { x: 0, y: isExpanded && !isCompactViewport ? 180 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
               }
               transition={submitStatus === "departing" ? { duration: 1, ease: "easeInOut" } : springConfig}
               exit={{ x: 300, y: 0, opacity: 0, scale: 0.9 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              className="relative pointer-events-auto w-[280px] md:w-[340px] h-[180px] md:h-[210px]"
+              className="relative pointer-events-auto h-[180px] w-[280px] md:h-[210px] md:w-[340px]"
               style={{ perspective: 1200 }}
             >
               {/* Layer 1: Back of Envelope (Inside) */}
@@ -222,10 +233,10 @@ export default function FloatingEnvelope() {
                 className="absolute bottom-3 bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border-[2px] border-[#4a3623] antialiased pointer-events-auto shrink-0"
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
                 style={{ 
-                  width: isPaperExpanded ? 460 : "85%",
-                  height: isPaperExpanded ? 540 : "90%",
+                  width: isPaperExpanded ? (isCompactViewport ? "92vw" : 460) : "85%",
+                  height: isPaperExpanded ? (isCompactViewport ? "min(620px, 82vh)" : 540) : "90%",
                   maxWidth: "95vw",
-                  maxHeight: "85vh",
+                  maxHeight: isCompactViewport ? "82vh" : "85vh",
                   left: "50%",
                   x: "-50%",
                   cursor: isExpanded ? "default" : "pointer",
@@ -295,7 +306,7 @@ export default function FloatingEnvelope() {
                     ) : (
                       <motion.div
                         key="form"
-                        className="w-full h-full px-6 py-6 z-30 flex flex-col justify-center"
+                        className="w-full h-full px-5 py-6 z-30 flex flex-col justify-center sm:px-6"
                       >
                         <header className="mb-6 text-center">
                           <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={18} strokeWidth={2} /></div>
@@ -308,37 +319,37 @@ export default function FloatingEnvelope() {
                         </header>
 
                         <form className="space-y-6" onSubmit={handleSubmit}>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-6">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-5 md:gap-y-6">
                             <div className="relative group">
                               <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
-                              <input type="text" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="e.g. Anand & Priya" />
+                              <input type="text" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="e.g. Anand & Priya" />
                             </div>
 
                             <div className="relative group">
                               <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
-                              <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="+91" />
+                              <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="+91" />
                             </div>
 
                             <div className="relative group">
                               <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
-                              <input type="email" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="your@email.com" />
+                              <input type="email" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="your@email.com" />
                             </div>
 
                             <div className="relative group">
                               <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
-                              <input type="date" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] cursor-pointer" />
+                              <input type="date" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] cursor-pointer" />
                             </div>
                           </div>
 
                           <div className="relative group pt-1">
                             <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
-                            <textarea rows="2" required className="w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c] resize-none" placeholder="Tell us about your requirements..."></textarea>
+                            <textarea rows="2" required className="min-h-16 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c] resize-none" placeholder="Tell us about your requirements..."></textarea>
                           </div>
 
                           <div className="pt-6 pb-2 flex justify-center">
                             <button 
                               type="submit" 
-                              className="relative px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
+                              className="relative min-h-12 px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
                             >
                               <div className="relative z-10 flex items-center justify-center">
                                 <span className="type-cta text-[#4a3623] flex items-center justify-center whitespace-nowrap">
@@ -392,7 +403,7 @@ export default function FloatingEnvelope() {
                       <button 
                         onClick={handleEnquireClick}
                         aria-label="Open enquiry form"
-                        className="relative px-10 py-2.5 group pointer-events-auto bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300"
+                        className="relative min-h-12 px-10 py-2.5 group pointer-events-auto bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300"
                       >
                         <div className="relative z-10 flex flex-col items-center justify-center">
                           <span className="type-cta text-[#4a3623] flex items-center justify-center">

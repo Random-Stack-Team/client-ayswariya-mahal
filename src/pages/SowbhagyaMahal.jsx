@@ -54,7 +54,7 @@ export default function SowbhagyaMahal() {
         <main ref={containerRef} className="min-h-screen overflow-hidden bg-[#fdfbf7]">
           
           {/* 1. Hero Section */}
-          <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[70vh] md:min-h-[80vh]">
+          <section className="relative flex min-h-[620px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[80vh] md:pb-32 md:pt-40">
             <motion.div
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${sowCrop2})` }}
@@ -86,7 +86,7 @@ export default function SowbhagyaMahal() {
               variants={staggerContainer}
               initial="hidden"
               animate="show"
-              className="relative z-10 mx-auto max-w-4xl text-center mt-10"
+              className="relative z-10 mx-auto mt-6 max-w-4xl text-center md:mt-10"
             >
               <motion.div variants={fadeInWide} className="mx-auto mb-6 flex justify-center text-[#E5C76B] drop-shadow-[0_0_18px_rgba(229,199,107,0.24)]">
                 <Sparkles size={26} strokeWidth={1.5} />
@@ -96,7 +96,7 @@ export default function SowbhagyaMahal() {
               </motion.p>
               <motion.h1
                 variants={fadeInWide}
-                className="font-display text-[clamp(42px,8vw,80px)] font-bold leading-[1.05] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl"
+                className="font-display text-[clamp(38px,12vw,58px)] font-bold leading-[1.05] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl md:text-[clamp(48px,8vw,80px)]"
               >
                 Sowbhagya Mahal
               </motion.h1>
@@ -122,7 +122,7 @@ export default function SowbhagyaMahal() {
           </section>
 
           {/* 2. The Promise (Centered Quote) */}
-          <section id="sowbhagya-story" className="px-6 py-24 md:py-32 bg-[#fdfbf7] text-[#4f4038] text-center border-b border-[#D4A843]/20">
+          <section id="sowbhagya-story" className="px-5 py-16 sm:px-6 md:py-24 lg:py-32 bg-[#fdfbf7] text-[#4f4038] text-center border-b border-[#D4A843]/20">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -130,15 +130,15 @@ export default function SowbhagyaMahal() {
               viewport={{ once: true, amount: 0.3 }}
               className="mx-auto max-w-4xl"
             >
-              <motion.p variants={fadeInWide} className="font-serif text-[32px] md:text-[44px] leading-[1.4] italic text-[#5A111C]">
+              <motion.p variants={fadeInWide} className="font-serif text-[28px] md:text-[38px] lg:text-[44px] leading-[1.35] md:leading-[1.4] italic text-[#5A111C]">
                 "A legacy of warmth in an intimate setting, designed for families who value elegance, comfort, and tradition at an affordable scale."
               </motion.p>
             </motion.div>
           </section>
 
           {/* 3. Block 1: Capacities (Image Left, Text Right) - Dark Maroon */}
-          <section className="px-6 py-24 md:py-32 bg-[#5A111C] text-[#fdfbf7] overflow-hidden">
-            <div className="mx-auto grid max-w-[1200px] items-center gap-16 lg:grid-cols-2">
+          <section className="px-5 py-16 sm:px-6 md:py-24 lg:py-32 bg-[#5A111C] text-[#fdfbf7] overflow-hidden">
+            <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
               <motion.div
                 initial={{ opacity: 0, x: -28, y: 18, scale: 0.96 }}
                 whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
@@ -171,7 +171,7 @@ export default function SowbhagyaMahal() {
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-5">
                   Grand Proportions
                 </motion.p>
-                <motion.h2 variants={fadeInUp} className="mb-8 font-serif text-[40px] md:text-[56px] font-semibold leading-[1.1] text-[#fdfbf7]">
+                <motion.h2 variants={fadeInUp} className="mb-8 font-serif text-[34px] md:text-[44px] lg:text-[56px] font-semibold leading-[1.1] text-[#fdfbf7]">
                   Space & <span className="italic text-[#E5C76B]">Comfort</span>
                 </motion.h2>
                 <motion.div variants={fadeInUp} className="mb-10 h-px w-20 bg-[#E5C76B]" />
@@ -199,24 +199,24 @@ export default function SowbhagyaMahal() {
           </section>
 
           {/* 4. Block 2: Facilities (Text Left, Image Right) - Ivory */}
-          <section className="px-6 py-24 md:py-32 bg-[#fdfbf7] text-[#4f4038] overflow-hidden">
-            <div className="mx-auto grid max-w-[1200px] items-center gap-16 lg:grid-cols-2">
+          <section className="px-5 py-16 sm:px-6 md:py-24 lg:py-32 bg-[#fdfbf7] text-[#4f4038] overflow-hidden">
+            <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
               <motion.div
                 variants={staggerContainer}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
-                className="order-2 lg:order-1 lg:pr-10"
+                className="order-2 md:order-1 lg:pr-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#D4A843] mb-5">
                   Seamless Celebrations
                 </motion.p>
-                <motion.h2 variants={fadeInUp} className="mb-8 font-serif text-[40px] md:text-[56px] font-semibold leading-[1.1] text-[#5A111C]">
+                <motion.h2 variants={fadeInUp} className="mb-8 font-serif text-[34px] md:text-[44px] lg:text-[56px] font-semibold leading-[1.1] text-[#5A111C]">
                   Premium <span className="italic text-[#D4A843]">Facilities</span>
                 </motion.h2>
                 <motion.div variants={fadeInUp} className="mb-10 h-px w-20 bg-[#D4A843]" />
                 
-                <motion.p variants={fadeInUp} className="font-body text-[18px] leading-[1.9] mb-8">
+                <motion.p variants={fadeInUp} className="font-body text-[17px] md:text-[18px] leading-[1.8] md:leading-[1.9] mb-8">
                   Every detail is curated to ensure your event flows beautifully. From our fully equipped modern kitchen and spacious dining hall to luxurious rooms for guests, we prioritize comfort.
                 </motion.p>
 
@@ -233,7 +233,7 @@ export default function SowbhagyaMahal() {
                       <div className="flex-shrink-0 mt-1 w-6 h-6 rounded-full bg-[#f5ead9] border border-[#D4A843]/30 flex items-center justify-center">
                         <Check size={12} className="text-[#D4A843]" strokeWidth={3} />
                       </div>
-                      <span className="font-body text-[17px] text-[#4f4038]">{item}</span>
+                      <span className="font-body text-[16px] md:text-[17px] text-[#4f4038]">{item}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -245,7 +245,7 @@ export default function SowbhagyaMahal() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
                 whileHover={{ y: -4 }}
-                className="group order-1 lg:order-2 relative overflow-hidden aspect-[4/5] md:aspect-square w-full rounded-[18px] shadow-[0_24px_60px_rgba(63,12,21,0.24)] border border-[#D4A843]/20"
+                className="group order-1 md:order-2 relative overflow-hidden aspect-[4/5] md:aspect-square w-full rounded-[18px] shadow-[0_24px_60px_rgba(63,12,21,0.24)] border border-[#D4A843]/20"
               >
                 <div className="pointer-events-none absolute inset-0 z-20 border border-[#D4A843]/30 shadow-[inset_0_0_0_1px_rgba(212,168,67,0.1)]" />
                 <div className="pointer-events-none absolute inset-x-4 top-4 z-20 h-px bg-[linear-gradient(90deg,transparent,rgba(212,168,67,0.78),transparent)] md:inset-x-6" />
@@ -277,8 +277,8 @@ export default function SowbhagyaMahal() {
           </section>
 
           {/* 5. Block 3: Occasions (Image Left, Text Right) - Warm Cream */}
-          <section className="px-6 py-24 md:py-32 bg-[#f5ead9] text-[#4f4038] overflow-hidden">
-            <div className="mx-auto grid max-w-[1200px] items-center gap-16 lg:grid-cols-2">
+          <section className="px-5 py-16 sm:px-6 md:py-24 lg:py-32 bg-[#f5ead9] text-[#4f4038] overflow-hidden">
+            <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
               <motion.div
                 initial={{ opacity: 0, x: -28, y: 18, scale: 0.96 }}
                 whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
@@ -310,18 +310,18 @@ export default function SowbhagyaMahal() {
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#D4A843] mb-5">
                   The Perfect Setting
                 </motion.p>
-                <motion.h2 variants={fadeInUp} className="mb-8 font-serif text-[40px] md:text-[56px] font-semibold leading-[1.1] text-[#5A111C]">
+                <motion.h2 variants={fadeInUp} className="mb-8 font-serif text-[34px] md:text-[44px] lg:text-[56px] font-semibold leading-[1.1] text-[#5A111C]">
                   Meaningful <span className="italic text-[#D4A843]">Occasions</span>
                 </motion.h2>
                 <motion.div variants={fadeInUp} className="mb-10 h-px w-20 bg-[#D4A843]" />
                 
-                <motion.p variants={fadeInUp} className="font-body text-[20px] md:text-[24px] leading-[1.8] italic font-light mb-8">
+                <motion.p variants={fadeInUp} className="font-body text-[18px] md:text-[21px] lg:text-[24px] leading-[1.75] md:leading-[1.8] italic font-light mb-8">
                   Whether it is the intimate joy of an engagement, the quiet elegance of a mini wedding, or the warmth of a family gathering, Sowbhagya Mahal brings grace to every celebration.
                 </motion.p>
 
                 <motion.div variants={fadeInUp} className="flex flex-wrap gap-3">
                   {["Engagements", "Mini Weddings", "Receptions", "Birthday Functions", "Family Gatherings", "Corporate Events"].map((occ) => (
-                    <span key={occ} className="px-5 py-2 rounded-full border border-[#D4A843]/40 bg-[#fdfbf7] text-[#5A111C] font-serif text-[18px]">
+                    <span key={occ} className="min-h-11 px-4 py-2 rounded-full border border-[#D4A843]/40 bg-[#fdfbf7] text-[#5A111C] font-serif text-[16px] md:px-5 md:text-[18px]">
                       {occ}
                     </span>
                   ))}
@@ -331,7 +331,7 @@ export default function SowbhagyaMahal() {
           </section>
 
           {/* 6. CTA Section */}
-          <section className="px-6 py-24 md:py-32 bg-[#5A111C] text-center border-t border-[#E5C76B]/20">
+          <section className="px-5 py-16 sm:px-6 md:py-24 lg:py-32 bg-[#5A111C] text-center border-t border-[#E5C76B]/20">
             <motion.div
               variants={staggerContainer}
               initial="hidden"
@@ -342,17 +342,17 @@ export default function SowbhagyaMahal() {
               <motion.div variants={fadeInUp} className="mx-auto mb-6 flex justify-center text-[#E5C76B]">
                 <Sparkles size={24} strokeWidth={1.5} />
               </motion.div>
-              <motion.h2 variants={fadeInUp} className="mb-8 font-serif text-[40px] md:text-[56px] font-semibold leading-[1.1] text-[#fdfbf7]">
+              <motion.h2 variants={fadeInUp} className="mb-8 font-serif text-[34px] md:text-[44px] lg:text-[56px] font-semibold leading-[1.1] text-[#fdfbf7]">
                 Plan Your Celebration at <span className="italic text-[#E5C76B]">Sowbhagya Mahal</span>
               </motion.h2>
-              <motion.p variants={fadeInUp} className="mb-12 font-body text-xl text-[#fdfbf7]/80 max-w-xl mx-auto leading-relaxed">
+              <motion.p variants={fadeInUp} className="mb-10 md:mb-12 font-body text-lg md:text-xl text-[#fdfbf7]/80 max-w-xl mx-auto leading-relaxed">
                 A graceful space for intimate events, crafted with the trust and hospitality of Ayswariya Mahal.
               </motion.p>
               <motion.button
                 variants={fadeInUp}
                 type="button"
                 onClick={openForm}
-                className="inline-flex min-h-[54px] md:min-h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-10 type-cta text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)]"
+                className="inline-flex min-h-[54px] w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-8 type-cta text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)] sm:w-auto md:min-h-12 md:px-10"
               >
                 Enquire Availability
               </motion.button>

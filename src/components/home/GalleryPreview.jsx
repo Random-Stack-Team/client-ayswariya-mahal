@@ -18,7 +18,7 @@ export default function GalleryPreview() {
 
       <div className="max-w-site mx-auto px-6 relative z-10">
         
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 md:mb-16">
           <motion.p
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export default function GalleryPreview() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.22 }}
               transition={{ delay: index * 0.1, duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-            className={`luxury-image-frame luxury-image-frame--banner gallery-color-card relative aspect-[3/4] overflow-hidden group shadow-[0_26px_70px_rgba(0,0,0,0.2)] ${index === 1 || index === 3 ? 'md:mt-12' : ''}`}
+            className={`luxury-image-frame luxury-image-frame--banner gallery-color-card relative aspect-[4/5] overflow-hidden group shadow-[0_26px_70px_rgba(0,0,0,0.2)] md:aspect-[3/4] ${index === 1 || index === 3 ? 'lg:mt-12' : ''}`}
           >
               <img
                 src={src}
@@ -73,7 +73,7 @@ export default function GalleryPreview() {
         >
           <button
             onClick={() => navigate("/gallery")}
-            className="border border-gold-leaf bg-[#fff8ed]/5 text-gold-leaf px-10 py-4 type-cta rounded-full backdrop-blur-sm hover:bg-gold-leaf hover:text-primary transition-colors duration-500"
+            className="min-h-12 border border-gold-leaf bg-[#fff8ed]/5 text-gold-leaf px-8 py-4 type-cta rounded-full backdrop-blur-sm hover:bg-gold-leaf hover:text-primary transition-colors duration-500 sm:px-10"
           >
             View Full Gallery
           </button>

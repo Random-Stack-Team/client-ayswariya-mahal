@@ -36,7 +36,7 @@ export default function Contact() {
       <PageTransition>
         <main className="bg-[#fdfbf7] min-h-screen">
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[50vh] md:min-h-[60vh]">
+      <section className="relative flex min-h-[520px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[60vh] md:pb-32 md:pt-40">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImg})` }}
@@ -72,8 +72,8 @@ export default function Contact() {
       </section>
 
       {/* Content Section */}
-      <section className="pt-32 lg:pt-40 pb-16 md:py-[96px] px-6">
-        <div className="max-w-site mx-auto grid md:grid-cols-2 gap-16">
+      <section className="px-5 pb-16 pt-16 sm:px-6 md:py-[80px] lg:pt-40">
+        <div className="max-w-site mx-auto grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
           
           {/* Contact Information */}
           <motion.div
@@ -81,7 +81,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col space-y-12"
+            className="flex flex-col space-y-8 md:space-y-10 lg:space-y-12"
           >
             <div>
               <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-6">We'd Love to Hear From You</h2>
@@ -92,7 +92,7 @@ export default function Contact() {
 
             <div className="space-y-8">
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-2xl border border-gold-leaf/30 flex items-center justify-center bg-white group-hover:bg-gold-leaf group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 shrink-0 rounded-2xl border border-gold-leaf/30 flex items-center justify-center bg-white group-hover:bg-gold-leaf group-hover:text-white transition-colors duration-300">
                   <MapPin size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
@@ -107,7 +107,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-2xl border border-gold-leaf/30 flex items-center justify-center bg-white group-hover:bg-gold-leaf group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 shrink-0 rounded-2xl border border-gold-leaf/30 flex items-center justify-center bg-white group-hover:bg-gold-leaf group-hover:text-white transition-colors duration-300">
                   <Phone size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
@@ -118,7 +118,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-2xl border border-gold-leaf/30 flex items-center justify-center bg-white group-hover:bg-gold-leaf group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 shrink-0 rounded-2xl border border-gold-leaf/30 flex items-center justify-center bg-white group-hover:bg-gold-leaf group-hover:text-white transition-colors duration-300">
                   <Mail size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
@@ -128,7 +128,7 @@ export default function Contact() {
               </div>
 
               <div className="flex items-start gap-4 group">
-                <div className="w-12 h-12 rounded-2xl border border-gold-leaf/30 flex items-center justify-center bg-white group-hover:bg-gold-leaf group-hover:text-white transition-colors duration-300">
+                <div className="w-12 h-12 shrink-0 rounded-2xl border border-gold-leaf/30 flex items-center justify-center bg-white group-hover:bg-gold-leaf group-hover:text-white transition-colors duration-300">
                   <Clock size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
@@ -150,26 +150,26 @@ export default function Contact() {
             className="flex flex-col h-full space-y-8"
           >
             {/* Inline Enquiry Form */}
-            <form onSubmit={handleSubmit} className="bg-white p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20">
+            <form onSubmit={handleSubmit} className="bg-white p-5 sm:p-7 md:p-8 lg:p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20">
               <h3 className="font-serif text-2xl md:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-4 text-center">Plan Your Celebration</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" className="p-3 border border-[#e8e2d7] rounded" />
-                <input name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone" className="p-3 border border-[#e8e2d7] rounded" />
-                <input name="email" value={form.email} onChange={handleChange} required placeholder="Email" type="email" className="p-3 border border-[#e8e2d7] rounded" />
-                <select name="eventType" value={form.eventType} onChange={handleChange} className="p-3 border border-[#e8e2d7] rounded">
+                <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" className="min-h-12 p-3 border border-[#e8e2d7] rounded" />
+                <input name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone" className="min-h-12 p-3 border border-[#e8e2d7] rounded" />
+                <input name="email" value={form.email} onChange={handleChange} required placeholder="Email" type="email" className="min-h-12 p-3 border border-[#e8e2d7] rounded" />
+                <select name="eventType" value={form.eventType} onChange={handleChange} className="min-h-12 p-3 border border-[#e8e2d7] rounded">
                   <option>Wedding</option>
                   <option>Reception</option>
                   <option>Engagement</option>
                   <option>Birthday</option>
                   <option>Other</option>
                 </select>
-                <input name="date" value={form.date} onChange={handleChange} type="date" className="p-3 border border-[#e8e2d7] rounded md:col-span-2" />
-                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" rows={3} className="p-3 border border-[#e8e2d7] rounded md:col-span-2" />
+                <input name="date" value={form.date} onChange={handleChange} type="date" className="min-h-12 p-3 border border-[#e8e2d7] rounded md:col-span-2" />
+                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" rows={3} className="min-h-24 p-3 border border-[#e8e2d7] rounded md:col-span-2" />
               </div>
 
               <div className="flex justify-center">
-                <button type="submit" className="w-full max-w-[240px] bg-deep-maroon text-gold-leaf py-3 rounded-full type-cta hover:bg-[#E5C76B] hover:text-[#5A111C] transition-colors duration-300 shadow-md">
+                <button type="submit" className="min-h-12 w-full max-w-[240px] bg-deep-maroon text-gold-leaf py-3 rounded-full type-cta hover:bg-[#E5C76B] hover:text-[#5A111C] transition-colors duration-300 shadow-md">
                   Send Enquiry
                 </button>
               </div>

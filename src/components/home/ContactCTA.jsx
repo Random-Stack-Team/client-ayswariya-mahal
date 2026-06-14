@@ -54,8 +54,8 @@ export default function ContactCTA() {
          ))}
       </div>
 
-      <div className="max-w-[1100px] mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 md:gap-[48px] items-center text-center md:text-left">
+      <div className="max-w-[1100px] mx-auto px-5 sm:px-6 relative z-10">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-[48px] items-center text-center md:text-left">
           
           {/* Left: Premium Celebration Promise Card */}
           <motion.div
@@ -63,7 +63,7 @@ export default function ContactCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="order-1 md:order-1 flex flex-col justify-center items-center p-10 md:p-14 bg-[#fdfbf7] border border-[#D4A843]/30 rounded-[20px] shadow-[0_15px_50px_rgba(90,17,28,0.06)] w-full max-w-[500px] mx-auto relative overflow-hidden"
+            className="order-1 md:order-1 flex flex-col justify-center items-center p-6 sm:p-8 md:p-14 bg-[#fdfbf7] border border-[#D4A843]/30 rounded-[20px] shadow-[0_15px_50px_rgba(90,17,28,0.06)] w-full max-w-[500px] mx-auto relative overflow-hidden"
           >
             {/* Decorative Custom Handwritten Heart SVG */}
             <svg width="60" height="60" viewBox="0 0 1024 1024" fill="#D4A843" className="mb-4 opacity-90 drop-shadow-sm">

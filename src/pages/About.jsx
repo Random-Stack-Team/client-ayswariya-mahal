@@ -62,7 +62,7 @@ export default function About() {
         <main className="bg-[#fdfbf7] min-h-screen overflow-hidden" ref={containerRef}>
 
       {/* Hero Section */}
-      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden px-6 pt-40 pb-32 md:min-h-[70vh]">
+      <section className="relative flex min-h-[560px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[70vh] md:pb-32 md:pt-40">
         <motion.img
           src={heroImg}
           alt=""
@@ -109,8 +109,8 @@ export default function About() {
       </section>
 
       {/* Story Section */}
-      <section className="py-24 md:py-32 px-6">
-        <div className="max-w-site mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <section className="py-16 md:py-24 lg:py-32 px-5 sm:px-6">
+        <div className="max-w-site mx-auto grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
 
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -129,10 +129,10 @@ export default function About() {
                 decoding="async"
                 width="1360"
                 height="1020"
-                className="h-[600px] w-full scale-110 object-cover"
+                className="h-[360px] w-full scale-110 object-cover sm:h-[440px] md:h-[520px] lg:h-[600px]"
               />
             </div>
-            <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 pointer-events-none"></div>
+            <div className="absolute -bottom-6 -left-6 h-28 w-28 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 pointer-events-none md:-bottom-10 md:-left-10 md:h-40 md:w-40"></div>
           </motion.div>
 
           <motion.div
@@ -165,7 +165,7 @@ export default function About() {
       </section>
 
       {/* Celebration Pillars - Premium Wedding Card Layout */}
-      <section className="py-[52px] md:py-[72px] px-6 bg-[#f5ead9] relative overflow-hidden">
+      <section className="py-[52px] md:py-[72px] px-5 sm:px-6 bg-[#f5ead9] relative overflow-hidden">
         {/* Subtle background texture */}
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-5 pointer-events-none"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_center,rgba(212,168,67,0.05),transparent_60%)] pointer-events-none"></div>
@@ -182,12 +182,12 @@ export default function About() {
               Our Promise to Every Celebration
             </motion.h2>
             <motion.div variants={fadeInUp} className="w-16 h-px bg-[#D4A843] mx-auto mb-6"></motion.div>
-            <motion.p variants={fadeInUp} className="font-body text-[#4f4038] text-lg md:text-xl max-w-2xl mx-auto italic font-light">
+            <motion.p variants={fadeInUp} className="font-body text-[#4f4038] text-base md:text-xl max-w-2xl mx-auto italic font-light">
               Every event at Ayswariya Mahal is shaped with care, tradition, and the warmth of family.
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
             {pillars.map((pillar, index) => {
               const Icon = pillar.icon;
               return (
@@ -234,7 +234,7 @@ export default function About() {
       </section>
 
       {/* Philosophy & Mission Redesign - Maroon Theme */}
-      <section className="py-12 md:py-16 lg:py-20 px-6 bg-[#5A111C] relative overflow-hidden">
+      <section className="py-12 md:py-16 lg:py-20 px-5 sm:px-6 bg-[#5A111C] relative overflow-hidden">
         {/* Animated Background Elements */}
         <motion.div 
           animate={{ rotate: 360 }}
@@ -259,7 +259,7 @@ export default function About() {
             {/* Philosophy Card */}
             <motion.div 
               variants={fadeInUp}
-              className="relative p-8 md:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
+              className="relative p-6 md:p-8 lg:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
             >
               <div className="absolute top-0 left-8 w-12 h-px bg-[#D4A843] transition-all duration-500 group-hover:w-20" />
               <div className="absolute top-8 left-0 w-px h-12 bg-[#D4A843]/50" />
@@ -280,7 +280,7 @@ export default function About() {
             {/* Mission Card */}
             <motion.div 
               variants={fadeInUp}
-              className="relative p-8 md:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
+              className="relative p-6 md:p-8 lg:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
             >
               <div className="absolute top-0 left-8 w-12 h-px bg-[#D4A843] transition-all duration-500 group-hover:w-20" />
               <div className="absolute top-8 left-0 w-px h-12 bg-[#D4A843]/50" />
@@ -303,7 +303,7 @@ export default function About() {
       </section>
 
       {/* Sowbhagya Mahal Intro Section */}
-      <section className="relative overflow-hidden bg-[#f5ead9] px-6 py-20 md:py-28">
+      <section className="relative overflow-hidden bg-[#f5ead9] px-5 py-16 sm:px-6 md:py-20 lg:py-28">
         <motion.div
           aria-hidden="true"
           initial={{ opacity: 0, scale: 0.85 }}
@@ -321,7 +321,7 @@ export default function About() {
           className="absolute bottom-0 right-0 h-px w-1/2 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent"
         />
 
-        <div className="max-w-site mx-auto grid items-center gap-14 lg:grid-cols-2 lg:gap-16">
+        <div className="max-w-site mx-auto grid items-center gap-12 md:grid-cols-2 md:gap-10 lg:gap-16">
           <motion.div
             initial={{ opacity: 0, x: -48, rotate: -1.5 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
@@ -349,7 +349,7 @@ export default function About() {
                 decoding="async"
                 width="1360"
                 height="1020"
-                className="h-[330px] w-full object-cover object-center brightness-95 contrast-[1.08] sm:h-[420px] md:h-[500px]"
+                className="h-[300px] w-full object-cover object-center brightness-95 contrast-[1.08] sm:h-[380px] md:h-[430px] lg:h-[500px]"
               />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(63,12,21,0.04)_0%,rgba(63,12,21,0.18)_100%)]" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
@@ -396,7 +396,7 @@ export default function About() {
               Our hall is spacious with a seating capacity of 500 guests, dining capacity 200 and floating capacity of 1000, supported by centralized air conditioning, modern kitchen, guest rooms, backup generator, geysers, CCTV coverage, spacious dining and a separate rooftop garden.
             </motion.p>
 
-            <motion.div variants={fadeInUp} className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <motion.div variants={fadeInUp} className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-3 md:grid-cols-1 lg:grid-cols-3">
               {[
                 { number: "500", label: "Seating Capacity", icon: Building2 },
                 { number: "200", label: "Dining Capacity", icon: UtensilsCrossed },
@@ -429,7 +429,7 @@ export default function About() {
             <motion.div variants={fadeInUp}>
               <Link
                 to="/sowbhagya-mahal"
-                className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#D4A843] px-8 font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(90,17,28,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7]"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#D4A843] px-8 font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(90,17,28,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7] sm:w-auto"
               >
                 Explore Sowbhagya Mahal
               </Link>

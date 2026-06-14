@@ -56,7 +56,7 @@ export default function SowbhagyaFooter() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent" />
 
       <div className="relative mx-auto max-w-[1280px] px-5 pt-10 pb-6 sm:px-8 md:pt-12 md:pb-8 lg:px-12">
-        <div className="grid gap-5 lg:grid-cols-[1.15fr_0.75fr_0.9fr_1fr] lg:gap-x-8">
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.15fr_0.75fr_0.9fr_1fr] lg:gap-x-8">
           <div>
             <Link to="/" className="inline-flex" aria-label="Sowbhagya Mahal home">
               <img
@@ -75,7 +75,7 @@ export default function SowbhagyaFooter() {
             <button
               type="button"
               onClick={openForm}
-              className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-7 font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)]"
+              className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-7 font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)] sm:w-auto"
             >
               Check Availability
             </button>

@@ -68,8 +68,8 @@ function Navbar() {
         }`}
       >
         <div
-          className={`mx-auto grid w-full max-w-[1320px] grid-cols-[1fr_auto] items-center gap-4 px-5 transition-[min-height] duration-700 md:px-9 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:px-10 xl:px-12 ${
-            solidNav ? "min-h-[76px]" : "min-h-[88px]"
+          className={`mx-auto grid w-full max-w-[1320px] grid-cols-[1fr_auto] items-center gap-4 px-4 transition-[min-height] duration-700 sm:px-5 md:px-8 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:px-10 xl:px-12 ${
+            solidNav ? "min-h-[68px] md:min-h-[76px]" : "min-h-[76px] md:min-h-[88px]"
           }`}
         >
           <nav className="hidden items-center justify-end gap-8 pr-8 lg:flex xl:gap-11 xl:pr-12">
@@ -82,7 +82,7 @@ function Navbar() {
 
           <button
             onClick={handleLogoClick}
-            className="group relative justify-self-start px-2 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 lg:justify-self-center"
+            className="group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:justify-self-center"
             aria-label="Ayswariya Mahal home"
           >
             <img
@@ -92,7 +92,7 @@ function Navbar() {
               fetchPriority="high"
               width="654"
               height="293"
-              className={`relative z-10 h-12 min-h-12 w-auto object-contain transition duration-700 md:h-[52px] lg:h-[60px] ${
+              className={`relative z-10 h-10 min-h-10 w-auto object-contain transition duration-700 sm:h-11 md:h-[52px] lg:h-[60px] ${
                 solidNav
                   ? "drop-shadow-[0_5px_12px_rgba(90,17,28,0.1)]"
                   : "brightness-[1.22] drop-shadow-[0_8px_22px_rgba(0,0,0,0.36)]"
@@ -143,7 +143,7 @@ function Navbar() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: "100%" }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute right-0 top-full w-[min(88vw,410px)] border-l border-t border-[#d4af37]/24 bg-[rgba(250,247,242,0.96)] px-7 py-9 shadow-[-22px_24px_60px_rgba(48,20,12,0.2)] backdrop-blur-[12px] lg:hidden"
+                className="absolute right-0 top-full max-h-[calc(100vh-68px)] w-[min(92vw,410px)] overflow-y-auto border-l border-t border-[#d4af37]/24 bg-[rgba(250,247,242,0.96)] px-5 py-6 shadow-[-22px_24px_60px_rgba(48,20,12,0.2)] backdrop-blur-[12px] sm:px-7 sm:py-9 lg:hidden"
               >
                 <div className="flex flex-col">
                   <div className="mb-5 flex items-center justify-between border-b border-[#d4af37]/20 pb-5">

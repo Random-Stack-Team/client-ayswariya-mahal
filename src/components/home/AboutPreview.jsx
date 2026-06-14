@@ -36,16 +36,16 @@ export default function AboutPreview() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#5A111C] py-32 overflow-hidden border-b border-[#E5C76B]/20">
+    <section ref={sectionRef} className="relative bg-[#5A111C] py-20 overflow-hidden border-b border-[#E5C76B]/20 md:py-24 lg:py-32">
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
-      <div className="max-w-site mx-auto px-8 md:px-16 grid lg:grid-cols-12 gap-16 items-center">
+      <div className="max-w-site mx-auto px-5 sm:px-6 md:px-10 lg:px-16 grid md:grid-cols-12 gap-10 md:gap-12 lg:gap-16 items-center">
         
-        <div className="lg:col-span-5 space-y-8 z-10">
+        <div className="md:col-span-5 lg:col-span-5 space-y-8 z-10">
           <div className="order-2 lg:order-1 text-center lg:text-left stagger-reveal">
-            <h2 className="font-serif text-[32px] md:text-5xl lg:text-6xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] mb-8 drop-shadow-sm">
+            <h2 className="font-serif text-[32px] md:text-[40px] lg:text-6xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] mb-8 drop-shadow-sm">
               A Legacy of <br />
               <span className="italic text-[#E5C76B]">Celebrations</span>
             </h2>
@@ -64,7 +64,7 @@ export default function AboutPreview() {
           </div>
         </div>
 
-        <div className="lg:col-span-7 relative stagger-reveal mt-12 lg:mt-0">
+        <div className="md:col-span-7 lg:col-span-7 relative stagger-reveal mt-8 md:mt-0">
           <div className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner aspect-[4/5] lg:aspect-square p-3 lg:p-4 luxury-image-overlay">
             <img
               src={aboutImg}
