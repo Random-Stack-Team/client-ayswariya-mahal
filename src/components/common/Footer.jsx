@@ -108,10 +108,10 @@ export default function Footer() {
               ))}
             </ul>
             <Link
-              to="/sowbhagya-mahal"
+              to="/"
               className="mt-4 inline-flex min-h-12 items-center font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.14em] text-[#D4A843] transition-colors duration-300 hover:text-[#fdfbf7]"
             >
-              View Sowbhagya Mahal
+              View Ayswariya Mahal
             </Link>
           </div>
 

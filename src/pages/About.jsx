@@ -3,8 +3,8 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/hero.webp";
-import sowCrop3 from "../assets/images/sow-crop3.jpg";
-import { Sparkles, Flower2, HeartHandshake, Gem } from "lucide-react";
+import sowCrop2 from "../assets/images/sow-crop2.webp";
+import { Sparkles, Flower2, HeartHandshake, Gem, Building2, UtensilsCrossed, Trees } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 
@@ -62,11 +62,17 @@ export default function About() {
         <main className="bg-[#fdfbf7] min-h-screen overflow-hidden" ref={containerRef}>
 
       {/* Hero Section */}
-      <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[60vh] md:min-h-[70vh]">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImg})` }}
-        ></div>
+      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden px-6 pt-40 pb-32 md:min-h-[70vh]">
+        <motion.img
+          src={heroImg}
+          alt=""
+          aria-hidden="true"
+          loading="eager"
+          decoding="async"
+          width="1920"
+          height="1080"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+        />
         {/* Dark Cinematic Overlay fading into page bg */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/80 via-[#3F0C15]/70 to-[#fdfbf7]"></div>
         
@@ -123,7 +129,7 @@ export default function About() {
                 decoding="async"
                 width="1360"
                 height="1020"
-                className="w-full h-[600px] object-cover scale-110"
+                className="h-[600px] w-full scale-110 object-cover"
               />
             </div>
             <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-10 pointer-events-none"></div>
@@ -322,45 +328,50 @@ export default function About() {
             viewport={{ once: true, amount: 0.18 }}
             transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
             whileHover={{ y: -6, rotate: -0.5 }}
-            className="relative"
+            className="relative max-w-[620px]"
           >
+            <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[14px] bg-[#D4A843]/20" />
             <motion.div
-              initial={{ x: 18, y: 18, opacity: 0 }}
-              whileInView={{ x: 12, y: 12, opacity: 0.26 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.15 }}
-              className="absolute inset-0 rounded-sm bg-[#D4A843]"
-            />
-            <motion.div
-              initial={{ clipPath: "inset(0 100% 0 0)" }}
-              whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative overflow-hidden rounded-sm shadow-2xl luxury-image-overlay"
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="relative overflow-hidden rounded-[14px] border border-[#D4A843]/20 bg-[#fdfbf7] shadow-[0_24px_60px_rgba(90,17,28,0.12)] luxury-image-overlay"
             >
               <motion.img
                 initial={{ scale: 1.12 }}
                 whileInView={{ scale: 1.04 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-                src={sowCrop3}
-                alt="Sowbhagya Mahal"
+                src={sowCrop2}
+                alt="Sowbhagya Mahal luxury venue interior"
                 loading="lazy"
                 decoding="async"
                 width="1360"
                 height="1020"
-                className="h-[360px] w-full object-cover sm:h-[460px] md:h-[560px]"
+                className="h-[330px] w-full object-cover object-center brightness-95 contrast-[1.08] sm:h-[420px] md:h-[500px]"
               />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(63,12,21,0.04)_0%,rgba(63,12,21,0.18)_100%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 24, scale: 0.94 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.35 }}
-              className="absolute -bottom-6 left-5 border border-[#D4A843]/40 bg-[#5A111C] px-5 py-4 text-[#fdfbf7] shadow-[0_18px_36px_rgba(63,12,21,0.24)] sm:left-8"
+              className="absolute -bottom-5 left-5 rounded-xl border border-[#D4A843]/35 bg-[#5A111C]/95 px-4 py-3 text-[#fdfbf7] shadow-[0_18px_36px_rgba(63,12,21,0.24)] backdrop-blur-sm sm:left-8"
             >
-              <p className="font-display text-3xl font-bold leading-none text-[#D4A843]">500</p>
-              <p className="mt-1 font-sans font-medium uppercase tracking-[0.08em] text-[11px] uppercase tracking-[0.16em]">Seated Guests</p>
+              <div className="flex items-center gap-3">
+                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#D4A843]/30 text-[#D4A843]">
+                  <Building2 size={16} strokeWidth={1.8} aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="font-display text-2xl font-semibold leading-none text-[#D4A843]">500</p>
+                  <p className="mt-1 font-sans text-[10px] font-medium uppercase tracking-[0.16em] text-[#fdfbf7]/82">
+                    Seated Guests
+                  </p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
 
@@ -385,19 +396,32 @@ export default function About() {
               Our hall is spacious with a seating capacity of 500 guests, dining capacity 200 and floating capacity of 1000, supported by centralized air conditioning, modern kitchen, guest rooms, backup generator, geysers, CCTV coverage, spacious dining and a separate rooftop garden.
             </motion.p>
 
-            <motion.div variants={fadeInUp} className="mb-8 grid grid-cols-1 gap-4 min-[390px]:grid-cols-3">
+            <motion.div variants={fadeInUp} className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-3">
               {[
-                ["500", "Seating"],
-                ["200", "Dining"],
-                ["1000", "Floating"],
-              ].map(([number, label]) => (
+                { number: "500", label: "Seating Capacity", icon: Building2 },
+                { number: "200", label: "Dining Capacity", icon: UtensilsCrossed },
+                { number: "1000", label: "Floating Capacity", icon: Trees },
+              ].map((stat) => (
                 <motion.div
-                  key={label}
-                  whileHover={{ y: -6 }}
-                  className="border border-[#D4A843]/28 bg-[#fff8ed]/74 p-4 text-center shadow-[0_14px_34px_rgba(90,17,28,0.08)]"
+                  key={stat.label}
+                  whileHover={{ y: -8 }}
+                  className="group relative overflow-hidden rounded-[16px] border border-[#D4A843]/55 bg-[linear-gradient(180deg,#fffaf2_0%,#f7eddc_100%)] px-4 py-3 text-center shadow-[0_10px_24px_rgba(90,17,28,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#B8860B]/70 hover:shadow-[0_18px_34px_rgba(90,17,28,0.1)]"
                 >
-                  <p className="mb-1 font-display text-2xl font-bold text-[#5A111C]">{number}</p>
-                  <p className="font-sans font-medium uppercase tracking-[0.08em] text-[11px] uppercase tracking-[0.14em] text-[#B8860B]">{label} Capacity</p>
+                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,168,67,0.08),transparent_46%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  <div className="absolute left-3 top-3 h-4 w-4 rounded-tl-[6px] border-l border-t border-[#D4A843]/70" />
+                  <div className="absolute right-3 top-3 h-4 w-4 rounded-tr-[6px] border-r border-t border-[#D4A843]/70" />
+                  <div className="absolute bottom-3 left-3 h-4 w-4 rounded-bl-[6px] border-b border-l border-[#D4A843]/70" />
+                  <div className="absolute bottom-3 right-3 h-4 w-4 rounded-br-[6px] border-b border-r border-[#D4A843]/70" />
+
+                  <div className="relative mx-auto mb-2.5 grid h-12 w-12 place-items-center rounded-full bg-[#5A111C] text-[#D4A843] shadow-[0_10px_20px_rgba(90,17,28,0.18)]">
+                    <stat.icon size={17} strokeWidth={2} aria-hidden="true" />
+                  </div>
+                  <p className="relative mb-0.5 font-display text-[clamp(1.9rem,2.4vw,2.4rem)] font-semibold leading-none text-[#5A111C]">
+                    {stat.number}
+                  </p>
+                  <p className="relative font-sans text-[10px] font-medium uppercase tracking-[0.16em] text-[#B8860B]">
+                    {stat.label}
+                  </p>
                 </motion.div>
               ))}
             </motion.div>
