@@ -59,8 +59,9 @@ export default function Gallery() {
   const camera = useRef({ x: 0, vx: 0, target: 0 });
   const rafId = useRef(null);
   const snapPoints = useRef([]);
+  const maxScroll = useRef(0);
   const isInView = useRef(false);
-  const wheelLock = useRef(false);
+  const touchStart = useRef({ x: 0, y: 0, target: 0 });
   const [category, setCategory] = useState("hall");
 
   const images = galleryData[category];
@@ -68,8 +69,19 @@ export default function Gallery() {
 
   const measure = useCallback(() => {
     const rail = railRef.current;
-    if (!rail) return;
+    const section = sectionRef.current;
+    if (!rail || !section) return;
     snapPoints.current = Array.from(rail.children).map((el) => el.offsetLeft);
+    maxScroll.current = Math.max(0, rail.scrollWidth - section.clientWidth);
+    camera.current.target = Math.max(0, Math.min(camera.current.target, maxScroll.current));
+  }, []);
+
+  const moveSlider = useCallback((delta) => {
+    const cam = camera.current;
+    const next = Math.max(0, Math.min(cam.target + delta, maxScroll.current));
+    const moved = Math.abs(next - cam.target) > 0.5;
+    cam.target = next;
+    return moved;
   }, []);
 
   useEffect(() => {
@@ -81,8 +93,7 @@ export default function Gallery() {
       }
 
       const cam = camera.current;
-      const maxScroll = 3000;
-      cam.target = Math.max(-maxScroll, Math.min(cam.target, maxScroll));
+      cam.target = Math.max(0, Math.min(cam.target, maxScroll.current));
 
       const force = (cam.target - cam.x) * 0.07;
       cam.vx += force;
@@ -107,6 +118,7 @@ export default function Gallery() {
 
   useEffect(() => {
     camera.current = { x: 0, vx: 0, target: 0 };
+    maxScroll.current = 0;
     const timeoutId = setTimeout(measure, 200);
     return () => clearTimeout(timeoutId);
   }, [category, measure]);
@@ -131,24 +143,62 @@ export default function Gallery() {
   }, []);
 
   useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return undefined;
+
     const onWheel = (event) => {
-      if (!isInView.current || wheelLock.current) return;
-      wheelLock.current = true;
-      camera.current.target += event.deltaY * 0.45;
-      setTimeout(() => {
-        wheelLock.current = false;
-      }, 40);
+      if (!isInView.current || maxScroll.current <= 0) return;
+
+      const dominantDelta = Math.abs(event.deltaY) >= Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
+      if (Math.abs(dominantDelta) < 1) return;
+
+      const atStart = camera.current.target <= 1;
+      const atEnd = camera.current.target >= maxScroll.current - 1;
+      const canConsume = (dominantDelta > 0 && !atEnd) || (dominantDelta < 0 && !atStart);
+
+      if (!canConsume) return;
+      event.preventDefault();
+      moveSlider(dominantDelta * 0.7);
     };
 
-    window.addEventListener("wheel", onWheel, { passive: true });
-    return () => window.removeEventListener("wheel", onWheel);
-  }, []);
+    section.addEventListener("wheel", onWheel, { passive: false });
+    return () => section.removeEventListener("wheel", onWheel);
+  }, [moveSlider]);
 
   const scrollByStep = (dir) => {
     const snap = snapPoints.current;
     if (!snap.length) return;
     const step = Math.abs(snap[1] - snap[0]) || 400;
-    camera.current.target += dir * step;
+    moveSlider(dir * step);
+  };
+
+  const handleTouchStart = (event) => {
+    const touch = event.touches[0];
+    touchStart.current = { x: touch.clientX, y: touch.clientY, target: camera.current.target };
+  };
+
+  const handleTouchMove = (event) => {
+    const touch = event.touches[0];
+    const dx = touchStart.current.x - touch.clientX;
+    const dy = touchStart.current.y - touch.clientY;
+    if (Math.abs(dx) <= Math.abs(dy) || Math.abs(dx) < 8) return;
+
+    const next = Math.max(0, Math.min(touchStart.current.target + dx, maxScroll.current));
+    if (next !== camera.current.target) {
+      camera.current.target = next;
+    }
+  };
+
+  const handleKeyDown = (event) => {
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      scrollByStep(1);
+    }
+
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      scrollByStep(-1);
+    }
   };
 
   return (
@@ -160,11 +210,12 @@ export default function Gallery() {
       />
       <PageTransition>
         <main className="min-h-screen overflow-hidden bg-[#fdfbf7]">
-          <section className="relative mb-16 flex min-h-[50vh] items-center justify-center overflow-hidden px-6 pb-32 pt-40 md:min-h-[60vh]">
+          <section className="relative flex min-h-[50vh] items-center justify-center overflow-hidden px-6 pb-28 pt-40 md:min-h-[60vh] md:pb-36">
             <div
               className="absolute inset-0 bg-cover bg-center bg-fixed"
               style={{ backgroundImage: `url(${gallery3})` }}
             />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#1c0d11]/80 via-[#1c0d11]/70 to-[#4A0A12]" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42vh] bg-[linear-gradient(180deg,rgba(253,251,247,0)_0%,rgba(253,251,247,0.12)_24%,rgba(253,251,247,0.42)_58%,rgba(253,251,247,1)_100%)]" />
 
             <div className="relative z-10 mx-auto max-w-4xl text-center">
@@ -220,31 +271,46 @@ export default function Gallery() {
             </div>
           </section>
 
-          <section ref={sectionRef} className="relative h-screen overflow-hidden">
-            <div className="absolute left-1/2 top-6 z-30 flex -translate-x-1/2 gap-2 rounded-full bg-white/20 px-5 py-2 shadow-[0_18px_44px_rgba(122,27,41,0.1)] backdrop-blur-md">
-              {Object.keys(galleryData).map((item) => (
-                <button
-                  key={item}
-                  onClick={() => setCategory(item)}
-                  className={`rounded-full px-4 py-1 font-body text-sm font-medium uppercase tracking-[0.08em] transition duration-500 ${
-                    category === item ? "bg-[#E5C76B] text-[#5A111C]" : "text-[#4a3623]/70 hover:text-[#6A1724]"
-                  }`}
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
+          <section
+            ref={sectionRef}
+            tabIndex={0}
+            onKeyDown={handleKeyDown}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            className="relative flex min-h-screen flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(229,199,107,0.22),transparent_30%),linear-gradient(180deg,#fdfbf7_0%,#fbf3e7_52%,#f8efe1_100%)] px-4 pb-16 pt-12 outline-none md:px-8 md:pb-24 md:pt-16"
+            aria-label="Scrollable wedding gallery slider"
+          >
+            <div className="relative z-30 mx-auto flex max-w-5xl flex-col items-center text-center">
+              <div className="flex w-full justify-center">
+                <div className="grid grid-cols-3 gap-1 rounded-full border border-[#E5C76B]/35 bg-white/72 p-1 shadow-[0_18px_44px_rgba(122,27,41,0.12)] backdrop-blur-md">
+                  {Object.keys(galleryData).map((item) => (
+                    <button
+                      key={item}
+                      onClick={() => setCategory(item)}
+                      className={`rounded-full px-3 py-2 font-body text-xs font-semibold uppercase tracking-[0.08em] transition duration-500 sm:px-5 sm:text-sm ${
+                        category === item
+                          ? "bg-[#E5C76B] text-[#5A111C] shadow-[0_8px_22px_rgba(201,151,59,0.28)]"
+                          : "text-[#4a3623]/70 hover:bg-[#6A1724]/8 hover:text-[#6A1724]"
+                      }`}
+                    >
+                      {item}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-            <div className="absolute left-1/2 top-24 z-20 -translate-x-1/2 text-center">
-              <h2 className="font-serif text-2xl font-semibold leading-[1.2] tracking-[0.01em] text-[#6A1724]">
-                {meta.title}
-              </h2>
-              <p className="type-small text-[#4a3623]/76">{meta.subtitle}</p>
+              <div className="mt-10 max-w-2xl md:mt-14">
+                <div className="mx-auto mb-4 h-px w-20 bg-gradient-to-r from-transparent via-[#C9973B] to-transparent" />
+                <p className="type-eyebrow mb-3 text-[#C9973B]">{meta.subtitle}</p>
+                <h2 className="font-serif text-[34px] font-semibold leading-[1.08] tracking-[0.01em] text-[#6A1724] md:text-5xl">
+                  {meta.title}
+                </h2>
+              </div>
             </div>
 
             <button
               onClick={() => scrollByStep(-1)}
-              className="absolute left-3 top-1/2 z-50 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-black/35 text-[#E5C76B] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white"
+              className="absolute left-3 top-[68%] z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/70 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:left-8 md:top-[70%] md:h-12 md:w-12"
               aria-label="Previous gallery item"
             >
               <ChevronLeft size={24} strokeWidth={1.7} />
@@ -252,13 +318,16 @@ export default function Gallery() {
 
             <button
               onClick={() => scrollByStep(1)}
-              className="absolute right-3 top-1/2 z-50 grid h-12 w-12 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-black/35 text-[#E5C76B] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white"
+              className="absolute right-3 top-[68%] z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/70 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:right-8 md:top-[70%] md:h-12 md:w-12"
               aria-label="Next gallery item"
             >
               <ChevronRight size={24} strokeWidth={1.7} />
             </button>
 
-            <div ref={railRef} className="absolute flex h-full items-center gap-20 px-[25vw] will-change-transform">
+            <div
+              ref={railRef}
+              className="relative z-10 mt-12 flex h-[min(54vh,470px)] items-center gap-8 px-[18vw] will-change-transform sm:gap-12 md:mt-16 md:gap-20 md:px-[25vw]"
+            >
               {images.map((img, index) => (
                 <motion.div
                   key={`${category}-${img.src}`}
@@ -266,7 +335,7 @@ export default function Gallery() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.24 }}
                   transition={{ duration: 0.85, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                  className="luxury-image-overlay relative h-[440px] w-[min(78vw,340px)] flex-shrink-0 overflow-hidden rounded-2xl shadow-[0_24px_60px_rgba(122,27,41,0.16)]"
+                  className="luxury-image-frame luxury-image-overlay relative h-[min(54vh,470px)] w-[min(76vw,360px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_28px_70px_rgba(122,27,41,0.18)] transition duration-500 hover:-translate-y-1"
                 >
                   <img
                     src={img.src}
@@ -275,9 +344,9 @@ export default function Gallery() {
                     decoding="async"
                     width={img.width}
                     height={img.height}
-                    className="block h-full w-full scale-110 object-cover object-center transition-transform duration-[1400ms] hover:scale-105"
+                    className="block h-full w-full object-cover object-center transition-transform duration-[1400ms] hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1c0d11]/58 via-transparent to-[#1c0d11]/8" />
                 </motion.div>
               ))}
             </div>
