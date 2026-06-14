@@ -165,7 +165,7 @@ export default function Gallery() {
               className="absolute inset-0 bg-cover bg-center bg-fixed"
               style={{ backgroundImage: `url(${gallery3})` }}
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#1c0d11]/80 via-[#1c0d11]/70 to-[#4A0A12]" />
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42vh] bg-[linear-gradient(180deg,rgba(253,251,247,0)_0%,rgba(253,251,247,0.12)_24%,rgba(253,251,247,0.42)_58%,rgba(253,251,247,1)_100%)]" />
 
             <div className="relative z-10 mx-auto max-w-4xl text-center">
               <motion.div

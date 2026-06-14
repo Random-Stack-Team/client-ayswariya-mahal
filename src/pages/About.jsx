@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/hero.webp";
-import sowCrop2 from "../assets/images/sow-crop2.webp";
+import sowCrop2 from "../assets/images/Outlook.png";
 import { Sparkles, Flower2, HeartHandshake, Gem, Building2, UtensilsCrossed, Trees } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";

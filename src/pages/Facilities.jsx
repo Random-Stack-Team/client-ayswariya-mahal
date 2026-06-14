@@ -40,7 +40,7 @@ const facilities = [
     height: 1023,
     icon: <AirVent size={26} />,
     title: "Centralized AC",
-    description: "Comfortable climate-controlled environment for guests.",
+    description: "A fully climate-controlled setting for a comfortable gathering from start to finish.",
   },
   {
     image: facility2,
@@ -48,7 +48,7 @@ const facilities = [
     height: 1086,
     icon: <Building2 size={26} />,
     title: "Spacious Event Hall",
-    description: "Elegant interiors for grand celebrations.",
+    description: "A generous main hall designed to frame weddings, receptions, and milestone occasions with grace.",
   },
   {
     image: facility3,
@@ -56,15 +56,15 @@ const facilities = [
     height: 1086,
     icon: <UtensilsCrossed size={26} />,
     title: "Dining Hall",
-    description: "Royal Dining Experience Setup Grandeur.",
+    description: "Thoughtfully arranged dining space for smooth service and a refined guest experience.",
   },
   {
     image: facility4,
     width: 1536,
     height: 1024,
     icon: <BedDouble size={26} />,
-    title: "Luxury rooms ",
-    description: "Luxury rooms for family stay with comfort.",
+    title: "Luxury Rooms",
+    description: "Welcoming guest rooms prepared for family comfort and privacy.",
   },
   {
     image: facility5,
@@ -72,7 +72,7 @@ const facilities = [
     height: 1024,
     icon: <Car size={26} />,
     title: "Ample Parking",
-    description: "Spacious parking area.",
+    description: "Ample parking that makes arrival and departure easy for every guest.",
   },
   {
     image: facility6,
@@ -80,7 +80,7 @@ const facilities = [
     height: 1024,
     icon: <ShieldCheck size={26} />,
     title: "CCTV Security",
-    description: "24/7 surveillance system.",
+    description: "Round-the-clock security coverage for added peace of mind.",
   },
   {
     image: facility7,
@@ -88,7 +88,7 @@ const facilities = [
     height: 1024,
     icon: <Zap size={26} />,
     title: "Generator Backup",
-    description: "Power backup ensured.",
+    description: "Reliable generator support to keep celebrations uninterrupted.",
   },
   {
     image: facility8,
@@ -96,7 +96,7 @@ const facilities = [
     height: 1024,
     icon: <MapPin size={26} />,
     title: "Prime Location",
-    description: "Easily accessible venue.",
+    description: "A centrally connected venue with convenient access for local and out-of-town guests.",
   },
 ];
 
@@ -120,67 +120,6 @@ const cardMotion = {
     },
   }),
 };
-
-/* =========================
-   TEXT SPLIT ANIMATION
-========================= */
-const textContainer = {
-  hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.035,
-      delayChildren: 0.28,
-    },
-  },
-};
-
-const wordVariant = {
-  hidden: {
-    opacity: 0,
-    y: 24,
-    scale: 0.98,
-  },
-  show: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      duration: 0.92,
-      ease: [0.16, 1, 0.3, 1],
-    },
-  },
-};
-
-
-/* =========================
-   TEXT COMPONENT
-========================= */
-const AdvancedText = ({ text }) => {
-  return (
-    <motion.div
-      variants={textContainer}
-      initial="hidden"
-      whileInView="show"
-      viewport={{ once: true, amount: 0.1 }}
-      className="inline-block"
-      style={{ perspective: "1000px" }}
-    >
-      {text.split(" ").map((word, i) => (
-        <motion.span
-          key={i}
-          variants={wordVariant}
-          className="inline-block mr-3"
-          style={{
-            transformOrigin: "bottom",
-          }}
-        >
-          {word}
-        </motion.span>
-      ))}
-    </motion.div>
-  );
-};
-
 
 export default function Facilities() {
   const { openForm } = useEnquiry();
@@ -209,6 +148,7 @@ export default function Facilities() {
           />
 
           <div className="absolute inset-0 bg-black/55" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42vh] bg-[linear-gradient(180deg,rgba(253,251,247,0)_0%,rgba(253,251,247,0.12)_24%,rgba(253,251,247,0.42)_58%,rgba(253,251,247,1)_100%)]" />
 
           <div className="relative z-10 text-center text-white px-6">
 
@@ -246,12 +186,21 @@ export default function Facilities() {
 
     {/* TITLE */}
     <h1 className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em]">
-      <AdvancedText text="Enter The Royal Palace" />
+      <span className="text-white">
+        Where Grand
+      </span>{" "}
+      <span className="text-[#E5C76B]">
+        Celebrations Come to Life
+      </span>
     </h1>
 
     {/* SUBTITLE */}
-    <p className="mt-6 type-body text-white/84">
-      <AdvancedText text="Scroll to experience the unfolding journey" />
+    <p className="mt-6 type-body text-white/84 max-w-3xl mx-auto">
+      Discover thoughtfully crafted spaces designed for unforgettable weddings, receptions, and cherished family moments.
+    </p>
+
+    <p className="mt-4 type-small text-white/70">
+      Every detail is shaped to make your celebration feel effortless, elegant, and memorable.
     </p>
 
   </motion.div>
@@ -279,20 +228,20 @@ export default function Facilities() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
-                className="group relative"
+                className="group relative h-full"
               >
 
                 {/* FRAME */}
-                <div className="relative rounded-[42px] bg-[#5A111C] p-[4px] shadow-2xl overflow-hidden">
+                <div className="relative h-full rounded-[40px] bg-[#5A111C]/92 p-[3px] shadow-[0_20px_50px_rgba(63,12,21,0.12)] overflow-hidden">
 
                   {/* BORDER */}
-                  <div className="rounded-[38px] border border-[#e5c76b]/70 overflow-hidden">
+                  <div className="h-full rounded-[37px] border border-[#e5c76b]/42 overflow-hidden">
 
                     {/* INNER CARD */}
-                    <div className="relative bg-[#fcf9f4] rounded-[36px] overflow-hidden transition-all duration-500 group-hover:-translate-y-2">
+                    <div className="relative h-full bg-[#fcf9f4] rounded-[35px] overflow-hidden transition-all duration-500 group-hover:-translate-y-1 flex flex-col">
 
                       {/* IMAGE */}
-                      <div className="relative h-44 overflow-hidden">
+                      <div className="relative h-44 overflow-hidden flex-shrink-0">
 
                         <img
                           src={item.image}
@@ -316,7 +265,7 @@ export default function Facilities() {
                       </div>
 
                       {/* TEXT */}
-                      <div className="p-5 text-center relative z-30">
+                      <div className="p-5 text-center relative z-30 flex-1 flex flex-col justify-between">
 
                         <h3 className="font-serif text-[22px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-2">
                           {item.title}
@@ -345,7 +294,7 @@ export default function Facilities() {
         {/* =========================
             CORRIDOR SECTION
         ========================= */}
-        <section className="relative py-40 px-6 bg-[#5A111C] overflow-hidden">
+        <section className="relative py-40 px-6 bg-gradient-to-b from-[#5A111C] via-[#5A111C] to-[#4a0f18] overflow-hidden">
 
           <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
 
@@ -372,8 +321,12 @@ export default function Facilities() {
               className="text-white"
             >
               <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] mb-6">
-                Walking Through Royal Luxury
+                Begin Your Celebration
               </h2>
+
+              <p className="type-body text-white/82 mb-6 max-w-xl">
+                A refined invitation to begin planning a celebration shaped with care, hospitality, and timeless elegance.
+              </p>
 
               <ul className="space-y-4 type-body text-white/84">
                 {[
@@ -390,34 +343,14 @@ export default function Facilities() {
                 ))}
               </ul>
 
+              <div className="mt-8">
+                <button onClick={openForm} className="px-8 py-3.5 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-all duration-300 shadow-lg shadow-[#3F0C15]/20">
+                  Book a Visit
+                </button>
+              </div>
             </motion.div>
 
           </div>
-
-        </section>
-
-        {/* =========================
-            EXIT
-        ========================= */}
-        <section className="h-[40vh] flex items-center justify-center bg-[#fcf9f4]">
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-center"
-          >
-            <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C]">
-              Begin Your Celebration
-            </h2>
-            <p className="type-body text-[#4f4038] mt-2">
-              Ready to host your next event? Contact us to check availability.
-            </p>
-            <div className="mt-6">
-              <button onClick={openForm} className="px-8 py-3 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300">
-                Book a Visit
-              </button>
-            </div>
-          </motion.div>
 
         </section>
 
