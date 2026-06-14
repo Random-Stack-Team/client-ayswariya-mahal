@@ -7,8 +7,8 @@ import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
 import { useEnquiry } from "../context/useEnquiry";
 
 import sowCrop2 from "../assets/images/sow-crop2.jpg";
-import sowCrop5 from "../assets/images/sow-crop5.jpg";
-import sowCrop3 from "../assets/images/sow-crop3.jpg";
+import sowCrop5 from "../assets/images/sowbhagya-hall-generated.png";
+import sowCrop3 from "../assets/images/sowbhagya-rooftop-generated.png";
 import facility1 from "../assets/images/Facility/facility1.webp";
 
 export default function SowbhagyaMahal() {
@@ -38,6 +38,11 @@ export default function SowbhagyaMahal() {
     show: { opacity: 1, y: 0, transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] } },
   };
 
+  const fadeInWide = {
+    hidden: { opacity: 0, y: 38, scale: 0.98 },
+    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
+  };
+
   return (
     <>
       <SEO
@@ -50,12 +55,32 @@ export default function SowbhagyaMahal() {
           
           {/* 1. Hero Section */}
           <section className="relative pt-40 pb-32 px-6 flex items-center justify-center min-h-[70vh] md:min-h-[80vh]">
-            <div 
+            <motion.div
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${sowCrop2})` }}
-            ></div>
+              initial={{ scale: 1.12, y: -18 }}
+              animate={{ scale: 1, y: 0 }}
+              transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+            />
             {/* Dark Cinematic Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/85 via-[#3F0C15]/80 to-[#fdfbf7]"></div>
+            <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/88 via-[#3F0C15]/80 to-[#fdfbf7]" />
+            <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(212,168,67,0.08),transparent_26%),radial-gradient(circle_at_50%_46%,rgba(255,255,255,0.04),transparent_34%)]" />
+            <div className="pointer-events-none absolute inset-x-6 top-8 h-px bg-[linear-gradient(90deg,transparent,rgba(229,199,107,0.88),transparent)] md:inset-x-10" />
+            <div className="pointer-events-none absolute inset-x-6 bottom-8 h-px bg-[linear-gradient(90deg,transparent,rgba(229,199,107,0.64),transparent)] md:inset-x-10" />
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute left-6 top-6 h-16 w-16 border-l-2 border-t-2 border-[#E5C76B]/90 shadow-[0_0_24px_rgba(229,199,107,0.18)] md:left-10 md:top-10 md:h-24 md:w-24"
+              initial={{ opacity: 0, x: -12, y: -12 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut" }}
+            />
+            <motion.div
+              aria-hidden="true"
+              className="pointer-events-none absolute right-6 bottom-6 h-16 w-16 border-b-2 border-r-2 border-[#E5C76B]/90 shadow-[0_0_24px_rgba(229,199,107,0.18)] md:right-10 md:bottom-10 md:h-24 md:w-24"
+              initial={{ opacity: 0, x: 12, y: 12 }}
+              animate={{ opacity: 1, x: 0, y: 0 }}
+              transition={{ duration: 0.9, ease: "easeOut", delay: 0.08 }}
+            />
             
             <motion.div
               variants={staggerContainer}
@@ -63,22 +88,19 @@ export default function SowbhagyaMahal() {
               animate="show"
               className="relative z-10 mx-auto max-w-4xl text-center mt-10"
             >
-              <motion.div variants={fadeInUp} className="mx-auto mb-6 flex justify-center text-[#E5C76B]">
-                <Sparkles size={24} strokeWidth={1.5} />
+              <motion.div variants={fadeInWide} className="mx-auto mb-6 flex justify-center text-[#E5C76B] drop-shadow-[0_0_18px_rgba(229,199,107,0.24)]">
+                <Sparkles size={26} strokeWidth={1.5} />
               </motion.div>
-              <motion.p
-                variants={fadeInUp}
-                className="type-eyebrow text-[#E5C76B] mb-6 drop-shadow-md"
-              >
-                Ayswariya Mahal Mini Hall
+              <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-6 drop-shadow-md tracking-[0.28em]">
+                Introducing Ayswariya Mahal's Exclusive Mini Hall
               </motion.p>
               <motion.h1
-                variants={fadeInUp}
-                className="font-display text-[clamp(42px,8vw,80px)] font-bold leading-[1.1] tracking-[-0.01em] text-[#fdfbf7] drop-shadow-2xl"
+                variants={fadeInWide}
+                className="font-display text-[clamp(42px,8vw,80px)] font-bold leading-[1.05] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl"
               >
                 Sowbhagya Mahal
               </motion.h1>
-              <motion.div variants={fadeInUp} className="mx-auto my-8 h-px w-24 bg-[#E5C76B]/50" />
+              <motion.div variants={fadeInWide} className="mx-auto my-8 h-px w-28 bg-[linear-gradient(90deg,transparent,rgba(229,199,107,0.95),transparent)]" />
               <motion.p
                 variants={fadeInUp}
                 className="mx-auto max-w-2xl font-serif text-[clamp(20px,3vw,28px)] font-medium italic text-[#E5C76B]"
@@ -86,12 +108,13 @@ export default function SowbhagyaMahal() {
                 An elegant mini hall crafted for intimate celebrations, family gatherings, and graceful occasions.
               </motion.p>
               
-              <motion.div variants={fadeInUp} className="mt-12 flex justify-center">
+              <motion.div variants={fadeInWide} className="mt-12 flex justify-center">
                 <button
                   type="button"
                   onClick={() => document.getElementById("sowbhagya-story")?.scrollIntoView({ behavior: "smooth" })}
-                  className="inline-flex min-h-[48px] md:min-h-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-8 type-cta text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)]"
+                  className="group relative inline-flex min-h-[48px] md:min-h-12 items-center justify-center overflow-hidden rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-8 type-cta text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_18px_36px_rgba(0,0,0,0.3)]"
                 >
+                  <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,transparent_0%,rgba(255,255,255,0.42)_45%,transparent_100%)] -translate-x-[140%] transition-transform duration-1000 group-hover:translate-x-[140%]" />
                   Explore The Space
                 </button>
               </motion.div>
@@ -107,7 +130,7 @@ export default function SowbhagyaMahal() {
               viewport={{ once: true, amount: 0.3 }}
               className="mx-auto max-w-4xl"
             >
-              <motion.p variants={fadeInUp} className="font-serif text-[32px] md:text-[44px] leading-[1.4] italic text-[#5A111C]">
+              <motion.p variants={fadeInWide} className="font-serif text-[32px] md:text-[44px] leading-[1.4] italic text-[#5A111C]">
                 "A legacy of warmth in an intimate setting, designed for families who value elegance, comfort, and tradition at an affordable scale."
               </motion.p>
             </motion.div>
@@ -117,20 +140,25 @@ export default function SowbhagyaMahal() {
           <section className="px-6 py-24 md:py-32 bg-[#5A111C] text-[#fdfbf7] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-16 lg:grid-cols-2">
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: -28, y: 18, scale: 0.96 }}
+                whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden aspect-[4/5] md:aspect-square w-full shadow-2xl"
-              >
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -4 }}
+              className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] md:aspect-square w-full"
+            >
                 <motion.img
                   style={{ y: parallaxY }}
                   src={sowCrop5}
                   alt="Sowbhagya Mahal Grandeur"
                   loading="lazy"
-                  className="h-full w-full scale-125 object-cover"
+                  initial={{ scale: 1.06 }}
+                  whileInView={{ scale: 1.02 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#3F0C15]/60 to-transparent"></div>
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#3F0C15]/36 to-transparent"></div>
               </motion.div>
 
               <motion.div
@@ -216,14 +244,33 @@ export default function SowbhagyaMahal() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-                className="order-1 lg:order-2 relative overflow-hidden aspect-[4/5] md:aspect-square w-full shadow-[0_20px_50px_rgba(90,17,28,0.08)] border border-[#D4A843]/20"
+                whileHover={{ y: -4 }}
+                className="group order-1 lg:order-2 relative overflow-hidden aspect-[4/5] md:aspect-square w-full rounded-[18px] shadow-[0_24px_60px_rgba(63,12,21,0.24)] border border-[#D4A843]/20"
               >
+                <div className="pointer-events-none absolute inset-0 z-20 border border-[#D4A843]/30 shadow-[inset_0_0_0_1px_rgba(212,168,67,0.1)]" />
+                <div className="pointer-events-none absolute inset-x-4 top-4 z-20 h-px bg-[linear-gradient(90deg,transparent,rgba(212,168,67,0.78),transparent)] md:inset-x-6" />
+                <div className="pointer-events-none absolute inset-x-4 bottom-4 z-20 h-px bg-[linear-gradient(90deg,transparent,rgba(212,168,67,0.78),transparent)] md:inset-x-6" />
+                <div className="pointer-events-none absolute left-4 top-4 z-20 h-12 w-12 border-l-2 border-t-2 border-[#D4A843]/90 md:left-6 md:top-6 md:h-16 md:w-16" />
+                <div className="pointer-events-none absolute right-4 bottom-4 z-20 h-12 w-12 border-b-2 border-r-2 border-[#D4A843]/90 md:right-6 md:bottom-6 md:h-16 md:w-16" />
+                <div className="pointer-events-none absolute left-1/2 top-4 z-20 -translate-x-1/2 rounded-full border border-[#D4A843]/40 bg-[#5A111C]/70 px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#D4A843] shadow-[0_8px_20px_rgba(0,0,0,0.22)]">
+                  Venue Detail
+                </div>
+                <motion.div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(212,168,67,0.14),transparent_58%)]"
+                  animate={{ opacity: [0.45, 0.95, 0.45] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                />
                 <motion.img
                   style={{ y: parallaxYReverse }}
                   src={facility1}
                   alt="Sowbhagya Mahal Facilities"
                   loading="lazy"
-                  className="h-full w-full scale-125 object-cover"
+                  initial={{ scale: 1.1 }}
+                  whileInView={{ scale: 1.03 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                  className="h-full w-full scale-125 object-cover transition-transform duration-700 group-hover:scale-[1.1]"
                 />
               </motion.div>
             </div>
@@ -233,18 +280,23 @@ export default function SowbhagyaMahal() {
           <section className="px-6 py-24 md:py-32 bg-[#f5ead9] text-[#4f4038] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-16 lg:grid-cols-2">
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: -28, y: 18, scale: 0.96 }}
+                whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
                 viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-                className="relative overflow-hidden aspect-[4/5] md:aspect-[3/4] w-full shadow-[0_20px_50px_rgba(90,17,28,0.06)] border border-[#D4A843]/20"
-              >
+                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -2 }}
+              className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] md:aspect-[3/4] w-full"
+            >
                 <motion.img
                   style={{ y: parallaxY }}
                   src={sowCrop3}
                   alt="Sowbhagya Mahal Events"
                   loading="lazy"
-                  className="h-full w-full scale-125 object-cover"
+                  initial={{ scale: 1.05 }}
+                  whileInView={{ scale: 1.01 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="h-full w-full object-cover"
                 />
               </motion.div>
 

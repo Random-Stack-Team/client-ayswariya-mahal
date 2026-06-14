@@ -47,8 +47,8 @@ export default function GalleryPreview() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.22 }}
               transition={{ delay: index * 0.1, duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-              className={`luxury-image-overlay gallery-color-card relative aspect-[3/4] overflow-hidden rounded-2xl group shadow-[0_26px_70px_rgba(0,0,0,0.2)] ${index === 1 || index === 3 ? 'md:mt-12' : ''}`}
-            >
+            className={`luxury-image-frame luxury-image-frame--banner gallery-color-card relative aspect-[3/4] overflow-hidden group shadow-[0_26px_70px_rgba(0,0,0,0.2)] ${index === 1 || index === 3 ? 'md:mt-12' : ''}`}
+          >
               <img
                 src={src}
                 alt={`Gallery Preview ${index + 1}`}
@@ -56,10 +56,10 @@ export default function GalleryPreview() {
                 decoding="async"
                 width={index === 0 ? 1537 : index === 1 ? 1023 : index === 2 ? 1024 : 765}
                 height={index === 0 ? 1023 : index === 1 ? 1537 : index === 2 ? 768 : 1020}
-                className="absolute inset-0 block h-full w-full object-cover object-center transition-all duration-[1600ms] ease-[cubic-bezier(0.16,1,0.3,1)] scale-105 brightness-[0.78] contrast-[1.08] saturate-[0.65] sepia-[35%] grayscale-[58%] group-hover:scale-110 group-hover:brightness-100 group-hover:contrast-100 group-hover:saturate-[1.12] group-hover:sepia-0 group-hover:grayscale-0"
+                className="absolute inset-0 block h-full w-full object-cover object-center brightness-[0.78] contrast-[1.08] saturate-[0.65] sepia-[35%] grayscale-[58%] group-hover:brightness-100 group-hover:contrast-100 group-hover:saturate-[1.12] group-hover:sepia-0 group-hover:grayscale-0"
               />
               <div className="absolute inset-0 z-[2] bg-[linear-gradient(135deg,rgba(90,17,28,0.54),rgba(229,199,107,0.24)_54%,rgba(255,248,237,0.06))] mix-blend-color opacity-80 transition-opacity duration-[1100ms] group-hover:opacity-0"></div>
-              <div className="absolute inset-0 z-[3] border border-[#E5C76B]/0 transition-colors duration-700 group-hover:border-[#E5C76B]/70"></div>
+              <div className="absolute inset-0 z-[3] border border-[#E5C76B]/0 transition-colors duration-700 group-hover:border-[#E5C76B]/45"></div>
             </motion.div>
           ))}
         </div>

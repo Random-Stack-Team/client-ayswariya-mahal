@@ -120,7 +120,7 @@ export default function About() {
             className="relative"
           >
             <div className="absolute inset-0 bg-[#d4af37] rounded-sm transform translate-x-4 translate-y-4 opacity-20"></div>
-            <div className="relative overflow-hidden rounded-sm shadow-2xl luxury-image-overlay">
+            <div className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay">
               <motion.img
                 style={{ y: parallaxY }}
                 src={aboutImg}
@@ -331,13 +331,13 @@ export default function About() {
             className="relative max-w-[620px]"
           >
             <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[14px] bg-[#D4A843]/20" />
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-              className="relative overflow-hidden rounded-[14px] border border-[#D4A843]/20 bg-[#fdfbf7] shadow-[0_24px_60px_rgba(90,17,28,0.12)] luxury-image-overlay"
-            >
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay"
+              >
               <motion.img
                 initial={{ scale: 1.12 }}
                 whileInView={{ scale: 1.04 }}

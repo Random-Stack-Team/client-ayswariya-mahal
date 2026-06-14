@@ -65,12 +65,7 @@ export default function AboutPreview() {
         </div>
 
         <div className="lg:col-span-7 relative stagger-reveal mt-12 lg:mt-0">
-          <div className="aspect-[4/5] lg:aspect-square overflow-hidden border-double border-8 border-gold-leaf/30 p-4 bg-white/50 backdrop-blur-sm shadow-2xl relative luxury-image-overlay">
-            <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-gold-leaf m-2"></div>
-            <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-gold-leaf m-2"></div>
-            <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-gold-leaf m-2"></div>
-            <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-gold-leaf m-2"></div>
-            
+          <div className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner aspect-[4/5] lg:aspect-square p-3 lg:p-4 luxury-image-overlay">
             <img
               src={aboutImg}
               alt="Ayswariya Mahal Interior"
@@ -78,7 +73,7 @@ export default function AboutPreview() {
               decoding="async"
               width="1360"
               height="1020"
-              className="w-full h-full object-cover grayscale-[12%] contrast-110 hover:grayscale-0 hover:scale-105 transition-all duration-[1600ms]"
+              className="grayscale-[12%] contrast-110 hover:grayscale-0"
             />
           </div>
 
