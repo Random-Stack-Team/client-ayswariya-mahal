@@ -5,6 +5,11 @@
   display: grid;
   place-items: center;
   min-height: 100vh;
+  min-height: 100dvh;
+  height: 100vh;
+  height: 100dvh;
+  box-sizing: border-box;
+  padding: max(24px, env(safe-area-inset-top)) clamp(18px, 5vw, 56px) max(24px, env(safe-area-inset-bottom));
   overflow: hidden;
   background:
     radial-gradient(circle at 50% 42%, rgba(255, 247, 222, 0.82), rgba(248, 244, 236, 0.72) 34%, rgba(82, 22, 24, 0.14) 100%),
@@ -41,6 +46,7 @@
 .opening-animation__frame {
   position: relative;
   width: min(84vw, 820px);
+  max-width: 100%;
   display: grid;
   justify-items: center;
   gap: clamp(14px, 2.6vw, 24px);
@@ -251,17 +257,72 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 1023px) {
+  .opening-animation {
+    align-items: center;
+    justify-items: center;
+    padding-block: max(28px, env(safe-area-inset-top)) max(28px, env(safe-area-inset-bottom));
+  }
+
+  .opening-animation::before {
+    top: clamp(24px, 5vh, 56px);
+  }
+
+  .opening-animation::after {
+    bottom: clamp(24px, 5vh, 56px);
+  }
+
   .opening-animation__frame {
-    gap: 16px;
+    width: min(88vw, 720px);
+    gap: clamp(12px, 2.2vh, 20px);
+    transform: none;
   }
 
   .opening-animation__welcome {
-    width: min(66vw, 320px);
+    width: min(54vw, 340px);
   }
 
   .opening-animation__logo {
-    width: min(92vw, 620px);
+    width: min(86vw, 660px);
+  }
+}
+
+@media (max-width: 640px) {
+  .opening-animation {
+    padding-inline: 18px;
+    padding-block: max(26px, env(safe-area-inset-top)) max(26px, env(safe-area-inset-bottom));
+  }
+
+  .opening-animation__frame {
+    width: min(92vw, 560px);
+    gap: clamp(12px, 2.4vh, 16px);
+  }
+
+  .opening-animation__welcome {
+    width: min(68vw, 300px);
+  }
+
+  .opening-animation__logo {
+    width: min(90vw, 520px);
+  }
+
+  .opening-animation__tagline {
+    max-width: min(82vw, 420px);
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 1023px) and (max-height: 620px) {
+  .opening-animation__frame {
+    gap: 10px;
+  }
+
+  .opening-animation__welcome {
+    width: min(56vw, 260px);
+  }
+
+  .opening-animation__logo {
+    width: min(82vw, 440px);
   }
 }
 

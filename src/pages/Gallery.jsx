@@ -4,7 +4,6 @@ import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import gsap from "gsap";
 import PageTransition from "../components/common/PageTransition";
 import SEO from "../components/common/SEO";
-import { useEnquiry } from "../context/useEnquiry";
 
 import gallery1 from "../assets/images/Gallery/hall1.webp";
 import gallery2 from "../assets/images/Gallery/hall2.webp";
@@ -54,7 +53,6 @@ const categoryMeta = {
 
 export default function Gallery() {
   const railRef = useRef(null);
-  const { openForm } = useEnquiry();
   const sectionRef = useRef(null);
   const camera = useRef({ x: 0, vx: 0, target: 0 });
   const rafId = useRef(null);
@@ -308,22 +306,6 @@ export default function Gallery() {
               </div>
             </div>
 
-            <button
-              onClick={() => scrollByStep(-1)}
-              className="absolute left-3 top-[68%] z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/70 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:left-8 md:h-12 md:w-12"
-              aria-label="Previous gallery item"
-            >
-              <ChevronLeft size={24} strokeWidth={1.7} />
-            </button>
-
-            <button
-              onClick={() => scrollByStep(1)}
-              className="absolute right-3 top-[68%] z-50 grid h-11 w-11 -translate-y-1/2 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/70 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:right-8 md:h-12 md:w-12"
-              aria-label="Next gallery item"
-            >
-              <ChevronRight size={24} strokeWidth={1.7} />
-            </button>
-
             <div
               ref={railRef}
               className="relative z-10 mt-10 flex h-[min(50vh,430px)] items-center gap-8 px-[18vw] will-change-transform sm:gap-12 md:mt-12 md:h-[390px] md:gap-12 md:px-[18vw] lg:mt-16 lg:h-[min(54vh,470px)] lg:gap-20 lg:px-[25vw]"
@@ -349,6 +331,24 @@ export default function Gallery() {
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1c0d11]/58 via-transparent to-[#1c0d11]/8" />
                 </motion.div>
               ))}
+            </div>
+
+            <div className="relative z-30 mt-8 flex justify-center gap-4 lg:pointer-events-none lg:absolute lg:inset-x-0 lg:top-[68%] lg:mt-0 lg:block">
+              <button
+                onClick={() => scrollByStep(-1)}
+                className="grid h-11 w-11 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/80 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:h-12 md:w-12 lg:pointer-events-auto lg:absolute lg:left-8 lg:-translate-y-1/2"
+                aria-label="Previous gallery item"
+              >
+                <ChevronLeft size={24} strokeWidth={1.7} />
+              </button>
+
+              <button
+                onClick={() => scrollByStep(1)}
+                className="grid h-11 w-11 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/80 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:h-12 md:w-12 lg:pointer-events-auto lg:absolute lg:right-8 lg:-translate-y-1/2"
+                aria-label="Next gallery item"
+              >
+                <ChevronRight size={24} strokeWidth={1.7} />
+              </button>
             </div>
           </section>
 
@@ -398,20 +398,6 @@ export default function Gallery() {
                 </ul>
               </motion.div>
             </div>
-          </section>
-
-          <section className="flex min-h-[320px] items-center justify-center bg-[#fcf9f4] px-5 pt-14 pb-[calc(3.5rem+env(safe-area-inset-bottom))] sm:px-6 md:min-h-[40vh]">
-            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center">
-              <h2 className="font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4A0A12] md:text-5xl">
-                Imagine Your Event Here
-              </h2>
-              <p className="mt-2 type-body text-[#4f4038]">Every celebration at Ayswariya Mahal becomes a story worth sharing.</p>
-              <div className="mt-6">
-                <button onClick={openForm} className="min-h-12 w-full px-8 py-3 bg-[#d4af37] text-[#3F0C15] font-semibold rounded-full hover:bg-[#e5c76b] transition-colors duration-300 sm:w-auto">
-                  Enquire Now
-                </button>
-              </div>
-            </motion.div>
           </section>
         </main>
       </PageTransition>
