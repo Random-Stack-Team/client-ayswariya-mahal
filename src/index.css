@@ -323,10 +323,6 @@ button,
   opacity: 0.9;
 }
 
-.luxury-image-frame--banner::marker {
-  content: "";
-}
-
 .custom-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -336,10 +332,6 @@ button,
   display: none;
 }
 
-
-html {
-  scroll-behavior: smooth;
-}
 
 /* Site container max width */
 .max-w-site { max-width: 1320px; }

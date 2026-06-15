@@ -22,7 +22,6 @@ export default function Contact() {
     e.preventDefault();
     // Endpoint not configured — UI only. Wire to Google Apps Script URL when provided.
     alert("Form submitted (UI only). Provide Apps Script URL to enable submission.");
-    console.log("Contact form payload:", form);
     setForm({ name: "", phone: "", email: "", eventType: "Wedding", date: "", message: "" });
   };
 

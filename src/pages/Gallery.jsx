@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
-import gsap from "gsap";
 import PageTransition from "../components/common/PageTransition";
 import SEO from "../components/common/SEO";
 
@@ -74,52 +73,64 @@ export default function Gallery() {
     camera.current.target = Math.max(0, Math.min(camera.current.target, maxScroll.current));
   }, []);
 
-  const moveSlider = useCallback((delta) => {
-    const cam = camera.current;
-    const next = Math.max(0, Math.min(cam.target + delta, maxScroll.current));
-    const moved = Math.abs(next - cam.target) > 0.5;
-    cam.target = next;
-    return moved;
-  }, []);
+  const startSliderAnimation = useCallback(() => {
+    if (rafId.current) return;
 
-  useEffect(() => {
     const animate = () => {
       const rail = railRef.current;
       if (!rail) {
-        rafId.current = requestAnimationFrame(animate);
+        rafId.current = null;
         return;
       }
 
       const cam = camera.current;
       cam.target = Math.max(0, Math.min(cam.target, maxScroll.current));
 
-      const force = (cam.target - cam.x) * 0.07;
-      cam.vx += force;
-      cam.vx *= 0.78;
+      const force = (cam.target - cam.x) * 0.12;
+      cam.vx = (cam.vx + force) * 0.72;
       cam.x += cam.vx;
 
-      gsap.set(rail, {
-        x: -cam.x,
-        force3D: true,
-        willChange: "transform",
-        overwrite: "auto",
-      });
+      const distance = Math.abs(cam.target - cam.x);
+      if (distance < 0.35 && Math.abs(cam.vx) < 0.35) {
+        cam.x = cam.target;
+        cam.vx = 0;
+        rail.style.transform = `translate3d(${-cam.x}px, 0, 0)`;
+        rafId.current = null;
+        return;
+      }
 
+      rail.style.transform = `translate3d(${-cam.x}px, 0, 0)`;
       rafId.current = requestAnimationFrame(animate);
     };
 
     rafId.current = requestAnimationFrame(animate);
-    return () => {
-      if (rafId.current) cancelAnimationFrame(rafId.current);
-    };
+  }, []);
+
+  const moveSlider = useCallback((delta) => {
+    const cam = camera.current;
+    const next = Math.max(0, Math.min(cam.target + delta, maxScroll.current));
+    const moved = Math.abs(next - cam.target) > 0.5;
+    cam.target = next;
+    if (moved) startSliderAnimation();
+    return moved;
+  }, [startSliderAnimation]);
+
+  useEffect(() => () => {
+    if (rafId.current) cancelAnimationFrame(rafId.current);
   }, []);
 
   useEffect(() => {
     camera.current = { x: 0, vx: 0, target: 0 };
     maxScroll.current = 0;
-    const timeoutId = setTimeout(measure, 200);
+    if (railRef.current) {
+      railRef.current.style.transform = "translate3d(0, 0, 0)";
+    }
+    const timeoutId = setTimeout(() => {
+      measure();
+      startSliderAnimation();
+    }, 120);
     return () => clearTimeout(timeoutId);
-  }, [category, measure]);
+  }, [category, measure, startSliderAnimation]);
 
   useEffect(() => {
     const onResize = () => measure();
@@ -155,11 +166,10 @@ export default function Gallery() {
       const canConsume = (dominantDelta > 0 && !atEnd) || (dominantDelta < 0 && !atStart);
 
       if (!canConsume) return;
-      event.preventDefault();
       moveSlider(dominantDelta * 0.7);
     };
 
-    section.addEventListener("wheel", onWheel, { passive: false });
+    section.addEventListener("wheel", onWheel, { passive: true });
     return () => section.removeEventListener("wheel", onWheel);
   }, [moveSlider]);
 
@@ -210,7 +220,7 @@ export default function Gallery() {
         <main className="min-h-screen overflow-x-clip bg-[#fdfbf7]">
           <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[600px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-36 lg:pt-40">
             <div
-              className="absolute inset-0 bg-cover bg-center bg-fixed"
+              className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${gallery3})` }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1c0d11]/80 via-[#1c0d11]/70 to-[#4A0A12]" />
@@ -227,8 +237,8 @@ export default function Gallery() {
               </motion.div>
 
               <motion.p
-                initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                 className="mb-6 type-eyebrow text-[#E5C76B] drop-shadow-md"
               >

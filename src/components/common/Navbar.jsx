@@ -63,7 +63,7 @@ function Navbar() {
         id="main-nav"
         className={`pointer-events-auto border-b transition-all duration-700 ${
           solidNav
-            ? "border-[#d4af37]/28 bg-[rgba(250,247,242,0.88)] shadow-[0_18px_42px_rgba(48,20,12,0.12)] backdrop-blur-[12px] supports-[backdrop-filter]:backdrop-saturate-150"
+            ? "border-[#d4af37]/28 bg-[rgba(250,247,242,0.88)] shadow-[0_18px_42px_rgba(48,20,12,0.12)] backdrop-blur-[6px]"
             : "border-white/10 bg-gradient-to-b from-[#3F0C15]/60 via-[#3F0C15]/24 to-transparent backdrop-blur-[2px]"
         }`}
       >

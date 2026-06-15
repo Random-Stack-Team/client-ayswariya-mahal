@@ -52,22 +52,23 @@ export default function FloatingEnvelope() {
   }, []);
 
   // Scroll-Based Random Appearance Logic
+  const hasScrolledPastRef = useRef(false);
+
   useEffect(() => {
+    const threshold = isHome ? 3100 : window.innerHeight * 0.4;
     let timeoutId;
-    let hasScrolledPast = false;
 
     const checkScroll = () => {
-      const threshold = isHome ? 3100 : window.innerHeight * 0.4;
+      if (hasScrolledPastRef.current) return;
       if (window.scrollY > threshold) {
-        if (!hasScrolledPast) {
-          hasScrolledPast = true;
-          scheduleNext();
-        }
+        hasScrolledPastRef.current = true;
+        window.removeEventListener("scroll", checkScroll);
+        scheduleNext();
       }
     };
 
     const triggerEnvelope = () => {
-      if (!isFormOpen && hasScrolledPast && submitStatus === "idle") {
+      if (!isFormOpen && hasScrolledPastRef.current && submitStatus === "idle") {
         setQuote(QUOTES[Math.floor(Math.random() * QUOTES.length)]);
         setIsEnvelopeVisible(true);
       } else if (!isFormOpen) {
@@ -80,14 +81,14 @@ export default function FloatingEnvelope() {
       timeoutId = setTimeout(triggerEnvelope, delay);
     };
 
-    window.addEventListener("scroll", checkScroll);
+    window.addEventListener("scroll", checkScroll, { passive: true });
     checkScroll();
 
     return () => {
       window.removeEventListener("scroll", checkScroll);
       clearTimeout(timeoutId);
     };
-  }, [isEnvelopeVisible, isFormOpen, submitStatus, isHome]);
+  }, [isFormOpen, submitStatus, isHome]);
 
   useEffect(() => {
     if (!isFormOpen && submitStatus === "idle") return undefined;
@@ -184,7 +185,6 @@ export default function FloatingEnvelope() {
             }`}
           >
             <motion.div
-              layout
               initial={{ x: 300, y: 0, opacity: 0, scale: 0.9 }}
               animate={
                 submitStatus === "departing" 

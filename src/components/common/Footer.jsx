@@ -76,7 +76,7 @@ export default function Footer() {
             <button
               type="button"
               onClick={openForm}
-              className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-7 font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)] sm:w-auto"
+              className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-7 font-sans font-medium text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)] sm:w-auto"
             >
               Check Availability
             </button>
@@ -109,7 +109,7 @@ export default function Footer() {
             </ul>
             <Link
               to="/"
-              className="mt-4 inline-flex min-h-12 items-center font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.14em] text-[#D4A843] transition-colors duration-300 hover:text-[#fdfbf7]"
+              className="mt-4 inline-flex min-h-12 items-center font-sans font-medium text-[13px] uppercase tracking-[0.14em] text-[#D4A843] transition-colors duration-300 hover:text-[#fdfbf7]"
             >
               View Ayswariya Mahal
             </Link>

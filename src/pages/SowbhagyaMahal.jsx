@@ -6,7 +6,7 @@ import PageTransition from "../components/common/PageTransition";
 import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
 import { useEnquiry } from "../context/useEnquiry";
 
-import sowCrop2 from "../assets/images/sow-crop2.jpg";
+import sowCrop2 from "../assets/images/sow-crop2.webp";
 import sowCrop5 from "../assets/images/sowbhagya-hall-generated.png";
 import sowCrop3 from "../assets/images/sowbhagya-rooftop-generated.png";
 import facility1 from "../assets/images/Facility/facility1.webp";

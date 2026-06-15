@@ -22,9 +22,6 @@ import facility6 from "../assets/images/Facility/facility6.webp";
 import facility7 from "../assets/images/Facility/facility7.webp";
 import facility8 from "../assets/images/Facility/facility8.webp";
 
-
-
-
 import bgImg from "../assets/images/facility.webp";
 
 import SEO from "../components/common/SEO";
@@ -166,13 +163,11 @@ export default function Facilities() {
           opacity: 0,
           scale: 0.4,
           rotate: -90,
-          filter: "blur(8px)",
         },
         show: {
           opacity: 1,
           scale: 1,
           rotate: 0,
-          filter: "blur(0px)",
           transition: {
             duration: 0.9,
             ease: [0.25, 1, 0.3, 1],

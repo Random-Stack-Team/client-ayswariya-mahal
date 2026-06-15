@@ -24,14 +24,13 @@ export default function Hero() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.set(imageRef.current, { scale: 1.08, filter: "brightness(0.74) saturate(1.05)" });
+      gsap.set(imageRef.current, { scale: 1.08 });
       gsap.set(contentRef.current?.children || [], { opacity: 0, y: 20 });
 
       gsap
         .timeline({ defaults: { ease: "power3.out" } })
         .to(imageRef.current, {
           scale: 1,
-          filter: "brightness(0.84) saturate(1.06)",
           duration: 2.4,
         })
         .to(
@@ -78,7 +77,7 @@ export default function Hero() {
           fetchPriority="high"
           width="1920"
           height="1440"
-          className="h-full w-full object-cover will-change-transform"
+          className="h-full w-full object-cover will-change-transform [filter:brightness(0.84)_saturate(1.06)]"
         />
       </div>
 
