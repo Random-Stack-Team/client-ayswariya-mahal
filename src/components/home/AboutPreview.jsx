@@ -36,7 +36,7 @@ export default function AboutPreview() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative bg-[#5A111C] py-20 overflow-hidden border-b border-[#E5C76B]/20 md:py-20 lg:py-32">
+    <section ref={sectionRef} className="relative bg-[#5A111C] wedding-pattern-maroon py-20 overflow-hidden border-b border-[#E5C76B]/20 md:py-20 lg:py-32">
       <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import "./OpeningAnimation.css";
 
@@ -195,56 +195,69 @@ const logoPaths = [
 
 const INTRO_DURATION = 4300;
 const EXIT_DURATION = 820;
-const LITE_EXIT_DURATION = 250;
-const LITE_TABLET_DURATION = 1400;
-const LITE_MOBILE_DURATION = 400;
+const TABLET_INTRO_DURATION = 4100;
+const TABLET_EXIT_DURATION = 720;
+const MOBILE_INTRO_DURATION = 3600;
+const MOBILE_EXIT_DURATION = 620;
 
 export default function OpeningAnimation({ onComplete }) {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
-  const isMobileLite = useMediaQuery("(max-width: 639px)");
+  const isMobileReveal = useMediaQuery("(max-width: 639px)");
   const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
 
-  const renderingMode = prefersReducedMotion ? "skip" : isDesktop ? "full" : "lite";
+  const renderingMode = prefersReducedMotion ? "skip" : isDesktop ? "full" : "reveal-lite";
   const [isExiting, setIsExiting] = useState(false);
   const glyphRefs = useRef([]);
+  const measuredPaths = useRef(new WeakSet());
+  const timersRef = useRef([]);
   const hasCompleted = useRef(false);
 
-  useLayoutEffect(() => {
-    if (renderingMode === "skip") {
-      hasCompleted.current = true;
-      onComplete();
-    }
-  }, [renderingMode, onComplete]);
+  const clearTimers = () => {
+    timersRef.current.forEach(window.clearTimeout);
+    timersRef.current = [];
+  };
+
+  const runLater = (fn, ms) => {
+    const id = window.setTimeout(fn, ms);
+    timersRef.current.push(id);
+    return id;
+  };
 
   useEffect(() => {
-    if (renderingMode !== "full") return;
+    return () => clearTimers();
+  }, []);
+
+  useLayoutEffect(() => {
+    if (renderingMode === "skip") return;
     glyphRefs.current.forEach((path) => {
-      if (!path) return;
+      if (!path || measuredPaths.current.has(path)) return;
       const length = path.getTotalLength();
       path.style.setProperty("--path-length", length);
+      measuredPaths.current.add(path);
     });
   }, [renderingMode]);
 
-  const finishIntro = useCallback(() => {
-    if (hasCompleted.current) return;
-    hasCompleted.current = true;
-    if (renderingMode === "full") {
-      setIsExiting(true);
-      window.setTimeout(onComplete, EXIT_DURATION);
-    } else {
-      setIsExiting(true);
-      window.setTimeout(onComplete, LITE_EXIT_DURATION);
-    }
-  }, [onComplete, renderingMode]);
-
   useEffect(() => {
-    if (renderingMode === "skip") return;
+    if (renderingMode === "skip") {
+      onComplete();
+      return;
+    }
+
     const duration = renderingMode === "full"
       ? INTRO_DURATION
-      : isMobileLite ? LITE_MOBILE_DURATION : LITE_TABLET_DURATION;
-    const finishTimer = window.setTimeout(finishIntro, duration);
-    return () => window.clearTimeout(finishTimer);
-  }, [renderingMode, finishIntro, isMobileLite]);
+      : isMobileReveal ? MOBILE_INTRO_DURATION : TABLET_INTRO_DURATION;
+
+    runLater(() => {
+      if (hasCompleted.current) return;
+      hasCompleted.current = true;
+      setIsExiting(true);
+
+      const exitDuration = renderingMode === "full"
+        ? EXIT_DURATION
+        : isMobileReveal ? MOBILE_EXIT_DURATION : TABLET_EXIT_DURATION;
+      runLater(onComplete, exitDuration);
+    }, duration);
+  }, [renderingMode, onComplete, isMobileReveal]);
 
   if (renderingMode === "skip") return null;
 
@@ -252,7 +265,7 @@ export default function OpeningAnimation({ onComplete }) {
     glyphs.map((glyph, index) => (
       <path
         key={`${glyph.ch}-${index}`}
-        ref={renderingMode === "full" ? (node) => { glyphRefs.current[index] = node; } : undefined}
+        ref={(node) => { glyphRefs.current[index] = node; }}
         className="opening-animation__glyph"
         d={glyph.d}
         style={{ "--letter-delay": `${glyph.delay}s` }}
@@ -264,7 +277,7 @@ export default function OpeningAnimation({ onComplete }) {
     logoPaths.map((path, index) => (
       <path
         key={`${path.fill}-${index}`}
-        ref={renderingMode === "full" ? (node) => { glyphRefs.current[openingTextPaths.top.length + index] = node; } : undefined}
+        ref={(node) => { glyphRefs.current[openingTextPaths.top.length + index] = node; }}
         className="opening-animation__logo-path"
         d={path.d}
         style={{
@@ -277,7 +290,11 @@ export default function OpeningAnimation({ onComplete }) {
 
   return (
     <section
-      className={`opening-animation ${isExiting ? "opening-animation--exit" : ""} ${renderingMode === "lite" ? "opening-animation--lite" : ""}`}
+      className={`opening-animation ${isExiting ? "opening-animation--exit" : ""} ${
+        renderingMode === "reveal-lite"
+          ? `opening-animation--reveal-lite ${isMobileReveal ? "opening-animation--mobile-reveal" : "opening-animation--tablet-reveal"}`
+          : ""
+      }`}
       aria-label="Welcome to Ayswariya Mahal"
     >
       <div className="opening-animation__frame">

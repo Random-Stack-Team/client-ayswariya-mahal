@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import PageTransition from "../components/common/PageTransition";
+import PremiumImageFrame from "../components/common/PremiumImageFrame";
 
 import {
   Building2,
@@ -118,6 +119,30 @@ const cardMotion = {
   }),
 };
 
+const heroContentMotion = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
+
+const heroItemMotion = {
+  hidden: {
+    opacity: 0,
+    y: 24,
+  },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function Facilities() {
   const { openForm } = useEnquiry();
   return (
@@ -129,7 +154,7 @@ export default function Facilities() {
       />
 
       <PageTransition>
-        <main className="relative min-h-screen bg-[#fcf9f4] overflow-x-hidden">
+        <main className="relative min-h-screen bg-[#fcf9f4] wedding-pattern-ivory overflow-x-hidden">
 
         {/* =========================
             HERO
@@ -151,52 +176,37 @@ export default function Facilities() {
 
   {/* ICON + TEXT SYNC WRAPPER */}
   <motion.div
+    variants={heroContentMotion}
     initial="hidden"
-    whileInView="show"
-    viewport={{ once: true, amount: 0.6 }}
+    animate="show"
   >
 
     {/* ICON (SYNCHRONIZED FIRST) */}
     <motion.div
-      variants={{
-        hidden: {
-          opacity: 0,
-          scale: 0.4,
-          rotate: -90,
-        },
-        show: {
-          opacity: 1,
-          scale: 1,
-          rotate: 0,
-          transition: {
-            duration: 0.9,
-            ease: [0.25, 1, 0.3, 1],
-          },
-        },
-      }}
+      variants={heroItemMotion}
       className="flex justify-center mb-6 text-[#E5C76B]"
     >
       <Sparkles size={28} />
     </motion.div>
 
     {/* TITLE */}
-    <h1 className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] md:max-lg:text-[60px]">
+    <motion.h1 variants={heroItemMotion} className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] md:max-lg:text-[60px]">
       <span className="text-white">
         Where Grand
       </span>{" "}
       <span className="text-[#E5C76B]">
         Celebrations Come to Life
       </span>
-    </h1>
+    </motion.h1>
 
     {/* SUBTITLE */}
-    <p className="mt-6 type-body text-white/84 max-w-3xl mx-auto">
+    <motion.p variants={heroItemMotion} className="mt-6 type-body text-white/84 max-w-3xl mx-auto">
       Discover thoughtfully crafted spaces designed for unforgettable weddings, receptions, and cherished family moments.
-    </p>
+    </motion.p>
 
-    <p className="mt-4 type-small text-white/70">
+    <motion.p variants={heroItemMotion} className="mt-4 type-small text-white/70">
       Every detail is shaped to make your celebration feel effortless, elegant, and memorable.
-    </p>
+    </motion.p>
 
   </motion.div>
 
@@ -210,7 +220,7 @@ export default function Facilities() {
         <section className="py-16 px-5 sm:px-6 md:py-20 lg:py-24 xl:py-32">
 
           <div
-            className="mx-auto grid max-w-[520px] grid-cols-1 items-stretch gap-7 md:max-w-4xl md:grid-cols-2 md:gap-8 lg:max-w-5xl lg:grid-cols-2 xl:max-w-7xl xl:grid-cols-4 xl:gap-10"
+            className="mx-auto grid max-w-[520px] auto-rows-fr grid-cols-1 items-stretch gap-7 md:max-w-4xl md:grid-cols-2 md:gap-x-8 md:gap-y-7 lg:max-w-5xl lg:grid-cols-2 xl:max-w-7xl xl:grid-cols-4 xl:gap-10"
             style={{ perspective: "1400px" }}
           >
 
@@ -223,7 +233,7 @@ export default function Facilities() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
-                className="group relative h-full"
+                className="group relative h-full max-lg:h-[430px] md:max-lg:h-[420px]"
               >
 
                 {/* FRAME */}
@@ -233,10 +243,10 @@ export default function Facilities() {
                   <div className="h-full rounded-[25px] border border-[#e5c76b]/42 overflow-hidden xl:rounded-[37px]">
 
                     {/* INNER CARD */}
-                    <div className="relative flex h-full max-lg:h-[400px] flex-col overflow-hidden rounded-[23px] bg-[#fcf9f4] transition-all duration-500 group-hover:-translate-y-1 xl:rounded-[35px]">
+                    <div className="relative flex h-full flex-col overflow-hidden rounded-[23px] bg-[#fcf9f4] transition-all duration-500 group-hover:-translate-y-1 xl:rounded-[35px]">
 
                       {/* IMAGE */}
-                      <div className="relative h-48 flex-shrink-0 overflow-hidden lg:h-52 xl:h-44">
+                      <div className="relative h-56 flex-shrink-0 overflow-hidden sm:h-60 md:h-52 lg:h-52 xl:h-44">
 
                         <img
                           src={item.image}
@@ -260,13 +270,13 @@ export default function Facilities() {
                       </div>
 
                       {/* TEXT */}
-                      <div className="relative z-30 flex flex-1 flex-col justify-start gap-3 px-6 py-7 text-center md:px-7 md:py-7 xl:justify-between xl:p-5">
+                      <div className="relative z-30 flex flex-1 flex-col justify-start gap-3 px-6 py-6 text-center md:px-7 md:py-6 xl:justify-between xl:p-5">
 
-                        <h3 className="mb-2 font-serif text-[24px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] xl:text-[22px]">
+                        <h3 className="mb-1 font-serif text-[24px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] max-lg:min-h-[58px] max-lg:flex max-lg:items-center max-lg:justify-center xl:text-[22px]">
                           {item.title}
                         </h3>
 
-                        <p className="type-body text-[#4f4038] md:max-lg:text-[16px] md:max-lg:leading-[1.75]">
+                        <p className="type-body text-[#4f4038] max-lg:mx-auto max-lg:max-w-[30ch] md:max-lg:text-[16px] md:max-lg:leading-[1.75]">
                           {item.description}
                         </p>
 
@@ -289,7 +299,7 @@ export default function Facilities() {
         {/* =========================
             CORRIDOR SECTION
         ========================= */}
-        <section className="relative px-5 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] sm:px-6 md:pt-20 md:pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-40 bg-gradient-to-b from-[#5A111C] via-[#5A111C] to-[#4a0f18] overflow-hidden">
+        <section className="relative px-5 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] sm:px-6 md:pt-20 md:pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-40 bg-[#5A111C] wedding-pattern-maroon overflow-hidden">
 
           <div className="max-w-6xl mx-auto grid md:grid-cols-[0.95fr_1fr] lg:grid-cols-2 gap-10 md:gap-10 lg:gap-16 items-center">
 
@@ -298,15 +308,17 @@ export default function Facilities() {
               whileInView={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
             >
-              <img
-                src={facility1}
-                loading="lazy"
-                decoding="async"
-                width="1537"
-                height="1023"
-                alt="Facilities Corridor"
-                className="h-[320px] w-full rounded-xl object-cover shadow-2xl sm:h-[380px] md:h-[360px] lg:h-full"
-              />
+              <PremiumImageFrame className="h-[320px] w-full sm:h-[380px] md:h-[360px] lg:h-full">
+                <img
+                  src={facility1}
+                  loading="lazy"
+                  decoding="async"
+                  width="1537"
+                  height="1023"
+                  alt="Facilities Corridor"
+                  className="h-full w-full object-cover"
+                />
+              </PremiumImageFrame>
             </motion.div>
 
             <motion.div

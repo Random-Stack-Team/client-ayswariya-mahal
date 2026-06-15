@@ -33,7 +33,7 @@ export default function Contact() {
         path="/contact"
       />
       <PageTransition>
-        <main className="bg-[#fdfbf7] min-h-screen">
+        <main className="bg-[#fdfbf7] wedding-pattern-ivory min-h-screen">
       {/* Hero Section */}
       <section className="relative flex min-h-[520px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[580px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-32 lg:pt-40">
         <div 

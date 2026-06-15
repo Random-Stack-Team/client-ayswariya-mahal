@@ -3,6 +3,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import siteConfig from "../../config/site";
 import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
 import { useEnquiry } from "../../context/useEnquiry";
+import FooterCredit from "./FooterCredit";
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -149,9 +150,7 @@ export default function SowbhagyaFooter() {
         </div>
 
         <div className="mt-5 flex flex-col gap-5 border-t border-[#D4A843]/18 pt-5 md:flex-row md:items-center md:justify-between">
-          <p className="font-body text-sm leading-6 text-[#fdfbf7]/56">
-            Copyright 2026 Sowbhagya Mahal. All Rights Reserved.
-          </p>
+          <FooterCredit brand="Sowbhagya Mahal" />
 
           <div className="flex items-center gap-2">
             <a

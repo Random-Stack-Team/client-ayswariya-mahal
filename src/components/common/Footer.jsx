@@ -3,6 +3,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import siteConfig from "../../config/site";
 import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
 import { useEnquiry } from "../../context/useEnquiry";
+import FooterCredit from "./FooterCredit";
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -108,10 +109,10 @@ export default function Footer() {
               ))}
             </ul>
             <Link
-              to="/"
+              to="/sowbhagya-mahal"
               className="mt-4 inline-flex min-h-12 items-center font-sans font-medium text-[13px] uppercase tracking-[0.14em] text-[#D4A843] transition-colors duration-300 hover:text-[#fdfbf7]"
             >
-              View Ayswariya Mahal
+              View Sowbhagya Mahal
             </Link>
           </div>
 
@@ -150,9 +151,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-5 flex flex-col gap-5 border-t border-[#D4A843]/18 pt-5 md:flex-row md:items-center md:justify-between">
-          <p className="font-body text-sm leading-6 text-[#fdfbf7]/56">
-            Copyright 2026 Ayswariya Mahal. All Rights Reserved.
-          </p>
+          <FooterCredit />
 
           <div className="flex items-center gap-2">
             <a
