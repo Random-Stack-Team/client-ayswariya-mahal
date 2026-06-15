@@ -5,9 +5,8 @@ import { useMediaQuery } from "../hooks/useMediaQuery";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
-import { useEnquiry } from "../context/useEnquiry";
 
-import sowCrop2 from "../assets/images/sow-crop2.jpg";
+import sowCrop2 from "../assets/images/sow-crop2.webp";
 import sowCrop5 from "../assets/images/sowbhagya-hall-generated.webp";
 import sowCrop3 from "../assets/images/sowbhagya-rooftop-generated.webp";
 import facility1 from "../assets/images/Facility/facility1.webp";
@@ -16,7 +15,6 @@ export default function SowbhagyaMahal() {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
   const canHover = useMediaQuery("(hover: hover)");
   const containerRef = useRef(null);
-  const { openForm } = useEnquiry();
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end start"],
@@ -139,7 +137,7 @@ export default function SowbhagyaMahal() {
           </section>
 
           {/* 3. Block 1: Capacities (Image Left, Text Right) - Dark Maroon */}
-          <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#5A111C] text-[#fdfbf7] overflow-hidden">
+          <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#5A111C] wedding-pattern-maroon text-[#fdfbf7] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
               <motion.div
                 {...(isDesktop ? { initial: { opacity: 0, x: -28, y: 18, scale: 0.96 }, whileInView: { opacity: 1, x: 0, y: 0, scale: 1 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } } : {})}
@@ -194,7 +192,7 @@ export default function SowbhagyaMahal() {
           </section>
 
           {/* 4. Block 2: Facilities (Text Left, Image Right) - Ivory */}
-          <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#fdfbf7] text-[#4f4038] overflow-hidden">
+          <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#fdfbf7] wedding-pattern-ivory text-[#4f4038] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[1fr_0.92fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
               <motion.div
                 variants={staggerContainer}
@@ -265,7 +263,7 @@ export default function SowbhagyaMahal() {
           </section>
 
           {/* 5. Block 3: Occasions (Image Left, Text Right) - Warm Cream */}
-          <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#f5ead9] text-[#4f4038] overflow-hidden">
+          <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#f5ead9] wedding-pattern-gold text-[#4f4038] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
               <motion.div
                 {...(isDesktop ? { initial: { opacity: 0, x: -28, y: 18, scale: 0.96 }, whileInView: { opacity: 1, x: 0, y: 0, scale: 1 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } } : {})}
@@ -311,31 +309,42 @@ export default function SowbhagyaMahal() {
             </div>
           </section>
 
-          {/* 6. CTA Section */}
-          <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#5A111C] text-center border-t border-[#E5C76B]/20">
-              <motion.div
-                variants={staggerContainer}
-                initial={isDesktop ? "hidden" : "show"}
-                {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.2 } } : {})}
-                className="order-2 md:order-1 lg:pr-10"
-              >
-              <motion.div variants={fadeInUp} className="mx-auto mb-6 flex justify-center text-[#E5C76B]">
-                <Sparkles size={24} strokeWidth={1.5} />
+          {/* 6. Venue Rhythm Section */}
+          <section className="relative overflow-hidden px-5 py-16 sm:px-6 md:py-20 lg:py-28 bg-[#5A111C] wedding-pattern-maroon border-t border-[#E5C76B]/20">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_0%,rgba(229,199,107,0.18),transparent_34%),radial-gradient(circle_at_80%_100%,rgba(253,251,247,0.08),transparent_32%)]" />
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+              className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14"
+            >
+              <motion.div variants={fadeInUp} className="text-center lg:text-left">
+                <div className="mb-6 flex justify-center text-[#E5C76B] lg:justify-start">
+                  <Sparkles size={24} strokeWidth={1.5} />
+                </div>
+                <p className="type-eyebrow mb-5 text-[#E5C76B]">Venue Rhythm</p>
+                <h2 className="font-serif text-[34px] md:text-[44px] lg:text-[54px] font-semibold leading-[1.1] text-[#fdfbf7]">
+                  A calm flow from welcome to <span className="italic text-[#E5C76B]">farewell</span>
+                </h2>
               </motion.div>
-              <motion.h2 variants={fadeInUp} className="mb-8 font-serif text-[34px] md:text-[44px] lg:text-[56px] font-semibold leading-[1.1] text-[#fdfbf7]">
-                Plan Your Celebration at <span className="italic text-[#E5C76B]">Sowbhagya Mahal</span>
-              </motion.h2>
-              <motion.p variants={fadeInUp} className="mb-10 md:mb-12 font-body text-lg md:text-xl text-[#fdfbf7]/80 max-w-xl mx-auto leading-relaxed">
-                A graceful space for intimate events, crafted with the trust and hospitality of Ayswariya Mahal.
-              </motion.p>
-              <motion.button
-                variants={fadeInUp}
-                type="button"
-                onClick={openForm}
-                className="inline-flex min-h-[40px] md:min-h-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-6 md:px-8 type-cta text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)]"
-              >
-                Enquire Availability
-              </motion.button>
+
+              <motion.div variants={fadeInUp} className="rounded-[28px] border border-[#E5C76B]/24 bg-[#fdfbf7]/7 p-5 shadow-[0_24px_60px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-7 md:p-8">
+                <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1">
+                  {[
+                    "Arrival spaces stay clear, composed, and easy for every age group.",
+                    "Dining access remains close enough for comfort without disturbing the hall.",
+                    "Stage, seating, and movement zones are kept visually balanced.",
+                  ].map((item) => (
+                    <div key={item} className="flex gap-3 rounded-2xl border border-[#E5C76B]/16 bg-[#3F0C15]/32 p-4 text-left">
+                      <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#E5C76B] text-[#3F0C15]">
+                        <Check size={15} strokeWidth={2.4} />
+                      </span>
+                      <p className="font-body text-[16px] leading-7 text-[#fdfbf7]/78">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             </motion.div>
           </section>
 

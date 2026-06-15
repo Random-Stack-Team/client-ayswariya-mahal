@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
-import gsap from "gsap";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import PageTransition from "../components/common/PageTransition";
 import SEO from "../components/common/SEO";
@@ -76,52 +75,64 @@ export default function Gallery() {
     camera.current.target = Math.max(0, Math.min(camera.current.target, maxScroll.current));
   }, []);
 
-  const moveSlider = useCallback((delta) => {
-    const cam = camera.current;
-    const next = Math.max(0, Math.min(cam.target + delta, maxScroll.current));
-    const moved = Math.abs(next - cam.target) > 0.5;
-    cam.target = next;
-    return moved;
-  }, []);
+  const startSliderAnimation = useCallback(() => {
+    if (rafId.current) return;
 
-  useEffect(() => {
     const animate = () => {
       const rail = railRef.current;
       if (!rail) {
-        rafId.current = requestAnimationFrame(animate);
+        rafId.current = null;
         return;
       }
 
       const cam = camera.current;
       cam.target = Math.max(0, Math.min(cam.target, maxScroll.current));
 
-      const force = (cam.target - cam.x) * 0.07;
-      cam.vx += force;
-      cam.vx *= 0.78;
+      const force = (cam.target - cam.x) * 0.12;
+      cam.vx = (cam.vx + force) * 0.72;
       cam.x += cam.vx;
 
-      gsap.set(rail, {
-        x: -cam.x,
-        force3D: true,
-        willChange: "transform",
-        overwrite: "auto",
-      });
+      const distance = Math.abs(cam.target - cam.x);
+      if (distance < 0.35 && Math.abs(cam.vx) < 0.35) {
+        cam.x = cam.target;
+        cam.vx = 0;
+        rail.style.transform = `translate3d(${-cam.x}px, 0, 0)`;
+        rafId.current = null;
+        return;
+      }
 
+      rail.style.transform = `translate3d(${-cam.x}px, 0, 0)`;
       rafId.current = requestAnimationFrame(animate);
     };
 
     rafId.current = requestAnimationFrame(animate);
-    return () => {
-      if (rafId.current) cancelAnimationFrame(rafId.current);
-    };
+  }, []);
+
+  const moveSlider = useCallback((delta) => {
+    const cam = camera.current;
+    const next = Math.max(0, Math.min(cam.target + delta, maxScroll.current));
+    const moved = Math.abs(next - cam.target) > 0.5;
+    cam.target = next;
+    if (moved) startSliderAnimation();
+    return moved;
+  }, [startSliderAnimation]);
+
+  useEffect(() => () => {
+    if (rafId.current) cancelAnimationFrame(rafId.current);
   }, []);
 
   useEffect(() => {
     camera.current = { x: 0, vx: 0, target: 0 };
     maxScroll.current = 0;
-    const timeoutId = setTimeout(measure, 200);
+    if (railRef.current) {
+      railRef.current.style.transform = "translate3d(0, 0, 0)";
+    }
+    const timeoutId = setTimeout(() => {
+      measure();
+      startSliderAnimation();
+    }, 120);
     return () => clearTimeout(timeoutId);
-  }, [category, measure]);
+  }, [category, measure, startSliderAnimation]);
 
   useEffect(() => {
     const onResize = () => measure();
@@ -157,11 +168,10 @@ export default function Gallery() {
       const canConsume = (dominantDelta > 0 && !atEnd) || (dominantDelta < 0 && !atStart);
 
       if (!canConsume) return;
-      event.preventDefault();
       moveSlider(dominantDelta * 0.7);
     };
 
-    section.addEventListener("wheel", onWheel, { passive: false });
+    section.addEventListener("wheel", onWheel, { passive: true });
     return () => section.removeEventListener("wheel", onWheel);
   }, [moveSlider]);
 
@@ -209,10 +219,10 @@ export default function Gallery() {
         path="/gallery"
       />
       <PageTransition>
-        <main className="min-h-screen overflow-x-clip bg-[#fdfbf7]">
+        <main className="min-h-screen overflow-x-clip bg-[#fdfbf7] wedding-pattern-ivory">
           <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[600px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-36 lg:pt-40">
             <div
-              className="absolute inset-0 bg-cover bg-center bg-fixed"
+              className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${gallery3})` }}
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1c0d11]/80 via-[#1c0d11]/70 to-[#4A0A12]" />
@@ -229,8 +239,8 @@ export default function Gallery() {
               </motion.div>
 
               <motion.p
-                initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
                 className="mb-6 type-eyebrow text-[#E5C76B] drop-shadow-md"
               >
@@ -351,44 +361,73 @@ export default function Gallery() {
             </div>
           </section>
 
-          <section className="relative overflow-hidden bg-[#4A0A12] px-5 py-16 sm:px-6 md:py-20 lg:py-40">
-            <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[0.95fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
+          <section className="relative overflow-hidden bg-[#4A0A12] wedding-pattern-maroon px-5 py-16 sm:px-6 md:py-20 lg:py-40">
+            <div className="relative mx-auto max-w-6xl">
               <motion.div
-                {...(isDesktop ? { initial: { opacity: 0, scale: 0.9 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 1 } } : {})}
+                initial={{ opacity: 0, y: 34 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                className="mx-auto max-w-3xl text-center"
               >
-                <img
-                  src={gallery2}
-                  loading="lazy"
-                  decoding="async"
-                  width="1500"
-                  height="996"
-                  alt="Ayswariya Mahal visual elegance"
-                  className="h-[320px] w-full rounded-xl object-cover shadow-2xl sm:h-[380px] md:h-[360px] lg:h-full"
-                />
+                <p className="type-eyebrow mb-5 text-[#E5C76B]">Official Venue Film</p>
+                <h2 className="font-serif text-[34px] font-semibold leading-[1.15] tracking-[0.01em] text-[#fdfbf7] md:text-[44px] lg:text-[58px]">
+                  Experience Ayswariya Mahal
+                </h2>
+                <div className="mx-auto my-7 h-px w-24 bg-gradient-to-r from-transparent via-[#E5C76B] to-transparent md:my-8" />
+                <p className="font-serif text-[22px] font-medium italic leading-[1.45] text-[#E5C76B] md:text-[28px]">
+                  Elegant wedding moments, grand celebrations, and timeless memories.
+                </p>
+                <p className="mx-auto mt-6 max-w-3xl type-body text-[#fdfbf7]/78">
+                  Step inside Ayswariya Mahal and experience the elegance, grandeur, and warm hospitality that make every celebration unforgettable. From traditional weddings and receptions to family gatherings and special occasions, discover the spaces where cherished memories come to life.
+                </p>
               </motion.div>
 
               <motion.div
-                {...(isDesktop ? { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 1 } } : {})}
-                className="text-white"
+                initial={{ opacity: 0, y: 40, scale: 0.98 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.95, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+                className="mx-auto mt-10 max-w-5xl md:mt-12 lg:mt-16"
               >
-                <h2 className="mb-6 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] md:text-[40px] lg:text-5xl">
-                  Walking Through Visual Elegance
-                </h2>
+                <div className="relative overflow-hidden rounded-[28px] border border-[#E5C76B]/46 bg-[#fdfbf7]/8 p-2 shadow-[0_28px_80px_rgba(0,0,0,0.34),inset_0_0_0_1px_rgba(255,255,255,0.08)] sm:p-3 md:rounded-[34px]">
+                  <span className="pointer-events-none absolute left-5 top-5 z-20 h-9 w-9 border-l border-t border-[#E5C76B]/70" />
+                  <span className="pointer-events-none absolute right-5 top-5 z-20 h-9 w-9 border-r border-t border-[#E5C76B]/70" />
+                  <span className="pointer-events-none absolute bottom-5 left-5 z-20 h-9 w-9 border-b border-l border-[#E5C76B]/70" />
+                  <span className="pointer-events-none absolute bottom-5 right-5 z-20 h-9 w-9 border-b border-r border-[#E5C76B]/70" />
 
-                <ul className="space-y-4 type-body text-white/84">
-                  {[
-                    "Curated Wedding Moments",
-                    "Luxury Event Photography",
-                    "Cinematic Hall Views",
-                    "Decor Excellence Captured",
-                    "Real Celebration Memories",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-3">
-                      <span className="text-[#E5C76B]">✦</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+                  <div className="relative aspect-video overflow-hidden rounded-[22px] bg-[#1c0d11] md:rounded-[26px]">
+                    <iframe
+                      src="https://www.youtube.com/embed/SFc9F625Enk"
+                      title="Experience Ayswariya Mahal official venue video"
+                      className="absolute inset-0 h-full w-full"
+                      loading="lazy"
+                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.85, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+                className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-5 text-center md:mt-10"
+              >
+                <p className="type-body text-[#fdfbf7]/78">
+                  Take a virtual tour of our venue and explore the spaces that have hosted countless memorable celebrations.
+                </p>
+                <a
+                  href="https://youtu.be/SFc9F625Enk"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#E5C76B]/52 px-7 font-sans text-[12px] font-medium uppercase tracking-[0.14em] text-[#E5C76B] transition duration-300 hover:bg-[#E5C76B] hover:text-[#4A0A12]"
+                >
+                  Watch on YouTube
+                </a>
               </motion.div>
             </div>
           </section>

@@ -1,10 +1,10 @@
-import { HashRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { useLayoutEffect, useState } from "react";
-import { AnimatePresence } from "framer-motion";
 import { HelmetProvider } from "react-helmet-async";
 import MainLayout from "./layouts/MainLayout";
 import { EnquiryProvider } from "./context/EnquiryContext";
 import OpeningAnimation from "./components/common/OpeningAnimation";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 import Home from "./pages/Home";
 import About from "./pages/About";
@@ -31,20 +31,16 @@ const shouldShowOpeningAnimation = () => {
 };
 
 function AnimatedRoutes() {
-  const location = useLocation();
-  
   return (
-    <AnimatePresence mode="wait" initial={false} onExitComplete={() => window.scrollTo(0, 0)}>
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/facilities" element={<Facilities />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/reviews" element={<Reviews />} />
-        <Route path="/sowbhagya-mahal" element={<SowbhagyaMahal />} />
-      </Routes>
-    </AnimatePresence>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/about" element={<About />} />
+      <Route path="/facilities" element={<Facilities />} />
+      <Route path="/gallery" element={<Gallery />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="/reviews" element={<Reviews />} />
+      <Route path="/sowbhagya-mahal" element={<SowbhagyaMahal />} />
+    </Routes>
   );
 }
 
@@ -79,6 +75,7 @@ function App() {
     <HelmetProvider>
       <EnquiryProvider>
         <Router>
+          <ScrollToTop />
           <div className={`app-reveal ${showOpening ? "app-reveal--intro" : "app-reveal--ready"}`}>
             <MainLayout>
               <AnimatedRoutes />

@@ -326,6 +326,78 @@
   }
 }
 
+/* Responsive reveal mode keeps SVG path drawing while reducing timing and filters. */
+.opening-animation--reveal-lite .opening-animation__glyph {
+  animation:
+    opening-draw-glyph 1.72s cubic-bezier(0.64, 0, 0.24, 1) var(--letter-delay) forwards,
+    opening-fill-brand 620ms ease-out 2.32s forwards;
+}
+
+.opening-animation--reveal-lite .opening-animation__welcome .opening-animation__glyph {
+  animation:
+    opening-draw-glyph 1.6s cubic-bezier(0.64, 0, 0.24, 1) var(--letter-delay) forwards,
+    opening-fill-gold 600ms ease-out 2.14s forwards;
+}
+
+.opening-animation--reveal-lite .opening-animation__logo-path {
+  animation:
+    opening-draw-glyph 1.84s cubic-bezier(0.64, 0, 0.24, 1) var(--letter-delay) forwards,
+    opening-fill-logo 640ms ease-out 2.5s forwards;
+}
+
+.opening-animation--reveal-lite .opening-animation__rule {
+  animation: opening-rule-in 560ms ease-out 180ms forwards;
+}
+
+.opening-animation--reveal-lite .opening-animation__tagline {
+  animation: opening-tagline-in 680ms ease-out 2.98s forwards;
+}
+
+.opening-animation--tablet-reveal.opening-animation--exit {
+  animation: opening-responsive-exit 720ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.opening-animation--mobile-reveal .opening-animation__glyph {
+  animation:
+    opening-draw-glyph 1.42s cubic-bezier(0.64, 0, 0.24, 1) calc(var(--letter-delay) * 0.9) forwards,
+    opening-fill-brand 500ms ease-out 1.9s forwards;
+}
+
+.opening-animation--mobile-reveal .opening-animation__welcome .opening-animation__glyph {
+  animation:
+    opening-draw-glyph 1.28s cubic-bezier(0.64, 0, 0.24, 1) calc(var(--letter-delay) * 0.9) forwards,
+    opening-fill-gold 480ms ease-out 1.7s forwards;
+}
+
+.opening-animation--mobile-reveal .opening-animation__logo-path {
+  animation:
+    opening-draw-glyph 1.56s cubic-bezier(0.64, 0, 0.24, 1) calc(var(--letter-delay) * 0.9) forwards,
+    opening-fill-logo 520ms ease-out 2.12s forwards;
+}
+
+.opening-animation--mobile-reveal .opening-animation__rule {
+  animation: opening-rule-in 440ms ease-out 140ms forwards;
+}
+
+.opening-animation--mobile-reveal .opening-animation__tagline {
+  animation: opening-tagline-in 580ms ease-out 2.62s forwards;
+}
+
+.opening-animation--mobile-reveal.opening-animation--exit {
+  animation: opening-responsive-exit 620ms cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes opening-responsive-exit {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.006);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .opening-animation,
   .opening-animation *,

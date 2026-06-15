@@ -62,7 +62,7 @@ export default function About() {
         path="/about"
       />
       <PageTransition>
-        <main className="min-h-screen overflow-x-clip bg-[#fdfbf7] lg:overflow-hidden" ref={containerRef}>
+        <main className="min-h-screen overflow-x-clip bg-[#fdfbf7] wedding-pattern-ivory lg:overflow-hidden" ref={containerRef}>
 
       {/* Hero Section */}
       <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-20 pt-28 sm:min-h-[560px] sm:px-6 sm:pb-24 sm:pt-32 md:min-h-[600px] md:pb-24 md:pt-[8.5rem] lg:min-h-[70vh] lg:pb-32 lg:pt-40">
@@ -164,7 +164,7 @@ export default function About() {
       </section>
 
       {/* Celebration Pillars - Premium Wedding Card Layout */}
-      <section className="py-[52px] md:py-16 lg:py-[72px] px-5 sm:px-6 bg-[#f5ead9] relative overflow-hidden">
+      <section className="py-[52px] md:py-16 lg:py-[72px] px-5 sm:px-6 bg-[#f5ead9] wedding-pattern-gold relative overflow-hidden">
         {/* Subtle background texture */}
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/arabesque.png')] opacity-5 pointer-events-none"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_center,rgba(212,168,67,0.05),transparent_60%)] pointer-events-none"></div>
@@ -229,18 +229,10 @@ export default function About() {
       </section>
 
       {/* Philosophy & Mission Redesign - Maroon Theme */}
-      <section className="py-12 md:py-14 lg:py-20 px-5 sm:px-6 bg-[#5A111C] relative overflow-hidden">
-        {/* Animated Background Elements */}
-        <motion.div 
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(229,199,107,0.15),transparent_50%)] pointer-events-none"
-        />
-        <motion.div 
-          animate={{ rotate: -360 }}
-          transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-          className="absolute -bottom-[50%] -left-[50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_50%_100%,rgba(229,199,107,0.08),transparent_40%)] pointer-events-none"
-        />
+      <section className="py-12 md:py-14 lg:py-20 px-5 sm:px-6 bg-[#5A111C] wedding-pattern-maroon relative overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(229,199,107,0.15),transparent_50%)] pointer-events-none" />
+        <div className="absolute -bottom-[50%] -left-[50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_50%_100%,rgba(229,199,107,0.08),transparent_40%)] pointer-events-none" />
 
         <div className="max-w-site mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 relative z-10">
           
@@ -297,7 +289,7 @@ export default function About() {
       </section>
 
       {/* Sowbhagya Mahal Intro Section */}
-      <section className="relative overflow-hidden bg-[#f5ead9] px-5 pt-14 pb-[calc(3.5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-16 sm:pb-[calc(4rem+env(safe-area-inset-bottom))] md:pt-[68px] md:pb-[calc(4.25rem+env(safe-area-inset-bottom))] lg:py-28">
+      <section className="relative overflow-hidden bg-[#f5ead9] wedding-pattern-gold px-5 pt-14 pb-[calc(3.5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-16 sm:pb-[calc(4rem+env(safe-area-inset-bottom))] md:pt-[68px] md:pb-[calc(4.25rem+env(safe-area-inset-bottom))] lg:py-28">
         <motion.div
           aria-hidden="true"
           {...(isDesktop ? { initial: { opacity: 0, scale: 0.85 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] } } : {})}
@@ -404,7 +396,7 @@ export default function About() {
             <motion.div variants={fadeInUp}>
               <Link
                 to="/sowbhagya-mahal"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#D4A843] px-8 font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(90,17,28,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7] sm:w-auto"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#D4A843] px-8 font-sans font-medium text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(90,17,28,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7] sm:w-auto"
               >
                 Explore Sowbhagya Mahal
               </Link>

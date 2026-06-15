@@ -3,6 +3,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import siteConfig from "../../config/site";
 import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
 import { useEnquiry } from "../../context/useEnquiry";
+import FooterCredit from "./FooterCredit";
 
 const quickLinks = [
   { label: "Home", to: "/" },
@@ -75,7 +76,7 @@ export default function SowbhagyaFooter() {
             <button
               type="button"
               onClick={openForm}
-              className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-7 font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)] sm:w-auto"
+              className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-7 font-sans font-medium text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)] sm:w-auto"
             >
               Check Availability
             </button>
@@ -108,7 +109,7 @@ export default function SowbhagyaFooter() {
             </ul>
             <Link
               to="/"
-              className="mt-4 inline-flex min-h-12 items-center font-sans font-medium uppercase tracking-[0.08em] text-[13px] uppercase tracking-[0.14em] text-[#D4A843] transition-colors duration-300 hover:text-[#fdfbf7]"
+              className="mt-4 inline-flex min-h-12 items-center font-sans font-medium text-[13px] uppercase tracking-[0.14em] text-[#D4A843] transition-colors duration-300 hover:text-[#fdfbf7]"
             >
               View Ayswariya Mahal
             </Link>
@@ -149,9 +150,7 @@ export default function SowbhagyaFooter() {
         </div>
 
         <div className="mt-5 flex flex-col gap-5 border-t border-[#D4A843]/18 pt-5 md:flex-row md:items-center md:justify-between">
-          <p className="font-body text-sm leading-6 text-[#fdfbf7]/56">
-            Copyright 2026 Sowbhagya Mahal. All Rights Reserved.
-          </p>
+          <FooterCredit brand="Sowbhagya Mahal" />
 
           <div className="flex items-center gap-2">
             <a

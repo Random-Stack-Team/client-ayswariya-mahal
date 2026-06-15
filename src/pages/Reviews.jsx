@@ -78,7 +78,7 @@ export default function Reviews() {
         path="/reviews"
       />
       <PageTransition>
-        <main className="relative min-h-screen overflow-x-clip bg-[#fdfbf7] pt-24 md:pt-28 lg:pt-32">
+        <main className="relative min-h-screen overflow-x-clip bg-[#fdfbf7] wedding-pattern-ivory pt-24 md:pt-28 lg:pt-32">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute left-0 top-0 h-[1400px] w-full bg-gradient-to-b from-[#4A0A12]/28 via-[#6a1a24]/18 via-[#f7f0e4]/10 to-[#fdfbf7]" />
           </div>
@@ -265,7 +265,7 @@ export default function Reviews() {
             </div>
           </section>
 
-          <section className="relative z-10 border-t-4 border-double border-[#E5C76B] bg-[#4A0A12] px-5 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] text-center sm:px-6 md:pt-20 md:pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-[120px]">
+          <section className="relative z-10 border-t-4 border-double border-[#E5C76B] bg-[#4A0A12] wedding-pattern-maroon px-5 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] text-center sm:px-6 md:pt-20 md:pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-[120px]">
             <motion.div
               className="mx-auto max-w-4xl"
               {...(isDesktop ? { initial: { opacity: 0, y: 45 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 0.55 } } : {})}
