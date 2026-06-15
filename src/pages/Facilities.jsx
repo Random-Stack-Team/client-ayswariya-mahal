@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import PageTransition from "../components/common/PageTransition";
 
 import {
@@ -122,6 +123,7 @@ const cardMotion = {
 };
 
 export default function Facilities() {
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const { openForm } = useEnquiry();
   return (
     <>
@@ -154,9 +156,8 @@ export default function Facilities() {
 
   {/* ICON + TEXT SYNC WRAPPER */}
   <motion.div
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true, amount: 0.6 }}
+    initial={isDesktop ? "hidden" : "show"}
+    {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.6 } } : {})}
   >
 
     {/* ICON (SYNCHRONIZED FIRST) */}
@@ -225,9 +226,8 @@ export default function Facilities() {
                 key={i}
                 custom={i}
                 variants={cardMotion}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
+                initial={isDesktop ? "hidden" : "show"}
+                {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.2 } } : {})}
                 className="group relative h-full"
               >
 
@@ -299,9 +299,7 @@ export default function Facilities() {
           <div className="max-w-6xl mx-auto grid md:grid-cols-[0.95fr_1fr] lg:grid-cols-2 gap-10 md:gap-10 lg:gap-16 items-center">
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1 }}
+              {...(isDesktop ? { initial: { opacity: 0, scale: 0.9 }, whileInView: { opacity: 1, scale: 1 }, transition: { duration: 1 } } : {})}
             >
               <img
                 src={facility1}
@@ -315,9 +313,7 @@ export default function Facilities() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
+              {...(isDesktop ? { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, transition: { duration: 1 } } : {})}
               className="text-white"
             >
               <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] mb-6">

@@ -1,14 +1,17 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/hero.webp";
-import sowCrop2 from "../assets/images/Outlook.png";
+import sowCrop2 from "../assets/images/sow-crop2.webp";
 import { Sparkles, Flower2, HeartHandshake, Gem, Building2, UtensilsCrossed, Trees } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 
 export default function About() {
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const canHover = useMediaQuery("(hover: hover)");
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -113,16 +116,13 @@ export default function About() {
         <div className="max-w-site mx-auto grid gap-11 md:grid-cols-[1.05fr_0.95fr] md:gap-9 lg:grid-cols-[1.2fr_1fr] lg:gap-20 items-center">
 
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
+            {...(isDesktop ? { initial: { opacity: 0, x: -50 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true, amount: 0.1 }, transition: { duration: 1.25, ease: [0.16, 1, 0.3, 1] } } : {})}
             className="relative"
           >
             <div className="absolute inset-0 bg-[#d4af37] rounded-sm transform translate-x-2 translate-y-2 opacity-20 sm:translate-x-4 sm:translate-y-4"></div>
             <div className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay">
               <motion.img
-                style={{ y: parallaxY }}
+                style={isDesktop ? { y: parallaxY } : {}}
                 src={aboutImg}
                 alt="Ayswariya Mahal Story"
                 loading="lazy"
@@ -137,9 +137,8 @@ export default function About() {
 
           <motion.div
             variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.1 }}
+            initial={isDesktop ? "hidden" : "show"}
+            {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.1 } } : {})}
             className="relative z-10 text-center md:text-left"
           >
             <motion.p variants={fadeInUp} className="type-eyebrow text-[#b58c2a] mb-4">
@@ -173,9 +172,8 @@ export default function About() {
         <div className="max-w-site mx-auto relative z-10">
           <motion.div
             variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.1 }}
+            initial={isDesktop ? "hidden" : "show"}
+            {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.1 } } : {})}
             className="text-center mb-10 md:mb-12 lg:mb-16"
           >
             <motion.h2 variants={fadeInUp} className="font-serif text-[30px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-4">
@@ -193,10 +191,7 @@ export default function About() {
               return (
                 <motion.article
                   key={pillar.title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 }}
+                  {...(isDesktop ? { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-50px" }, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 } } : {})}
                   className={`group relative flex flex-col items-center text-center p-[22px] md:p-[24px] lg:p-[28px] bg-[#fdfbf7] rounded-[12px] border border-[#d4af37]/40 shadow-[0_12px_30px_rgba(90,17,28,0.06)] hover:shadow-[0_20px_40px_rgba(212,168,67,0.15)] transition-all duration-500 hover:-translate-y-1 overflow-hidden ${index === 2 ? "md:col-span-2 lg:col-span-1" : ""}`}
                 >
                   {/* Decorative thin gold top border glow */}
@@ -251,9 +246,8 @@ export default function About() {
           
           <motion.div 
             variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.1 }}
+            initial={isDesktop ? "hidden" : "show"}
+            {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.1 } } : {})}
             className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
           >
             {/* Philosophy Card */}
@@ -306,43 +300,28 @@ export default function About() {
       <section className="relative overflow-hidden bg-[#f5ead9] px-5 pt-14 pb-[calc(3.5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-16 sm:pb-[calc(4rem+env(safe-area-inset-bottom))] md:pt-[68px] md:pb-[calc(4.25rem+env(safe-area-inset-bottom))] lg:py-28">
         <motion.div
           aria-hidden="true"
-          initial={{ opacity: 0, scale: 0.85 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+          {...(isDesktop ? { initial: { opacity: 0, scale: 0.85 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] } } : {})}
           className="absolute left-[8%] top-10 h-72 w-72 rounded-full bg-[#D4A843]/20 blur-3xl"
         />
         <motion.div
           aria-hidden="true"
-          initial={{ opacity: 0, x: 80 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
+          {...(isDesktop ? { initial: { opacity: 0, x: 80 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] } } : {})}
           className="absolute bottom-0 right-0 h-px w-1/2 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent"
         />
 
         <div className="max-w-site mx-auto grid items-center gap-12 md:max-lg:grid-cols-1 md:max-lg:gap-12 lg:grid-cols-2 lg:gap-16">
           <motion.div
-            initial={{ opacity: 0, x: -48, rotate: -1.5 }}
-            whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-            viewport={{ once: true, amount: 0.18 }}
-            transition={{ duration: 1.25, ease: [0.16, 1, 0.3, 1] }}
-            whileHover={{ y: -6, rotate: -0.5 }}
+            {...(isDesktop ? { initial: { opacity: 0, x: -48, rotate: -1.5 }, whileInView: { opacity: 1, x: 0, rotate: 0 }, viewport: { once: true, amount: 0.18 }, transition: { duration: 1.25, ease: [0.16, 1, 0.3, 1] } } : {})}
+            {...(canHover ? { whileHover: { y: -6, rotate: -0.5 } } : {})}
             className="relative mx-auto w-full max-w-[620px] md:max-lg:max-w-[820px] lg:max-w-[620px]"
           >
             <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[14px] bg-[#D4A843]/20" />
               <motion.div
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+                {...(isDesktop ? { initial: { opacity: 0, y: 18 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } } : {})}
                 className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay md:max-lg:aspect-[16/10]"
               >
               <motion.img
-                initial={{ scale: 1.12 }}
-                whileInView={{ scale: 1.04 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+                {...(isDesktop ? { initial: { scale: 1.12 }, whileInView: { scale: 1.04 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 1.6, ease: [0.16, 1, 0.3, 1] } } : {})}
                 src={sowCrop2}
                 alt="Sowbhagya Mahal luxury venue interior"
                 loading="lazy"
@@ -355,10 +334,7 @@ export default function About() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.94 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, delay: 0.35 }}
+              {...(isDesktop ? { initial: { opacity: 0, y: 24, scale: 0.94 }, whileInView: { opacity: 1, y: 0, scale: 1 }, viewport: { once: true }, transition: { duration: 0.9, delay: 0.35 } } : {})}
               className="absolute -bottom-5 left-4 rounded-xl border border-[#D4A843]/35 bg-[#5A111C]/95 px-4 py-3 text-[#fdfbf7] shadow-[0_18px_36px_rgba(63,12,21,0.24)] backdrop-blur-sm sm:left-8 md:max-lg:left-8 md:max-lg:px-5 md:max-lg:py-4 lg:left-8"
             >
               <div className="flex items-center gap-3">
@@ -377,9 +353,8 @@ export default function About() {
 
           <motion.div
             variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.18 }}
+            initial={isDesktop ? "hidden" : "show"}
+            {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.18 } } : {})}
             className="relative z-10 text-center md:text-left"
           >
             <motion.p variants={fadeInUp} className="type-eyebrow mb-4 text-[#B8860B]">
@@ -404,7 +379,7 @@ export default function About() {
               ].map((stat) => (
                 <motion.div
                   key={stat.label}
-                  whileHover={{ y: -8 }}
+                  {...(canHover ? { whileHover: { y: -8 } } : {})}
                   className="group relative overflow-hidden rounded-[16px] border border-[#D4A843]/55 bg-[linear-gradient(180deg,#fffaf2_0%,#f7eddc_100%)] px-4 py-3 text-center shadow-[0_10px_24px_rgba(90,17,28,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#B8860B]/70 hover:shadow-[0_18px_34px_rgba(90,17,28,0.1)]"
                 >
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,168,67,0.08),transparent_46%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />

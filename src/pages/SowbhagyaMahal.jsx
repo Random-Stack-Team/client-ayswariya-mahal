@@ -1,17 +1,20 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { Sparkles, Check } from "lucide-react";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
 import { useEnquiry } from "../context/useEnquiry";
 
 import sowCrop2 from "../assets/images/sow-crop2.jpg";
-import sowCrop5 from "../assets/images/sowbhagya-hall-generated.png";
-import sowCrop3 from "../assets/images/sowbhagya-rooftop-generated.png";
+import sowCrop5 from "../assets/images/sowbhagya-hall-generated.webp";
+import sowCrop3 from "../assets/images/sowbhagya-rooftop-generated.webp";
 import facility1 from "../assets/images/Facility/facility1.webp";
 
 export default function SowbhagyaMahal() {
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const canHover = useMediaQuery("(hover: hover)");
   const containerRef = useRef(null);
   const { openForm } = useEnquiry();
   const { scrollYProgress } = useScroll({
@@ -125,9 +128,8 @@ export default function SowbhagyaMahal() {
           <section id="sowbhagya-story" className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#fdfbf7] text-[#4f4038] text-center border-b border-[#D4A843]/20">
             <motion.div
               variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
+              initial={isDesktop ? "hidden" : "show"}
+              {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.3 } } : {})}
               className="mx-auto max-w-4xl"
             >
               <motion.p variants={fadeInWide} className="font-serif text-[28px] md:text-[38px] lg:text-[44px] leading-[1.35] md:leading-[1.4] italic text-[#5A111C]">
@@ -140,22 +142,16 @@ export default function SowbhagyaMahal() {
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#5A111C] text-[#fdfbf7] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
               <motion.div
-                initial={{ opacity: 0, x: -28, y: 18, scale: 0.96 }}
-                whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -4 }}
+                {...(isDesktop ? { initial: { opacity: 0, x: -28, y: 18, scale: 0.96 }, whileInView: { opacity: 1, x: 0, y: 0, scale: 1 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } } : {})}
+              {...(canHover ? { whileHover: { y: -4 } } : {})}
               className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] md:aspect-[4/5] lg:aspect-square w-full md:max-lg:max-w-[420px]"
             >
                 <motion.img
-                  style={{ y: parallaxY }}
+                  style={isDesktop ? { y: parallaxY } : {}}
                   src={sowCrop5}
                   alt="Sowbhagya Mahal Grandeur"
                   loading="lazy"
-                  initial={{ scale: 1.06 }}
-                  whileInView={{ scale: 1.02 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
+                  {...(isDesktop ? { initial: { scale: 1.06 }, whileInView: { scale: 1.02 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } } : {})}
                   className="h-full w-full object-cover"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#3F0C15]/36 to-transparent"></div>
@@ -163,9 +159,8 @@ export default function SowbhagyaMahal() {
 
               <motion.div
                 variants={staggerContainer}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
+                initial={isDesktop ? "hidden" : "show"}
+                {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.2 } } : {})}
                 className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-5">
@@ -203,10 +198,9 @@ export default function SowbhagyaMahal() {
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[1fr_0.92fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
               <motion.div
                 variants={staggerContainer}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
-                className="order-2 md:order-1 lg:pr-10"
+                initial={isDesktop ? "hidden" : "show"}
+                {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.2 } } : {})}
+                className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#D4A843] mb-5">
                   Seamless Celebrations
@@ -240,11 +234,8 @@ export default function SowbhagyaMahal() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ y: -4 }}
+                {...(isDesktop ? { initial: { opacity: 0, scale: 0.95 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } } : {})}
+                {...(canHover ? { whileHover: { y: -4 } } : {})}
                 className="group order-1 md:order-2 relative overflow-hidden aspect-[4/5] md:aspect-[4/5] lg:aspect-square w-full rounded-[18px] shadow-[0_24px_60px_rgba(63,12,21,0.24)] border border-[#D4A843]/20 md:max-lg:max-w-[420px] md:max-lg:justify-self-end"
               >
                 <div className="pointer-events-none absolute inset-0 z-20 border border-[#D4A843]/30 shadow-[inset_0_0_0_1px_rgba(212,168,67,0.1)]" />
@@ -262,14 +253,11 @@ export default function SowbhagyaMahal() {
                   transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.img
-                  style={{ y: parallaxYReverse }}
+                  style={isDesktop ? { y: parallaxYReverse } : {}}
                   src={facility1}
                   alt="Sowbhagya Mahal Facilities"
                   loading="lazy"
-                  initial={{ scale: 1.1 }}
-                  whileInView={{ scale: 1.03 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
+                  {...(isDesktop ? { initial: { scale: 1.1 }, whileInView: { scale: 1.03 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } } : {})}
                   className="h-full w-full scale-125 object-cover transition-transform duration-700 group-hover:scale-[1.1]"
                 />
               </motion.div>
@@ -280,31 +268,24 @@ export default function SowbhagyaMahal() {
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#f5ead9] text-[#4f4038] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
               <motion.div
-                initial={{ opacity: 0, x: -28, y: 18, scale: 0.96 }}
-                whileInView={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -2 }}
+                {...(isDesktop ? { initial: { opacity: 0, x: -28, y: 18, scale: 0.96 }, whileInView: { opacity: 1, x: 0, y: 0, scale: 1 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } } : {})}
+              {...(canHover ? { whileHover: { y: -2 } } : {})}
               className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] md:aspect-[4/5] lg:aspect-[3/4] w-full md:max-lg:max-w-[420px]"
             >
                 <motion.img
-                  style={{ y: parallaxY }}
+                  style={isDesktop ? { y: parallaxY } : {}}
                   src={sowCrop3}
                   alt="Sowbhagya Mahal Events"
                   loading="lazy"
-                  initial={{ scale: 1.05 }}
-                  whileInView={{ scale: 1.01 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1] }}
+                  {...(isDesktop ? { initial: { scale: 1.05 }, whileInView: { scale: 1.01 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] } } : {})}
                   className="h-full w-full object-cover"
                 />
               </motion.div>
 
               <motion.div
                 variants={staggerContainer}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.2 }}
+                initial={isDesktop ? "hidden" : "show"}
+                {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.2 } } : {})}
                 className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#D4A843] mb-5">
@@ -332,13 +313,12 @@ export default function SowbhagyaMahal() {
 
           {/* 6. CTA Section */}
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#5A111C] text-center border-t border-[#E5C76B]/20">
-            <motion.div
-              variants={staggerContainer}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
-              className="mx-auto max-w-3xl"
-            >
+              <motion.div
+                variants={staggerContainer}
+                initial={isDesktop ? "hidden" : "show"}
+                {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.2 } } : {})}
+                className="order-2 md:order-1 lg:pr-10"
+              >
               <motion.div variants={fadeInUp} className="mx-auto mb-6 flex justify-center text-[#E5C76B]">
                 <Sparkles size={24} strokeWidth={1.5} />
               </motion.div>

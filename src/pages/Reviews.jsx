@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useEnquiry } from "../context/useEnquiry";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
@@ -48,6 +49,7 @@ const reviews = [
 ];
 
 export default function Reviews() {
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const { openForm } = useEnquiry();
   const [activeReview, setActiveReview] = useState(0);
   const currentReview = reviews[activeReview];
@@ -186,10 +188,7 @@ export default function Reviews() {
             <div className="mx-auto max-w-[1180px]">
               <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
                 <motion.div
-                  initial={{ opacity: 0, x: -40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.25 }}
-                  transition={{ duration: 0.55, ease: "easeOut" }}
+                  {...(isDesktop ? { initial: { opacity: 0, x: -40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 0.55, ease: "easeOut" } } : {})}
                 >
                   <p className="mb-5 type-eyebrow text-[#E5C76B]">Guest Reviews</p>
 
@@ -269,10 +268,7 @@ export default function Reviews() {
           <section className="relative z-10 border-t-4 border-double border-[#E5C76B] bg-[#4A0A12] px-5 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] text-center sm:px-6 md:pt-20 md:pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-[120px]">
             <motion.div
               className="mx-auto max-w-4xl"
-              initial={{ opacity: 0, y: 45 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.55 }}
+              {...(isDesktop ? { initial: { opacity: 0, y: 45 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 0.55 } } : {})}
             >
               <p className="mb-6 type-eyebrow text-[#E5C76B]">Celebrate With Us</p>
 

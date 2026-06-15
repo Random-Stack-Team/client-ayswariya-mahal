@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import gsap from "gsap";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import PageTransition from "../components/common/PageTransition";
 import SEO from "../components/common/SEO";
 
@@ -52,6 +53,7 @@ const categoryMeta = {
 };
 
 export default function Gallery() {
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const railRef = useRef(null);
   const sectionRef = useRef(null);
   const camera = useRef({ x: 0, vx: 0, target: 0 });
@@ -313,10 +315,7 @@ export default function Gallery() {
               {images.map((img, index) => (
                 <motion.div
                   key={`${category}-${img.src}`}
-                  initial={{ opacity: 0, y: 34 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.24 }}
-                  transition={{ duration: 0.85, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                  {...(isDesktop ? { initial: { opacity: 0, y: 34 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.24 }, transition: { duration: 0.85, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] } } : {})}
                   className="luxury-image-frame luxury-image-overlay relative h-[min(50vh,430px)] w-[min(76vw,340px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_28px_70px_rgba(122,27,41,0.18)] transition duration-500 hover:-translate-y-1 md:h-[390px] md:w-[min(38vw,320px)] lg:h-[min(54vh,470px)] lg:w-[min(76vw,360px)]"
                 >
                   <img
@@ -355,10 +354,7 @@ export default function Gallery() {
           <section className="relative overflow-hidden bg-[#4A0A12] px-5 py-16 sm:px-6 md:py-20 lg:py-40">
             <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[0.95fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 1 }}
+                {...(isDesktop ? { initial: { opacity: 0, scale: 0.9 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 1 } } : {})}
               >
                 <img
                   src={gallery2}
@@ -372,10 +368,7 @@ export default function Gallery() {
               </motion.div>
 
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 1 }}
+                {...(isDesktop ? { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 1 } } : {})}
                 className="text-white"
               >
                 <h2 className="mb-6 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] md:text-[40px] lg:text-5xl">

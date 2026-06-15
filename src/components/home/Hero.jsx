@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import heroImage from "../../assets/images/hero.webp";
 import { useEnquiry } from "../../context/useEnquiry";
 
@@ -18,6 +19,7 @@ const petals = [
 export default function Hero() {
   const navigate = useNavigate();
   const { openForm } = useEnquiry();
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const imageRef = useRef(null);
   const contentRef = useRef(null);
   const petalsRef = useRef([]);
@@ -45,25 +47,27 @@ export default function Hero() {
           "-=1.55"
         );
 
-      petalsRef.current.forEach((petal, index) => {
-        if (!petal) return;
-        const drift = petals[index].drift;
+      if (isDesktop) {
+        petalsRef.current.forEach((petal, index) => {
+          if (!petal) return;
+          const drift = petals[index].drift;
 
-        gsap.to(petal, {
-          y: `-=${drift}`,
-          x: index % 2 ? "+=12" : "-=10",
-          rotation: index % 2 ? 10 : -12,
-          duration: 5.2 + index * 0.22,
-          delay: petals[index].delay,
-          ease: "sine.inOut",
-          repeat: -1,
-          yoyo: true,
+          gsap.to(petal, {
+            y: `-=${drift}`,
+            x: index % 2 ? "+=12" : "-=10",
+            rotation: index % 2 ? 10 : -12,
+            duration: 5.2 + index * 0.22,
+            delay: petals[index].delay,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true,
+          });
         });
-      });
+      }
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [isDesktop]);
 
   return (
     <>

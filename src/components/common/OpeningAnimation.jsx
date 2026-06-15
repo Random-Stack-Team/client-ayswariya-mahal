@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import "./OpeningAnimation.css";
 
 const openingTextPaths = {
@@ -196,11 +197,22 @@ const INTRO_DURATION = 4300;
 const EXIT_DURATION = 820;
 
 export default function OpeningAnimation({ onComplete }) {
+  const isMobile = useMediaQuery("(max-width: 639px)");
+  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const shouldSkip = isMobile || prefersReducedMotion;
   const [isExiting, setIsExiting] = useState(false);
   const glyphRefs = useRef([]);
   const hasCompleted = useRef(false);
 
+  useLayoutEffect(() => {
+    if (shouldSkip) {
+      hasCompleted.current = true;
+      onComplete();
+    }
+  }, [shouldSkip, onComplete]);
+
   useEffect(() => {
+    if (shouldSkip) return;
     glyphRefs.current.forEach((path) => {
       if (!path) return;
 
@@ -209,7 +221,7 @@ export default function OpeningAnimation({ onComplete }) {
       const length = path.getTotalLength();
       path.style.setProperty("--path-length", length);
     });
-  }, []);
+  }, [shouldSkip]);
 
   const startExit = useCallback(() => {
     if (hasCompleted.current) return;
@@ -219,9 +231,12 @@ export default function OpeningAnimation({ onComplete }) {
   }, [onComplete]);
 
   useEffect(() => {
+    if (shouldSkip) return;
     const finishTimer = window.setTimeout(startExit, INTRO_DURATION);
     return () => window.clearTimeout(finishTimer);
-  }, [startExit]);
+  }, [startExit, shouldSkip]);
+
+  if (shouldSkip) return null;
 
   const renderGlyphs = (glyphs) =>
     glyphs.map((glyph, index) => (
