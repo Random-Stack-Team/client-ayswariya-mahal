@@ -67,7 +67,7 @@ export default function Hero() {
 
   return (
     <>
-    <section className="relative min-h-[680px] overflow-hidden bg-[#2a1116] md:min-h-screen">
+    <section className="relative min-h-[680px] overflow-hidden bg-[#2a1116] md:min-h-[760px] lg:min-h-screen">
       <div className="absolute inset-0">
         <img
           ref={imageRef}
@@ -104,13 +104,13 @@ export default function Hero() {
         ))}
       </div>
 
-      <div className="relative z-10 flex min-h-[680px] items-end px-5 pb-20 pt-28 sm:px-6 md:min-h-screen md:items-center md:px-12 md:pb-0 lg:px-20">
-        <div ref={contentRef} className="max-w-[880px] text-left text-white">
+      <div className="relative z-10 flex min-h-[680px] items-end px-5 pb-20 pt-28 sm:px-6 md:min-h-[760px] md:items-center md:px-12 md:pb-0 lg:min-h-screen lg:px-20">
+        <div ref={contentRef} className="max-w-[880px] text-left text-white md:max-lg:max-w-[680px]">
           <p className="mb-6 type-eyebrow text-[#f1d56d]">
             Established 2001
           </p>
 
-          <h1 className="font-display text-[clamp(34px,11vw,56px)] font-bold leading-[1.08] tracking-[-0.02em] text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)] md:text-[clamp(44px,7vw,76px)] md:leading-[1.1]">
+          <h1 className="font-display text-[clamp(34px,11vw,56px)] font-bold leading-[1.08] tracking-[-0.02em] text-white drop-shadow-[0_8px_24px_rgba(0,0,0,0.35)] md:text-[clamp(48px,6.2vw,64px)] md:leading-[1.1] lg:text-[clamp(44px,7vw,76px)]">
             Where Ancestral Echoes
             <br />
             Meet <span className="italic">Eternal Vows.</span>
@@ -123,7 +123,7 @@ export default function Hero() {
           <div className="mt-8 flex flex-col gap-4 sm:flex-row md:mt-10">
             <button
               onClick={() => navigate("/facilities")}
-              className="relative min-h-12 overflow-hidden group border border-[#e5c76b] bg-[#6A1724]/88 px-7 py-4 type-cta text-[#f3d76c] shadow-[0_18px_38px_rgba(44,4,12,0.25)] transition duration-500 hover:-translate-y-1 hover:bg-[#9a2335] hover:text-white sm:px-9"
+              className="relative inline-flex items-center justify-center min-h-10 overflow-hidden group border border-[#e5c76b] bg-[#6A1724]/88 px-6 py-3 type-cta text-[#f3d76c] shadow-[0_18px_38px_rgba(44,4,12,0.25)] transition duration-500 hover:-translate-y-1 hover:bg-[#9a2335] hover:text-white sm:px-8"
             >
               <span className="relative z-10">Explore the Grounds</span>
               <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-[#E5C76B]/40 to-transparent -translate-x-[150%] skew-x-[-20deg] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></div>
@@ -131,9 +131,9 @@ export default function Hero() {
 
             <button
               onClick={() => openForm()}
-              className="relative min-h-12 overflow-hidden group bg-gradient-to-r from-[#E5C76B] via-[#F3D76C] to-[#C9973B] px-7 py-4 type-cta text-[#3F0C15] font-bold shadow-[0_0_20px_rgba(229,199,107,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(243,215,108,0.7)] hover:scale-[1.02] sm:px-10"
+              className="relative inline-flex items-center justify-center min-h-10 overflow-hidden group bg-gradient-to-r from-[#E5C76B] via-[#F3D76C] to-[#C9973B] px-6 py-3 type-cta text-[#3F0C15] font-bold shadow-[0_0_20px_rgba(229,199,107,0.4)] transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_30px_rgba(243,215,108,0.7)] hover:scale-[1.02] sm:px-8"
             >
-              <span className="relative z-10 flex items-center gap-2">
+              <span className="relative z-10 flex items-center justify-center gap-2">
                 Check Availability
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="transition-transform duration-300 group-hover:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </span>

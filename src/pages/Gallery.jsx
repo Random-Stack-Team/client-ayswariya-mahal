@@ -209,8 +209,8 @@ export default function Gallery() {
         path="/gallery"
       />
       <PageTransition>
-        <main className="min-h-screen overflow-hidden bg-[#fdfbf7]">
-          <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[60vh] md:pb-36 md:pt-40">
+        <main className="min-h-screen overflow-x-clip bg-[#fdfbf7]">
+          <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[600px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-36 lg:pt-40">
             <div
               className="absolute inset-0 bg-cover bg-center bg-fixed"
               style={{ backgroundImage: `url(${gallery3})` }}
@@ -249,7 +249,7 @@ export default function Gallery() {
                     },
                   },
                 }}
-                className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl"
+                className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl md:max-lg:text-[60px]"
               >
                 <motion.span
                   initial={{ opacity: 0, y: 60, rotateX: -30 }}
@@ -277,7 +277,7 @@ export default function Gallery() {
             onKeyDown={handleKeyDown}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
-            className="relative flex min-h-screen flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(229,199,107,0.22),transparent_30%),linear-gradient(180deg,#fdfbf7_0%,#fbf3e7_52%,#f8efe1_100%)] px-4 pb-16 pt-10 outline-none md:px-8 md:pb-20 md:pt-14 lg:pb-24 lg:pt-16"
+            className="relative flex min-h-screen flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(229,199,107,0.22),transparent_30%),linear-gradient(180deg,#fdfbf7_0%,#fbf3e7_52%,#f8efe1_100%)] px-4 pb-16 pt-10 outline-none md:px-8 md:pb-[72px] md:pt-12 lg:pb-24 lg:pt-16"
             aria-label="Scrollable wedding gallery slider"
           >
             <div className="relative z-30 mx-auto flex max-w-5xl flex-col items-center text-center">
@@ -302,7 +302,7 @@ export default function Gallery() {
               <div className="mt-8 max-w-2xl md:mt-10 lg:mt-14">
                 <div className="mx-auto mb-4 h-px w-20 bg-gradient-to-r from-transparent via-[#C9973B] to-transparent" />
                 <p className="type-eyebrow mb-3 text-[#C9973B]">{meta.subtitle}</p>
-                <h2 className="font-serif text-[34px] font-semibold leading-[1.08] tracking-[0.01em] text-[#6A1724] md:text-5xl">
+                <h2 className="font-serif text-[34px] font-semibold leading-[1.08] tracking-[0.01em] text-[#6A1724] md:text-[42px] lg:text-5xl">
                   {meta.title}
                 </h2>
               </div>
@@ -326,7 +326,7 @@ export default function Gallery() {
 
             <div
               ref={railRef}
-              className="relative z-10 mt-10 flex h-[min(50vh,430px)] items-center gap-8 px-[18vw] will-change-transform sm:gap-12 md:mt-12 md:h-[min(52vh,450px)] md:gap-14 md:px-[22vw] lg:mt-16 lg:h-[min(54vh,470px)] lg:gap-20 lg:px-[25vw]"
+              className="relative z-10 mt-10 flex h-[min(50vh,430px)] items-center gap-8 px-[18vw] will-change-transform sm:gap-12 md:mt-12 md:h-[390px] md:gap-12 md:px-[18vw] lg:mt-16 lg:h-[min(54vh,470px)] lg:gap-20 lg:px-[25vw]"
             >
               {images.map((img, index) => (
                 <motion.div
@@ -335,7 +335,7 @@ export default function Gallery() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.24 }}
                   transition={{ duration: 0.85, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] }}
-                  className="luxury-image-frame luxury-image-overlay relative h-[min(50vh,430px)] w-[min(76vw,340px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_28px_70px_rgba(122,27,41,0.18)] transition duration-500 hover:-translate-y-1 md:h-[min(52vh,450px)] md:w-[min(42vw,350px)] lg:h-[min(54vh,470px)] lg:w-[min(76vw,360px)]"
+                  className="luxury-image-frame luxury-image-overlay relative h-[min(50vh,430px)] w-[min(76vw,340px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_28px_70px_rgba(122,27,41,0.18)] transition duration-500 hover:-translate-y-1 md:h-[390px] md:w-[min(38vw,320px)] lg:h-[min(54vh,470px)] lg:w-[min(76vw,360px)]"
                 >
                   <img
                     src={img.src}
@@ -352,8 +352,8 @@ export default function Gallery() {
             </div>
           </section>
 
-          <section className="relative overflow-hidden bg-[#4A0A12] px-5 py-16 sm:px-6 md:py-24 lg:py-40">
-            <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
+          <section className="relative overflow-hidden bg-[#4A0A12] px-5 py-16 sm:px-6 md:py-20 lg:py-40">
+            <div className="mx-auto grid max-w-6xl items-center gap-10 md:grid-cols-[0.95fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -367,7 +367,7 @@ export default function Gallery() {
                   width="1500"
                   height="996"
                   alt="Ayswariya Mahal visual elegance"
-                  className="h-[320px] w-full rounded-xl object-cover shadow-2xl sm:h-[380px] md:h-full"
+                  className="h-[320px] w-full rounded-xl object-cover shadow-2xl sm:h-[380px] md:h-[360px] lg:h-full"
                 />
               </motion.div>
 
@@ -378,7 +378,7 @@ export default function Gallery() {
                 transition={{ duration: 1 }}
                 className="text-white"
               >
-                <h2 className="mb-6 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] md:text-5xl">
+                <h2 className="mb-6 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] md:text-[40px] lg:text-5xl">
                   Walking Through Visual Elegance
                 </h2>
 
@@ -400,7 +400,7 @@ export default function Gallery() {
             </div>
           </section>
 
-          <section className="flex min-h-[320px] items-center justify-center bg-[#fcf9f4] px-5 py-14 sm:px-6 md:min-h-[40vh]">
+          <section className="flex min-h-[320px] items-center justify-center bg-[#fcf9f4] px-5 pt-14 pb-[calc(3.5rem+env(safe-area-inset-bottom))] sm:px-6 md:min-h-[40vh]">
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center">
               <h2 className="font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4A0A12] md:text-5xl">
                 Imagine Your Event Here

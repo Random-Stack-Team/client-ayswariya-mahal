@@ -14,19 +14,19 @@ export default function ContactCTA() {
 
   return (
     <section 
-      className="relative py-[56px] md:py-[80px] overflow-hidden"
+      className="relative py-[56px] md:py-[72px] lg:py-[80px] overflow-hidden"
       style={{ background: "linear-gradient(180deg, #faf7f2 0%, #f7f2eb 100%)" }}
     >
       {/* Subtle Glows */}
       <motion.div 
         animate={{ opacity: [0.3, 0.6, 0.3], scale: [0.95, 1.05, 0.95] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        className="absolute top-1/4 left-1/4 w-[300px] md:w-[400px] h-[300px] md:h-[400px] bg-[#D4A843]/10 rounded-full blur-[100px] pointer-events-none"
+        className="absolute top-1/4 left-1/4 w-[300px] md:w-[320px] lg:w-[400px] h-[300px] md:h-[320px] lg:h-[400px] bg-[#D4A843]/10 rounded-full blur-[100px] pointer-events-none"
       />
       <motion.div 
         animate={{ opacity: [0.15, 0.4, 0.15], scale: [1, 1.1, 1] }}
         transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        className="absolute bottom-1/4 right-1/4 w-[400px] md:w-[500px] h-[400px] md:h-[500px] bg-[#5A111C]/5 rounded-full blur-[120px] pointer-events-none"
+        className="absolute bottom-1/4 right-1/4 w-[400px] md:w-[380px] lg:w-[500px] h-[400px] md:h-[380px] lg:h-[500px] bg-[#5A111C]/5 rounded-full blur-[120px] pointer-events-none"
       />
 
       {/* Floating Petals Animation Container (Behind illustration) */}
@@ -55,7 +55,7 @@ export default function ContactCTA() {
       </div>
 
       <div className="max-w-[1100px] mx-auto px-5 sm:px-6 relative z-10">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-[48px] items-center text-center md:text-left">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-8 lg:gap-[48px] items-center text-center md:text-left">
           
           {/* Left: Premium Celebration Promise Card */}
           <motion.div
@@ -63,7 +63,7 @@ export default function ContactCTA() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="order-1 md:order-1 flex flex-col justify-center items-center p-6 sm:p-8 md:p-14 bg-[#fdfbf7] border border-[#D4A843]/30 rounded-[20px] shadow-[0_15px_50px_rgba(90,17,28,0.06)] w-full max-w-[500px] mx-auto relative overflow-hidden"
+            className="order-1 md:order-1 flex flex-col justify-center items-center p-6 sm:p-8 md:p-8 lg:p-14 bg-[#fdfbf7] border border-[#D4A843]/30 rounded-[20px] shadow-[0_15px_50px_rgba(90,17,28,0.06)] w-full max-w-[500px] mx-auto relative overflow-hidden"
           >
             {/* Decorative Custom Handwritten Heart SVG */}
             <svg width="60" height="60" viewBox="0 0 1024 1024" fill="#D4A843" className="mb-4 opacity-90 drop-shadow-sm">
@@ -136,7 +136,7 @@ M614.589172,770.941284
 z"/>
             </svg>
             
-            <h3 className="font-serif text-[26px] md:text-3xl text-center text-[#5A111C] mb-6 leading-[1.3] font-medium">
+            <h3 className="font-serif text-[26px] md:text-[28px] lg:text-3xl text-center text-[#5A111C] mb-6 leading-[1.3] font-medium">
               A Place Where Promises Become Memories
             </h3>
             
@@ -145,15 +145,15 @@ z"/>
             <ul className="space-y-5 text-center md:text-left w-full px-2">
               <li className="flex items-center justify-center md:justify-start gap-4">
                 <span className="w-1.5 h-1.5 bg-[#D4A843] rounded-full shrink-0"></span>
-                <span className="font-serif text-[#554241] text-[17px] md:text-lg">Engagements filled with warmth</span>
+                <span className="font-serif text-[#554241] text-[17px] md:text-[17px] lg:text-lg">Engagements filled with warmth</span>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-4">
                 <span className="w-1.5 h-1.5 bg-[#D4A843] rounded-full shrink-0"></span>
-                <span className="font-serif text-[#554241] text-[17px] md:text-lg">Weddings crafted with tradition</span>
+                <span className="font-serif text-[#554241] text-[17px] md:text-[17px] lg:text-lg">Weddings crafted with tradition</span>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-4">
                 <span className="w-1.5 h-1.5 bg-[#D4A843] rounded-full shrink-0"></span>
-                <span className="font-serif text-[#554241] text-[17px] md:text-lg">Celebrations remembered for generations</span>
+                <span className="font-serif text-[#554241] text-[17px] md:text-[17px] lg:text-lg">Celebrations remembered for generations</span>
               </li>
             </ul>
             
@@ -169,18 +169,18 @@ z"/>
             transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-col items-center md:items-start order-2 md:order-2"
           >
-            <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] text-[#5A111C] mb-6 md:mb-8">
+            <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] text-[#5A111C] mb-6 md:mb-7 lg:mb-8">
               Crafting Memories <br className="hidden md:block"/>
               <span className="italic font-light text-[#C9973B]">That Last Forever</span>
             </h2>
             
             <div className="w-12 h-px bg-[#C9973B] mb-6 md:mb-8 mx-auto md:mx-0"></div>
 
-            <p className="font-body text-[#554241] text-lg md:text-xl leading-relaxed mb-6 font-medium">
+            <p className="font-body text-[#554241] text-lg md:text-lg lg:text-xl leading-relaxed mb-6 font-medium">
               Every celebration begins with a promise and becomes a memory cherished for generations.
             </p>
             
-            <p className="font-body text-[#554241]/85 text-base md:text-lg leading-[1.8] font-light">
+            <p className="font-body text-[#554241]/85 text-base md:text-[17px] lg:text-lg leading-[1.8] font-light">
               At Ayswariya Mahal, we believe the most beautiful moments are not measured in hours, but in the emotions they leave behind. From engagements and weddings to family celebrations, we provide a setting where stories unfold, relationships grow, and memories are treasured forever.
             </p>
           </motion.div>

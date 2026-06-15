@@ -76,14 +76,14 @@ export default function Reviews() {
         path="/reviews"
       />
       <PageTransition>
-        <main className="relative min-h-screen overflow-hidden bg-[#fdfbf7] pt-24 md:pt-32">
+        <main className="relative min-h-screen overflow-x-clip bg-[#fdfbf7] pt-24 md:pt-28 lg:pt-32">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute left-0 top-0 h-[1400px] w-full bg-gradient-to-b from-[#4A0A12]/28 via-[#6a1a24]/18 via-[#f7f0e4]/10 to-[#fdfbf7]" />
           </div>
 
-          <section className="relative z-20 px-5 pb-16 sm:px-6 md:pb-24 lg:pb-28">
+          <section className="relative z-20 px-5 pb-16 sm:px-6 md:pb-20 lg:pb-28">
             <motion.div
-              className="relative mx-auto max-w-[1320px] overflow-hidden rounded-[1.5rem] border border-[#E5C76B]/20 bg-gradient-to-br from-[#fffdf7] via-[#faf6ea] to-[#f5ecd1] p-5 text-center shadow-[0_35px_110px_rgba(74,10,18,0.14)] sm:p-8 md:rounded-[2rem] md:p-12 lg:rounded-[2.5rem] lg:p-20"
+              className="relative mx-auto max-w-[1320px] overflow-hidden rounded-[1.5rem] border border-[#E5C76B]/20 bg-gradient-to-br from-[#fffdf7] via-[#faf6ea] to-[#f5ecd1] p-5 text-center shadow-[0_35px_110px_rgba(74,10,18,0.14)] sm:p-8 md:rounded-[2rem] md:p-10 lg:rounded-[2.5rem] lg:p-20"
               initial={{ opacity: 0, y: 70, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
@@ -113,7 +113,7 @@ export default function Reviews() {
                 </motion.p>
 
                 <motion.h1
-                  className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#4A0A12] drop-shadow-sm"
+                  className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#4A0A12] drop-shadow-sm md:max-lg:text-[58px]"
                   initial={{ opacity: 0, y: 28 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.65, delay: 0.2 }}
@@ -131,7 +131,7 @@ export default function Reviews() {
                 </motion.p>
 
                 <motion.div
-                  className="mx-auto mt-8 max-w-2xl rounded-[1.5rem] border border-[#E5C76B]/30 bg-[#fffdf8]/90 p-5 text-center shadow-sm backdrop-blur-sm sm:p-7 md:mt-12 md:rounded-[2rem] md:p-10"
+                  className="mx-auto mt-8 max-w-2xl rounded-[1.5rem] border border-[#E5C76B]/30 bg-[#fffdf8]/90 p-5 text-center shadow-sm backdrop-blur-sm sm:p-7 md:mt-10 md:rounded-[2rem] md:p-8 lg:mt-12 lg:p-10"
                   initial={{ opacity: 0, y: 35, scale: 0.96 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
@@ -184,7 +184,7 @@ export default function Reviews() {
 
           <section className="relative z-10 px-5 pb-16 sm:px-6 md:pb-24">
             <div className="mx-auto max-w-[1180px]">
-              <div className="grid items-center gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-12">
+              <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
                 <motion.div
                   initial={{ opacity: 0, x: -40 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -193,7 +193,7 @@ export default function Reviews() {
                 >
                   <p className="mb-5 type-eyebrow text-[#E5C76B]">Guest Reviews</p>
 
-                  <h2 className="mb-6 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4A0A12] md:text-5xl">
+                  <h2 className="mb-6 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4A0A12] md:text-[40px] lg:text-5xl">
                     Real Words From <span className="italic text-[#E5C76B]">Happy Families</span>
                   </h2>
 
@@ -222,7 +222,7 @@ export default function Reviews() {
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={activeReview}
-                      className="relative w-full max-w-2xl overflow-hidden rounded-[1.5rem] border border-[#E5C76B]/30 bg-[#fffdf8] p-5 shadow-[0_24px_70px_rgba(74,10,18,0.14)] sm:p-7 md:rounded-[2rem] md:p-10"
+                      className="relative w-full max-w-2xl overflow-hidden rounded-[1.5rem] border border-[#E5C76B]/30 bg-[#fffdf8] p-5 shadow-[0_24px_70px_rgba(74,10,18,0.14)] sm:p-7 md:rounded-[2rem] md:p-8 lg:p-10"
                       initial={{ opacity: 0, x: 65, scale: 0.98 }}
                       animate={{ opacity: 1, x: 0, scale: 1 }}
                       exit={{ opacity: 0, x: -65, scale: 0.98 }}
@@ -266,7 +266,7 @@ export default function Reviews() {
             </div>
           </section>
 
-          <section className="relative z-10 border-t-4 border-double border-[#E5C76B] bg-[#4A0A12] px-5 py-16 text-center sm:px-6 md:py-[96px] lg:py-[120px]">
+          <section className="relative z-10 border-t-4 border-double border-[#E5C76B] bg-[#4A0A12] px-5 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] text-center sm:px-6 md:pt-20 md:pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-[120px]">
             <motion.div
               className="mx-auto max-w-4xl"
               initial={{ opacity: 0, y: 45 }}
@@ -276,7 +276,7 @@ export default function Reviews() {
             >
               <p className="mb-6 type-eyebrow text-[#E5C76B]">Celebrate With Us</p>
 
-              <h2 className="mb-8 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] md:text-5xl">
+              <h2 className="mb-8 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] md:text-[40px] lg:text-5xl">
                 Let's Make Your Special Day <span className="italic text-[#E5C76B]">Memorable</span>
               </h2>
 

@@ -136,7 +136,7 @@ function Navbar() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute left-0 top-full h-screen w-screen bg-[#3F0C15]/44 backdrop-blur-[3px] lg:hidden"
+                className="absolute left-0 top-full h-screen w-full bg-[#3F0C15]/44 backdrop-blur-[3px] lg:hidden"
               />
               <motion.div
                 initial={{ opacity: 0, x: "100%" }}

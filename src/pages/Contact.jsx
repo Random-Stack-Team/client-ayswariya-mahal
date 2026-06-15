@@ -36,7 +36,7 @@ export default function Contact() {
       <PageTransition>
         <main className="bg-[#fdfbf7] min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex min-h-[520px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[60vh] md:pb-32 md:pt-40">
+      <section className="relative flex min-h-[520px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[580px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-32 lg:pt-40">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${heroImg})` }}
@@ -62,7 +62,7 @@ export default function Contact() {
           </motion.p>
 
           <motion.h1
-            className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl"
+            className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl md:max-lg:text-[58px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -72,8 +72,8 @@ export default function Contact() {
       </section>
 
       {/* Content Section */}
-      <section className="px-5 pb-16 pt-16 sm:px-6 md:py-[80px] lg:pt-40">
-        <div className="max-w-site mx-auto grid md:grid-cols-2 gap-10 md:gap-12 lg:gap-16">
+      <section className="px-5 pb-16 pt-16 sm:px-6 md:py-[72px] lg:pt-40">
+        <div className="max-w-site mx-auto grid md:grid-cols-[0.95fr_1.05fr] lg:grid-cols-2 gap-10 md:gap-10 lg:gap-16">
           
           {/* Contact Information */}
           <motion.div
@@ -84,7 +84,7 @@ export default function Contact() {
             className="flex flex-col space-y-8 md:space-y-10 lg:space-y-12"
           >
             <div>
-              <h2 className="font-serif text-[32px] md:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-6">We'd Love to Hear From You</h2>
+              <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-6">We'd Love to Hear From You</h2>
               <p className="type-body text-[#4f4038]">
                 Whether you're planning a grand wedding, a corporate event, or a family gathering, our Heritage Concierge team is here to assist you in making your event truly unforgettable.
               </p>
@@ -150,8 +150,8 @@ export default function Contact() {
             className="flex flex-col h-full space-y-8"
           >
             {/* Inline Enquiry Form */}
-            <form onSubmit={handleSubmit} className="bg-white p-5 sm:p-7 md:p-8 lg:p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20">
-              <h3 className="font-serif text-2xl md:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-4 text-center">Plan Your Celebration</h3>
+            <form onSubmit={handleSubmit} className="bg-white p-5 sm:p-7 md:p-7 lg:p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20">
+              <h3 className="font-serif text-2xl md:text-[28px] lg:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-4 text-center">Plan Your Celebration</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" className="min-h-12 p-3 border border-[#e8e2d7] rounded" />
@@ -176,7 +176,7 @@ export default function Contact() {
             </form>
 
             {/* Google Map Embed */}
-            <div className="flex-1 min-h-[300px] md:min-h-[400px] bg-[#E3D5B8] rounded-2xl overflow-hidden relative border border-gold-leaf/30 shadow-inner group">
+            <div className="flex-1 min-h-[300px] md:min-h-[340px] lg:min-h-[400px] bg-[#E3D5B8] rounded-2xl overflow-hidden relative border border-gold-leaf/30 shadow-inner group">
               <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.5775053385532!2d80.2115214!3d13.0625433!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526695dd0a89ad%3A0x1b112a6d3c31ebea!2sAyswariya%20Mahal%20Marriage%20and%20Exhibition%20Hall!5e0!3m2!1sen!2sin!4v1780692465802!5m2!1sen!2sin" 
                 className="absolute inset-0 w-full h-full filter grayscale-[20%] contrast-125 sepia-[20%] transition-all duration-700 group-hover:grayscale-0 group-hover:sepia-0 group-hover:contrast-100"
