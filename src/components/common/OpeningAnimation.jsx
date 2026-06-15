@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
 import "./OpeningAnimation.css";
 
 const openingTextPaths = {
@@ -194,42 +195,64 @@ const logoPaths = [
 
 const INTRO_DURATION = 4300;
 const EXIT_DURATION = 820;
+const LITE_EXIT_DURATION = 250;
+const LITE_TABLET_DURATION = 1400;
+const LITE_MOBILE_DURATION = 400;
 
 export default function OpeningAnimation({ onComplete }) {
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const isMobileLite = useMediaQuery("(max-width: 639px)");
+  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+
+  const renderingMode = prefersReducedMotion ? "skip" : isDesktop ? "full" : "lite";
   const [isExiting, setIsExiting] = useState(false);
   const glyphRefs = useRef([]);
   const hasCompleted = useRef(false);
 
+  useLayoutEffect(() => {
+    if (renderingMode === "skip") {
+      hasCompleted.current = true;
+      onComplete();
+    }
+  }, [renderingMode, onComplete]);
+
   useEffect(() => {
+    if (renderingMode !== "full") return;
     glyphRefs.current.forEach((path) => {
       if (!path) return;
-
-      // SVG handwriting works by measuring each generated glyph path, hiding the
-      // stroke with dashoffset, then animating the offset back to zero.
       const length = path.getTotalLength();
       path.style.setProperty("--path-length", length);
     });
-  }, []);
+  }, [renderingMode]);
 
-  const startExit = useCallback(() => {
+  const finishIntro = useCallback(() => {
     if (hasCompleted.current) return;
     hasCompleted.current = true;
-    setIsExiting(true);
-    window.setTimeout(onComplete, EXIT_DURATION);
-  }, [onComplete]);
+    if (renderingMode === "full") {
+      setIsExiting(true);
+      window.setTimeout(onComplete, EXIT_DURATION);
+    } else {
+      setIsExiting(true);
+      window.setTimeout(onComplete, LITE_EXIT_DURATION);
+    }
+  }, [onComplete, renderingMode]);
 
   useEffect(() => {
-    const finishTimer = window.setTimeout(startExit, INTRO_DURATION);
+    if (renderingMode === "skip") return;
+    const duration = renderingMode === "full"
+      ? INTRO_DURATION
+      : isMobileLite ? LITE_MOBILE_DURATION : LITE_TABLET_DURATION;
+    const finishTimer = window.setTimeout(finishIntro, duration);
     return () => window.clearTimeout(finishTimer);
-  }, [startExit]);
+  }, [renderingMode, finishIntro, isMobileLite]);
+
+  if (renderingMode === "skip") return null;
 
   const renderGlyphs = (glyphs) =>
     glyphs.map((glyph, index) => (
       <path
         key={`${glyph.ch}-${index}`}
-        ref={(node) => {
-          glyphRefs.current[index] = node;
-        }}
+        ref={renderingMode === "full" ? (node) => { glyphRefs.current[index] = node; } : undefined}
         className="opening-animation__glyph"
         d={glyph.d}
         style={{ "--letter-delay": `${glyph.delay}s` }}
@@ -241,9 +264,7 @@ export default function OpeningAnimation({ onComplete }) {
     logoPaths.map((path, index) => (
       <path
         key={`${path.fill}-${index}`}
-        ref={(node) => {
-          glyphRefs.current[openingTextPaths.top.length + index] = node;
-        }}
+        ref={renderingMode === "full" ? (node) => { glyphRefs.current[openingTextPaths.top.length + index] = node; } : undefined}
         className="opening-animation__logo-path"
         d={path.d}
         style={{
@@ -256,7 +277,7 @@ export default function OpeningAnimation({ onComplete }) {
 
   return (
     <section
-      className={`opening-animation ${isExiting ? "opening-animation--exit" : ""}`}
+      className={`opening-animation ${isExiting ? "opening-animation--exit" : ""} ${renderingMode === "lite" ? "opening-animation--lite" : ""}`}
       aria-label="Welcome to Ayswariya Mahal"
     >
       <div className="opening-animation__frame">

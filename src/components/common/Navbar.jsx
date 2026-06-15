@@ -1,6 +1,7 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { useEnquiry } from "../../context/useEnquiry";
+import { useState, useEffect } from "react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
 import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
 
@@ -23,6 +24,7 @@ function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrollingUp, setIsScrollingUp] = useState(true);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { openForm } = useEnquiry();
   const isHome = location.pathname === "/";
   const navVisible = isMobileMenuOpen || !isScrolled || isScrollingUp;
   const solidNav = isScrolled || isMobileMenuOpen || !isHome;
@@ -32,6 +34,14 @@ function Navbar() {
     setIsScrolled(latest > 42);
     setIsScrollingUp(latest < 50 || latest < previous);
   });
+
+  // Close mobile menu when viewport enters desktop width
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 1024px)");
+    const onDesktop = () => setIsMobileMenuOpen(false);
+    mq.addEventListener("change", onDesktop);
+    return () => mq.removeEventListener("change", onDesktop);
+  }, []);
 
   const linkClass = ({ isActive }) =>
     [
@@ -44,8 +54,10 @@ function Navbar() {
 
   const mobileLinkClass = ({ isActive }) =>
     [
-      "block border-b border-[#d4af37]/14 py-4 text-left font-nav text-[18px] font-normal uppercase leading-[1.35] tracking-[0.105em] transition-colors duration-300",
-      isActive ? "text-[#b58c2a]" : "text-[#4a3623] hover:text-[#b58c2a]",
+      "block border-b border-[#d4af37]/14 py-4 pl-3 text-left font-nav text-[18px] font-normal uppercase leading-[1.35] tracking-[0.105em] transition-all duration-300",
+      isActive
+        ? "border-l-[3px] border-[#d4af37] text-[#8c6419] bg-gradient-to-r from-[#d4af37]/8 to-transparent"
+        : "border-l-[3px] border-transparent text-[#4a3623] hover:bg-[#d4af37]/4 hover:text-[#6A1724]",
     ].join(" ");
 
   const handleLogoClick = () => {
@@ -82,7 +94,7 @@ function Navbar() {
 
           <button
             onClick={handleLogoClick}
-            className="group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:justify-self-center"
+            className={`group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:justify-self-center ${isMobileMenuOpen ? "invisible" : ""} lg:visible`}
             aria-label="Ayswariya Mahal home"
           >
             <img
@@ -113,7 +125,7 @@ function Navbar() {
 
           <button
             onClick={() => setIsMobileMenuOpen((open) => !open)}
-            className={`grid h-11 w-11 place-items-center rounded-full border justify-self-end transition-colors duration-300 lg:hidden ${
+            className={`grid h-11 w-11 place-items-center rounded-full border justify-self-end transition-colors duration-300 lg:hidden ${isMobileMenuOpen ? "invisible" : ""} ${
               solidNav
                 ? "border-[#d4af37]/45 bg-white/35 text-[#4a3623]"
                 : "border-white/24 bg-white/10 text-white backdrop-blur-md"
@@ -136,35 +148,65 @@ function Navbar() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute left-0 top-full h-screen w-full bg-[#3F0C15]/44 backdrop-blur-[3px] lg:hidden"
+                className="fixed inset-0 bg-[#3F0C15]/44 backdrop-blur-[3px] lg:hidden"
               />
               <motion.div
                 initial={{ opacity: 0, x: "100%" }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: "100%" }}
                 transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                className="absolute right-0 top-full max-h-[calc(100vh-68px)] w-[min(92vw,410px)] overflow-y-auto border-l border-t border-[#d4af37]/24 bg-[rgba(250,247,242,0.96)] px-5 py-6 shadow-[-22px_24px_60px_rgba(48,20,12,0.2)] backdrop-blur-[12px] sm:px-7 sm:py-9 lg:hidden"
+                className="fixed right-0 top-0 h-[100dvh] w-[min(90vw,420px)] overflow-y-auto border-l border-[#d4af37]/24 bg-gradient-to-b from-[#fdfaf3] via-[#fcf9f4] to-[#f9f4eb] shadow-[-22px_24px_60px_rgba(48,20,12,0.25)] lg:hidden"
+                style={{ paddingTop: "env(safe-area-inset-top)", paddingBottom: "env(safe-area-inset-bottom)" }}
               >
-                <div className="flex flex-col">
-                  <div className="mb-5 flex items-center justify-between border-b border-[#d4af37]/20 pb-5">
-                    <span className="font-nav text-sm font-normal uppercase tracking-[0.16em] text-[#8c6419]">
-                      Menu
-                    </span>
-                    <span className="h-px w-16 bg-[#d4af37]/60" />
+                <div className="flex h-full flex-col justify-between px-5 py-6 sm:px-7 sm:py-9">
+                  {/* Top: Logo + Close + Divider */}
+                  <div>
+                    <div className="flex items-center justify-between mb-4">
+                      <button onClick={handleLogoClick}>
+                        <img src={logoImg} alt="Ayswariya Mahal" className="h-11 w-auto" />
+                      </button>
+                      <button
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="grid h-11 w-11 place-items-center text-[#5A111C]/70 hover:text-[#5A111C] transition-colors rounded-full hover:bg-[#d4af37]/10"
+                        aria-label="Close navigation"
+                      >
+                        <X size={24} />
+                      </button>
+                    </div>
+                    <div className="flex items-center gap-3 w-full">
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent" />
+                      <div className="h-2 w-2 rotate-45 border border-[#d4af37] bg-[#d4af37]/20" />
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent" />
+                    </div>
                   </div>
 
-                  {links.map((link) => (
-                    <NavLink
-                      key={link.to}
-                      to={link.to}
-                      className={mobileLinkClass}
-                      onClick={() => setIsMobileMenuOpen(false)}
+                  {/* Middle: Nav links centered */}
+                  <div className="flex flex-1 flex-col justify-center gap-1">
+                    {links.map((link) => (
+                      <NavLink
+                        key={link.to}
+                        to={link.to}
+                        className={mobileLinkClass}
+                        onClick={() => setIsMobileMenuOpen(false)}
+                      >
+                        {link.label}
+                      </NavLink>
+                    ))}
+                  </div>
+
+                  {/* Bottom: CTA + Accent */}
+                  <div className="flex flex-col items-center gap-5 pt-6 border-t border-[#d4af37]/20">
+                    <button
+                      onClick={() => { setIsMobileMenuOpen(false); openForm(); }}
+                      className="flex w-full items-center justify-center gap-3 min-h-[50px] rounded-full bg-gradient-to-r from-[#d4af37] to-[#e5c76b] text-[#3F0C15] font-semibold tracking-[0.08em] uppercase shadow-lg shadow-[#d4af37]/30 hover:shadow-xl hover:shadow-[#d4af37]/40 transition-all duration-300 hover:-translate-y-0.5"
                     >
-                      {link.label}
-                    </NavLink>
-                  ))}
-
-
+                      <Sparkles size={18} />
+                      Plan Your Wedding
+                    </button>
+                    <p className="type-small text-[#8c6419]/60 text-center">
+                      Ayswariya Mahal — Est. 2020
+                    </p>
+                  </div>
                 </div>
               </motion.div>
             </>

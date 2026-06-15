@@ -132,19 +132,25 @@ export default function FloatingEnvelope() {
     runLater(() => {
       setSubmitStatus("success");
       runLater(() => {
-        setSubmitStatus("sealing_paper");
-        runLater(() => {
-          setSubmitStatus("sealing_flap");
+        if (isCompactViewport) {
           runLater(() => {
-            setSubmitStatus("departing");
-            runLater(() => {
-              setIsEnvelopeVisible(false);
-              setIsHovered(false);
-              closeForm();
-              setSubmitStatus("idle");
-            }, 1000);
+            handleClose();
           }, 1200);
-        }, 700);
+        } else {
+          setSubmitStatus("sealing_paper");
+          runLater(() => {
+            setSubmitStatus("sealing_flap");
+            runLater(() => {
+              setSubmitStatus("departing");
+              runLater(() => {
+                setIsEnvelopeVisible(false);
+                setIsHovered(false);
+                closeForm();
+                setSubmitStatus("idle");
+              }, 1000);
+            }, 1200);
+          }, 700);
+        }
       }, 2500);
     }, 1000);
   };
@@ -159,24 +165,151 @@ export default function FloatingEnvelope() {
   const springConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
   const paperSpringConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
 
-  return (
-    <AnimatePresence>
-      {isVisible && (
-        <>
-          <AnimatePresence>
-            {isExpanded && (
-              <motion.button
-                type="button"
-                aria-label="Close enquiry form"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={handleClose}
-                className="fixed inset-0 bg-[#2A141A]/85 backdrop-blur-md z-[100]"
-              />
-            )}
-          </AnimatePresence>
+  const expandedContent = (
+    <AnimatePresence mode="wait">
+      {submitStatus === "submitting" ? (
+        <motion.div
+          key="loading"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="w-full flex flex-col items-center justify-center z-30 space-y-5 py-8"
+        >
+          <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
+          <p className="type-eyebrow text-[#4a3623]">Sealing Petition...</p>
+        </motion.div>
+      ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
+        <motion.div
+          key="success"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="w-full flex flex-col items-center justify-center text-center p-8 z-30"
+        >
+          <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mt-4 mb-8 border-[2px] border-[#4a3623]">
+            <Heart size={20} className="text-[#4a3623] fill-[#4a3623]" />
+          </div>
+          <h2 className="font-serif text-2xl text-[#4a3623] tracking-[0.01em] mb-4 font-semibold">Petition Received</h2>
+          <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
+          <p className="type-body text-[#4a3623] max-w-xs italic">
+            Your royal request has been elegantly sealed. Our Heritage Concierge will contact you shortly.
+          </p>
+        </motion.div>
+      ) : (
+        <motion.div
+          key="form"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="w-full px-5 pt-2 z-30 flex flex-col justify-start sm:px-6 sm:pt-3"
+        >
+          <header className="mb-2 text-center">
+            <div className="text-[#4a3623] flex justify-center mb-1"><Sparkles size={18} strokeWidth={2} /></div>
+            <h2 className="font-serif font-semibold text-2xl md:text-3xl text-[#4a3623] tracking-[0.02em]">Send an Enquiry</h2>
+            <div className="flex items-center justify-center gap-4 mt-2">
+              <div className="w-12 h-[2px] bg-[#4a3623]"></div>
+              <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
+              <div className="w-12 h-[2px] bg-[#4a3623]"></div>
+            </div>
+          </header>
 
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4 md:gap-y-5">
+              <div className="relative group">
+                <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
+                <input type="text" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="e.g. Anand & Priya" />
+              </div>
+
+              <div className="relative group">
+                <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
+                <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="+91" />
+              </div>
+
+              <div className="relative group">
+                <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
+                <input type="email" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="your@email.com" />
+              </div>
+
+              <div className="relative group">
+                <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
+                <input type="date" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] cursor-pointer" />
+              </div>
+            </div>
+
+            <div className="relative group">
+              <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
+              <textarea rows="2" required className="min-h-16 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] placeholder:text-[#a89d8c] resize-none" placeholder="Tell us about your requirements..."></textarea>
+            </div>
+
+            <div className="pt-2 pb-3 flex justify-center">
+              <button 
+                type="submit" 
+                className="relative min-h-12 px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
+              >
+                <div className="relative z-10 flex items-center justify-center">
+                  <span className="type-cta text-[#4a3623] flex items-center justify-center whitespace-nowrap">
+                    Seal & Submit
+                  </span>
+                </div>
+              </button>
+            </div>
+          </form>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
+  return (
+    <>
+      {/* ── Shared backdrop (mobile & desktop) ── */}
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.button
+            type="button"
+            aria-label="Close enquiry form"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleClose}
+            className="fixed inset-0 bg-[#2A141A]/85 backdrop-blur-md z-[100]"
+          />
+        )}
+      </AnimatePresence>
+
+      {/* ── Mobile/tablet modal (own AnimatePresence for exit animation) ── */}
+      <AnimatePresence>
+        {isExpanded && isCompactViewport && (
+          <motion.div
+            key="compact-form"
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed z-[101] inset-0 flex items-center justify-center pointer-events-none"
+          >
+            <div className="relative pointer-events-auto w-[calc(100vw-32px)] max-w-md max-h-[calc(100dvh-32px)] bg-[#fdfbf7] rounded-xl border-2 border-[#d4af37] shadow-2xl flex flex-col overflow-hidden antialiased">
+              <div className="absolute inset-[6px] border-[2px] border-[#d4af37]/40 pointer-events-none rounded-lg" />
+
+              <button
+                aria-label="Close enquiry form"
+                onClick={(e) => { e.stopPropagation(); handleClose(); }}
+                className="absolute top-4 right-4 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/80 rounded-full p-1.5 shadow-sm"
+              >
+                <X size={18} strokeWidth={1.5} />
+              </button>
+
+              <div className="relative w-full h-full min-h-0 flex-1 overflow-y-auto overscroll-contain hide-scrollbar z-30 pt-4">
+                {expandedContent}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Desktop envelope + collapsed envelope (all non-mobile-expanded states) ── */}
+      <AnimatePresence>
+        {isVisible && (!isCompactViewport || !isExpanded) && (
           <div
             className={`fixed z-[101] ${
               isExpanded
@@ -192,7 +325,7 @@ export default function FloatingEnvelope() {
                   : { x: 0, y: isExpanded && !isCompactViewport ? 180 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
               }
               transition={submitStatus === "departing" ? { duration: 1, ease: "easeInOut" } : springConfig}
-              exit={{ x: 300, y: 0, opacity: 0, scale: 0.9 }}
+              exit={{ x: 0, y: 0, opacity: 0, scale: 0.95 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="relative pointer-events-auto h-[180px] w-[280px] md:h-[210px] md:w-[340px]"
@@ -234,9 +367,9 @@ export default function FloatingEnvelope() {
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
                 style={{ 
                   width: isPaperExpanded ? (isCompactViewport ? "92vw" : 460) : "85%",
-                  height: isPaperExpanded ? (isCompactViewport ? "min(620px, 82vh)" : 540) : "90%",
+                  height: isPaperExpanded ? (isCompactViewport ? "min(620px, 80dvh)" : 540) : "90%",
                   maxWidth: "95vw",
-                  maxHeight: isCompactViewport ? "82vh" : "85vh",
+                  maxHeight: isCompactViewport ? "80dvh" : "85vh",
                   left: "50%",
                   x: "-50%",
                   cursor: isExpanded ? "default" : "pointer",
@@ -254,114 +387,33 @@ export default function FloatingEnvelope() {
                   </button>
                 )}
 
-                <div className="relative w-full h-full flex flex-col z-30 pt-4">
-                  <AnimatePresence mode="wait">
-                    {!isExpanded ? (
-                      <motion.div
-                        key="quote"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="flex flex-col items-center justify-start text-center pt-4 px-6 h-full"
-                      >
-                        <div className="text-[#a67c00] mb-2"><Sparkles size={16} strokeWidth={1} /></div>
-                        <h4 className="type-eyebrow text-[#4a3623] mb-1">Planning Your</h4>
-                        <h3 className="font-serif text-[#b58c2a] text-[22px] md:text-2xl tracking-[0.01em] mb-3 drop-shadow-sm font-semibold">Dream Wedding?</h3>
-                        
-                        <div className="flex items-center justify-center gap-3 mb-4 w-full px-8">
-                          <div className="h-[2px] bg-[#4a3623] flex-1"></div>
-                          <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
-                          <div className="h-[2px] bg-[#4a3623] flex-1"></div>
-                        </div>
+                <div className="relative w-full h-full flex flex-col z-30 pt-4 overflow-y-auto overscroll-contain hide-scrollbar">
+                  {!isExpanded ? (
+                    <motion.div
+                      key="quote"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="flex flex-col items-center justify-start text-center pt-4 px-6"
+                    >
+                      <div className="text-[#a67c00] mb-2"><Sparkles size={16} strokeWidth={1} /></div>
+                      <h4 className="type-eyebrow text-[#4a3623] mb-1">Planning Your</h4>
+                      <h3 className="font-serif text-[#b58c2a] text-[22px] md:text-2xl tracking-[0.01em] mb-3 drop-shadow-sm font-semibold">Dream Wedding?</h3>
+                      
+                      <div className="flex items-center justify-center gap-3 mb-4 w-full px-8">
+                        <div className="h-[2px] bg-[#4a3623] flex-1"></div>
+                        <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
+                        <div className="h-[2px] bg-[#4a3623] flex-1"></div>
+                      </div>
 
-                        <p className="type-body text-[#4a3623] italic px-4 whitespace-pre-line">
-                          "{quote}"
-                        </p>
-                      </motion.div>
-                    ) : submitStatus === "submitting" ? (
-                      <motion.div
-                        key="loading"
-                        className="w-full h-full flex flex-col items-center justify-center z-30 space-y-5"
-                      >
-                        <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
-                        <p className="type-eyebrow text-[#4a3623]">Sealing Petition...</p>
-                      </motion.div>
-                    ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
-                      <motion.div
-                        key="success"
-                        animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1 }}
-                        transition={{ duration: 0.3 }}
-                        className="w-full h-full flex flex-col items-center justify-center text-center p-8 z-30"
-                      >
-                        <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-8 border-[2px] border-[#4a3623]">
-                          <Heart size={20} className="text-[#4a3623] fill-[#4a3623]" />
-                        </div>
-                        <h2 className="font-serif text-2xl text-[#4a3623] tracking-[0.01em] mb-4 font-semibold">Petition Received</h2>
-                        <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
-                        <p className="type-body text-[#4a3623] max-w-xs italic">
-                          Your royal request has been elegantly sealed. Our Heritage Concierge will contact you shortly.
-                        </p>
-                      </motion.div>
-                    ) : (
-                      <motion.div
-                        key="form"
-                        className="w-full h-full px-5 py-6 z-30 flex flex-col justify-center sm:px-6"
-                      >
-                        <header className="mb-6 text-center">
-                          <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={18} strokeWidth={2} /></div>
-                          <h2 className="font-serif font-semibold text-2xl text-[#4a3623] tracking-[0.01em]">Send an Enquiry</h2>
-                          <div className="flex items-center justify-center gap-4 mt-3">
-                            <div className="w-12 h-[2px] bg-[#4a3623]"></div>
-                            <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
-                            <div className="w-12 h-[2px] bg-[#4a3623]"></div>
-                          </div>
-                        </header>
-
-                        <form className="space-y-6" onSubmit={handleSubmit}>
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-5 md:gap-y-6">
-                            <div className="relative group">
-                              <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
-                              <input type="text" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="e.g. Anand & Priya" />
-                            </div>
-
-                            <div className="relative group">
-                              <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
-                              <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="+91" />
-                            </div>
-
-                            <div className="relative group">
-                              <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
-                              <input type="email" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="your@email.com" />
-                            </div>
-
-                            <div className="relative group">
-                              <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
-                              <input type="date" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] cursor-pointer" />
-                            </div>
-                          </div>
-
-                          <div className="relative group pt-1">
-                            <label className="block font-sans text-xs tracking-[0.08em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
-                            <textarea rows="2" required className="min-h-16 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-sans text-base text-[#4a3623] placeholder:text-[#a89d8c] resize-none" placeholder="Tell us about your requirements..."></textarea>
-                          </div>
-
-                          <div className="pt-6 pb-2 flex justify-center">
-                            <button 
-                              type="submit" 
-                              className="relative min-h-12 px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
-                            >
-                              <div className="relative z-10 flex items-center justify-center">
-                                <span className="type-cta text-[#4a3623] flex items-center justify-center whitespace-nowrap">
-                                  Seal & Submit
-                                </span>
-                              </div>
-                            </button>
-                          </div>
-                        </form>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      <p className="type-body text-[#4a3623] italic px-4 whitespace-pre-line">
+                        "{quote}"
+                      </p>
+                    </motion.div>
+                  ) : (
+                    expandedContent
+                  )}
                 </div>
               </motion.div>
 
@@ -390,8 +442,6 @@ export default function FloatingEnvelope() {
                     </div>
                   </div>
                 </div>
-
-
 
                 <AnimatePresence>
                   {!isExpanded && (
@@ -444,8 +494,8 @@ export default function FloatingEnvelope() {
               )}
             </motion.div>
           </div>
-        </>
-      )}
-    </AnimatePresence>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

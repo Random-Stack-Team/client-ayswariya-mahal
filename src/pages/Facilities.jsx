@@ -233,10 +233,10 @@ export default function Facilities() {
                   <div className="h-full rounded-[25px] border border-[#e5c76b]/42 overflow-hidden xl:rounded-[37px]">
 
                     {/* INNER CARD */}
-                    <div className="relative flex h-full min-h-[430px] flex-col overflow-hidden rounded-[23px] bg-[#fcf9f4] transition-all duration-500 group-hover:-translate-y-1 md:min-h-[440px] xl:min-h-0 xl:rounded-[35px]">
+                    <div className="relative flex h-full max-lg:h-[400px] flex-col overflow-hidden rounded-[23px] bg-[#fcf9f4] transition-all duration-500 group-hover:-translate-y-1 xl:rounded-[35px]">
 
                       {/* IMAGE */}
-                      <div className="relative h-52 flex-shrink-0 overflow-hidden sm:h-56 md:h-48 lg:h-52 xl:h-44">
+                      <div className="relative h-48 flex-shrink-0 overflow-hidden lg:h-52 xl:h-44">
 
                         <img
                           src={item.image}
