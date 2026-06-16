@@ -368,15 +368,5 @@ button,
   background-position: left bottom, right top, center, center, center;
 }
 
-.custom-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.custom-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-
 /* Site container max width */
 .max-w-site { max-width: 1320px; }

@@ -179,8 +179,11 @@ export default function FloatingEnvelope() {
   const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
   const isFlapOpen = submitStatus !== "sealing_flap" && submitStatus !== "departing";
 
-  const springConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
-  const paperSpringConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
+  const springConfig = { duration: 0.68, ease: "easeOut" };
+  const paperSpringConfig = { duration: 0.68, ease: "easeOut" };
+  const contentRevealConfig = { duration: 0.46, ease: "easeOut" };
+  const stateRevealConfig = { duration: 0.42, ease: "easeOut" };
+  const closeConfig = { duration: 0.35, ease: "easeOut" };
   const stateContainerClass = "w-full flex min-h-[300px] sm:min-h-[340px] md:min-h-[360px] flex-1 flex-col items-center justify-center px-6 text-center z-30";
 
   const expandedContent = (
@@ -188,9 +191,10 @@ export default function FloatingEnvelope() {
       {submitStatus === "submitting" ? (
         <motion.div
           key="loading"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={stateRevealConfig}
           className={`${stateContainerClass} space-y-5`}
         >
           <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
@@ -199,10 +203,10 @@ export default function FloatingEnvelope() {
       ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
         <motion.div
           key="success"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={stateRevealConfig}
           className={stateContainerClass}
         >
           <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-6 border-[2px] border-[#4a3623]">
@@ -217,9 +221,10 @@ export default function FloatingEnvelope() {
       ) : (
         <motion.div
           key="form"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
+          transition={{ ...contentRevealConfig, delay: 0.1 }}
           className="w-full px-5 pt-2 pb-10 z-30 flex flex-col justify-start sm:px-6 sm:pt-3 md:pb-12"
         >
           <header className="mb-3 text-center">
@@ -297,6 +302,7 @@ export default function FloatingEnvelope() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={closeConfig}
             onClick={handleClose}
             className="fixed inset-0 bg-[#2A141A]/85 backdrop-blur-md z-[100]"
           />
@@ -308,10 +314,10 @@ export default function FloatingEnvelope() {
         {isExpanded && isCompactViewport && (
           <motion.div
             key="compact-form"
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.96, y: 12 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            exit={{ opacity: 0, scale: 0.98, y: 0 }}
+            transition={springConfig}
             className="fixed z-[101] inset-0 flex items-center justify-center pointer-events-none"
           >
             <div className="relative pointer-events-auto w-[calc(100vw-32px)] max-w-md max-h-[calc(100dvh-32px)] bg-[#fdfbf7] rounded-xl border-2 border-[#d4af37] shadow-2xl flex flex-col overflow-hidden antialiased">
@@ -344,14 +350,14 @@ export default function FloatingEnvelope() {
             }`}
           >
             <motion.div
-              initial={{ x: 300, y: 0, opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: isExpanded ? 0.96 : 0.62, y: 12 }}
               animate={
                 submitStatus === "departing" 
                   ? { x: 0, y: -80, opacity: 0, scale: 0.5 } 
                   : { x: 0, y: isExpanded && !isCompactViewport ? 180 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
               }
               transition={submitStatus === "departing" ? { duration: 1, ease: "easeInOut" } : springConfig}
-              exit={{ x: 0, y: 0, opacity: 0, scale: 0.95 }}
+              exit={{ opacity: 0, scale: 0.98, y: 0 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="relative pointer-events-auto h-[180px] w-[280px] md:h-[210px] md:w-[340px]"
@@ -418,7 +424,7 @@ export default function FloatingEnvelope() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: 0.3 }}
+                      transition={contentRevealConfig}
                       className="flex flex-col items-center justify-start text-center pt-4 px-6"
                     >
                       <div className="text-[#a67c00] mb-2"><Sparkles size={16} strokeWidth={1} /></div>

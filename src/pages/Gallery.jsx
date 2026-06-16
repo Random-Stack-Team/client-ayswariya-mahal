@@ -308,7 +308,7 @@ export default function Gallery() {
               {images.map((img, index) => (
                 <motion.div
                   key={`${category}-${img.src}`}
-                  {...(isDesktop ? { initial: { opacity: 0, y: 34 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.24 }, transition: { duration: 0.85, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] } } : {})}
+                  {...(isDesktop ? { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.24 }, transition: { duration: 0.65, delay: index * 0.08, ease: "easeOut" } } : {})}
                   className="luxury-image-frame luxury-image-overlay relative h-[min(50vh,430px)] w-[min(76vw,340px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_12px_32px_rgba(122,27,41,0.15)] transition duration-500 hover:-translate-y-1 md:h-[390px] md:w-[min(38vw,320px)] lg:h-[min(54vh,470px)] lg:w-[min(76vw,360px)]"
                 >
                   <img
@@ -347,10 +347,10 @@ export default function Gallery() {
           <section className="relative overflow-hidden bg-[#4A0A12] wedding-pattern-maroon px-5 py-16 sm:px-6 md:py-20 lg:py-40">
             <div className="relative mx-auto max-w-6xl">
               <motion.div
-                initial={{ opacity: 0, y: 34 }}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.75, ease: "easeOut" }}
                 className="mx-auto max-w-3xl text-center"
               >
                 <p className="type-eyebrow mb-5 text-[#E5C76B]">Official Venue Film</p>

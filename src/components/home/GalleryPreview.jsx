@@ -63,7 +63,7 @@ export default function GalleryPreview() {
             <motion.div
               key={index}
               variants={cardVariants}
-            className={`luxury-image-frame luxury-image-frame--banner gallery-color-card relative aspect-[4/5] overflow-hidden group shadow-[0_16px_36px_rgba(0,0,0,0.18)] md:aspect-[4/5] lg:aspect-[3/4] ${index === 1 || index === 3 ? 'lg:mt-12' : ''}`}
+            className={`luxury-image-frame luxury-image-frame--banner relative aspect-[4/5] overflow-hidden group shadow-[0_16px_36px_rgba(0,0,0,0.18)] md:aspect-[4/5] lg:aspect-[3/4] ${index === 1 || index === 3 ? 'lg:mt-12' : ''}`}
           >
               <img
                 src={src}

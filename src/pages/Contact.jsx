@@ -73,7 +73,7 @@ export default function Contact() {
             className="flex flex-col space-y-8 md:space-y-10 lg:space-y-12"
           >
             <div>
-              <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-6">We'd Love to Hear From You</h2>
+              <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-6">We'd Love to Hear From You</h2>
               <p className="type-body text-[#4f4038]">
                 Whether you're planning a grand wedding, a corporate event, or a family gathering, our Heritage Concierge team is here to assist you in making your event truly unforgettable.
               </p>
@@ -85,7 +85,7 @@ export default function Contact() {
                   <MapPin size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-on-surface mb-1">Our Location</h4>
+                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-[#5A111C] mb-1">Our Location</h4>
                   <p className="type-body text-[#4f4038]">
                     151, Jawaharlal Nehru Road,<br />
                     (100 Feet Road) MMDA Signal,<br />
@@ -100,7 +100,7 @@ export default function Contact() {
                   <Phone size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-on-surface mb-1">Phone</h4>
+                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-[#5A111C] mb-1">Phone</h4>
                   <p className="type-body text-[#4f4038]">+91 87545 14611</p>
                   <p className="type-body text-[#4f4038]">044-24756619 / 044-24756627</p>
                 </div>
@@ -111,7 +111,7 @@ export default function Contact() {
                   <Mail size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-on-surface mb-1">Email</h4>
+                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-[#5A111C] mb-1">Email</h4>
                   <p className="type-body text-[#4f4038]">am2001chennai@gmail.com</p>
                 </div>
               </div>
@@ -121,7 +121,7 @@ export default function Contact() {
                   <Clock size={20} className="text-gold-leaf group-hover:text-white" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-on-surface mb-1">Office Hours</h4>
+                  <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-[#5A111C] mb-1">Office Hours</h4>
                   <p className="type-body text-[#4f4038]">Monday - Saturday: 9:00 AM - 7:00 PM</p>
                   <p className="type-body text-[#4f4038]">Sunday: 10:00 AM - 2:00 PM</p>
                 </div>
@@ -136,21 +136,21 @@ export default function Contact() {
           >
             {/* Inline Enquiry Form */}
             <form onSubmit={handleSubmit} className="bg-white p-5 sm:p-7 md:p-7 lg:p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20">
-              <h3 className="font-serif text-2xl md:text-[28px] lg:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-on-surface mb-4 text-center">Plan Your Celebration</h3>
+              <h3 className="font-serif text-2xl md:text-[28px] lg:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-4 text-center">Plan Your Celebration</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" className="min-h-12 p-3 border border-[#e8e2d7] rounded" />
-                <input name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone" className="min-h-12 p-3 border border-[#e8e2d7] rounded" />
-                <input name="email" value={form.email} onChange={handleChange} required placeholder="Email" type="email" className="min-h-12 p-3 border border-[#e8e2d7] rounded" />
-                <select name="eventType" value={form.eventType} onChange={handleChange} className="min-h-12 p-3 border border-[#e8e2d7] rounded">
+                <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />
+                <input name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />
+                <input name="email" value={form.email} onChange={handleChange} required placeholder="Email" type="email" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />
+                <select name="eventType" value={form.eventType} onChange={handleChange} className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] focus:border-[#D4A843] focus:outline-none">
                   <option>Wedding</option>
                   <option>Reception</option>
                   <option>Engagement</option>
                   <option>Birthday</option>
                   <option>Other</option>
                 </select>
-                <input name="date" value={form.date} onChange={handleChange} type="date" className="min-h-12 p-3 border border-[#e8e2d7] rounded md:col-span-2" />
-                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" rows={3} className="min-h-24 p-3 border border-[#e8e2d7] rounded md:col-span-2" />
+                <input name="date" value={form.date} onChange={handleChange} type="date" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] focus:border-[#D4A843] focus:outline-none md:col-span-2" />
+                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" rows={3} className="min-h-24 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none md:col-span-2" />
               </div>
 
               <div className="flex justify-center">

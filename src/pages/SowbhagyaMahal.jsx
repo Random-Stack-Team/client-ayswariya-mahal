@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Sparkles, Check } from "lucide-react";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
@@ -11,28 +10,33 @@ import sowCrop3 from "../assets/images/sowbhagya-rooftop-generated.webp";
 import facility1 from "../assets/images/Facility/facility1.webp";
 
 export default function SowbhagyaMahal() {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
-
   const staggerContainer = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.06,
+        staggerChildren: 0.1,
+        delayChildren: 0.08,
       },
     },
   };
 
   const fadeInUp = {
-    hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } },
   };
 
   const fadeInWide = {
-    hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.72, ease: "easeOut" } },
   };
+
+  const imageReveal = {
+    hidden: { opacity: 0, y: 28, scale: 0.98 },
+    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.75, ease: "easeOut" } },
+  };
+
+  const revealViewport = { once: true, amount: 0.22 };
 
   return (
     <>
@@ -45,7 +49,7 @@ export default function SowbhagyaMahal() {
         <main className="min-h-screen overflow-x-clip bg-[#fdfbf7]">
           
           {/* 1. Hero Section */}
-          <section className="relative flex min-h-[620px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[680px] md:pb-28 md:pt-36 lg:min-h-[80vh] lg:pb-32 lg:pt-40">
+          <section className="relative isolate flex min-h-[620px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[680px] md:pb-28 md:pt-36 lg:min-h-[80vh] lg:pb-32 lg:pt-40">
             <motion.div
               className="absolute inset-0 overflow-hidden"
               initial={{ scale: 1.12, y: -18 }}
@@ -56,7 +60,7 @@ export default function SowbhagyaMahal() {
                 src={sowCrop2}
                 alt=""
                 loading="eager"
-                fetchpriority="high"
+                fetchPriority="high"
                 decoding="async"
                 className="w-full h-full object-cover object-center"
               />
@@ -79,7 +83,7 @@ export default function SowbhagyaMahal() {
               variants={staggerContainer}
               initial="hidden"
               animate="show"
-              className="relative z-10 mx-auto mt-6 max-w-4xl text-center md:mt-10"
+              className="relative z-10 mx-auto mt-6 max-w-4xl text-center md:mt-8 lg:mt-10"
             >
               <motion.div variants={fadeInWide} className="mx-auto mb-6 flex justify-center text-[#E5C76B] drop-shadow-[0_0_18px_rgba(229,199,107,0.24)]">
                 <Sparkles size={26} strokeWidth={1.5} />
@@ -105,10 +109,10 @@ export default function SowbhagyaMahal() {
                 <button
                   type="button"
                   onClick={() => document.getElementById("sowbhagya-story")?.scrollIntoView({ behavior: "smooth" })}
-                  className="inline-flex min-h-[40px] md:min-h-10 items-center justify-center rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-6 type-cta text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)]"
+                  className="group relative inline-flex min-h-[44px] items-center justify-center overflow-hidden rounded-full bg-[linear-gradient(135deg,#f4dc86_0%,#D4A843_55%,#B8860B_100%)] px-6 type-cta text-[#3F0C15] shadow-[0_16px_34px_rgba(0,0,0,0.22),inset_0_1px_0_rgba(255,255,255,0.45)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.3)]"
                 >
                   <span className="pointer-events-none absolute inset-0 bg-[linear-gradient(110deg,transparent_0%,rgba(255,255,255,0.42)_45%,transparent_100%)] -translate-x-[140%] transition-transform duration-1000 group-hover:translate-x-[140%]" />
-                  Explore The Space
+                  <span className="relative z-10">Explore The Space</span>
                 </button>
               </motion.div>
             </motion.div>
@@ -118,8 +122,9 @@ export default function SowbhagyaMahal() {
           <section id="sowbhagya-story" className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#fdfbf7] text-[#4f4038] text-center border-b border-[#D4A843]/20">
             <motion.div
               variants={staggerContainer}
-              initial={isDesktop ? "hidden" : "show"}
-              {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.3 } } : {})}
+              initial="hidden"
+              whileInView="show"
+              viewport={revealViewport}
               className="mx-auto max-w-4xl"
             >
               <motion.p variants={fadeInWide} className="font-serif text-[28px] md:text-[38px] lg:text-[44px] leading-[1.35] md:leading-[1.4] italic text-[#5A111C]">
@@ -131,9 +136,13 @@ export default function SowbhagyaMahal() {
           {/* 3. Block 1: Capacities (Image Left, Text Right) - Dark Maroon */}
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#5A111C] wedding-pattern-maroon text-[#fdfbf7] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
-              <div
-              className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] md:aspect-[4/5] lg:aspect-square w-full md:max-lg:max-w-[420px]"
-            >
+              <motion.div
+                variants={imageReveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={revealViewport}
+                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] w-full md:aspect-[4/5] md:max-lg:max-w-[420px] lg:aspect-square"
+              >
                 <img
                   src={sowCrop5}
                   alt="Sowbhagya Mahal Grandeur"
@@ -141,12 +150,13 @@ export default function SowbhagyaMahal() {
                   className="h-full w-full object-cover"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#3F0C15]/36 to-transparent"></div>
-              </div>
+              </motion.div>
 
               <motion.div
                 variants={staggerContainer}
-                initial={isDesktop ? "hidden" : "show"}
-                {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.2 } } : {})}
+                initial="hidden"
+                whileInView="show"
+                viewport={revealViewport}
                 className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-5">
@@ -184,8 +194,9 @@ export default function SowbhagyaMahal() {
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[1fr_0.92fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
               <motion.div
                 variants={staggerContainer}
-                initial={isDesktop ? "hidden" : "show"}
-                {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.2 } } : {})}
+                initial="hidden"
+                whileInView="show"
+                viewport={revealViewport}
                 className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#D4A843] mb-5">
@@ -219,8 +230,12 @@ export default function SowbhagyaMahal() {
                 </div>
               </motion.div>
 
-              <div
-                className="group order-1 md:order-2 relative overflow-hidden aspect-[4/5] md:aspect-[4/5] lg:aspect-square w-full rounded-[18px]                   shadow-[0_12px_30px_rgba(63,12,21,0.18)] border border-[#D4A843]/20 md:max-lg:max-w-[420px] md:max-lg:justify-self-end"
+              <motion.div
+                variants={imageReveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={revealViewport}
+                className="group order-1 relative aspect-[4/5] w-full overflow-hidden rounded-[18px] border border-[#D4A843]/20 shadow-[0_12px_30px_rgba(63,12,21,0.18)] md:order-2 md:aspect-[4/5] md:max-lg:max-w-[420px] md:max-lg:justify-self-end lg:aspect-square"
               >
                 <div className="pointer-events-none absolute inset-0 z-20 border border-[#D4A843]/30 shadow-[inset_0_0_0_1px_rgba(212,168,67,0.1)]" />
                 <div className="pointer-events-none absolute inset-x-4 top-4 z-20 h-px bg-[linear-gradient(90deg,transparent,rgba(212,168,67,0.78),transparent)] md:inset-x-6" />
@@ -240,28 +255,33 @@ export default function SowbhagyaMahal() {
                   loading="lazy"
                   className="h-full w-full scale-125 object-cover transition-transform duration-700 group-hover:scale-[1.1]"
                 />
-              </div>
+              </motion.div>
             </div>
           </section>
 
           {/* 5. Block 3: Occasions (Image Left, Text Right) - Warm Cream */}
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#f5ead9] wedding-pattern-gold text-[#4f4038] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
-              <div
-              className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] md:aspect-[4/5] lg:aspect-[3/4] w-full md:max-lg:max-w-[420px]"
-            >
+              <motion.div
+                variants={imageReveal}
+                initial="hidden"
+                whileInView="show"
+                viewport={revealViewport}
+                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] w-full md:aspect-[4/5] md:max-lg:max-w-[420px] lg:aspect-[3/4]"
+              >
                 <img
                   src={sowCrop3}
                   alt="Sowbhagya Mahal Events"
                   loading="lazy"
                   className="h-full w-full object-cover"
                 />
-              </div>
+              </motion.div>
 
               <motion.div
                 variants={staggerContainer}
-                initial={isDesktop ? "hidden" : "show"}
-                {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.2 } } : {})}
+                initial="hidden"
+                whileInView="show"
+                viewport={revealViewport}
                 className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#D4A843] mb-5">
@@ -294,7 +314,7 @@ export default function SowbhagyaMahal() {
               variants={staggerContainer}
               initial="hidden"
               whileInView="show"
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={revealViewport}
               className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14"
             >
               <motion.div variants={fadeInUp} className="text-center lg:text-left">

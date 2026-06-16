@@ -28,9 +28,6 @@ import bgImg from "../assets/images/facility.webp";
 import SEO from "../components/common/SEO";
 import { useEnquiry } from "../context/useEnquiry";
 
-/* =========================
-   DATA
-========================= */
 const facilities = [
   {
     image: facility1,
@@ -98,9 +95,6 @@ const facilities = [
   },
 ];
 
-/* =========================
-   CARD ANIMATION
-========================= */
 const cardMotion = {
   hidden: {
     opacity: 0,
@@ -110,9 +104,9 @@ const cardMotion = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
-      delay: i * 0.06,
-      ease: [0.16, 1, 0.3, 1],
+      duration: 0.6,
+      delay: i * 0.08,
+      ease: "easeOut",
     },
   }),
 };
@@ -135,7 +129,7 @@ const heroItemMotion = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.72,
       ease: "easeOut",
     },
   },
@@ -154,9 +148,6 @@ export default function Facilities() {
       <PageTransition>
         <main className="relative min-h-screen bg-[#fcf9f4] wedding-pattern-ivory overflow-x-hidden">
 
-        {/* =========================
-            HERO
-        ========================= */}
         <section className="relative flex min-h-[600px] items-center justify-center overflow-hidden md:min-h-[680px] lg:min-h-screen">
 
           <motion.div
@@ -220,9 +211,6 @@ export default function Facilities() {
 
         </section>
 
-        {/* =========================
-            FACILITY CARDS
-        ========================= */}
         <section className="py-16 px-5 sm:px-6 md:py-20 lg:py-24 xl:py-32">
 
           <div
@@ -302,9 +290,6 @@ export default function Facilities() {
 
         </section>
 
-        {/* =========================
-            CORRIDOR SECTION
-        ========================= */}
         <section className="relative px-5 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] sm:px-6 md:pt-20 md:pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-40 bg-[#5A111C] wedding-pattern-maroon overflow-hidden">
 
           <div className="max-w-6xl mx-auto grid md:grid-cols-[0.95fr_1fr] lg:grid-cols-2 gap-10 md:gap-10 lg:gap-16 items-center">

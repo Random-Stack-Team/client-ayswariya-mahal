@@ -52,13 +52,13 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.06, delayChildren: 0.05 }
+    transition: { staggerChildren: 0.1, delayChildren: 0.08 }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 10 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.25, ease: "easeOut" } }
+  hidden: { opacity: 0, y: 24 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } }
 };
 
 export default function Reviews() {
@@ -195,10 +195,10 @@ export default function Reviews() {
                     <motion.div
                       key={activeReview}
                       className="relative w-full max-w-2xl overflow-hidden rounded-[1.5rem] border border-[#E5C76B]/30 bg-[#fffdf8] p-5 shadow-[0_8px_24px_rgba(74,10,18,0.1)] sm:p-7 md:rounded-[2rem] md:p-8 lg:p-10"
-                      initial={{ opacity: 0, y: 8 }}
+                      initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ duration: 0.25, ease: "easeOut" }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.45, ease: "easeOut" }}
                     >
                       <div className="pointer-events-none absolute inset-3 rounded-[1.5rem] border border-[#E5C76B]/25" />
                       <div className="absolute left-1/2 top-0 h-[3px] w-32 -translate-x-1/2 bg-gradient-to-r from-transparent via-[#E5C76B] to-transparent" />
