@@ -247,37 +247,16 @@ export default function Gallery() {
                 The Collection
               </motion.p>
 
-              <motion.h1
-                initial="hidden"
-                animate="show"
-                variants={{
-                  hidden: {},
-                  show: {
-                    transition: {
-                      staggerChildren: 0.15,
-                      delayChildren: 0.2,
-                    },
-                  },
-                }}
+              <h1
                 className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl md:max-lg:text-[60px]"
               >
-                <motion.span
-                  initial={{ opacity: 0, y: 60, rotateX: -30 }}
-                  animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                  transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-                  className="block"
-                >
+                <span className="block">
                   A Gallery of
-                </motion.span>
-                <motion.span
-                  initial={{ opacity: 0, y: 60, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-                  className="block italic text-[#E5C76B]"
-                >
+                </span>
+                <span className="block italic text-[#E5C76B]">
                   Grandeur
-                </motion.span>
-              </motion.h1>
+                </span>
+              </h1>
             </div>
           </section>
 
@@ -383,11 +362,7 @@ export default function Gallery() {
                 </p>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 40, scale: 0.98 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.95, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+              <div
                 className="mx-auto mt-10 max-w-5xl md:mt-12 lg:mt-16"
               >
                 <div className="relative overflow-hidden rounded-[28px] border border-[#E5C76B]/46 bg-[#fdfbf7]/8 p-2 shadow-[0_28px_80px_rgba(0,0,0,0.34),inset_0_0_0_1px_rgba(255,255,255,0.08)] sm:p-3 md:rounded-[34px]">
@@ -408,13 +383,9 @@ export default function Gallery() {
                     />
                   </div>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.85, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              <div
                 className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-5 text-center md:mt-10"
               >
                 <p className="type-body text-[#fdfbf7]/78">
@@ -428,7 +399,7 @@ export default function Gallery() {
                 >
                   Watch on YouTube
                 </a>
-              </motion.div>
+              </div>
             </div>
           </section>
         </main>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useEnquiry } from "../context/useEnquiry";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
@@ -49,7 +48,6 @@ const reviews = [
 ];
 
 export default function Reviews() {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const { openForm } = useEnquiry();
   const [activeReview, setActiveReview] = useState(0);
   const currentReview = reviews[activeReview];
@@ -96,14 +94,11 @@ export default function Reviews() {
               <div className="absolute -bottom-32 -left-32 h-96 w-96 rounded-full bg-[#4A0A12]/5 blur-3xl" />
 
               <div className="relative z-10">
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8, y: -16 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ duration: 0.55, delay: 0.1, ease: "easeOut" }}
+                <div
                   className="mb-6 flex justify-center text-[#E5C76B]"
                 >
                   <Star size={26} strokeWidth={1} />
-                </motion.div>
+                </div>
 
                 <motion.p
                   className="mb-6 type-eyebrow text-[#E5C76B] drop-shadow-md"
@@ -140,28 +135,9 @@ export default function Reviews() {
                 >
                   <div className="mb-5 flex justify-center gap-1" aria-label="4.2 out of 5 star rating">
                     {[...Array(5)].map((_, index) => (
-                      <motion.div
-                        key={index}
-                        initial={{
-                          scale: 0.6,
-                          rotate: -20,
-                          color: "#ffffff",
-                          filter: "drop-shadow(0 0 0px rgba(250,204,21,0))",
-                        }}
-                        animate={{
-                          scale: 1,
-                          rotate: 0,
-                          color: "#FACC15",
-                          opacity: index < 4 ? 1 : 0.35,
-                          filter:
-                            index < 4
-                              ? "drop-shadow(0 0 12px rgba(250,204,21,0.75))"
-                              : "drop-shadow(0 0 5px rgba(250,204,21,0.25))",
-                        }}
-                        transition={{ duration: 0.45, delay: 0.6 + index * 0.15, ease: "backOut" }}
-                      >
-                        <Star size={32} fill="currentColor" color="currentColor" />
-                      </motion.div>
+                      <div key={index}>
+                        <Star size={32} fill={index < 4 ? "#FACC15" : "#FACC1559"} color={index < 4 ? "#FACC15" : "#FACC1559"} />
+                      </div>
                     ))}
                   </div>
 
@@ -187,9 +163,7 @@ export default function Reviews() {
           <section className="relative z-10 px-5 pb-16 sm:px-6 md:pb-24">
             <div className="mx-auto max-w-[1180px]">
               <div className="grid items-center gap-10 md:grid-cols-[0.85fr_1.15fr] md:gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12">
-                <motion.div
-                  {...(isDesktop ? { initial: { opacity: 0, x: -40 }, whileInView: { opacity: 1, x: 0 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 0.55, ease: "easeOut" } } : {})}
-                >
+              <div>
                   <p className="mb-5 type-eyebrow text-[#E5C76B]">Guest Reviews</p>
 
                   <h2 className="mb-6 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4A0A12] md:text-[40px] lg:text-5xl">
@@ -199,7 +173,7 @@ export default function Reviews() {
                   <p className="max-w-md type-body text-[#4f4038]">
                     Every celebration at Ayswariya Mahal becomes a memory. Hear from the families who trusted us for their special occasions.
                   </p>
-                </motion.div>
+                </div>
 
                 <div className="relative flex min-h-[360px] items-center justify-center px-8 md:min-h-[380px] md:px-0">
                   <button
@@ -266,9 +240,8 @@ export default function Reviews() {
           </section>
 
           <section className="relative z-10 border-t-4 border-double border-[#E5C76B] bg-[#4A0A12] wedding-pattern-maroon px-5 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] text-center sm:px-6 md:pt-20 md:pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-[120px]">
-            <motion.div
+            <div
               className="mx-auto max-w-4xl"
-              {...(isDesktop ? { initial: { opacity: 0, y: 45 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.25 }, transition: { duration: 0.55 } } : {})}
             >
               <p className="mb-6 type-eyebrow text-[#E5C76B]">Celebrate With Us</p>
 
@@ -286,7 +259,7 @@ export default function Reviews() {
               >
                 Enquire Availability
               </button>
-            </motion.div>
+            </div>
           </section>
         </main>
       </PageTransition>

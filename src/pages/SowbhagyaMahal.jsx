@@ -1,5 +1,4 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Sparkles, Check } from "lucide-react";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import SEO from "../components/common/SEO";
@@ -13,35 +12,26 @@ import facility1 from "../assets/images/Facility/facility1.webp";
 
 export default function SowbhagyaMahal() {
   const isDesktop = useMediaQuery("(min-width: 1024px)");
-  const canHover = useMediaQuery("(hover: hover)");
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  const parallaxY = useTransform(scrollYProgress, [0, 1], [-70, 70]);
-  const parallaxYReverse = useTransform(scrollYProgress, [0, 1], [70, -70]);
 
   const staggerContainer = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.16,
-        delayChildren: 0.08,
+        staggerChildren: 0.08,
+        delayChildren: 0.06,
       },
     },
   };
 
   const fadeInUp = {
-    hidden: { opacity: 0, y: 28 },
-    show: { opacity: 1, y: 0, transition: { duration: 1.1, ease: [0.16, 1, 0.3, 1] } },
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
   };
 
   const fadeInWide = {
-    hidden: { opacity: 0, y: 38, scale: 0.98 },
-    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } },
   };
 
   return (
@@ -52,7 +42,7 @@ export default function SowbhagyaMahal() {
         path="/sowbhagya-mahal"
       />
       <PageTransition>
-        <main ref={containerRef} className="min-h-screen overflow-x-clip bg-[#fdfbf7]">
+        <main className="min-h-screen overflow-x-clip bg-[#fdfbf7]">
           
           {/* 1. Hero Section */}
           <section className="relative flex min-h-[620px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[680px] md:pb-28 md:pt-36 lg:min-h-[80vh] lg:pb-32 lg:pt-40">
@@ -68,19 +58,13 @@ export default function SowbhagyaMahal() {
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(212,168,67,0.08),transparent_26%),radial-gradient(circle_at_50%_46%,rgba(255,255,255,0.04),transparent_34%)]" />
             <div className="pointer-events-none absolute inset-x-6 top-8 h-px bg-[linear-gradient(90deg,transparent,rgba(229,199,107,0.88),transparent)] md:inset-x-10" />
             <div className="pointer-events-none absolute inset-x-6 bottom-8 h-px bg-[linear-gradient(90deg,transparent,rgba(229,199,107,0.64),transparent)] md:inset-x-10" />
-            <motion.div
+            <div
               aria-hidden="true"
               className="pointer-events-none absolute left-6 top-6 h-16 w-16 border-l-2 border-t-2 border-[#E5C76B]/90 shadow-[0_0_24px_rgba(229,199,107,0.18)] md:left-8 md:top-8 md:h-20 md:w-20 lg:left-10 lg:top-10 lg:h-24 lg:w-24"
-              initial={{ opacity: 0, x: -12, y: -12 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
             />
-            <motion.div
+            <div
               aria-hidden="true"
               className="pointer-events-none absolute right-6 bottom-6 h-16 w-16 border-b-2 border-r-2 border-[#E5C76B]/90 shadow-[0_0_24px_rgba(229,199,107,0.18)] md:right-8 md:bottom-8 md:h-20 md:w-20 lg:right-10 lg:bottom-10 lg:h-24 lg:w-24"
-              initial={{ opacity: 0, x: 12, y: 12 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.08 }}
             />
             
             <motion.div
@@ -139,21 +123,17 @@ export default function SowbhagyaMahal() {
           {/* 3. Block 1: Capacities (Image Left, Text Right) - Dark Maroon */}
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#5A111C] wedding-pattern-maroon text-[#fdfbf7] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
-              <motion.div
-                {...(isDesktop ? { initial: { opacity: 0, x: -28, y: 18, scale: 0.96 }, whileInView: { opacity: 1, x: 0, y: 0, scale: 1 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } } : {})}
-              {...(canHover ? { whileHover: { y: -4 } } : {})}
+              <div
               className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] md:aspect-[4/5] lg:aspect-square w-full md:max-lg:max-w-[420px]"
             >
-                <motion.img
-                  style={isDesktop ? { y: parallaxY } : {}}
+                <img
                   src={sowCrop5}
                   alt="Sowbhagya Mahal Grandeur"
                   loading="lazy"
-                  {...(isDesktop ? { initial: { scale: 1.06 }, whileInView: { scale: 1.02 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } } : {})}
                   className="h-full w-full object-cover"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#3F0C15]/36 to-transparent"></div>
-              </motion.div>
+              </div>
 
               <motion.div
                 variants={staggerContainer}
@@ -231,9 +211,7 @@ export default function SowbhagyaMahal() {
                 </div>
               </motion.div>
 
-              <motion.div
-                {...(isDesktop ? { initial: { opacity: 0, scale: 0.95 }, whileInView: { opacity: 1, scale: 1 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.4, ease: [0.16, 1, 0.3, 1] } } : {})}
-                {...(canHover ? { whileHover: { y: -4 } } : {})}
+              <div
                 className="group order-1 md:order-2 relative overflow-hidden aspect-[4/5] md:aspect-[4/5] lg:aspect-square w-full rounded-[18px] shadow-[0_24px_60px_rgba(63,12,21,0.24)] border border-[#D4A843]/20 md:max-lg:max-w-[420px] md:max-lg:justify-self-end"
               >
                 <div className="pointer-events-none absolute inset-0 z-20 border border-[#D4A843]/30 shadow-[inset_0_0_0_1px_rgba(212,168,67,0.1)]" />
@@ -244,41 +222,33 @@ export default function SowbhagyaMahal() {
                 <div className="pointer-events-none absolute left-1/2 top-4 z-20 -translate-x-1/2 rounded-full border border-[#D4A843]/40 bg-[#5A111C]/70 px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#D4A843] shadow-[0_8px_20px_rgba(0,0,0,0.22)]">
                   Venue Detail
                 </div>
-                <motion.div
+                <div
                   aria-hidden="true"
                   className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(circle_at_50%_50%,rgba(212,168,67,0.14),transparent_58%)]"
-                  animate={{ opacity: [0.45, 0.95, 0.45] }}
-                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
                 />
-                <motion.img
-                  style={isDesktop ? { y: parallaxYReverse } : {}}
+                <img
                   src={facility1}
                   alt="Sowbhagya Mahal Facilities"
                   loading="lazy"
-                  {...(isDesktop ? { initial: { scale: 1.1 }, whileInView: { scale: 1.03 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.8, ease: [0.16, 1, 0.3, 1] } } : {})}
                   className="h-full w-full scale-125 object-cover transition-transform duration-700 group-hover:scale-[1.1]"
                 />
-              </motion.div>
+              </div>
             </div>
           </section>
 
           {/* 5. Block 3: Occasions (Image Left, Text Right) - Warm Cream */}
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#f5ead9] wedding-pattern-gold text-[#4f4038] overflow-hidden">
             <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
-              <motion.div
-                {...(isDesktop ? { initial: { opacity: 0, x: -28, y: 18, scale: 0.96 }, whileInView: { opacity: 1, x: 0, y: 0, scale: 1 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.5, ease: [0.16, 1, 0.3, 1] } } : {})}
-              {...(canHover ? { whileHover: { y: -2 } } : {})}
+              <div
               className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] md:aspect-[4/5] lg:aspect-[3/4] w-full md:max-lg:max-w-[420px]"
             >
-                <motion.img
-                  style={isDesktop ? { y: parallaxY } : {}}
+                <img
                   src={sowCrop3}
                   alt="Sowbhagya Mahal Events"
                   loading="lazy"
-                  {...(isDesktop ? { initial: { scale: 1.05 }, whileInView: { scale: 1.01 }, viewport: { once: true, amount: 0.2 }, transition: { duration: 1.3, ease: [0.16, 1, 0.3, 1] } } : {})}
                   className="h-full w-full object-cover"
                 />
-              </motion.div>
+              </div>
 
               <motion.div
                 variants={staggerContainer}

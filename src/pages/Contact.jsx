@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Sparkles } from "lucide-react";
 import heroImg from "../assets/images/hero.webp";
@@ -44,29 +43,20 @@ export default function Contact() {
         <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/80 via-[#3F0C15]/70 to-[#fdfbf7]"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
-            className="flex justify-center mb-6 text-[#E5C76B]"
-          >
+          <div className="flex justify-center mb-6 text-[#E5C76B]">
             <Sparkles size={24} strokeWidth={1} />
-          </motion.div>
-          <motion.p
+          </div>
+          <p
             className="type-eyebrow text-[#E5C76B] mb-6 drop-shadow-md"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
           >
             Get in Touch
-          </motion.p>
+          </p>
 
-          <motion.h1
+          <h1
             className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl md:max-lg:text-[58px]"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
           >
             Plan Your <span className="italic text-[#E5C76B]">Grand Event</span>
-          </motion.h1>
+          </h1>
         </div>
       </section>
 
@@ -75,11 +65,7 @@ export default function Contact() {
         <div className="max-w-site mx-auto grid md:grid-cols-[0.95fr_1.05fr] lg:grid-cols-2 gap-10 md:gap-10 lg:gap-16">
           
           {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
+          <div
             className="flex flex-col space-y-8 md:space-y-10 lg:space-y-12"
           >
             <div>
@@ -138,14 +124,10 @@ export default function Contact() {
               </div>
             </div>
 
-          </motion.div>
+          </div>
 
           {/* Action Area & Map Placeholder */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 1.15, ease: [0.16, 1, 0.3, 1] }}
+          <div
             className="flex flex-col h-full space-y-8"
           >
             {/* Inline Enquiry Form */}
@@ -188,7 +170,7 @@ export default function Contact() {
               {/* Optional overlay to give it a luxury tint that fades on hover */}
               <div className="absolute inset-0 bg-deep-maroon/5 mix-blend-multiply pointer-events-none group-hover:opacity-0 transition-opacity duration-700"></div>
             </div>
-          </motion.div>
+          </div>
 
         </div>
       </section>

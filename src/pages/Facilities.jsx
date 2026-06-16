@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import PageTransition from "../components/common/PageTransition";
 import PremiumImageFrame from "../components/common/PremiumImageFrame";
 
@@ -105,16 +104,14 @@ const facilities = [
 const cardMotion = {
   hidden: {
     opacity: 0,
-    scale: 0.96,
-    y: 46,
+    y: 24,
   },
   show: (i) => ({
     opacity: 1,
-    scale: 1,
     y: 0,
     transition: {
-      duration: 0.9,
-      delay: i * 0.07,
+      duration: 0.5,
+      delay: i * 0.06,
       ease: [0.16, 1, 0.3, 1],
     },
   }),
@@ -145,7 +142,6 @@ const heroItemMotion = {
 };
 
 export default function Facilities() {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const { openForm } = useEnquiry();
   return (
     <>
@@ -305,9 +301,7 @@ export default function Facilities() {
 
           <div className="max-w-6xl mx-auto grid md:grid-cols-[0.95fr_1fr] lg:grid-cols-2 gap-10 md:gap-10 lg:gap-16 items-center">
 
-            <motion.div
-              {...(isDesktop ? { initial: { opacity: 0, scale: 0.9 }, whileInView: { opacity: 1, scale: 1 }, transition: { duration: 1 } } : {})}
-            >
+            <div>
               <PremiumImageFrame className="h-[320px] w-full sm:h-[380px] md:h-[360px] lg:h-full">
                 <img
                   src={facility1}
@@ -319,10 +313,9 @@ export default function Facilities() {
                   className="h-full w-full object-cover"
                 />
               </PremiumImageFrame>
-            </motion.div>
+            </div>
 
-            <motion.div
-              {...(isDesktop ? { initial: { opacity: 0, y: 40 }, whileInView: { opacity: 1, y: 0 }, transition: { duration: 1 } } : {})}
+            <div
               className="text-white"
             >
               <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] mb-6">
@@ -353,7 +346,7 @@ export default function Facilities() {
                   Book a Visit
                 </button>
               </div>
-            </motion.div>
+            </div>
 
           </div>
 
