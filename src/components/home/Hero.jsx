@@ -24,48 +24,78 @@ export default function Hero() {
   const contentRef = useRef(null);
   const petalsRef = useRef([]);
 
+  const animCtx = useRef(null);
+
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.set(imageRef.current, { scale: 1.08 });
-      gsap.set(contentRef.current?.children || [], { opacity: 0, y: 20 });
+    const startAnimation = () => {
+      const ctx = gsap.context(() => {
+        gsap.set(imageRef.current, { scale: 1.08 });
+        gsap.set(contentRef.current?.children || [], { opacity: 0, y: 20 });
 
-      gsap
-        .timeline({ defaults: { ease: "power3.out" } })
-        .to(imageRef.current, {
-          scale: 1,
-          duration: 2.4,
-        })
-        .to(
-          contentRef.current?.children || [],
-          {
-            opacity: 1,
-            y: 0,
-            duration: 1.35,
-            stagger: 0.18,
-          },
-          "-=1.55"
-        );
+        gsap
+          .timeline({ defaults: { ease: "power3.out" } })
+          .to(imageRef.current, {
+            scale: 1,
+            duration: 2.4,
+          })
+          .to(
+            contentRef.current?.children || [],
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1.35,
+              stagger: 0.18,
+            },
+            "-=1.55"
+          );
 
-      if (isDesktop) {
-        petalsRef.current.forEach((petal, index) => {
-          if (!petal) return;
-          const drift = petals[index].drift;
+        if (isDesktop) {
+          petalsRef.current.forEach((petal, index) => {
+            if (!petal) return;
+            const drift = petals[index].drift;
 
-          gsap.to(petal, {
-            y: `-=${drift}`,
-            x: index % 2 ? "+=12" : "-=10",
-            rotation: index % 2 ? 10 : -12,
-            duration: 5.2 + index * 0.22,
-            delay: petals[index].delay,
-            ease: "sine.inOut",
-            repeat: -1,
-            yoyo: true,
+            gsap.to(petal, {
+              y: `-=${drift}`,
+              x: index % 2 ? "+=12" : "-=10",
+              rotation: index % 2 ? 10 : -12,
+              duration: 5.2 + index * 0.22,
+              delay: petals[index].delay,
+              ease: "sine.inOut",
+              repeat: -1,
+              yoyo: true,
+            });
           });
-        });
-      }
-    });
+        }
+      });
+      animCtx.current = ctx;
+    };
 
-    return () => ctx.revert();
+    const cleanup = () => {
+      if (animCtx.current) {
+        animCtx.current.revert();
+        animCtx.current = null;
+      }
+    };
+
+    if (document.documentElement.classList.contains("intro-scroll-lock")) {
+      const observer = new MutationObserver(() => {
+        if (!document.documentElement.classList.contains("intro-scroll-lock")) {
+          observer.disconnect();
+          startAnimation();
+        }
+      });
+      observer.observe(document.documentElement, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+      return () => {
+        observer.disconnect();
+        cleanup();
+      };
+    } else {
+      startAnimation();
+      return cleanup;
+    }
   }, [isDesktop]);
 
   return (

@@ -35,10 +35,14 @@ export default function Contact() {
         <main className="bg-[#fdfbf7] wedding-pattern-ivory min-h-screen">
       {/* Hero Section */}
       <section className="relative flex min-h-[520px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[580px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-32 lg:pt-40">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImg})` }}
-        ></div>
+        <img
+          src={heroImg}
+          alt=""
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+        />
         {/* Dark Cinematic Overlay fading into cream bg */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/80 via-[#3F0C15]/70 to-[#fdfbf7]"></div>
 

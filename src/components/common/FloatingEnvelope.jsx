@@ -12,6 +12,12 @@ const QUOTES = [
   "Begin your forever in\nroyal elegance.",
 ];
 
+const getTodayDateValue = () => {
+  const today = new Date();
+  const timezoneOffset = today.getTimezoneOffset() * 60000;
+  return new Date(today.getTime() - timezoneOffset).toISOString().slice(0, 10);
+};
+
 export default function FloatingEnvelope() {
   const { isFormOpen, openForm, closeForm } = useEnquiry();
   const location = useLocation();
@@ -127,6 +133,17 @@ export default function FloatingEnvelope() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.currentTarget;
+    const dateInput = form.elements.eventDate;
+    const todayDateValue = getTodayDateValue();
+
+    if (dateInput.value < todayDateValue) {
+      dateInput.setCustomValidity("Please choose today or a future date for your celebration.");
+      dateInput.reportValidity();
+      return;
+    }
+
+    dateInput.setCustomValidity("");
     clearSubmitTimers();
     setSubmitStatus("submitting");
     runLater(() => {
@@ -164,6 +181,7 @@ export default function FloatingEnvelope() {
 
   const springConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
   const paperSpringConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
+  const stateContainerClass = "w-full flex min-h-[300px] sm:min-h-[340px] md:min-h-[360px] flex-1 flex-col items-center justify-center px-6 text-center z-30";
 
   const expandedContent = (
     <AnimatePresence mode="wait">
@@ -173,7 +191,7 @@ export default function FloatingEnvelope() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="w-full flex flex-col items-center justify-center z-30 space-y-5 py-8"
+          className={`${stateContainerClass} space-y-5`}
         >
           <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
           <p className="type-eyebrow text-[#4a3623]">Sealing Petition...</p>
@@ -185,14 +203,14 @@ export default function FloatingEnvelope() {
           animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="w-full flex flex-col items-center justify-center text-center p-8 z-30"
+          className={stateContainerClass}
         >
-          <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mt-4 mb-8 border-[2px] border-[#4a3623]">
+          <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-6 border-[2px] border-[#4a3623]">
             <Heart size={20} className="text-[#4a3623] fill-[#4a3623]" />
           </div>
-          <h2 className="font-serif text-2xl text-[#4a3623] tracking-[0.01em] mb-4 font-semibold">Petition Received</h2>
-          <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
-          <p className="type-body text-[#4a3623] max-w-xs italic">
+          <h2 className="font-serif font-bold text-[28px] md:text-[30px] text-[#3b2618] tracking-[0.02em] leading-[1.15]">Petition Received</h2>
+          <div className="h-[2px] w-24 bg-[#4a3623] my-5"></div>
+          <p className="font-body text-[16px] leading-[1.7] text-[#4a3623] max-w-[260px]">
             Your royal request has been elegantly sealed. Our Heritage Concierge will contact you shortly.
           </p>
         </motion.div>
@@ -202,47 +220,55 @@ export default function FloatingEnvelope() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="w-full px-5 pt-2 z-30 flex flex-col justify-start sm:px-6 sm:pt-3"
+          className="w-full px-5 pt-2 pb-10 z-30 flex flex-col justify-start sm:px-6 sm:pt-3 md:pb-12"
         >
-          <header className="mb-2 text-center">
-            <div className="text-[#4a3623] flex justify-center mb-1"><Sparkles size={18} strokeWidth={2} /></div>
-            <h2 className="font-serif font-semibold text-2xl md:text-3xl text-[#4a3623] tracking-[0.02em]">Send an Enquiry</h2>
-            <div className="flex items-center justify-center gap-4 mt-2">
+          <header className="mb-3 text-center">
+            <div className="text-[#4a3623] flex justify-center mb-1.5"><Sparkles size={18} strokeWidth={2} /></div>
+            <h2 className="font-serif font-bold text-[27px] md:text-[31px] text-[#3b2618] tracking-[0.03em] leading-[1.15]">Send an Enquiry</h2>
+            <div className="flex items-center justify-center gap-4 mt-3">
               <div className="w-12 h-[2px] bg-[#4a3623]"></div>
               <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
               <div className="w-12 h-[2px] bg-[#4a3623]"></div>
             </div>
+            <p className="font-body text-[14px] text-[#5a4535] leading-relaxed tracking-[0.02em] mt-3">We look forward to welcoming you</p>
           </header>
 
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form className="space-y-3 pb-2 md:space-y-4" onSubmit={handleSubmit}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4 md:gap-y-5">
               <div className="relative group">
-                <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
-                <input type="text" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="e.g. Anand & Priya" />
+                <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
+                <input type="text" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] placeholder:text-[#8a7d6b]" placeholder="e.g. Anand & Priya" />
               </div>
 
               <div className="relative group">
-                <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
-                <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="+91" />
+                <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
+                <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] placeholder:text-[#8a7d6b]" placeholder="+91" />
               </div>
 
               <div className="relative group">
-                <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
-                <input type="email" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] placeholder:text-[#a89d8c]" placeholder="your@email.com" />
+                <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
+                <input type="email" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] placeholder:text-[#8a7d6b]" placeholder="your@email.com" />
               </div>
 
               <div className="relative group">
-                <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
-                <input type="date" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] cursor-pointer" />
+                <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
+                <input
+                  type="date"
+                  name="eventDate"
+                  min={getTodayDateValue()}
+                  required
+                  onChange={(event) => event.currentTarget.setCustomValidity("")}
+                  className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] cursor-pointer"
+                />
               </div>
             </div>
 
             <div className="relative group">
-              <label className="block font-serif text-sm tracking-[0.12em] uppercase text-[#4a3623] mb-1.5 font-semibold transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
-              <textarea rows="2" required className="min-h-16 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-serif text-[16px] leading-[1.5] text-[#4a3623] placeholder:text-[#a89d8c] resize-none" placeholder="Tell us about your requirements..."></textarea>
+              <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
+              <textarea rows="2" required className="min-h-14 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] placeholder:text-[#8a7d6b] resize-none" placeholder="Tell us about your requirements..."></textarea>
             </div>
 
-            <div className="pt-2 pb-3 flex justify-center">
+            <div className="mt-7 mb-8 flex justify-center">
               <button 
                 type="submit" 
                 className="relative min-h-12 px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
@@ -299,7 +325,7 @@ export default function FloatingEnvelope() {
                 <X size={18} strokeWidth={1.5} />
               </button>
 
-              <div className="relative w-full h-full min-h-0 flex-1 overflow-y-auto overscroll-contain hide-scrollbar z-30 pt-4">
+              <div className="relative w-full h-full min-h-0 flex-1 overflow-y-auto overscroll-contain hide-scrollbar z-30 pt-4 flex flex-col">
                 {expandedContent}
               </div>
             </div>
@@ -329,7 +355,6 @@ export default function FloatingEnvelope() {
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="relative pointer-events-auto h-[180px] w-[280px] md:h-[210px] md:w-[340px]"
-              style={{ perspective: 1200 }}
             >
               {/* Layer 1: Back of Envelope (Inside) */}
               <div className="absolute inset-0 bg-[#e0d0b0] border-[2px] border-[#4a3623] rounded-sm z-10 overflow-hidden shadow-[inset_0_4px_0_rgba(0,0,0,0.1)]">
@@ -367,14 +392,13 @@ export default function FloatingEnvelope() {
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
                 style={{ 
                   width: isPaperExpanded ? (isCompactViewport ? "92vw" : 460) : "85%",
-                  height: isPaperExpanded ? (isCompactViewport ? "min(620px, 80dvh)" : 540) : "90%",
+                  height: isPaperExpanded ? (isCompactViewport ? "min(620px, 80dvh)" : 580) : "90%",
                   maxWidth: "95vw",
                   maxHeight: isCompactViewport ? "80dvh" : "85vh",
                   left: "50%",
                   x: "-50%",
                   cursor: isExpanded ? "default" : "pointer",
                   zIndex: isPaperExpanded ? 60 : 20,
-                  WebkitFontSmoothing: "antialiased",
                   transformOrigin: "bottom center"
                 }}
               >

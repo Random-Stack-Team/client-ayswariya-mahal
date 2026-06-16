@@ -1,17 +1,17 @@
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useEnquiry } from "../../context/useEnquiry";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
 import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/facilities", label: "Facilities" },
-  { to: "/gallery", label: "Gallery" },
-  { to: "/reviews", label: "Reviews" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "The Venue" },
+  { to: "/about", label: "Our Story" },
+  { to: "/facilities", label: "Guest Comforts" },
+  { to: "/gallery", label: "Celebrations" },
+  { to: "/reviews", label: "Kind Words" },
+  { to: "/contact", label: "Plan a Visit" },
 ];
 
 const leftLinks = links.slice(0, 3);
@@ -29,10 +29,20 @@ function Navbar() {
   const navVisible = isMobileMenuOpen || !isScrolled || isScrollingUp;
   const solidNav = isScrolled || isMobileMenuOpen || !isHome;
 
+  const scrollState = useRef({ isScrolled: false, isScrollingUp: true });
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious() || 0;
-    setIsScrolled(latest > 42);
-    setIsScrollingUp(latest < 50 || latest < previous);
+    const nextScrolled = latest > 42;
+    const nextScrollingUp = latest < 50 || latest < previous;
+    const current = scrollState.current;
+    if (nextScrolled !== current.isScrolled) {
+      current.isScrolled = nextScrolled;
+      setIsScrolled(nextScrolled);
+    }
+    if (nextScrollingUp !== current.isScrollingUp) {
+      current.isScrollingUp = nextScrollingUp;
+      setIsScrollingUp(nextScrollingUp);
+    }
   });
 
   // Close mobile menu when viewport enters desktop width
@@ -75,8 +85,8 @@ function Navbar() {
         id="main-nav"
         className={`pointer-events-auto border-b transition-all duration-700 ${
           solidNav
-            ? "border-[#d4af37]/28 bg-[rgba(250,247,242,0.88)] shadow-[0_18px_42px_rgba(48,20,12,0.12)] backdrop-blur-[6px]"
-            : "border-white/10 bg-gradient-to-b from-[#3F0C15]/60 via-[#3F0C15]/24 to-transparent backdrop-blur-[2px]"
+            ? "border-[#d4af37]/28 bg-[rgba(250,247,242,0.88)] shadow-[0_12px_24px_rgba(48,20,12,0.1)] backdrop-blur-[4px]"
+            : "border-white/10 bg-gradient-to-b from-[#3F0C15]/60 via-[#3F0C15]/24 to-transparent backdrop-blur-[1px]"
         }`}
       >
         <div

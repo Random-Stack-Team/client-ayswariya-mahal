@@ -62,9 +62,10 @@ export default function About() {
           alt=""
           aria-hidden="true"
           loading="eager"
+          fetchpriority="high"
           decoding="async"
           width="1920"
-          height="1080"
+          height="1440"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
         {/* Dark Cinematic Overlay fading into page bg */}
@@ -181,7 +182,7 @@ export default function About() {
                 <motion.article
                   key={pillar.title}
                   {...(isDesktop ? { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-50px" }, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 } } : {})}
-                  className={`group relative flex flex-col items-center text-center p-[22px] md:p-[24px] lg:p-[28px] bg-[#fdfbf7] rounded-[12px] border border-[#d4af37]/40 shadow-[0_12px_30px_rgba(90,17,28,0.06)] hover:shadow-[0_20px_40px_rgba(212,168,67,0.15)] transition-all duration-500 hover:-translate-y-1 overflow-hidden ${index === 2 ? "md:col-span-2 lg:col-span-1" : ""}`}
+                  className={`group relative flex flex-col items-center text-center p-[22px] md:p-[24px] lg:p-[28px] bg-[#fdfbf7] rounded-[12px] border border-[#d4af37]/40 shadow-[0_8px_20px_rgba(90,17,28,0.06)] hover:shadow-[0_12px_24px_rgba(212,168,67,0.15)] transition-all duration-500 hover:-translate-y-1 overflow-hidden ${index === 2 ? "md:col-span-2 lg:col-span-1" : ""}`}
                 >
                   {/* Decorative thin gold top border glow */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -234,7 +235,7 @@ export default function About() {
             {/* Philosophy Card */}
             <motion.div 
               variants={fadeInUp}
-              className="relative p-6 md:p-7 lg:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
+              className="relative p-6 md:p-7 lg:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_6px_20px_rgba(0,0,0,0.08)] group"
             >
               <div className="absolute top-0 left-8 w-12 h-px bg-[#D4A843] transition-all duration-500 group-hover:w-20" />
               <div className="absolute top-8 left-0 w-px h-12 bg-[#D4A843]/50" />
@@ -255,7 +256,7 @@ export default function About() {
             {/* Mission Card */}
             <motion.div 
               variants={fadeInUp}
-              className="relative p-6 md:p-7 lg:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.1)] group"
+              className="relative p-6 md:p-7 lg:p-10 border border-[#D4A843]/20 bg-gradient-to-br from-[#ffffff]/5 to-transparent backdrop-blur-sm shadow-[0_6px_20px_rgba(0,0,0,0.08)] group"
             >
               <div className="absolute top-0 left-8 w-12 h-px bg-[#D4A843] transition-all duration-500 group-hover:w-20" />
               <div className="absolute top-8 left-0 w-px h-12 bg-[#D4A843]/50" />
@@ -309,7 +310,7 @@ export default function About() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
             </div>
             <div
-              className="absolute -bottom-5 left-4 rounded-xl border border-[#D4A843]/35 bg-[#5A111C]/95 px-4 py-3 text-[#fdfbf7] shadow-[0_18px_36px_rgba(63,12,21,0.24)] backdrop-blur-sm sm:left-8 md:max-lg:left-8 md:max-lg:px-5 md:max-lg:py-4 lg:left-8"
+              className="absolute -bottom-5 left-4 rounded-xl border border-[#D4A843]/35 bg-[#5A111C]/95 px-4 py-3 text-[#fdfbf7] shadow-[0_10px_24px_rgba(63,12,21,0.2)] backdrop-blur-sm sm:left-8 md:max-lg:left-8 md:max-lg:px-5 md:max-lg:py-4 lg:left-8"
             >
               <div className="flex items-center gap-3">
                 <div className="grid h-9 w-9 place-items-center rounded-full border border-[#D4A843]/30 text-[#D4A843] md:max-lg:h-10 md:max-lg:w-10">
@@ -353,7 +354,7 @@ export default function About() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="group relative overflow-hidden rounded-[16px] border border-[#D4A843]/55 bg-[linear-gradient(180deg,#fffaf2_0%,#f7eddc_100%)] px-4 py-3 text-center shadow-[0_10px_24px_rgba(90,17,28,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#B8860B]/70 hover:shadow-[0_18px_34px_rgba(90,17,28,0.1)]"
+                  className="group relative overflow-hidden rounded-[16px] border border-[#D4A843]/55 bg-[linear-gradient(180deg,#fffaf2_0%,#f7eddc_100%)] px-4 py-3 text-center shadow-[0_6px_16px_rgba(90,17,28,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#B8860B]/70 hover:shadow-[0_10px_20px_rgba(90,17,28,0.1)]"
                 >
                   <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,168,67,0.08),transparent_46%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                   <div className="absolute left-3 top-3 h-4 w-4 rounded-tl-[6px] border-l border-t border-[#D4A843]/70" />
@@ -377,7 +378,7 @@ export default function About() {
             <motion.div variants={fadeInUp}>
               <Link
                 to="/sowbhagya-mahal"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#D4A843] px-8 font-sans font-medium text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_16px_34px_rgba(90,17,28,0.16)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7] sm:w-auto"
+                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#D4A843] px-8 font-sans font-medium text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_10px_20px_rgba(90,17,28,0.14)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7] sm:w-auto"
               >
                 Explore Sowbhagya Mahal
               </Link>

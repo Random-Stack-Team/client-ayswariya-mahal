@@ -47,12 +47,20 @@ export default function SowbhagyaMahal() {
           {/* 1. Hero Section */}
           <section className="relative flex min-h-[620px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[680px] md:pb-28 md:pt-36 lg:min-h-[80vh] lg:pb-32 lg:pt-40">
             <motion.div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${sowCrop2})` }}
+              className="absolute inset-0 overflow-hidden"
               initial={{ scale: 1.12, y: -18 }}
               animate={{ scale: 1, y: 0 }}
               transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-            />
+            >
+              <img
+                src={sowCrop2}
+                alt=""
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+                className="w-full h-full object-cover object-center"
+              />
+            </motion.div>
             {/* Dark Cinematic Overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#5A111C]/88 via-[#3F0C15]/80 to-[#fdfbf7]" />
             <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(212,168,67,0.08),transparent_26%),radial-gradient(circle_at_50%_46%,rgba(255,255,255,0.04),transparent_34%)]" />
@@ -212,7 +220,7 @@ export default function SowbhagyaMahal() {
               </motion.div>
 
               <div
-                className="group order-1 md:order-2 relative overflow-hidden aspect-[4/5] md:aspect-[4/5] lg:aspect-square w-full rounded-[18px] shadow-[0_24px_60px_rgba(63,12,21,0.24)] border border-[#D4A843]/20 md:max-lg:max-w-[420px] md:max-lg:justify-self-end"
+                className="group order-1 md:order-2 relative overflow-hidden aspect-[4/5] md:aspect-[4/5] lg:aspect-square w-full rounded-[18px]                   shadow-[0_12px_30px_rgba(63,12,21,0.18)] border border-[#D4A843]/20 md:max-lg:max-w-[420px] md:max-lg:justify-self-end"
               >
                 <div className="pointer-events-none absolute inset-0 z-20 border border-[#D4A843]/30 shadow-[inset_0_0_0_1px_rgba(212,168,67,0.1)]" />
                 <div className="pointer-events-none absolute inset-x-4 top-4 z-20 h-px bg-[linear-gradient(90deg,transparent,rgba(212,168,67,0.78),transparent)] md:inset-x-6" />
@@ -299,7 +307,7 @@ export default function SowbhagyaMahal() {
                 </h2>
               </motion.div>
 
-              <motion.div variants={fadeInUp} className="rounded-[28px] border border-[#E5C76B]/24 bg-[#fdfbf7]/7 p-5 shadow-[0_24px_60px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-7 md:p-8">
+              <motion.div variants={fadeInUp} className="rounded-[28px] border border-[#E5C76B]/24 bg-[#fdfbf7]/7 p-5                 shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-7 md:p-8">
                 <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1">
                   {[
                     "Arrival spaces stay clear, composed, and easy for every age group.",

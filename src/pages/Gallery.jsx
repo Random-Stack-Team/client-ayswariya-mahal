@@ -80,7 +80,7 @@ export default function Gallery() {
 
     const animate = () => {
       const rail = railRef.current;
-      if (!rail) {
+      if (!rail || !isInView.current) {
         rafId.current = null;
         return;
       }
@@ -221,9 +221,13 @@ export default function Gallery() {
       <PageTransition>
         <main className="min-h-screen overflow-x-clip bg-[#fdfbf7] wedding-pattern-ivory">
           <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[600px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-36 lg:pt-40">
-            <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{ backgroundImage: `url(${gallery3})` }}
+            <img
+              src={gallery3}
+              alt=""
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1c0d11]/80 via-[#1c0d11]/70 to-[#4A0A12]" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42vh] bg-[linear-gradient(180deg,rgba(253,251,247,0)_0%,rgba(253,251,247,0.12)_24%,rgba(253,251,247,0.42)_58%,rgba(253,251,247,1)_100%)]" />
@@ -271,7 +275,7 @@ export default function Gallery() {
           >
             <div className="relative z-30 mx-auto flex max-w-5xl flex-col items-center text-center">
               <div className="flex w-full justify-center">
-                <div className="grid grid-cols-3 gap-1 rounded-full border border-[#E5C76B]/35 bg-white/72 p-1 shadow-[0_18px_44px_rgba(122,27,41,0.12)] backdrop-blur-md">
+                <div                   className="grid grid-cols-3 gap-1 rounded-full border border-[#E5C76B]/35 bg-white/72 p-1 shadow-[0_8px_20px_rgba(122,27,41,0.1)]">
                   {Object.keys(galleryData).map((item) => (
                     <button
                       key={item}
@@ -305,7 +309,7 @@ export default function Gallery() {
                 <motion.div
                   key={`${category}-${img.src}`}
                   {...(isDesktop ? { initial: { opacity: 0, y: 34 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.24 }, transition: { duration: 0.85, delay: index * 0.06, ease: [0.16, 1, 0.3, 1] } } : {})}
-                  className="luxury-image-frame luxury-image-overlay relative h-[min(50vh,430px)] w-[min(76vw,340px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_28px_70px_rgba(122,27,41,0.18)] transition duration-500 hover:-translate-y-1 md:h-[390px] md:w-[min(38vw,320px)] lg:h-[min(54vh,470px)] lg:w-[min(76vw,360px)]"
+                  className="luxury-image-frame luxury-image-overlay relative h-[min(50vh,430px)] w-[min(76vw,340px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_12px_32px_rgba(122,27,41,0.15)] transition duration-500 hover:-translate-y-1 md:h-[390px] md:w-[min(38vw,320px)] lg:h-[min(54vh,470px)] lg:w-[min(76vw,360px)]"
                 >
                   <img
                     src={img.src}

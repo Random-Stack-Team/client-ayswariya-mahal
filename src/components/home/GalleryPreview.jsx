@@ -6,6 +6,19 @@ import img2 from "../../assets/images/Gallery/memories1.webp";
 import img3 from "../../assets/images/Gallery/hall4.webp";
 import img4 from "../../assets/images/Gallery/memories5.webp";
 
+const gridVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 }
+  }
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+};
+
 export default function GalleryPreview() {
   const navigate = useNavigate();
 
@@ -20,34 +33,37 @@ export default function GalleryPreview() {
         
         <div className="text-center mb-10 md:mb-16">
           <motion.p
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
-            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
             className="type-eyebrow text-[#E5C76B] mb-5"
           >
             A Glimpse of Magic
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
-            transition={{ duration: 1, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.7, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-[32px] md:text-[42px] lg:text-6xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fff8ed] drop-shadow-[0_10px_30px_rgba(0,0,0,0.18)]"
           >
             Moments <span className="italic text-[#E5C76B]">Frozen</span> in Time
           </motion.h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div
+          variants={gridVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+        >
           {images.map((src, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 38, scale: 0.96 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              viewport={{ once: true, amount: 0.22 }}
-              transition={{ delay: index * 0.1, duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
-            className={`luxury-image-frame luxury-image-frame--banner gallery-color-card relative aspect-[4/5] overflow-hidden group shadow-[0_26px_70px_rgba(0,0,0,0.2)] md:aspect-[4/5] lg:aspect-[3/4] ${index === 1 || index === 3 ? 'lg:mt-12' : ''}`}
+              variants={cardVariants}
+            className={`luxury-image-frame luxury-image-frame--banner gallery-color-card relative aspect-[4/5] overflow-hidden group shadow-[0_16px_36px_rgba(0,0,0,0.18)] md:aspect-[4/5] lg:aspect-[3/4] ${index === 1 || index === 3 ? 'lg:mt-12' : ''}`}
           >
               <img
                 src={src}
@@ -62,13 +78,13 @@ export default function GalleryPreview() {
               <div className="absolute inset-0 z-[3] border border-[#E5C76B]/0 transition-colors duration-700 group-hover:border-[#E5C76B]/45"></div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.7 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mt-16 text-center"
         >
           <button

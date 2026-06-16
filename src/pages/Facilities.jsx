@@ -163,9 +163,17 @@ export default function Facilities() {
             initial={{ scale: 1.25 }}
             animate={{ scale: 1 }}
             transition={{ duration: 2 }}
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${bgImg})` }}
-          />
+            className="absolute inset-0 overflow-hidden"
+          >
+            <img
+              src={bgImg}
+              alt=""
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              className="w-full h-full object-cover object-center"
+            />
+          </motion.div>
 
           <div className="absolute inset-0 bg-black/55" />
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42vh] bg-[linear-gradient(180deg,rgba(253,251,247,0)_0%,rgba(253,251,247,0.12)_24%,rgba(253,251,247,0.42)_58%,rgba(253,251,247,1)_100%)]" />
@@ -235,7 +243,7 @@ export default function Facilities() {
               >
 
                 {/* FRAME */}
-                <div className="relative h-full rounded-[28px] bg-[#5A111C]/86 p-[2px] shadow-[0_20px_50px_rgba(63,12,21,0.12)] overflow-hidden md:p-[3px] xl:rounded-[40px]">
+                <div className="relative h-full rounded-[28px] bg-[#5A111C]/86 p-[2px] shadow-[0_10px_24px_rgba(63,12,21,0.1)] overflow-hidden md:p-[3px] xl:rounded-[40px]">
 
                   {/* BORDER */}
                   <div className="h-full rounded-[25px] border border-[#e5c76b]/42 overflow-hidden xl:rounded-[37px]">

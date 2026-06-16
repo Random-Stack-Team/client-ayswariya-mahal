@@ -1,18 +1,18 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState, lazy, Suspense } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import MainLayout from "./layouts/MainLayout";
 import { EnquiryProvider } from "./context/EnquiryContext";
 import OpeningAnimation from "./components/common/OpeningAnimation";
 import ScrollToTop from "./components/common/ScrollToTop";
 
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Facilities from "./pages/Facilities";
-import Gallery from "./pages/Gallery";
-import Contact from "./pages/Contact";
-import Reviews from "./pages/Reviews";
-import SowbhagyaMahal from "./pages/SowbhagyaMahal";
+const Home = lazy(() => import("./pages/Home"));
+const About = lazy(() => import("./pages/About"));
+const Facilities = lazy(() => import("./pages/Facilities"));
+const Gallery = lazy(() => import("./pages/Gallery"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Reviews = lazy(() => import("./pages/Reviews"));
+const SowbhagyaMahal = lazy(() => import("./pages/SowbhagyaMahal"));
 
 const shouldShowOpeningAnimation = () => {
   const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
@@ -30,17 +30,30 @@ const shouldShowOpeningAnimation = () => {
   return shouldShow;
 };
 
+function RouteLoader() {
+  return (
+    <div className="flex min-h-[60vh] items-center justify-center">
+      <div className="text-center">
+        <div className="mx-auto mb-4 h-10 w-10 animate-pulse rounded-full bg-[#E5C76B]/40" />
+        <p className="font-serif text-sm italic text-[#6A1724]/50">Loading...</p>
+      </div>
+    </div>
+  );
+}
+
 function AnimatedRoutes() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/facilities" element={<Facilities />} />
-      <Route path="/gallery" element={<Gallery />} />
-      <Route path="/contact" element={<Contact />} />
-      <Route path="/reviews" element={<Reviews />} />
-      <Route path="/sowbhagya-mahal" element={<SowbhagyaMahal />} />
-    </Routes>
+    <Suspense fallback={<RouteLoader />}>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/facilities" element={<Facilities />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/reviews" element={<Reviews />} />
+        <Route path="/sowbhagya-mahal" element={<SowbhagyaMahal />} />
+      </Routes>
+    </Suspense>
   );
 }
 

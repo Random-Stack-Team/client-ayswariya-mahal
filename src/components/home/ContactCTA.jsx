@@ -8,7 +8,18 @@ const initialPetals = [...Array(8)].map((_, i) => ({
   top: `${10 + Math.random() * 80}%`,
 }));
 
+const colVariants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.12 }
+  }
+};
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+};
 
 export default function ContactCTA() {
 
@@ -55,15 +66,18 @@ export default function ContactCTA() {
       </div>
 
       <div className="max-w-[1100px] mx-auto px-5 sm:px-6 relative z-10">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-8 lg:gap-[48px] items-center text-center md:text-left">
+        <motion.div
+          variants={colVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid md:grid-cols-2 gap-10 md:gap-8 lg:gap-[48px] items-center text-center md:text-left"
+        >
           
           {/* Left: Premium Celebration Promise Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-            className="order-1 md:order-1 flex flex-col justify-center items-center p-6 sm:p-8 md:p-8 lg:p-14 bg-[#fdfbf7] border border-[#D4A843]/30 rounded-[20px] shadow-[0_15px_50px_rgba(90,17,28,0.06)] w-full max-w-[500px] mx-auto relative overflow-hidden"
+            variants={itemVariants}
+            className="order-1 md:order-1 flex flex-col justify-center items-center p-6 sm:p-8 md:p-8 lg:p-14 bg-[#fdfbf7] border border-[#D4A843]/30 rounded-[20px] shadow-[0_10px_24px_rgba(90,17,28,0.06)] w-full max-w-[500px] mx-auto relative overflow-hidden"
           >
             {/* Decorative Custom Handwritten Heart SVG */}
             <svg width="60" height="60" viewBox="0 0 1024 1024" fill="#D4A843" className="mb-4 opacity-90 drop-shadow-sm">
@@ -163,10 +177,7 @@ z"/>
 
           {/* Right: Emotional Story Content */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            variants={itemVariants}
             className="flex flex-col items-center md:items-start order-2 md:order-2"
           >
             <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] text-[#5A111C] mb-6 md:mb-7 lg:mb-8">
@@ -185,7 +196,7 @@ z"/>
             </p>
           </motion.div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   );
