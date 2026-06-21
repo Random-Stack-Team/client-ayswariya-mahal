@@ -10,13 +10,13 @@ const gridVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.08 }
+    transition: { staggerChildren: 0.24 }
   }
 };
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  show: { opacity: 1, y: 0, transition: { duration: 1.70, ease: [0.16, 1, 0.3, 1] } }
 };
 
 export default function GalleryPreview() {
@@ -36,7 +36,7 @@ export default function GalleryPreview() {
             initial={{ opacity: 0, y: 14 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.20, ease: [0.16, 1, 0.3, 1] }}
             className="type-eyebrow text-[#E5C76B] mb-5"
           >
             A Glimpse of Magic
@@ -45,7 +45,7 @@ export default function GalleryPreview() {
             initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.7 }}
-            transition={{ duration: 0.7, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1.40, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-[32px] md:text-[42px] lg:text-6xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fff8ed] drop-shadow-[0_10px_30px_rgba(0,0,0,0.18)]"
           >
             Moments <span className="italic text-[#E5C76B]">Frozen</span> in Time
@@ -57,7 +57,7 @@ export default function GalleryPreview() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6"
         >
           {images.map((src, index) => (
             <motion.div
@@ -84,7 +84,7 @@ export default function GalleryPreview() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.7 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.20, ease: [0.16, 1, 0.3, 1] }}
           className="mt-16 text-center"
         >
           <button

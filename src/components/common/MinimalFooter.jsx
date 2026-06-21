@@ -13,13 +13,13 @@ const minimalLinks = [
 
 export default function MinimalFooter() {
   return (
-    <footer className="relative overflow-hidden bg-[#3F0C15] text-[#fdfbf7]">
+    <footer className="relative overflow-x-hidden bg-[#3F0C15] text-[#fdfbf7] md:overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(212,168,67,0.14),transparent_30%),linear-gradient(145deg,rgba(90,17,28,0.94),rgba(26,10,2,0.96))]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 py-[calc(2rem+env(safe-area-inset-bottom))] sm:px-8 md:py-[calc(2.25rem+env(safe-area-inset-bottom))] lg:px-12">
-        <div className="grid items-center gap-7 text-center lg:grid-cols-[1fr_auto_1fr] lg:text-left">
-          <nav className="order-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:order-1 lg:justify-start">
+      <div className="relative mx-auto max-w-[1280px] px-5 pb-[calc(6.5rem+env(safe-area-inset-bottom))] pt-8 sm:px-8 md:py-[calc(2.25rem+env(safe-area-inset-bottom))] lg:px-12">
+        <div className="grid items-center gap-7 text-center xl:grid-cols-[1fr_auto_1fr] xl:text-left">
+          <nav className="order-2 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 xl:order-1 xl:justify-start">
             {minimalLinks.map((link) => (
               <Link
                 key={link.to}
@@ -31,8 +31,8 @@ export default function MinimalFooter() {
             ))}
           </nav>
 
-          <div className="order-1 flex flex-col items-center gap-3 lg:order-2">
-            <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent lg:hidden" />
+          <div className="order-1 flex flex-col items-center gap-3 xl:order-2">
+            <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent xl:hidden" />
           <Link to="/" className="inline-flex" aria-label="Ayswariya Mahal home">
             <img
               src={logoImg}
@@ -44,10 +44,10 @@ export default function MinimalFooter() {
               className="max-h-[42px] w-auto brightness-[1.26] contrast-[1.08] drop-shadow-[0_12px_28px_rgba(0,0,0,0.28)]"
             />
           </Link>
-            <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent lg:hidden" />
+            <div className="h-px w-24 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent xl:hidden" />
         </div>
 
-          <FooterCredit className="order-3 lg:text-right" />
+          <FooterCredit className="order-3 xl:text-right" />
         </div>
       </div>
     </footer>

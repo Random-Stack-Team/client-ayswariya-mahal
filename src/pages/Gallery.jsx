@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import PageTransition from "../components/common/PageTransition";
 import SEO from "../components/common/SEO";
+import { useIntroReady } from "../hooks/useIntroReady";
 
 import gallery1 from "../assets/images/Gallery/hall1.webp";
 import gallery2 from "../assets/images/Gallery/hall2.webp";
@@ -51,8 +51,28 @@ const categoryMeta = {
   memories: { title: "Memory Lane", subtitle: "Moments to Cherish" },
 };
 
+const heroContainerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.18,
+      delayChildren: 0.12,
+    },
+  },
+};
+
+const heroItemVariants = {
+  hidden: { opacity: 0, y: 28 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1.50, ease: "easeOut" },
+  },
+};
+
 export default function Gallery() {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const introReady = useIntroReady();
+  const [heroReady, setHeroReady] = useState(false);
   const railRef = useRef(null);
   const sectionRef = useRef(null);
   const camera = useRef({ x: 0, vx: 0, target: 0 });
@@ -62,6 +82,26 @@ export default function Gallery() {
   const isInView = useRef(false);
   const touchStart = useRef({ x: 0, y: 0, target: 0 });
   const [category, setCategory] = useState("hall");
+
+  useEffect(() => {
+    if (!introReady) return undefined;
+
+    let secondFrame;
+    let startTimer;
+    const firstFrame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => {
+        startTimer = window.setTimeout(() => {
+          setHeroReady(true);
+        }, 160);
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      if (secondFrame) cancelAnimationFrame(secondFrame);
+      if (startTimer) window.clearTimeout(startTimer);
+    };
+  }, [introReady]);
 
   const images = galleryData[category];
   const meta = categoryMeta[category];
@@ -219,39 +259,41 @@ export default function Gallery() {
         path="/gallery"
       />
       <PageTransition>
-        <main className="min-h-screen overflow-x-clip bg-[#fdfbf7] wedding-pattern-ivory">
+        <main className="min-min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7] wedding-pattern-ivory">
           <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[600px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-36 lg:pt-40">
             <img
               src={gallery3}
               alt=""
               loading="eager"
-              fetchpriority="high"
+              fetchPriority="high"
               decoding="async"
               className="absolute inset-0 w-full h-full object-cover object-center"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1c0d11]/80 via-[#1c0d11]/70 to-[#4A0A12]" />
             <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[42vh] bg-[linear-gradient(180deg,rgba(253,251,247,0)_0%,rgba(253,251,247,0.12)_24%,rgba(253,251,247,0.42)_58%,rgba(253,251,247,1)_100%)]" />
 
-            <div className="relative z-10 mx-auto max-w-4xl text-center">
+            <motion.div
+              variants={heroContainerVariants}
+              initial="hidden"
+              animate={heroReady ? "show" : "hidden"}
+              className="relative z-10 mx-auto max-w-4xl text-center"
+            >
               <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                variants={heroItemVariants}
                 className="mb-6 flex justify-center text-[#d4af37]"
               >
                 <Sparkles size={24} />
               </motion.div>
 
               <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                variants={heroItemVariants}
                 className="mb-6 type-eyebrow text-[#E5C76B] drop-shadow-md"
               >
                 The Collection
               </motion.p>
 
-              <h1
+              <motion.h1
+                variants={heroItemVariants}
                 className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl md:max-lg:text-[60px]"
               >
                 <span className="block">
@@ -260,8 +302,8 @@ export default function Gallery() {
                 <span className="block italic text-[#E5C76B]">
                   Grandeur
                 </span>
-              </h1>
-            </div>
+              </motion.h1>
+            </motion.div>
           </section>
 
           <section
@@ -270,7 +312,7 @@ export default function Gallery() {
             onKeyDown={handleKeyDown}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
-            className="relative flex min-h-screen flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(229,199,107,0.22),transparent_30%),linear-gradient(180deg,#fdfbf7_0%,#fbf3e7_52%,#f8efe1_100%)] px-4 pb-16 pt-10 outline-none md:px-8 md:pb-[72px] md:pt-12 lg:pb-24 lg:pt-16"
+            className="relative flex min-min-h-[100dvh] flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(229,199,107,0.22),transparent_30%),linear-gradient(180deg,#fdfbf7_0%,#fbf3e7_52%,#f8efe1_100%)] px-4 pb-16 pt-10 outline-none md:px-8 md:pb-[72px] md:pt-12 lg:pb-24 lg:pt-16"
             aria-label="Scrollable wedding gallery slider"
           >
             <div className="relative z-30 mx-auto flex max-w-5xl flex-col items-center text-center">
@@ -301,34 +343,41 @@ export default function Gallery() {
               </div>
             </div>
 
-            <div
-              ref={railRef}
-              className="relative z-10 mt-10 flex h-[min(50vh,430px)] items-center gap-8 px-[18vw] will-change-transform sm:gap-12 md:mt-12 md:h-[390px] md:gap-12 md:px-[18vw] lg:mt-16 lg:h-[min(54vh,470px)] lg:gap-20 lg:px-[25vw]"
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 1.36, ease: "easeOut" }}
+              className="relative z-10"
             >
-              {images.map((img, index) => (
-                <motion.div
-                  key={`${category}-${img.src}`}
-                  {...(isDesktop ? { initial: { opacity: 0, y: 24 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, amount: 0.24 }, transition: { duration: 0.65, delay: index * 0.08, ease: "easeOut" } } : {})}
-                  className="luxury-image-frame luxury-image-overlay relative h-[min(50vh,430px)] w-[min(76vw,340px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_12px_32px_rgba(122,27,41,0.15)] transition duration-500 hover:-translate-y-1 md:h-[390px] md:w-[min(38vw,320px)] lg:h-[min(54vh,470px)] lg:w-[min(76vw,360px)]"
-                >
-                  <img
-                    src={img.src}
-                    alt={`${meta.title} ${index + 1}`}
-                    loading="lazy"
-                    decoding="async"
-                    width={img.width}
-                    height={img.height}
-                    className="block h-full w-full object-cover object-center transition-transform duration-[1400ms] hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1c0d11]/58 via-transparent to-[#1c0d11]/8" />
-                </motion.div>
-              ))}
-            </div>
+              <div
+                ref={railRef}
+                className="mt-10 flex h-[min(50vh,430px)] items-center gap-8 px-[18vw] will-change-transform sm:gap-12 md:mt-12 md:h-[390px] md:gap-12 md:px-[18vw] xl:mt-16 xl:h-[min(54vh,470px)] xl:gap-20 xl:px-[25vw]"
+              >
+                {images.map((img, index) => (
+                  <div
+                    key={`${category}-${img.src}`}
+                    className="luxury-image-frame luxury-image-overlay relative h-[min(50vh,430px)] w-[min(76vw,340px)] flex-shrink-0 overflow-hidden rounded-xl shadow-[0_12px_32px_rgba(122,27,41,0.15)] transition duration-500 hover:-translate-y-1 md:h-[390px] md:w-[min(38vw,320px)] xl:h-[min(54vh,470px)] xl:w-[min(76vw,360px)]"
+                  >
+                    <img
+                      src={img.src}
+                      alt={`${meta.title} ${index + 1}`}
+                      loading="lazy"
+                      decoding="async"
+                      width={img.width}
+                      height={img.height}
+                      className="block h-full w-full object-cover object-center transition-transform duration-[1400ms] hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1c0d11]/58 via-transparent to-[#1c0d11]/8" />
+                  </div>
+                ))}
+              </div>
+            </motion.div>
 
-            <div className="relative z-30 mt-8 flex justify-center gap-4 lg:pointer-events-none lg:absolute lg:inset-x-0 lg:top-[68%] lg:mt-0 lg:block">
+            <div className="relative z-30 mt-8 flex justify-center gap-4 xl:pointer-events-none xl:absolute xl:inset-x-0 xl:top-[68%] xl:mt-0 xl:block">
               <button
                 onClick={() => scrollByStep(-1)}
-                className="grid h-11 w-11 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/80 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:h-12 md:w-12 lg:pointer-events-auto lg:absolute lg:left-8 lg:-translate-y-1/2"
+                className="grid h-11 w-11 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/80 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:h-12 md:w-12 xl:pointer-events-auto xl:absolute xl:left-8 xl:-translate-y-1/2"
                 aria-label="Previous gallery item"
               >
                 <ChevronLeft size={24} strokeWidth={1.7} />
@@ -336,7 +385,7 @@ export default function Gallery() {
 
               <button
                 onClick={() => scrollByStep(1)}
-                className="grid h-11 w-11 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/80 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:h-12 md:w-12 lg:pointer-events-auto lg:absolute lg:right-8 lg:-translate-y-1/2"
+                className="grid h-11 w-11 place-items-center rounded-full border border-[#E5C76B]/60 bg-[#4A0A12]/80 text-[#E5C76B] shadow-[0_14px_34px_rgba(63,12,21,0.22)] backdrop-blur-md transition duration-500 hover:bg-[#6A1724] hover:text-white md:h-12 md:w-12 xl:pointer-events-auto xl:absolute xl:right-8 xl:-translate-y-1/2"
                 aria-label="Next gallery item"
               >
                 <ChevronRight size={24} strokeWidth={1.7} />
@@ -350,7 +399,7 @@ export default function Gallery() {
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 0.75, ease: "easeOut" }}
+                transition={{ duration: 1.50, ease: "easeOut" }}
                 className="mx-auto max-w-3xl text-center"
               >
                 <p className="type-eyebrow mb-5 text-[#E5C76B]">Official Venue Film</p>

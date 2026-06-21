@@ -1,18 +1,19 @@
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
-import { useLayoutEffect, useState, lazy, Suspense } from "react";
+import { useEffect, useLayoutEffect, useState, lazy, Suspense } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import MainLayout from "./layouts/MainLayout";
 import { EnquiryProvider } from "./context/EnquiryContext";
 import OpeningAnimation from "./components/common/OpeningAnimation";
 import ScrollToTop from "./components/common/ScrollToTop";
+import { routeLoaders, warmPrimaryRoutes } from "./utils/routePrefetch";
 
-const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
-const Facilities = lazy(() => import("./pages/Facilities"));
-const Gallery = lazy(() => import("./pages/Gallery"));
-const Contact = lazy(() => import("./pages/Contact"));
-const Reviews = lazy(() => import("./pages/Reviews"));
-const SowbhagyaMahal = lazy(() => import("./pages/SowbhagyaMahal"));
+const Home = lazy(routeLoaders["/"]);
+const About = lazy(routeLoaders["/about"]);
+const Facilities = lazy(routeLoaders["/facilities"]);
+const Gallery = lazy(routeLoaders["/gallery"]);
+const Contact = lazy(routeLoaders["/contact"]);
+const Reviews = lazy(routeLoaders["/reviews"]);
+const SowbhagyaMahal = lazy(routeLoaders["/sowbhagya-mahal"]);
 
 const shouldShowOpeningAnimation = () => {
   const hasSeenIntro = sessionStorage.getItem("hasSeenIntro");
@@ -60,14 +61,23 @@ function AnimatedRoutes() {
 function App() {
   const [showOpening, setShowOpening] = useState(shouldShowOpeningAnimation);
 
+  useEffect(() => {
+    if (showOpening) return undefined;
+
+    if ("requestIdleCallback" in window) {
+      const idleId = window.requestIdleCallback(warmPrimaryRoutes, { timeout: 3000 });
+      return () => window.cancelIdleCallback(idleId);
+    }
+
+    const timeoutId = window.setTimeout(warmPrimaryRoutes, 1500);
+    return () => window.clearTimeout(timeoutId);
+  }, [showOpening]);
+
   useLayoutEffect(() => {
     if (!showOpening) {
       document.documentElement.classList.remove("intro-scroll-lock");
       return undefined;
     }
-
-    const previousBodyOverflow = document.body.style.overflow;
-    const previousHtmlOverflow = document.documentElement.style.overflow;
 
     document.documentElement.classList.add("intro-scroll-lock");
     document.body.style.overflow = "hidden";
@@ -75,8 +85,8 @@ function App() {
 
     return () => {
       document.documentElement.classList.remove("intro-scroll-lock");
-      document.body.style.overflow = previousBodyOverflow;
-      document.documentElement.style.overflow = previousHtmlOverflow;
+      document.body.style.removeProperty("overflow");
+      document.documentElement.style.removeProperty("overflow");
     };
   }, [showOpening]);
 

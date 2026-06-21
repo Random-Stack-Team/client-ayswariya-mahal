@@ -104,7 +104,7 @@ const cardMotion = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.6,
+      duration: 1.20,
       delay: i * 0.08,
       ease: "easeOut",
     },
@@ -115,7 +115,7 @@ const heroContentMotion = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.12,
+      staggerChildren: 0.18,
     },
   },
 };
@@ -129,7 +129,7 @@ const heroItemMotion = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.72,
+      duration: 1.44,
       ease: "easeOut",
     },
   },
@@ -146,9 +146,9 @@ export default function Facilities() {
       />
 
       <PageTransition>
-        <main className="relative min-h-screen bg-[#fcf9f4] wedding-pattern-ivory overflow-x-hidden">
+        <main className="relative min-min-h-[100dvh] bg-[#fcf9f4] wedding-pattern-ivory overflow-x-hidden">
 
-        <section className="relative flex min-h-[600px] items-center justify-center overflow-hidden md:min-h-[680px] lg:min-h-screen">
+        <section className="relative flex min-h-[600px] items-center justify-center overflow-hidden md:min-h-[680px] lg:min-h-[80vh] xl:min-min-h-[100dvh]">
 
           <motion.div
             initial={{ scale: 1.25 }}
@@ -160,7 +160,7 @@ export default function Facilities() {
               src={bgImg}
               alt=""
               loading="eager"
-              fetchpriority="high"
+              fetchPriority="high"
               decoding="async"
               className="w-full h-full object-cover object-center"
             />
@@ -227,17 +227,17 @@ export default function Facilities() {
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, amount: 0.2 }}
-                className="group relative h-full max-lg:h-[430px] md:max-lg:h-[420px]"
+                className="group relative h-auto"
               >
 
                 {/* FRAME */}
-                <div className="relative h-full rounded-[28px] bg-[#5A111C]/86 p-[2px] shadow-[0_10px_24px_rgba(63,12,21,0.1)] overflow-hidden md:p-[3px] xl:rounded-[40px]">
+                <div className="relative h-auto rounded-[28px] bg-[#5A111C]/86 p-[2px] shadow-[0_10px_24px_rgba(63,12,21,0.1)] overflow-hidden md:p-[3px] xl:rounded-[40px]">
 
                   {/* BORDER */}
-                  <div className="h-full rounded-[25px] border border-[#e5c76b]/42 overflow-hidden xl:rounded-[37px]">
+                  <div className="h-auto rounded-[25px] border border-[#e5c76b]/42 overflow-hidden xl:rounded-[37px]">
 
                     {/* INNER CARD */}
-                    <div className="relative flex h-full flex-col overflow-hidden rounded-[23px] bg-[#fcf9f4] transition-all duration-500 group-hover:-translate-y-1 xl:rounded-[35px]">
+                    <div className="relative flex h-auto flex-col overflow-hidden rounded-[23px] bg-[#fcf9f4] transition-all duration-500 group-hover:-translate-y-1 xl:rounded-[35px]">
 
                       {/* IMAGE */}
                       <div className="relative h-56 flex-shrink-0 overflow-hidden sm:h-60 md:h-52 lg:h-52 xl:h-44">
@@ -266,7 +266,7 @@ export default function Facilities() {
                       {/* TEXT */}
                       <div className="relative z-30 flex flex-1 flex-col justify-start gap-3 px-6 py-6 text-center md:px-7 md:py-6 xl:justify-between xl:p-5">
 
-                        <h3 className="mb-1 font-serif text-[24px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] max-lg:min-h-[58px] max-lg:flex max-lg:items-center max-lg:justify-center xl:text-[22px]">
+                        <h3 className="mb-1 font-serif text-[24px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] min-h-[58px] flex items-center justify-center xl:min-h-0 xl:block xl:text-[22px]">
                           {item.title}
                         </h3>
 
@@ -292,7 +292,7 @@ export default function Facilities() {
 
         <section className="relative px-5 pt-16 pb-[calc(4rem+env(safe-area-inset-bottom))] sm:px-6 md:pt-20 md:pb-[calc(5rem+env(safe-area-inset-bottom))] lg:py-40 bg-[#5A111C] wedding-pattern-maroon overflow-hidden">
 
-          <div className="max-w-6xl mx-auto grid md:grid-cols-[0.95fr_1fr] lg:grid-cols-2 gap-10 md:gap-10 lg:gap-16 items-center">
+          <div className="max-w-6xl mx-auto grid items-center gap-10 xl:grid-cols-2 xl:gap-16">
 
             <div>
               <PremiumImageFrame className="h-[320px] w-full sm:h-[380px] md:h-[360px] lg:h-full">

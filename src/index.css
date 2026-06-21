@@ -68,7 +68,6 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  overflow-x: clip;
 }
 
 html.intro-scroll-lock,
@@ -89,7 +88,6 @@ html.intro-scroll-lock #root {
 :root {
   background-color: var(--color-surface);
   color: var(--color-on-surface);
-  overflow-x: clip;
 }
 
 body {
@@ -99,7 +97,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-synthesis: none;
-  overflow-x: clip;
   font-size: 16px;
   line-height: 1.8;
   letter-spacing: 0;

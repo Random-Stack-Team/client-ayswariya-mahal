@@ -32,14 +32,14 @@ export default function Contact() {
         path="/contact"
       />
       <PageTransition>
-        <main className="bg-[#fdfbf7] wedding-pattern-ivory min-h-screen">
+        <main className="bg-[#fdfbf7] wedding-pattern-ivory min-min-h-[100dvh]">
       {/* Hero Section */}
       <section className="relative flex min-h-[520px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[580px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-32 lg:pt-40">
         <img
           src={heroImg}
           alt=""
           loading="eager"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
@@ -66,7 +66,7 @@ export default function Contact() {
 
       {/* Content Section */}
       <section className="px-5 pb-16 pt-16 sm:px-6 md:py-[72px] lg:pt-40">
-        <div className="max-w-site mx-auto grid md:grid-cols-[0.95fr_1.05fr] lg:grid-cols-2 gap-10 md:gap-10 lg:gap-16">
+        <div className="max-w-site mx-auto grid items-center gap-10 xl:grid-cols-2 xl:gap-16">
           
           {/* Contact Information */}
           <div
@@ -132,7 +132,7 @@ export default function Contact() {
 
           {/* Action Area & Map Placeholder */}
           <div
-            className="flex flex-col h-full space-y-8"
+            className="flex flex-col h-auto space-y-8"
           >
             {/* Inline Enquiry Form */}
             <form onSubmit={handleSubmit} className="bg-white p-5 sm:p-7 md:p-7 lg:p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20">

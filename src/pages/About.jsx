@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useMediaQuery } from "../hooks/useMediaQuery";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/hero.webp";
 import sowCrop2 from "../assets/images/sow-crop2.webp";
@@ -9,23 +8,23 @@ import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 
 export default function About() {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
-
   const staggerContainer = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.06
+        staggerChildren: 0.15,
+        delayChildren: 0.12
       }
     }
   };
 
   const fadeInUp = {
-    hidden: { opacity: 0, y: 18 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, y: 24 },
+    show: { opacity: 1, y: 0, transition: { duration: 1.36, ease: "easeOut" } }
   };
+
+  const revealViewport = { once: true, amount: 0.18 };
 
   const pillars = [
     {
@@ -53,16 +52,16 @@ export default function About() {
         path="/about"
       />
       <PageTransition>
-        <main className="min-h-screen overflow-x-clip bg-[#fdfbf7] wedding-pattern-ivory lg:overflow-hidden">
+        <main className="min-min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7] wedding-pattern-ivory ">
 
       {/* Hero Section */}
-      <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-20 pt-28 sm:min-h-[560px] sm:px-6 sm:pb-24 sm:pt-32 md:min-h-[600px] md:pb-24 md:pt-[8.5rem] lg:min-h-[70vh] lg:pb-32 lg:pt-40">
+      <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-20 pt-28 sm:min-h-[560px] sm:px-6 sm:pb-24 sm:pt-32 md:min-h-[600px] md:pb-24 md:pt-[8.5rem] xl:min-h-[70vh] xl:pb-32 xl:pt-40">
         <motion.img
           src={heroImg}
           alt=""
           aria-hidden="true"
           loading="eager"
-          fetchpriority="high"
+          fetchPriority="high"
           decoding="async"
           width="1920"
           height="1440"
@@ -105,7 +104,7 @@ export default function About() {
 
       {/* Story Section */}
       <section className="px-5 py-14 sm:px-6 sm:py-16 md:py-[72px] lg:py-32">
-        <div className="max-w-site mx-auto grid gap-11 md:grid-cols-[1.05fr_0.95fr] md:gap-9 lg:grid-cols-[1.2fr_1fr] lg:gap-20 items-center">
+        <div className="max-w-site mx-auto grid gap-11 xl:grid-cols-[1.2fr_1fr] xl:gap-20 items-center">
 
           <div
             className="relative"
@@ -127,8 +126,9 @@ export default function About() {
 
           <motion.div
             variants={staggerContainer}
-            initial={isDesktop ? "hidden" : "show"}
-            {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.1 } } : {})}
+            initial="hidden"
+            whileInView="show"
+            viewport={revealViewport}
             className="relative z-10 text-center md:text-left"
           >
             <motion.p variants={fadeInUp} className="type-eyebrow text-[#b58c2a] mb-4">
@@ -162,8 +162,9 @@ export default function About() {
         <div className="max-w-site mx-auto relative z-10">
           <motion.div
             variants={staggerContainer}
-            initial={isDesktop ? "hidden" : "show"}
-            {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.1 } } : {})}
+            initial="hidden"
+            whileInView="show"
+            viewport={revealViewport}
             className="text-center mb-10 md:mb-12 lg:mb-16"
           >
             <motion.h2 variants={fadeInUp} className="font-serif text-[30px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-4">
@@ -175,14 +176,17 @@ export default function About() {
             </motion.p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 md:gap-6 xl:gap-8">
             {pillars.map((pillar, index) => {
               const Icon = pillar.icon;
               return (
                 <motion.article
                   key={pillar.title}
-                  {...(isDesktop ? { initial: { opacity: 0, y: 30 }, whileInView: { opacity: 1, y: 0 }, viewport: { once: true, margin: "-50px" }, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: index * 0.15 } } : {})}
-                  className={`group relative flex flex-col items-center text-center p-[22px] md:p-[24px] lg:p-[28px] bg-[#fdfbf7] rounded-[12px] border border-[#d4af37]/40 shadow-[0_8px_20px_rgba(90,17,28,0.06)] hover:shadow-[0_12px_24px_rgba(212,168,67,0.15)] transition-all duration-500 hover:-translate-y-1 overflow-hidden ${index === 2 ? "md:col-span-2 lg:col-span-1" : ""}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={revealViewport}
+                  transition={{ duration: 1.20, ease: "easeOut", delay: index * 0.1 }}
+                  className={`group relative flex flex-col items-center text-center p-[22px] md:p-[24px] lg:p-[28px] bg-[#fdfbf7] rounded-[12px] border border-[#d4af37]/40 shadow-[0_8px_20px_rgba(90,17,28,0.06)] hover:shadow-[0_12px_24px_rgba(212,168,67,0.15)] transition-all duration-500 hover:-translate-y-1 overflow-hidden ${index === 2 ? "md:col-span-2 xl:col-span-1" : ""}`}
                 >
                   {/* Decorative thin gold top border glow */}
                   <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#d4af37]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -224,13 +228,14 @@ export default function About() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(229,199,107,0.15),transparent_50%)] pointer-events-none" />
         <div className="absolute -bottom-[50%] -left-[50%] w-[200%] h-[200%] bg-[radial-gradient(circle_at_50%_100%,rgba(229,199,107,0.08),transparent_40%)] pointer-events-none" />
 
-        <div className="max-w-site mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20 relative z-10">
+        <div className="max-w-site mx-auto flex flex-col xl:flex-row items-center justify-between gap-12 xl:gap-20 relative z-10">
           
           <motion.div 
             variants={staggerContainer}
-            initial={isDesktop ? "hidden" : "show"}
-            {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.1 } } : {})}
-            className="w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+            initial="hidden"
+            whileInView="show"
+            viewport={revealViewport}
+            className="w-full max-w-6xl mx-auto grid grid-cols-1 xl:grid-cols-2 gap-6 xl:gap-8"
           >
             {/* Philosophy Card */}
             <motion.div 
@@ -289,7 +294,7 @@ export default function About() {
           className="absolute bottom-0 right-0 h-px w-1/2 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent"
         />
 
-        <div className="max-w-site mx-auto grid items-center gap-12 md:max-lg:grid-cols-1 md:max-lg:gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="max-w-site mx-auto grid items-center gap-12 xl:grid-cols-2 xl:gap-16">
           <div
             className="relative mx-auto w-full max-w-[620px] md:max-lg:max-w-[820px] lg:max-w-[620px]"
           >
@@ -328,8 +333,9 @@ export default function About() {
 
           <motion.div
             variants={staggerContainer}
-            initial={isDesktop ? "hidden" : "show"}
-            {...(isDesktop ? { whileInView: "show", viewport: { once: true, amount: 0.18 } } : {})}
+            initial="hidden"
+            whileInView="show"
+            viewport={revealViewport}
             className="relative z-10 text-center md:text-left"
           >
             <motion.p variants={fadeInUp} className="type-eyebrow mb-4 text-[#B8860B]">
@@ -346,7 +352,7 @@ export default function About() {
               Our hall is spacious with a seating capacity of 500 guests, dining capacity 200 and floating capacity of 1000, supported by centralized air conditioning, modern kitchen, guest rooms, backup generator, geysers, CCTV coverage, spacious dining and a separate rooftop garden.
             </motion.p>
 
-            <motion.div variants={fadeInUp} className="mb-8 grid grid-cols-1 gap-4 md:grid-cols-1 lg:grid-cols-3">
+            <motion.div variants={fadeInUp} className="mb-8 grid grid-cols-1 gap-4 xl:grid-cols-3">
               {[
                 { number: "500", label: "Seating Capacity", icon: Building2 },
                 { number: "200", label: "Dining Capacity", icon: UtensilsCrossed },

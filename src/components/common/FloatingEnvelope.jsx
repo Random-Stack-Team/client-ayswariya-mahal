@@ -12,6 +12,15 @@ const QUOTES = [
   "Begin your forever in\nroyal elegance.",
 ];
 
+const FLOW = {
+  closed: "closed",
+  opening: "opening",
+  open: "open",
+  submitting: "submitting",
+  success: "success",
+  closing: "closing",
+};
+
 const getTodayDateValue = () => {
   const today = new Date();
   const timezoneOffset = today.getTimezoneOffset() * 60000;
@@ -25,7 +34,9 @@ export default function FloatingEnvelope() {
   const [isEnvelopeVisible, setIsEnvelopeVisible] = useState(false);
   const [quote, setQuote] = useState("");
   const [isHovered, setIsHovered] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState("idle");
+  const [flowState, setFlowState] = useState(FLOW.closed);
+  const [closingContentState, setClosingContentState] = useState(FLOW.open);
+  const [isMobileViewport, setIsMobileViewport] = useState(() => window.matchMedia("(max-width: 767px)").matches);
   const [isCompactViewport, setIsCompactViewport] = useState(false);
   const timersRef = useRef([]);
 
@@ -45,6 +56,23 @@ export default function FloatingEnvelope() {
       timersRef.current.forEach(window.clearTimeout);
       timersRef.current = [];
     };
+  }, []);
+
+  useEffect(() => {
+    if (!isFormOpen || flowState !== FLOW.closed) return undefined;
+
+    const timer = window.setTimeout(() => setFlowState(FLOW.open), 550);
+    return () => window.clearTimeout(timer);
+  }, [flowState, isFormOpen]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const syncViewport = () => setIsMobileViewport(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener("change", syncViewport);
+
+    return () => mediaQuery.removeEventListener("change", syncViewport);
   }, []);
 
   useEffect(() => {
@@ -74,7 +102,7 @@ export default function FloatingEnvelope() {
     };
 
     const triggerEnvelope = () => {
-      if (!isFormOpen && hasScrolledPastRef.current && submitStatus === "idle") {
+      if (!isFormOpen && hasScrolledPastRef.current && flowState === FLOW.closed) {
         setQuote(QUOTES[Math.floor(Math.random() * QUOTES.length)]);
         setIsEnvelopeVisible(true);
       } else if (!isFormOpen) {
@@ -83,7 +111,8 @@ export default function FloatingEnvelope() {
     };
 
     const scheduleNext = () => {
-      const delay = Math.floor(Math.random() * (12000 - 6000 + 1)) + 6000;
+      // Pops up randomly between 25s and 45s
+      const delay = Math.floor(Math.random() * (45000 - 25000 + 1)) + 25000;
       timeoutId = setTimeout(triggerEnvelope, delay);
     };
 
@@ -94,14 +123,11 @@ export default function FloatingEnvelope() {
       window.removeEventListener("scroll", checkScroll);
       clearTimeout(timeoutId);
     };
-  }, [isFormOpen, submitStatus, isHome]);
+  }, [flowState, isFormOpen, isHome]);
 
   useEffect(() => {
-    if (!isFormOpen && submitStatus === "idle") return undefined;
+    if (!isFormOpen && flowState === FLOW.closed) return undefined;
 
-    const previousBodyOverflow = document.body.style.overflow;
-    const previousHtmlOverflow = document.documentElement.style.overflow;
-    const previousBodyPaddingRight = document.body.style.paddingRight;
     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
     document.body.style.overflow = "hidden";
@@ -111,19 +137,26 @@ export default function FloatingEnvelope() {
     }
 
     return () => {
-      document.body.style.overflow = previousBodyOverflow;
-      document.documentElement.style.overflow = previousHtmlOverflow;
-      document.body.style.paddingRight = previousBodyPaddingRight;
+      document.body.style.removeProperty("overflow");
+      document.documentElement.style.removeProperty("overflow");
+      document.body.style.removeProperty("padding-right");
     };
-  }, [isFormOpen, submitStatus]);
+  }, [flowState, isFormOpen]);
 
   const handleClose = (e) => {
     if (e) e.stopPropagation();
     clearSubmitTimers();
     setIsEnvelopeVisible(false);
     setIsHovered(false);
-    setSubmitStatus("idle");
-    closeForm();
+
+    if (!isFormOpen && flowState === FLOW.closed) return;
+
+    setClosingContentState(flowState === FLOW.closed ? FLOW.opening : flowState);
+    setFlowState(FLOW.closing);
+    runLater(() => {
+      closeForm();
+      setFlowState(FLOW.closed);
+    }, 350);
   };
 
   const handleEnquireClick = (e) => {
@@ -145,68 +178,58 @@ export default function FloatingEnvelope() {
 
     dateInput.setCustomValidity("");
     clearSubmitTimers();
-    setSubmitStatus("submitting");
+    setFlowState(FLOW.submitting);
     runLater(() => {
-      setSubmitStatus("success");
+      setFlowState(FLOW.success);
       runLater(() => {
-        if (isCompactViewport) {
-          runLater(() => {
-            handleClose();
-          }, 1200);
-        } else {
-          setSubmitStatus("sealing_paper");
-          runLater(() => {
-            setSubmitStatus("sealing_flap");
-            runLater(() => {
-              setSubmitStatus("departing");
-              runLater(() => {
-                setIsEnvelopeVisible(false);
-                setIsHovered(false);
-                closeForm();
-                setSubmitStatus("idle");
-              }, 1000);
-            }, 1200);
-          }, 700);
-        }
+        handleClose();
       }, 2500);
     }, 1000);
   };
 
-  const isExpanded = isFormOpen || submitStatus !== "idle";
+  const isExpanded = isFormOpen || flowState !== FLOW.closed;
   const isVisible = isEnvelopeVisible || isExpanded;
   const isPeeking = isHovered && !isExpanded;
 
-  const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
-  const isFlapOpen = submitStatus !== "sealing_flap" && submitStatus !== "departing";
+  const isFlapOpen = true;
 
-  const springConfig = { duration: 0.68, ease: "easeOut" };
-  const paperSpringConfig = { duration: 0.68, ease: "easeOut" };
-  const contentRevealConfig = { duration: 0.46, ease: "easeOut" };
-  const stateRevealConfig = { duration: 0.42, ease: "easeOut" };
-  const closeConfig = { duration: 0.35, ease: "easeOut" };
+  const springConfig = { duration: 1.10, ease: [0.16, 1, 0.3, 1] };
+  const paperSpringConfig = { duration: 1.30, ease: "easeOut" };
+  const contentRevealConfig = { duration: 1.00, ease: "easeOut" };
+  const loadingRevealConfig = { duration: 0.50, ease: "easeOut" };
+  const successRevealConfig = { duration: 0.60, ease: "easeOut" };
+  const closeConfig = { duration: 0.70, ease: "easeOut" };
   const stateContainerClass = "w-full flex min-h-[300px] sm:min-h-[340px] md:min-h-[360px] flex-1 flex-col items-center justify-center px-6 text-center z-30";
+  const effectiveFlowState = isFormOpen && flowState === FLOW.closed ? FLOW.opening : flowState;
+  const contentState = flowState === FLOW.closing ? closingContentState : effectiveFlowState;
+  const compactLabelClass = isMobileViewport
+    ? "mb-0.5 block font-body text-[10px] font-medium uppercase tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#b58c2a] md:mb-2 md:text-[13px] md:tracking-[0.14em]"
+    : "mb-1 block font-body text-[11px] font-medium uppercase tracking-[0.14em] text-[#4a3623] transition-colors group-focus-within:text-[#b58c2a] md:mb-2 md:text-[13px]";
+  const compactInputClass = isMobileViewport
+    ? "min-h-8 h-8 w-full border-0 border-b-[1px] border-[#4a3623]/30 bg-transparent px-1 py-0.5 font-body text-[13px] leading-[1.3] text-[#4a3623] transition-all placeholder:text-[#8a7d6b] focus:border-[#4a3623] focus:ring-0 md:min-h-11 md:py-2 md:text-[16px] md:leading-[1.7]"
+    : "min-h-9 w-full border-0 border-b-[2px] border-[#4a3623]/30 bg-transparent px-1 py-1 font-body text-[14px] leading-[1.4] text-[#4a3623] transition-all placeholder:text-[#8a7d6b] focus:border-[#4a3623] focus:ring-0 md:min-h-11 md:py-2 md:text-[16px] md:leading-[1.7]";
 
   const expandedContent = (
-    <AnimatePresence mode="wait">
-      {submitStatus === "submitting" ? (
+    <AnimatePresence mode="popLayout">
+      {contentState === FLOW.submitting ? (
         <motion.div
           key="loading"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={stateRevealConfig}
+          exit={{ opacity: 0, transition: { duration: 0.50, ease: "easeOut" } }}
+          transition={loadingRevealConfig}
           className={`${stateContainerClass} space-y-5`}
         >
           <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
           <p className="type-eyebrow text-[#4a3623]">Sealing Petition...</p>
         </motion.div>
-      ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
+      ) : contentState === FLOW.success ? (
         <motion.div
           key="success"
           initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={stateRevealConfig}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, transition: { duration: 0.60, ease: "easeOut" } }}
+          transition={successRevealConfig}
           className={stateContainerClass}
         >
           <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-6 border-[2px] border-[#4a3623]">
@@ -217,68 +240,69 @@ export default function FloatingEnvelope() {
           <p className="font-body text-[16px] leading-[1.7] text-[#4a3623] max-w-[260px]">
             Your royal request has been elegantly sealed. Our Heritage Concierge will contact you shortly.
           </p>
+
         </motion.div>
-      ) : (
+      ) : contentState === FLOW.opening || contentState === FLOW.open ? (
         <motion.div
-          key="form"
-          initial={{ opacity: 0, y: 8 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={{ ...contentRevealConfig, delay: 0.1 }}
-          className="w-full px-5 pt-2 pb-10 z-30 flex flex-col justify-start sm:px-6 sm:pt-3 md:pb-12"
-        >
-          <header className="mb-3 text-center">
-            <div className="text-[#4a3623] flex justify-center mb-1.5"><Sparkles size={18} strokeWidth={2} /></div>
-            <h2 className="font-serif font-bold text-[27px] md:text-[31px] text-[#3b2618] tracking-[0.03em] leading-[1.15]">Send an Enquiry</h2>
-            <div className="flex items-center justify-center gap-4 mt-3">
-              <div className="w-12 h-[2px] bg-[#4a3623]"></div>
-              <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
-              <div className="w-12 h-[2px] bg-[#4a3623]"></div>
-            </div>
-            <p className="font-body text-[14px] text-[#5a4535] leading-relaxed tracking-[0.02em] mt-3">We look forward to welcoming you</p>
-          </header>
+            key="form"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, transition: { duration: 0.50, ease: "easeOut" } }}
+            transition={{ duration: 0.90, delay: contentState === FLOW.opening ? 0.22 : 0, ease: "easeOut" }}
+            className={`z-30 flex w-full flex-col justify-start md:px-6 md:pb-12 md:pt-3 ${isMobileViewport ? "px-3 pb-2 pt-0" : "px-3.5 pb-3 pt-0"}`}
+          >
+            <header className={`${isMobileViewport ? "mb-1" : "mb-1.5"} text-center md:mb-3`}>
+              <div className={`${isMobileViewport ? "hidden" : "mb-1 flex"} justify-center text-[#4a3623] md:mb-1.5 md:flex`}><Sparkles size={18} strokeWidth={2} /></div>
+              <h2 className={`font-serif font-bold leading-[1.15] tracking-[0.03em] text-[#3b2618] md:text-[31px] ${isMobileViewport ? "text-[20px]" : "text-[22px]"}`}>Send an Enquiry</h2>
+              <div className={`${isMobileViewport ? "mt-1 mb-2" : "mt-2"} flex items-center justify-center gap-3 md:mt-3 md:gap-4`}>
+                <div className="w-12 h-[1px] bg-[#4a3623]"></div>
+                <div className="w-1.5 h-1.5 rotate-45 bg-[#d4af37] border-[1px] border-[#4a3623]"></div>
+                <div className="w-12 h-[1px] bg-[#4a3623]"></div>
+              </div>
+              <p className="mt-3 hidden font-body text-[14px] leading-relaxed tracking-[0.02em] text-[#5a4535] md:block">We look forward to welcoming you</p>
+            </header>
 
-          <form className="space-y-3 pb-2 md:space-y-4" onSubmit={handleSubmit}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4 md:gap-y-5">
+            <form className={`${isMobileViewport ? "space-y-1" : "space-y-1.5"} pb-0 md:space-y-4 md:pb-2`} onSubmit={handleSubmit}>
+              <div className={`grid gap-x-3 md:grid-cols-2 md:gap-x-5 md:gap-y-5 ${isMobileViewport ? "grid-cols-2 gap-y-1" : "grid-cols-1 gap-y-1.5"}`}>
               <div className="relative group">
-                <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">Honorable Name <span className="text-[#b58c2a]">*</span></label>
-                <input type="text" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] placeholder:text-[#8a7d6b]" placeholder="e.g. Anand & Priya" />
+                <label className={compactLabelClass}>Honorable Name <span className="text-[#b58c2a]">*</span></label>
+                <input type="text" required className={compactInputClass} placeholder="e.g. Anand & Priya" />
               </div>
 
               <div className="relative group">
-                <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">Mobile Number <span className="text-[#b58c2a]">*</span></label>
-                <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] placeholder:text-[#8a7d6b]" placeholder="+91" />
+                <label className={compactLabelClass}>Mobile Number <span className="text-[#b58c2a]">*</span></label>
+                <input type="tel" pattern="[0-9]{10,14}" title="Please enter a valid phone number" required className={compactInputClass} placeholder="+91" />
               </div>
 
               <div className="relative group">
-                <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">Email Address <span className="text-[#b58c2a]">*</span></label>
-                <input type="email" required className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] placeholder:text-[#8a7d6b]" placeholder="your@email.com" />
+                <label className={compactLabelClass}>Email Address <span className="text-[#b58c2a]">*</span></label>
+                <input type="email" required className={compactInputClass} placeholder="your@email.com" />
               </div>
 
               <div className="relative group">
-                <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">Auspicious Date <span className="text-[#b58c2a]">*</span></label>
+                <label className={compactLabelClass}>Auspicious Date <span className="text-[#b58c2a]">*</span></label>
                 <input
                   type="date"
                   name="eventDate"
                   min={getTodayDateValue()}
                   required
                   onChange={(event) => event.currentTarget.setCustomValidity("")}
-                  className="min-h-11 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] cursor-pointer"
+                  className={`${compactInputClass} cursor-pointer`}
                 />
               </div>
             </div>
 
             <div className="relative group">
-              <label className="block font-body text-[13px] tracking-[0.14em] uppercase text-[#4a3623] mb-2 font-medium transition-colors group-focus-within:text-[#b58c2a]">How can we help? <span className="text-[#b58c2a]">*</span></label>
-              <textarea rows="2" required className="min-h-14 w-full bg-transparent border-0 border-b-[2px] border-[#4a3623]/30 py-2 px-1 focus:ring-0 focus:border-[#4a3623] transition-all font-body text-[16px] leading-[1.7] text-[#4a3623] placeholder:text-[#8a7d6b] resize-none" placeholder="Tell us about your requirements..."></textarea>
+              <label className={compactLabelClass}>How can we help? <span className="text-[#b58c2a]">*</span></label>
+              <textarea rows="2" required className={`${isMobileViewport ? "h-[64px] min-h-[64px] text-[13px] leading-[1.3] py-1" : "h-16 min-h-16 text-[14px] leading-[1.4] py-1"} w-full resize-none border-0 border-b-[1px] border-[#4a3623]/30 bg-transparent px-1 font-body text-[#4a3623] transition-all placeholder:text-[#8a7d6b] focus:border-[#4a3623] focus:ring-0 md:h-full md:min-h-14 md:py-2 md:text-[16px] md:leading-[1.7]`} placeholder="Tell us about your requirements..."></textarea>
             </div>
 
-            <div className="mt-7 mb-8 flex justify-center">
+            <div className={`${isMobileViewport ? "mb-1 mt-3" : "mb-2 mt-3"} flex justify-center md:mb-8 md:mt-7`}>
               <button 
                 type="submit" 
-                className="relative min-h-12 px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
+                className={`group relative w-full max-w-[240px] rounded-full bg-[#d4af37] shadow-[0_4px_15px_rgba(212,175,55,0.4)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] ${isMobileViewport ? "h-[44px] px-8" : "min-h-11 px-10 py-2"} md:min-h-12 md:py-2.5`}
               >
-                <div className="relative z-10 flex items-center justify-center">
+                <div className="relative z-10 flex h-auto items-center justify-center">
                   <span className="type-cta text-[#4a3623] flex items-center justify-center whitespace-nowrap">
                     Seal & Submit
                   </span>
@@ -287,7 +311,7 @@ export default function FloatingEnvelope() {
             </div>
           </form>
         </motion.div>
-      )}
+      ) : null}
     </AnimatePresence>
   );
 
@@ -300,64 +324,96 @@ export default function FloatingEnvelope() {
             type="button"
             aria-label="Close enquiry form"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: flowState === FLOW.closing ? 0 : 1 }}
             exit={{ opacity: 0 }}
-            transition={closeConfig}
+            transition={{ duration: flowState === FLOW.closing ? 0.35 : 0.25, ease: "easeOut" }}
             onClick={handleClose}
-            className="fixed inset-0 bg-[#2A141A]/85 backdrop-blur-md z-[100]"
+            className="fixed inset-0 bg-[#2A141A]/85 z-[100]"
           />
         )}
       </AnimatePresence>
 
       {/* ── Mobile/tablet modal (own AnimatePresence for exit animation) ── */}
       <AnimatePresence>
-        {isExpanded && isCompactViewport && (
-          <motion.div
-            key="compact-form"
-            initial={{ opacity: 0, scale: 0.96, y: 12 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, y: 0 }}
-            transition={springConfig}
-            className="fixed z-[101] inset-0 flex items-center justify-center pointer-events-none"
+        {isExpanded && (
+          <div
+            key="expanded-envelope-form"
+            className={`pointer-events-none fixed inset-0 flex items-center justify-center overflow-hidden px-4 py-4 ${isMobileViewport ? "z-[9999]" : "z-[101]"}`}
+            style={{ paddingBottom: "max(1rem, env(safe-area-inset-bottom))" }}
           >
-            <div className="relative pointer-events-auto w-[calc(100vw-32px)] max-w-md max-h-[calc(100dvh-32px)] bg-[#fdfbf7] rounded-xl border-2 border-[#d4af37] shadow-2xl flex flex-col overflow-hidden antialiased">
+            <motion.div
+              initial={{ opacity: 0, y: isCompactViewport ? 14 : 16, scale: isCompactViewport ? 0.97 : 0.96 }}
+              animate={flowState === FLOW.closing
+                ? { opacity: 0, y: 8, scale: 0.98 }
+                : { opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 8, scale: 0.98 }}
+              transition={flowState === FLOW.closing
+                ? closeConfig
+                : { duration: isCompactViewport ? 0.45 : 0.55, ease: [0.16, 1, 0.3, 1] }}
+              className={`relative z-30 pointer-events-auto flex w-full flex-col overflow-hidden rounded-xl border-2 border-[#d4af37] bg-[#fdfbf7] shadow-2xl antialiased ${
+                isCompactViewport
+                  ? "h-auto max-h-[calc(100dvh-32px)] max-w-[360px] md:h-[680px] md:max-h-[calc(100dvh-48px)] md:max-w-lg"
+                  : "h-[580px] max-h-[calc(100dvh-48px)] max-w-[460px]"
+              }`}
+            >
               <div className="absolute inset-[6px] border-[2px] border-[#d4af37]/40 pointer-events-none rounded-lg" />
 
               <button
                 aria-label="Close enquiry form"
                 onClick={(e) => { e.stopPropagation(); handleClose(); }}
-                className="absolute top-4 right-4 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/80 rounded-full p-1.5 shadow-sm"
+                className="absolute right-3 top-3 z-50 rounded-full bg-white/80 p-1.5 text-[#d4af37] shadow-sm transition-colors hover:text-[#4a3623] md:right-4 md:top-4"
               >
                 <X size={18} strokeWidth={1.5} />
               </button>
 
-              <div className="relative w-full h-full min-h-0 flex-1 overflow-y-auto overscroll-contain hide-scrollbar z-30 pt-4 flex flex-col">
+              <div className="relative z-30 flex min-h-0 w-full flex-col overflow-y-auto pt-3 md:flex-1 md:pt-4 hide-scrollbar">
                 {expandedContent}
               </div>
-            </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* ── Mobile/tablet floating button (unexpanded) ── */}
+      <AnimatePresence>
+        {isVisible && isMobileViewport && !isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={flowState === FLOW.closing ? { opacity: 0, y: 20 } : { opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={springConfig}
+            className="fixed inset-x-0 bottom-0 z-[99] flex justify-center pointer-events-none pb-6"
+            style={{ height: "100dvh", alignItems: "flex-end" }}
+          >
+            <button
+              onClick={handleEnquireClick}
+              aria-label="Open enquiry form"
+              className="relative w-full max-w-[320px] h-[48px] px-6 pointer-events-auto bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] transition-all duration-300"
+            >
+              <span className="type-cta text-[#4a3623] flex h-auto items-center justify-center font-bold tracking-wider">
+                Enquire Now
+              </span>
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/* ── Desktop envelope + collapsed envelope (all non-mobile-expanded states) ── */}
       <AnimatePresence>
-        {isVisible && (!isCompactViewport || !isExpanded) && (
-          <div
-            className={`fixed z-[101] ${
-              isExpanded
-                ? "inset-0 flex items-center justify-center pointer-events-none"
-                : "bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:bottom-10 md:right-10 pointer-events-none"
-            }`}
+        {isVisible && !isExpanded && !isMobileViewport && (
+          <div className="fixed inset-0 pointer-events-none z-[101]" style={{ height: "100dvh" }}>
+            <div
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 pointer-events-none md:left-auto md:translate-x-0 md:bottom-10 md:right-10"
+              style={isCompactViewport ? { bottom: "5rem" } : undefined}
           >
             <motion.div
-              initial={{ opacity: 0, scale: isExpanded ? 0.96 : 0.62, y: 12 }}
-              animate={
-                submitStatus === "departing" 
-                  ? { x: 0, y: -80, opacity: 0, scale: 0.5 } 
-                  : { x: 0, y: isExpanded && !isCompactViewport ? 180 : 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
-              }
-              transition={submitStatus === "departing" ? { duration: 1, ease: "easeInOut" } : springConfig}
+              initial={{ opacity: 0, scale: 0.62, y: 12 }}
+              animate={flowState === FLOW.closing
+                ? { x: 0, y: 0, opacity: 0, scale: 0.62 }
+                : { x: 0, y: 0, opacity: 1, scale: 0.65 }}
+              transition={flowState === FLOW.closing ? closeConfig : springConfig}
               exit={{ opacity: 0, scale: 0.98, y: 0 }}
+              style={{ transformOrigin: isCompactViewport ? "bottom center" : "center center" }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="relative pointer-events-auto h-[180px] w-[280px] md:h-[210px] md:w-[340px]"
@@ -367,13 +423,17 @@ export default function FloatingEnvelope() {
               </div>
 
               {/* Layer 5: Top Flap */}
-              <motion.div
-                initial={false}
-                animate={{ rotateX: isFlapOpen ? 180 : 0, zIndex: isFlapOpen ? 15 : 70 }}
-                transition={springConfig}
-                style={{ transformOrigin: "top" }}
-                className="absolute top-0 inset-x-0 h-[55%] pointer-events-none drop-shadow-[0_4px_0_rgba(74,54,35,0.2)] flex justify-center"
-              >
+              <div className="absolute inset-x-0 top-0 h-[60%] z-[70] pointer-events-none drop-shadow-[0_6px_0_rgba(74,54,35,0.25)]">
+                <motion.div
+                  initial={false}
+                  animate={{
+                    rotateX: isPaperExpanded ? 180 : 0,
+                    y: isPaperExpanded ? -20 : 0
+                  }}
+                  transition={springConfig}
+                  style={{ transformOrigin: "top center", transformStyle: "preserve-3d" }}
+                  className="absolute inset-0"
+                >
                 <div className="absolute w-full h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
                   <div className="absolute top-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#d4af37]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
                     <div className="absolute top-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
@@ -384,11 +444,11 @@ export default function FloatingEnvelope() {
                   </div>
                 </div>
               </motion.div>
+              </div>
 
               {/* Layer 2: The Inner Paper */}
               <motion.div
                 layout
-                initial={false}
                 animate={{
                   y: isPaperExpanded ? -40 : isPeeking ? -50 : 0,
                   boxShadow: isPaperExpanded ? "8px 8px 0px rgba(74,54,35,0.2)" : "0 0 0 transparent",
@@ -423,20 +483,19 @@ export default function FloatingEnvelope() {
                       key="quote"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={contentRevealConfig}
-                      className="flex flex-col items-center justify-start text-center pt-4 px-6"
+                      exit={{ opacity: 0, transition: { duration: 0.50, ease: "easeOut" } }}
+                      className="flex flex-col items-center justify-center h-full px-2"
                     >
-                      <div className="text-[#a67c00] mb-2"><Sparkles size={16} strokeWidth={1} /></div>
-                      <h4 className="type-eyebrow text-[#4a3623] mb-1">Planning Your</h4>
-                      <h3 className="font-serif text-[#b58c2a] text-[22px] md:text-2xl tracking-[0.01em] mb-3 drop-shadow-sm font-semibold">Dream Wedding?</h3>
-                      
-                      <div className="flex items-center justify-center gap-3 mb-4 w-full px-8">
-                        <div className="h-[2px] bg-[#4a3623] flex-1"></div>
-                        <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
-                        <div className="h-[2px] bg-[#4a3623] flex-1"></div>
+                      <div className="mb-3 text-[#d4af37]">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
                       </div>
-
+                      <p className="font-sans font-medium uppercase tracking-[0.15em] text-[11px] text-[#8b6f3c] mb-2 text-center">
+                        PLANNING YOUR
+                      </p>
+                      <h4 className="font-display font-medium text-2xl text-[#d4af37] mb-5 text-center">
+                        Dream Wedding?
+                      </h4>
+                      <div className="w-16 h-px bg-[#d4af37]/40 mb-5"></div>
                       <p className="type-body text-[#4a3623] italic px-4 whitespace-pre-line">
                         "{quote}"
                       </p>
@@ -523,6 +582,7 @@ export default function FloatingEnvelope() {
                 </button>
               )}
             </motion.div>
+            </div>
           </div>
         )}
       </AnimatePresence>

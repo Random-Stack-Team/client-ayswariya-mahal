@@ -3,6 +3,7 @@ import { Sparkles, Check } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
+import { useIntroReady } from "../hooks/useIntroReady";
 
 import sowCrop2 from "../assets/images/sow-crop2.webp";
 import sowCrop5 from "../assets/images/sowbhagya-hall-generated.webp";
@@ -10,30 +11,31 @@ import sowCrop3 from "../assets/images/sowbhagya-rooftop-generated.webp";
 import facility1 from "../assets/images/Facility/facility1.webp";
 
 export default function SowbhagyaMahal() {
+  const introReady = useIntroReady();
   const staggerContainer = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.08,
+        staggerChildren: 0.15,
+        delayChildren: 0.12,
       },
     },
   };
 
   const fadeInUp = {
     hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" } },
+    show: { opacity: 1, y: 0, transition: { duration: 1.30, ease: "easeOut" } },
   };
 
   const fadeInWide = {
     hidden: { opacity: 0, y: 24 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.72, ease: "easeOut" } },
+    show: { opacity: 1, y: 0, transition: { duration: 1.44, ease: "easeOut" } },
   };
 
   const imageReveal = {
     hidden: { opacity: 0, y: 28, scale: 0.98 },
-    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.75, ease: "easeOut" } },
+    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 1.50, ease: "easeOut" } },
   };
 
   const revealViewport = { once: true, amount: 0.22 };
@@ -46,7 +48,7 @@ export default function SowbhagyaMahal() {
         path="/sowbhagya-mahal"
       />
       <PageTransition>
-        <main className="min-h-screen overflow-x-clip bg-[#fdfbf7]">
+        <main className="min-min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7]">
           
           {/* 1. Hero Section */}
           <section className="relative isolate flex min-h-[620px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[680px] md:pb-28 md:pt-36 lg:min-h-[80vh] lg:pb-32 lg:pt-40">
@@ -123,7 +125,7 @@ export default function SowbhagyaMahal() {
             <motion.div
               variants={staggerContainer}
               initial="hidden"
-              whileInView="show"
+              whileInView={introReady ? "show" : undefined}
               viewport={revealViewport}
               className="mx-auto max-w-4xl"
             >
@@ -135,13 +137,13 @@ export default function SowbhagyaMahal() {
 
           {/* 3. Block 1: Capacities (Image Left, Text Right) - Dark Maroon */}
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#5A111C] wedding-pattern-maroon text-[#fdfbf7] overflow-hidden">
-            <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="mx-auto grid max-w-[1200px] items-center gap-10 xl:grid-cols-2 xl:gap-16">
               <motion.div
                 variants={imageReveal}
                 initial="hidden"
-                whileInView="show"
+                whileInView={introReady ? "show" : undefined}
                 viewport={revealViewport}
-                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] w-full md:aspect-[4/5] md:max-lg:max-w-[420px] lg:aspect-square"
+                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] w-full md:aspect-[21/9] xl:aspect-square"
               >
                 <img
                   src={sowCrop5}
@@ -155,7 +157,7 @@ export default function SowbhagyaMahal() {
               <motion.div
                 variants={staggerContainer}
                 initial="hidden"
-                whileInView="show"
+                whileInView={introReady ? "show" : undefined}
                 viewport={revealViewport}
                 className="lg:pl-10"
               >
@@ -191,11 +193,11 @@ export default function SowbhagyaMahal() {
 
           {/* 4. Block 2: Facilities (Text Left, Image Right) - Ivory */}
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#fdfbf7] wedding-pattern-ivory text-[#4f4038] overflow-hidden">
-            <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[1fr_0.92fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="mx-auto grid max-w-[1200px] items-center gap-10 xl:grid-cols-2 xl:gap-16">
               <motion.div
                 variants={staggerContainer}
                 initial="hidden"
-                whileInView="show"
+                whileInView={introReady ? "show" : undefined}
                 viewport={revealViewport}
                 className="lg:pl-10"
               >
@@ -233,9 +235,9 @@ export default function SowbhagyaMahal() {
               <motion.div
                 variants={imageReveal}
                 initial="hidden"
-                whileInView="show"
+                whileInView={introReady ? "show" : undefined}
                 viewport={revealViewport}
-                className="group order-1 relative aspect-[4/5] w-full overflow-hidden rounded-[18px] border border-[#D4A843]/20 shadow-[0_12px_30px_rgba(63,12,21,0.18)] md:order-2 md:aspect-[4/5] md:max-lg:max-w-[420px] md:max-lg:justify-self-end lg:aspect-square"
+                className="group order-1 relative aspect-[4/5] w-full overflow-hidden rounded-[18px] border border-[#D4A843]/20 shadow-[0_12px_30px_rgba(63,12,21,0.18)] md:aspect-[21/9] xl:order-2 xl:aspect-square"
               >
                 <div className="pointer-events-none absolute inset-0 z-20 border border-[#D4A843]/30 shadow-[inset_0_0_0_1px_rgba(212,168,67,0.1)]" />
                 <div className="pointer-events-none absolute inset-x-4 top-4 z-20 h-px bg-[linear-gradient(90deg,transparent,rgba(212,168,67,0.78),transparent)] md:inset-x-6" />
@@ -261,13 +263,13 @@ export default function SowbhagyaMahal() {
 
           {/* 5. Block 3: Occasions (Image Left, Text Right) - Warm Cream */}
           <section className="px-5 py-16 sm:px-6 md:py-20 lg:py-32 bg-[#f5ead9] wedding-pattern-gold text-[#4f4038] overflow-hidden">
-            <div className="mx-auto grid max-w-[1200px] items-center gap-10 md:grid-cols-[0.92fr_1fr] md:gap-10 lg:grid-cols-2 lg:gap-16">
+            <div className="mx-auto grid max-w-[1200px] items-center gap-10 xl:grid-cols-2 xl:gap-16">
               <motion.div
                 variants={imageReveal}
                 initial="hidden"
-                whileInView="show"
+                whileInView={introReady ? "show" : undefined}
                 viewport={revealViewport}
-                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] w-full md:aspect-[4/5] md:max-lg:max-w-[420px] lg:aspect-[3/4]"
+                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner group relative aspect-[4/5] w-full md:aspect-[21/9] xl:aspect-[3/4]"
               >
                 <img
                   src={sowCrop3}
@@ -280,7 +282,7 @@ export default function SowbhagyaMahal() {
               <motion.div
                 variants={staggerContainer}
                 initial="hidden"
-                whileInView="show"
+                whileInView={introReady ? "show" : undefined}
                 viewport={revealViewport}
                 className="lg:pl-10"
               >
@@ -313,9 +315,9 @@ export default function SowbhagyaMahal() {
             <motion.div
               variants={staggerContainer}
               initial="hidden"
-              whileInView="show"
+              whileInView={introReady ? "show" : undefined}
               viewport={revealViewport}
-              className="relative mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14"
+              className="relative mx-auto grid max-w-6xl items-center gap-10 xl:grid-cols-[0.9fr_1.1fr] xl:gap-14"
             >
               <motion.div variants={fadeInUp} className="text-center lg:text-left">
                 <div className="mb-6 flex justify-center text-[#E5C76B] lg:justify-start">
@@ -328,7 +330,7 @@ export default function SowbhagyaMahal() {
               </motion.div>
 
               <motion.div variants={fadeInUp} className="rounded-[28px] border border-[#E5C76B]/24 bg-[#fdfbf7]/7 p-5                 shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-7 md:p-8">
-                <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-1">
+                <div className="grid gap-4 md:grid-cols-3 xl:grid-cols-1">
                   {[
                     "Arrival spaces stay clear, composed, and easy for every age group.",
                     "Dining access remains close enough for comfort without disturbing the hall.",

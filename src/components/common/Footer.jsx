@@ -56,8 +56,8 @@ export default function Footer() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_12%,rgba(212,168,67,0.18),transparent_30%),linear-gradient(145deg,rgba(90,17,28,0.92),rgba(26,10,2,0.96))]" />
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent" />
 
-      <div className="relative mx-auto max-w-[1280px] px-5 pt-10 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:px-8 md:pt-12 md:pb-[calc(2rem+env(safe-area-inset-bottom))] lg:px-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.15fr_0.75fr_0.9fr_1fr] lg:gap-x-8">
+      <div className="relative mx-auto max-w-[1280px] px-5 pt-10 pb-[calc(6.5rem+env(safe-area-inset-bottom))] sm:px-8 md:pt-12 md:pb-[calc(2rem+env(safe-area-inset-bottom))] lg:px-12">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-[1.15fr_0.75fr_0.9fr_1fr] xl:gap-x-8">
           <div>
             <Link to="/" className="inline-flex" aria-label="Ayswariya Mahal home">
               <img
@@ -85,7 +85,7 @@ export default function Footer() {
 
           <div>
             <FooterHeading>Explore</FooterHeading>
-            <nav className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 sm:max-w-sm lg:grid-cols-1">
+            <nav className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 sm:max-w-sm xl:grid-cols-1">
               {quickLinks.map((link) => (
                 <Link
                   key={link.to}

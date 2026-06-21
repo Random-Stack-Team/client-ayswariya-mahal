@@ -57,7 +57,7 @@ export default function SowbhagyaFooter() {
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent" />
 
       <div className="relative mx-auto max-w-[1280px] px-5 pt-10 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:px-8 md:pt-12 md:pb-[calc(2rem+env(safe-area-inset-bottom))] lg:px-12">
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-[1.15fr_0.75fr_0.9fr_1fr] lg:gap-x-8">
+        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-[1.15fr_0.75fr_0.9fr_1fr] xl:gap-x-8">
           <div>
             <Link to="/" className="inline-flex" aria-label="Sowbhagya Mahal home">
               <img
@@ -84,7 +84,7 @@ export default function SowbhagyaFooter() {
 
           <div>
             <FooterHeading>Explore</FooterHeading>
-            <nav className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 sm:max-w-sm lg:grid-cols-1">
+            <nav className="mt-4 grid grid-cols-2 gap-x-6 gap-y-3 sm:max-w-sm xl:grid-cols-1">
               {quickLinks.map((link) => (
                 <Link
                   key={link.to}

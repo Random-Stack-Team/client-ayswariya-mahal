@@ -4,13 +4,13 @@ const containerVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.12 }
+    transition: { staggerChildren: 0.18 }
   }
 };
 
 const statVariants = {
   hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } }
+  show: { opacity: 1, y: 0, transition: { duration: 1.40, ease: [0.16, 1, 0.3, 1] } }
 };
 
 export default function RoyalStatistics() {
@@ -31,7 +31,7 @@ export default function RoyalStatistics() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-x-5 gap-y-10 text-center divide-x-0 md:divide-x divide-gold-leaf/20 lg:gap-12"
+          className="grid grid-cols-2 gap-x-5 gap-y-10 text-center divide-x-0 xl:divide-x divide-gold-leaf/20 xl:grid-cols-4 xl:gap-12"
         >
           {stats.map((stat, index) => (
             <motion.div 

@@ -12,20 +12,20 @@ const colVariants = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.12 }
+    transition: { staggerChildren: 0.18 }
   }
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+  show: { opacity: 1, y: 0, transition: { duration: 1.20, ease: [0.16, 1, 0.3, 1] } }
 };
 
 export default function ContactCTA() {
 
   return (
     <section 
-      className="relative py-[56px] md:py-[72px] lg:py-[80px] overflow-hidden"
+      className="relative py-[56px] md:py-[72px] lg:py-[80px]"
       style={{ background: "linear-gradient(180deg, #faf7f2 0%, #f7f2eb 100%)" }}
     >
       {/* Subtle Glows */}
@@ -71,7 +71,7 @@ export default function ContactCTA() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid md:grid-cols-2 gap-10 md:gap-8 lg:gap-[48px] items-center text-center md:text-left"
+          className="grid xl:grid-cols-2 gap-10 md:gap-12 lg:gap-[64px] items-center text-center xl:text-left"
         >
           
           {/* Left: Premium Celebration Promise Card */}
@@ -178,7 +178,7 @@ z"/>
           {/* Right: Emotional Story Content */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col items-center md:items-start order-2 md:order-2"
+            className="flex flex-col items-center xl:items-start order-2"
           >
             <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] text-[#5A111C] mb-6 md:mb-7 lg:mb-8">
               Crafting Memories <br className="hidden md:block"/>

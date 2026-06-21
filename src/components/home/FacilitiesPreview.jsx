@@ -47,7 +47,7 @@ export default function FacilitiesPreview() {
 
   return (
     <section ref={sectionRef} className="py-24 md:py-24 lg:py-32 bg-[#fdfbf7] relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" 
+      <div className="absolute top-0 left-0 w-full h-auto opacity-5 pointer-events-none" 
            style={{ backgroundImage: 'radial-gradient(var(--color-gold-leaf) 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
       </div>
 
@@ -72,9 +72,9 @@ export default function FacilitiesPreview() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 lg:h-[600px]">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 xl:h-[600px]">
           
-          <div className="bento-item md:col-span-12 lg:col-span-7 relative group overflow-hidden bg-primary h-[300px] sm:h-[320px] md:h-[320px] lg:h-full cursor-pointer luxury-image-frame luxury-image-frame--banner luxury-image-overlay" onClick={() => navigate("/facilities")}>
+          <div className="bento-item md:col-span-12 xl:col-span-7 relative group overflow-hidden bg-primary h-[300px] sm:h-[320px] md:h-[320px] xl:h-full cursor-pointer luxury-image-frame luxury-image-frame--banner luxury-image-overlay" onClick={() => navigate("/facilities")}>
             <img src={IMAGES.hall} alt="Grand Marriage Hall" loading="lazy" decoding="async" width="1448" height="1086" className="absolute inset-0 w-full h-full object-cover opacity-90" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
             
@@ -89,9 +89,9 @@ export default function FacilitiesPreview() {
             </div>
           </div>
 
-          <div className="md:col-span-12 lg:col-span-5 grid gap-4 md:gap-6 lg:grid-rows-2 lg:h-full">
+          <div className="md:col-span-12 xl:col-span-5 grid gap-4 md:gap-6 xl:grid-rows-2 xl:h-full">
             
-            <div className="bento-item relative group overflow-hidden bg-primary h-[300px] sm:h-[320px] md:h-[320px] lg:h-auto cursor-pointer luxury-image-frame luxury-image-frame--banner luxury-image-overlay" onClick={() => navigate("/facilities")}>
+            <div className="bento-item relative group overflow-hidden bg-primary h-[300px] sm:h-[320px] md:h-[320px] lg:h-full cursor-pointer luxury-image-frame luxury-image-frame--banner luxury-image-overlay" onClick={() => navigate("/facilities")}>
               <img src={IMAGES.dining} alt="Royal Dining Hall" loading="lazy" decoding="async" width="1448" height="1086" className="absolute inset-0 w-full h-full object-cover opacity-[0.86]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/20"></div>
               
@@ -105,9 +105,9 @@ export default function FacilitiesPreview() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 lg:gap-6 h-auto lg:h-auto">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5 lg:gap-6 h-auto lg:h-full">
               
-              <div className="bento-item relative group h-[300px] sm:h-[320px] md:h-[320px] lg:h-auto lg:min-h-[220px] overflow-hidden bg-primary cursor-pointer luxury-image-frame luxury-image-frame--banner luxury-image-overlay" onClick={() => navigate("/facilities")}>
+              <div className="bento-item relative group h-[300px] sm:h-[320px] md:h-[320px] lg:h-full lg:min-h-[220px] overflow-hidden bg-primary cursor-pointer luxury-image-frame luxury-image-frame--banner luxury-image-overlay" onClick={() => navigate("/facilities")}>
                 <img src={IMAGES.suites} alt="Luxury Suites" loading="lazy" decoding="async" width="1536" height="1024" className="absolute inset-0 w-full h-full object-cover opacity-70 grayscale-[20%] group-hover:grayscale-0" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent"></div>
                 
@@ -117,7 +117,7 @@ export default function FacilitiesPreview() {
                 </div>
               </div>
 
-              <div className="bento-item relative group h-[300px] sm:h-[320px] md:h-[320px] lg:h-auto lg:min-h-[220px] overflow-hidden bg-deep-maroon cursor-pointer luxury-image-frame luxury-image-frame--banner luxury-image-overlay" onClick={() => navigate("/facilities")}>
+              <div className="bento-item relative group h-[300px] sm:h-[320px] md:h-[320px] lg:h-full lg:min-h-[220px] overflow-hidden bg-deep-maroon cursor-pointer luxury-image-frame luxury-image-frame--banner luxury-image-overlay" onClick={() => navigate("/facilities")}>
                 <img src={IMAGES.valet} alt="Valet Parking" loading="lazy" decoding="async" width="1536" height="1024" className="absolute inset-0 w-full h-full object-cover opacity-55 mix-blend-luminosity" />
                 
                 <div className="absolute top-4 left-4 w-4 h-4 border-t border-l border-gold-leaf/50"></div>
