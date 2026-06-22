@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Sparkles } from "lucide-react";
-import heroImg from "../assets/images/hero.webp";
+import heroImg from "../assets/images/Facility/facility5.webp";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 
@@ -41,6 +41,8 @@ export default function Contact() {
           loading="eager"
           fetchPriority="high"
           decoding="async"
+          width="1536"
+          height="1024"
           className="absolute inset-0 w-full h-full object-cover object-center"
         />
         {/* Dark Cinematic Overlay fading into cream bg */}

@@ -23,8 +23,6 @@ import facility6 from "../assets/images/Facility/facility6.webp";
 import facility7 from "../assets/images/Facility/facility7.webp";
 import facility8 from "../assets/images/Facility/facility8.webp";
 
-import bgImg from "../assets/images/facility.webp";
-
 import SEO from "../components/common/SEO";
 import { useEnquiry } from "../context/useEnquiry";
 
@@ -157,11 +155,13 @@ export default function Facilities() {
             className="absolute inset-0 overflow-hidden"
           >
             <img
-              src={bgImg}
+              src={facility2}
               alt=""
               loading="eager"
               fetchPriority="high"
               decoding="async"
+              width="1448"
+              height="1086"
               className="w-full h-full object-cover object-center"
             />
           </motion.div>

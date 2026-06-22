@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import heroImage from "../../assets/images/hero.webp";
+import heroImage from "../../assets/images/Facility/facility8.webp";
 import { useEnquiry } from "../../context/useEnquiry";
 
 const petals = [
@@ -105,12 +105,12 @@ export default function Hero() {
         <img
           ref={imageRef}
           src={heroImage}
-          alt="Ayswariya Mahal wedding stage"
+          alt="Ayswariya Mahal venue exterior"
           loading="eager"
           decoding="async"
           fetchPriority="high"
-          width="1920"
-          height="1440"
+          width="1536"
+          height="1024"
           className="h-full w-full object-cover will-change-transform [filter:brightness(0.84)_saturate(1.06)]"
         />
       </div>

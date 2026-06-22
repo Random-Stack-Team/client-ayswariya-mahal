@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { Camera, ChevronLeft, ChevronRight, Flower2, Landmark, Sparkles, UtensilsCrossed } from "lucide-react";
 import PageTransition from "../components/common/PageTransition";
 import SEO from "../components/common/SEO";
 import { useIntroReady } from "../hooks/useIntroReady";
@@ -50,6 +50,13 @@ const categoryMeta = {
   decor: { title: "Decor Experience", subtitle: "Art of Celebration" },
   memories: { title: "Memory Lane", subtitle: "Moments to Cherish" },
 };
+
+const galleryHighlights = [
+  { label: "Wedding Décor", icon: Flower2 },
+  { label: "Reception Moments", icon: Camera },
+  { label: "Stage & Hall Details", icon: Landmark },
+  { label: "Dining Experiences", icon: UtensilsCrossed },
+];
 
 const heroContainerVariants = {
   hidden: {},
@@ -262,7 +269,7 @@ export default function Gallery() {
         <main className="min-min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7] wedding-pattern-ivory">
           <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[600px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-36 lg:pt-40">
             <img
-              src={gallery3}
+              src={gallery6}
               alt=""
               loading="eager"
               fetchPriority="high"
@@ -393,65 +400,47 @@ export default function Gallery() {
             </div>
           </section>
 
-          <section className="relative overflow-hidden bg-[#4A0A12] wedding-pattern-maroon px-5 py-16 sm:px-6 md:py-20 lg:py-40">
-            <div className="relative mx-auto max-w-6xl">
+          <section className="relative overflow-hidden bg-[#4A0A12] wedding-pattern-maroon px-5 py-12 sm:px-6 md:py-16 lg:py-20">
+            <div className="relative mx-auto max-w-5xl">
               <motion.div
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
-                transition={{ duration: 1.50, ease: "easeOut" }}
+                transition={{ duration: 0.7, ease: "easeOut" }}
                 className="mx-auto max-w-3xl text-center"
               >
-                <p className="type-eyebrow mb-5 text-[#E5C76B]">Official Venue Film</p>
-                <h2 className="font-serif text-[34px] font-semibold leading-[1.15] tracking-[0.01em] text-[#fdfbf7] md:text-[44px] lg:text-[58px]">
-                  Experience Ayswariya Mahal
+                <p className="type-eyebrow mb-4 text-[#E5C76B]">Celebrations in Detail</p>
+                <h2 className="font-serif text-[34px] font-semibold leading-[1.15] tracking-[0.01em] text-[#fdfbf7] md:text-[44px] lg:text-[52px]">
+                  Moments Captured at Ayswariya Mahal
                 </h2>
-                <div className="mx-auto my-7 h-px w-24 bg-gradient-to-r from-transparent via-[#E5C76B] to-transparent md:my-8" />
-                <p className="font-serif text-[22px] font-medium italic leading-[1.45] text-[#E5C76B] md:text-[28px]">
-                  Elegant wedding moments, grand celebrations, and timeless memories.
-                </p>
-                <p className="mx-auto mt-6 max-w-3xl type-body text-[#fdfbf7]/78">
-                  Step inside Ayswariya Mahal and experience the elegance, grandeur, and warm hospitality that make every celebration unforgettable. From traditional weddings and receptions to family gatherings and special occasions, discover the spaces where cherished memories come to life.
+                <div className="mx-auto my-6 h-px w-24 bg-gradient-to-r from-transparent via-[#E5C76B] to-transparent" />
+                <p className="mx-auto max-w-3xl type-body text-[#fdfbf7]/78">
+                  Explore a curated collection of weddings, receptions, décor details, and celebration spaces that reflect the elegance and warmth of Ayswariya Mahal.
                 </p>
               </motion.div>
 
-              <div
-                className="mx-auto mt-10 max-w-5xl md:mt-12 lg:mt-16"
-              >
-                <div className="relative overflow-hidden rounded-[28px] border border-[#E5C76B]/46 bg-[#fdfbf7]/8 p-2 shadow-[0_28px_80px_rgba(0,0,0,0.34),inset_0_0_0_1px_rgba(255,255,255,0.08)] sm:p-3 md:rounded-[34px]">
-                  <span className="pointer-events-none absolute left-5 top-5 z-20 h-9 w-9 border-l border-t border-[#E5C76B]/70" />
-                  <span className="pointer-events-none absolute right-5 top-5 z-20 h-9 w-9 border-r border-t border-[#E5C76B]/70" />
-                  <span className="pointer-events-none absolute bottom-5 left-5 z-20 h-9 w-9 border-b border-l border-[#E5C76B]/70" />
-                  <span className="pointer-events-none absolute bottom-5 right-5 z-20 h-9 w-9 border-b border-r border-[#E5C76B]/70" />
-
-                  <div className="relative aspect-video overflow-hidden rounded-[22px] bg-[#1c0d11] md:rounded-[26px]">
-                    <iframe
-                      src="https://www.youtube.com/embed/SFc9F625Enk"
-                      title="Experience Ayswariya Mahal official venue video"
-                      className="absolute inset-0 h-full w-full"
-                      loading="lazy"
-                      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      referrerPolicy="strict-origin-when-cross-origin"
-                      allowFullScreen
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div
-                className="mx-auto mt-8 flex max-w-3xl flex-col items-center gap-5 text-center md:mt-10"
-              >
-                <p className="type-body text-[#fdfbf7]/78">
-                  Take a virtual tour of our venue and explore the spaces that have hosted countless memorable celebrations.
-                </p>
-                <a
-                  href="https://youtu.be/SFc9F625Enk"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex min-h-12 items-center justify-center rounded-full border border-[#E5C76B]/52 px-7 font-sans text-[12px] font-medium uppercase tracking-[0.14em] text-[#E5C76B] transition duration-300 hover:bg-[#E5C76B] hover:text-[#4A0A12]"
-                >
-                  Watch on YouTube
-                </a>
+              <div className="relative mt-9 grid grid-cols-2 gap-x-4 gap-y-8 border-y border-[#E5C76B]/18 py-7 md:mt-11 md:grid-cols-4 md:gap-0 md:py-8">
+                {galleryHighlights.map(({ label, icon: Icon }, index) => (
+                  <motion.div
+                    key={label}
+                    initial={{ opacity: 0, y: 14 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.35 }}
+                    transition={{ duration: 0.6, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                    className="relative flex flex-col items-center px-2 text-center md:px-5"
+                  >
+                    <span className="mb-4 text-[#E5C76B]">
+                      <Icon size={25} strokeWidth={1.25} />
+                    </span>
+                    <span className="mb-3 h-px w-10 bg-gradient-to-r from-transparent via-[#E5C76B]/80 to-transparent" />
+                    <span className="max-w-[150px] font-serif text-[17px] font-medium leading-snug text-[#fdfbf7]/88 md:text-[19px]">
+                      {label}
+                    </span>
+                    {index < galleryHighlights.length - 1 && (
+                      <span className="absolute right-0 top-1/2 hidden h-16 w-px -translate-y-1/2 bg-gradient-to-b from-transparent via-[#E5C76B]/24 to-transparent md:block" />
+                    )}
+                  </motion.div>
+                ))}
               </div>
             </div>
           </section>

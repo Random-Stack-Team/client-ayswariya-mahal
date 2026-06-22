@@ -5,7 +5,6 @@ import PageTransition from "../components/common/PageTransition";
 import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
 import { useIntroReady } from "../hooks/useIntroReady";
 
-import sowCrop2 from "../assets/images/sow-crop2.webp";
 import sowCrop5 from "../assets/images/sowbhagya-hall-generated.webp";
 import sowCrop3 from "../assets/images/sowbhagya-rooftop-generated.webp";
 import facility1 from "../assets/images/Facility/facility1.webp";
@@ -59,7 +58,7 @@ export default function SowbhagyaMahal() {
               transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <img
-                src={sowCrop2}
+                src={sowCrop5}
                 alt=""
                 loading="eager"
                 fetchPriority="high"

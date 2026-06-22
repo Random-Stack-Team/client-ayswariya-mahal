@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import aboutImg from "../assets/images/about.webp";
-import heroImg from "../assets/images/hero.webp";
+import heroImg from "../assets/images/Gallery/hall5.webp";
 import sowCrop2 from "../assets/images/sow-crop2.webp";
 import { Sparkles, Flower2, HeartHandshake, Gem, Building2, UtensilsCrossed, Trees } from "lucide-react";
 import SEO from "../components/common/SEO";
@@ -63,8 +63,8 @@ export default function About() {
           loading="eager"
           fetchPriority="high"
           decoding="async"
-          width="1920"
-          height="1440"
+          width="1448"
+          height="1086"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
         {/* Dark Cinematic Overlay fading into page bg */}
