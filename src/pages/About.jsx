@@ -339,15 +339,15 @@ export default function About() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
             </div>
             <div
-              className="absolute -bottom-4 left-4 sm:-bottom-5 sm:left-6 md:left-8 lg:left-8 rounded-xl border border-[#D4A843]/35 bg-[#5A111C]/95 px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 text-[#fdfbf7] shadow-[0_6px_16px_rgba(63,12,21,0.15)] backdrop-blur-sm"
+              className="absolute -bottom-5 left-4 sm:-bottom-6 sm:left-6 md:left-8 lg:left-8 rounded-2xl border border-[#D4A843]/20 bg-gradient-to-br from-[#5A111C] to-[#3F0C15] px-4 py-3 sm:px-5 sm:py-3.5 md:px-6 md:py-4 text-[#fdfbf7] shadow-[0_12px_32px_rgba(90,17,28,0.25),0_0_0_1px_rgba(212,168,67,0.1)] backdrop-blur-md"
             >
-              <div className="flex items-center gap-2.5 sm:gap-3">
-                <div className="grid h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 place-items-center rounded-full border border-[#D4A843]/30 text-[#D4A843]">
-                  <GemIcon size={14} strokeWidth={1.8} aria-hidden="true" />
+              <div className="flex items-center gap-3 sm:gap-3.5">
+                <div className="grid h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 place-items-center rounded-xl bg-gradient-to-br from-[#D4A843]/20 to-[#D4A843]/5 border border-[#D4A843]/25 text-[#D4A843]">
+                  <GemIcon size={16} strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="font-display text-xl sm:text-2xl md:text-3xl font-semibold leading-none text-[#D4A843]">Since 1995</p>
-                  <p className="mt-0.5 sm:mt-1 font-sans text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.16em] text-[#fdfbf7]/82">
+                  <p className="font-display text-lg sm:text-xl md:text-2xl font-bold leading-none tracking-tight text-[#E5C76B]">Since 1995</p>
+                  <p className="mt-1 font-sans text-[8px] sm:text-[9px] font-semibold uppercase tracking-[0.2em] text-[#fdfbf7]/60">
                     Trusted Heritage
                   </p>
                 </div>
@@ -387,15 +387,15 @@ export default function About() {
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
             </div>
             <div
-              className="absolute -bottom-4 left-4 sm:-bottom-5 sm:left-6 md:left-8 lg:left-8 rounded-xl border border-[#D4A843]/35 bg-[#5A111C]/95 px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 text-[#fdfbf7] shadow-[0_6px_16px_rgba(63,12,21,0.15)] backdrop-blur-sm"
+              className="absolute -bottom-5 left-4 sm:-bottom-6 sm:left-6 md:left-8 lg:left-8 rounded-2xl border border-[#D4A843]/20 bg-gradient-to-br from-[#5A111C] to-[#3F0C15] px-4 py-3 sm:px-5 sm:py-3.5 md:px-6 md:py-4 text-[#fdfbf7] shadow-[0_12px_32px_rgba(90,17,28,0.25),0_0_0_1px_rgba(212,168,67,0.1)] backdrop-blur-md"
             >
-              <div className="flex items-center gap-2.5 sm:gap-3">
-                <div className="grid h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 place-items-center rounded-full border border-[#D4A843]/30 text-[#D4A843]">
-                  <Home size={14} strokeWidth={1.8} aria-hidden="true" />
+              <div className="flex items-center gap-3 sm:gap-3.5">
+                <div className="grid h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 place-items-center rounded-xl bg-gradient-to-br from-[#D4A843]/20 to-[#D4A843]/5 border border-[#D4A843]/25 text-[#D4A843]">
+                  <Home size={16} strokeWidth={1.5} aria-hidden="true" />
                 </div>
                 <div>
-                  <p className="font-display text-xl sm:text-2xl md:text-3xl font-semibold leading-none text-[#D4A843]">Home Away</p>
-                  <p className="mt-0.5 sm:mt-1 font-sans text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.16em] text-[#fdfbf7]/82">
+                  <p className="font-display text-lg sm:text-xl md:text-2xl font-bold leading-none tracking-tight text-[#E5C76B]">Home Away</p>
+                  <p className="mt-1 font-sans text-[8px] sm:text-[9px] font-semibold uppercase tracking-[0.2em] text-[#fdfbf7]/60">
                     From Home
                   </p>
                 </div>
