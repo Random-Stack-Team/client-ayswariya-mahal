@@ -28,7 +28,7 @@ export default function Contact() {
     <>
       <SEO 
         title="Contact & Enquiry - Book Your Wedding Visit" 
-        description="Contact Ayswariya Mahal in Chennai to enquire about wedding hall availability, guest capacity, dining facilities, event packages, and venue visits for weddings, receptions, and family celebrations." 
+        description="Contact Ayswariya Mahal in Chennai to enquire about wedding hall availability, guest capacity, dining facilities, event packages, and venue visits for weddings, receptions, and family gatherings." 
         path="/contact"
       />
       <PageTransition>
@@ -61,7 +61,7 @@ export default function Contact() {
           <h1
             className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] text-[#fdfbf7] drop-shadow-2xl md:max-lg:text-[58px]"
           >
-            Plan Your <span className="italic text-[#E5C76B]">Grand Event</span>
+            Let's Plan <span className="italic text-[#E5C76B]">Something Beautiful</span>
           </h1>
         </div>
       </section>
@@ -77,7 +77,7 @@ export default function Contact() {
             <div>
               <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-6">We'd Love to Hear From You</h2>
               <p className="type-body text-[#4f4038]">
-                Whether you're planning a grand wedding, a corporate event, or a family gathering, our Heritage Concierge team is here to assist you in making your event truly unforgettable.
+                Whether you're planning a wedding, corporate event, or family celebration, our team is here to bring your vision to life.
               </p>
             </div>
 
@@ -138,7 +138,7 @@ export default function Contact() {
           >
             {/* Inline Enquiry Form */}
             <form onSubmit={handleSubmit} className="bg-white p-5 sm:p-7 md:p-7 lg:p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20">
-              <h3 className="font-serif text-2xl md:text-[28px] lg:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-4 text-center">Plan Your Celebration</h3>
+              <h3 className="font-serif text-2xl md:text-[28px] lg:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-4 text-center">Share Your Details</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />

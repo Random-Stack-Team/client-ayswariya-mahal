@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/Gallery/hall5.webp";
-import sowCrop2 from "../assets/images/sow-crop2.webp";
+import sowCrop2 from "../assets/images/sowbhagya mahal intro.png";
 import { Sparkles, Flower2, HeartHandshake, Gem, Building2, UtensilsCrossed, Trees } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
@@ -29,17 +29,17 @@ export default function About() {
   const pillars = [
     {
       title: "Tradition with Grace",
-      body: "We honour the beauty of Indian celebrations with spaces designed for rituals, family gatherings, and timeless memories.",
+      body: "We honour Indian tradition with spaces designed for rituals, family unions, and moments that stay.",
       icon: Flower2,
     },
     {
       title: "Care in Every Detail",
-      body: "From the first welcome to the final farewell, every moment is handled with warmth, attention, and quiet elegance.",
+      body: "From the first welcome to the final farewell, each touchpoint is managed with sincerity, precision, and understated sophistication.",
       icon: HeartHandshake,
     },
     {
-      title: "Memories That Last",
-      body: "We create the setting where promises are made, families come together, and celebrations become stories remembered for generations.",
+      title: "Stories That Stay",
+      body: "We craft the setting where vows are exchanged, families unite, and milestones become stories passed through generations.",
       icon: Gem,
     },
   ];
@@ -48,7 +48,7 @@ export default function About() {
     <>
       <SEO 
         title="About Us - Premium Wedding Venue Legacy" 
-        description="Discover Ayswariya Mahal, a trusted Chennai wedding venue with over two decades of celebrations, elegant event spaces, thoughtful hospitality, and facilities for weddings, receptions, and family functions." 
+        description="Discover Ayswariya Mahal, a trusted Chennai wedding venue with over two decades of distinguished gatherings, refined event spaces, thoughtful hospitality, and facilities for weddings, receptions, and family functions." 
         path="/about"
       />
       <PageTransition>
@@ -95,9 +95,7 @@ export default function About() {
             variants={fadeInUp}
             className="mx-auto mt-6 max-w-[34rem] type-body text-[#fdfbf7]/90 drop-shadow-md md:mt-7 md:max-w-xl lg:mt-8 lg:max-w-2xl"
           >
-            For over two decades, Ayswariya Mahal has been the
-            destination for unforgettable weddings, receptions,
-            engagements, and family celebrations.
+            For over twenty years, families have trusted Ayswariya Mahal for their most significant weddings, receptions, engagements, and gatherings.
           </motion.p>
         </motion.div>
       </section>
@@ -135,18 +133,14 @@ export default function About() {
               Our Story
             </motion.p>
             <motion.h2 variants={fadeInUp} className="font-serif text-[30px] sm:text-[32px] md:text-[36px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] mb-6 md:mb-7 lg:mb-8">
-              Creating Memorable Moments <span className="italic text-[#b58c2a]">Since 2001</span>
+              Building Trust <span className="italic text-[#b58c2a]">Since 2001</span>
             </motion.h2>
             <motion.div variants={fadeInUp} className="mx-auto h-[1px] w-16 bg-[#d4af37] mb-6 md:mx-0 md:mb-7 lg:mb-8"></motion.div>
             <motion.p variants={fadeInUp} className="type-body text-[#4f4038] mb-6 md:max-w-[34rem] lg:max-w-none">
-              Ayswariya Mahal was established with a vision to provide
-              families with a beautiful venue where life's most cherished
-              celebrations can take place.
+              Ayswariya Mahal was founded with a clear purpose: to give families a distinguished venue for life's most meaningful occasions.
             </motion.p>
             <motion.p variants={fadeInUp} className="type-body text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
-              With spacious interiors, modern facilities, and a commitment
-              to excellence, we have proudly hosted thousands of successful
-              weddings and events over the years, becoming a cornerstone of joyous celebrations.
+              With generous interiors, contemporary amenities, and an unwavering standard, we have hosted thousands of weddings and events, earning a reputation as a cornerstone of joyful gatherings in Chennai.
             </motion.p>
           </motion.div>
 
@@ -168,11 +162,11 @@ export default function About() {
             className="text-center mb-10 md:mb-12 lg:mb-16"
           >
             <motion.h2 variants={fadeInUp} className="font-serif text-[30px] sm:text-[32px] md:text-[38px] lg:text-[44px] font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-4">
-              Our Promise to Every Celebration
+              What We Stand For
             </motion.h2>
             <motion.div variants={fadeInUp} className="w-16 h-px bg-[#D4A843] mx-auto mb-6"></motion.div>
             <motion.p variants={fadeInUp} className="font-body text-[#4f4038] text-base md:text-lg lg:text-xl max-w-2xl mx-auto italic font-light">
-              Every event at Ayswariya Mahal is shaped with care, tradition, and the warmth of family.
+              Every event at Ayswariya Mahal is shaped by care, respect for tradition, and the closeness of family.
             </motion.p>
           </motion.div>
 
@@ -254,7 +248,7 @@ export default function About() {
                 </h2>
               </div>
               <p className="type-body text-[#fdfbf7]/85 leading-relaxed">
-                Every celebration deserves to feel personal, graceful, and unforgettable. At Ayswariya Mahal, we craft each event with care, tradition, and attention to every meaningful detail.
+                Every event has its own rhythm. We shape each gathering around what matters most to your family.
               </p>
             </motion.div>
 
@@ -275,7 +269,7 @@ export default function About() {
                 </h2>
               </div>
               <p className="type-body text-[#fdfbf7]/85 leading-relaxed">
-                To create elegant celebration spaces where families gather, memories are made, and every occasion is handled with warmth, dignity, and excellence.
+                To create thoughtful gathering spaces where families come together, memories are made, and every detail reflects a standard of care.
               </p>
             </motion.div>
           </motion.div>
@@ -342,14 +336,14 @@ export default function About() {
               Introducing Sowbhagya Mahal
             </motion.p>
             <motion.h2 variants={fadeInUp} className="mb-6 font-serif text-[30px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] sm:text-[32px] md:text-[36px] lg:mb-7 lg:text-5xl">
-              A Premium Mini Hall for <span className="italic text-[#B8860B]">Beautiful Celebrations</span>
+              An Intimate Hall for <span className="italic text-[#B8860B]">Distinguished Gatherings</span>
             </motion.h2>
             <motion.div variants={fadeInUp} className="mx-auto mb-6 h-[1px] w-16 bg-[#B8860B] md:mx-0 lg:mb-7" />
             <motion.p variants={fadeInUp} className="type-body mb-5 text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
-              Sowbhagya Mahal is a stable part of Ayswariya Mahal. It is an equally grand Mahal with equally good facilities at affordable cost.
+              Sowbhagya Mahal is a distinguished extension of Ayswariya Mahal — a compact hall with the same attention to detail, offered at a gentler price.
             </motion.p>
             <motion.p variants={fadeInUp} className="type-body mb-7 text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
-              Our hall is spacious with a seating capacity of 500 guests, dining capacity 200 and floating capacity of 1000, supported by centralized air conditioning, modern kitchen, guest rooms, backup generator, geysers, CCTV coverage, spacious dining and a separate rooftop garden.
+              The hall accommodates 500 seated guests, 200 for dining, and up to 1000 floating. Features include centralized air conditioning, a well-equipped kitchen, guest rooms, backup power, CCTV, and a rooftop garden.
             </motion.p>
 
             <motion.div variants={fadeInUp} className="mb-8 grid grid-cols-1 gap-4 xl:grid-cols-3">

@@ -41,7 +41,7 @@ const facilities = [
     height: 1086,
     icon: <Building2 size={26} />,
     title: "Spacious Event Hall",
-    description: "A generous main hall designed to frame weddings, receptions, and milestone occasions with grace.",
+    description: "A generous main hall built for weddings, receptions, and milestone celebrations.",
   },
   {
     image: facility3,
@@ -49,7 +49,7 @@ const facilities = [
     height: 1086,
     icon: <UtensilsCrossed size={26} />,
     title: "Dining Hall",
-    description: "Thoughtfully arranged dining space for smooth service and a refined guest experience.",
+    description: "Thoughtfully arranged dining space for smooth service and seamless guest flow.",
   },
   {
     image: facility4,
@@ -65,7 +65,7 @@ const facilities = [
     height: 1024,
     icon: <Car size={26} />,
     title: "Ample Parking",
-    description: "Ample parking that makes arrival and departure easy for every guest.",
+    description: "Generous parking that makes arrival and departure easy for every guest.",
   },
   {
     image: facility6,
@@ -89,7 +89,7 @@ const facilities = [
     height: 1024,
     icon: <MapPin size={26} />,
     title: "Prime Location",
-    description: "A centrally connected venue with convenient access for local and out-of-town guests.",
+    description: "A centrally located hall with easy access for both local and out-of-town guests.",
   },
 ];
 
@@ -139,7 +139,7 @@ export default function Facilities() {
     <>
       <SEO
         title="Wedding Hall Facilities & Guest Amenities"
-        description="Explore Ayswariya Mahal facilities including spacious event halls, centralized air conditioning, royal dining, luxury rooms, ample parking, CCTV security, generator backup, and prime Chennai access."
+        description="Explore Ayswariya Mahal facilities including generous event halls, centralized air conditioning, distinguished dining, luxury rooms, parking, CCTV security, generator backup, and prime Chennai access."
         path="/facilities"
       />
 
@@ -189,20 +189,20 @@ export default function Facilities() {
     {/* TITLE */}
     <motion.h1 variants={heroItemMotion} className="font-display text-[clamp(34px,7vw,76px)] font-bold leading-[1.1] tracking-[-0.02em] md:max-lg:text-[60px]">
       <span className="text-white">
-        Where Grand
+        Where Gatherings
       </span>{" "}
       <span className="text-[#E5C76B]">
-        Celebrations Come to Life
+        Take Shape
       </span>
     </motion.h1>
 
     {/* SUBTITLE */}
     <motion.p variants={heroItemMotion} className="mt-6 type-body text-white/84 max-w-3xl mx-auto">
-      Discover thoughtfully crafted spaces designed for unforgettable weddings, receptions, and cherished family moments.
+      Discover thoughtfully designed spaces for weddings, receptions, and family milestones.
     </motion.p>
 
     <motion.p variants={heroItemMotion} className="mt-4 type-small text-white/70">
-      Every detail is shaped to make your celebration feel effortless, elegant, and memorable.
+      Every detail is considered so your celebration feels effortless and polished.
     </motion.p>
 
   </motion.div>
@@ -312,19 +312,19 @@ export default function Facilities() {
               className="text-white"
             >
               <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] mb-6">
-                Begin Your Celebration
+                Start Planning Today
               </h2>
 
               <p className="type-body text-white/82 mb-6 max-w-xl">
-                A refined invitation to begin planning a celebration shaped with care, hospitality, and timeless elegance.
+                Start planning an event shaped with care, hospitality, and attention to every detail.
               </p>
 
               <ul className="space-y-4 type-body text-white/84">
                 {[
                   "1500+ Guest Capacity",
-                  "Royal Dining Experience",
-                  "Premium Guest Rooms",
-                  "Grand Parking Space",
+                  "Grand Dining",
+                  "Guest Suites",
+                  "Ample Parking",
                   "Traditional + Modern Blend"
                 ].map((t, i) => (
                   <li key={i} className="flex gap-3">

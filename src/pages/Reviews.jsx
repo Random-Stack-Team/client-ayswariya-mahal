@@ -179,7 +179,7 @@ export default function Reviews() {
                 </motion.h1>
 
                 <motion.p variants={heroItemVariants} className="mx-auto mt-7 max-w-3xl type-body text-[#4f4038]">
-                  Trusted by thousands of families for weddings, receptions, engagements, and memorable celebrations.
+                  Trusted by thousands of families for weddings, receptions, engagements, and milestones.
                 </motion.p>
 
                 <div
@@ -234,7 +234,7 @@ export default function Reviews() {
                   </motion.h2>
 
                   <motion.p variants={itemVariants} className="max-w-md type-body text-[#4f4038]">
-                    Every celebration at Ayswariya Mahal becomes a memory. Hear from the families who trusted us for their special occasions.
+                    Every event at Ayswariya Mahal tells a story. Hear from the families who chose us.
                   </motion.p>
                 </motion.div>
 
@@ -313,11 +313,11 @@ export default function Reviews() {
               <motion.p variants={itemVariants} className="mb-6 type-eyebrow text-[#E5C76B]">Celebrate With Us</motion.p>
 
               <motion.h2 variants={itemVariants} className="mb-8 font-serif text-[32px] font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] md:text-[40px] lg:text-5xl">
-                Let's Make Your Special Day <span className="italic text-[#E5C76B]">Memorable</span>
+                Let's Make It <span className="italic text-[#E5C76B]">Yours</span>
               </motion.h2>
 
               <motion.p variants={itemVariants} className="mx-auto mb-12 max-w-2xl type-body text-[#fdfbf7]/82">
-                Join thousands of happy families who trusted Ayswariya Mahal for their most cherished celebrations. Reserve your date today.
+                Join thousands of families who trusted Ayswariya Mahal with their most important celebrations. Reserve your date today.
               </motion.p>
 
               <motion.div variants={itemVariants}>

@@ -39,7 +39,7 @@ export default function GalleryPreview() {
             transition={{ duration: 1.20, ease: [0.16, 1, 0.3, 1] }}
             className="type-eyebrow text-[#E5C76B] mb-5"
           >
-            A Glimpse of Magic
+            A Look Inside
           </motion.p>
           <motion.h2
             initial={{ opacity: 0, y: 18 }}
@@ -48,7 +48,7 @@ export default function GalleryPreview() {
             transition={{ duration: 1.40, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
             className="font-serif text-[32px] md:text-[42px] lg:text-6xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fff8ed] drop-shadow-[0_10px_30px_rgba(0,0,0,0.18)]"
           >
-            Moments <span className="italic text-[#E5C76B]">Frozen</span> in Time
+            Stories <span className="italic text-[#E5C76B]">in Every Frame</span>
           </motion.h2>
         </div>
 

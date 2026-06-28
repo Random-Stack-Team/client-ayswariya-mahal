@@ -59,7 +59,7 @@ export default function FacilitiesPreview() {
               Palace Amenities
             </p>
             <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-primary">
-              A Symphony of <br />
+              Spaces Built for <br />
               <span className="italic text-antique-gold">Grandeur</span>
             </h2>
           </div>
@@ -84,7 +84,7 @@ export default function FacilitiesPreview() {
               <span className="type-eyebrow text-gold-leaf mb-3 block">Capacity: 1000+ Guests</span>
               <h3 className="font-serif text-2xl md:text-[32px] lg:text-4xl font-semibold leading-[1.2] text-white mb-4">The Grand Hall</h3>
               <p className="type-body text-white/82 max-w-md hidden md:block">
-                A breathtaking, centrally air-conditioned sanctuary designed with towering pillars, magnificent chandeliers, and timeless Dravidian architecture.
+                A centrally air-conditioned hall with towering pillars, ornate chandeliers, and classic Dravidian architecture.
               </p>
             </div>
           </div>
@@ -100,8 +100,8 @@ export default function FacilitiesPreview() {
               </div>
 
               <div className="absolute bottom-0 left-0 p-6 md:p-7 lg:p-8 w-full">
-                <h3 className="font-serif text-2xl font-semibold leading-[1.2] text-white mb-2">Royal Dining</h3>
-                <p className="type-body text-white/76">Traditional seating and grand buffet arrangements.</p>
+                <h3 className="font-serif text-2xl font-semibold leading-[1.2] text-white mb-2">Grand Dining</h3>
+                <p className="type-body text-white/76">Traditional seating and generous buffet arrangements.</p>
               </div>
             </div>
 
@@ -113,7 +113,7 @@ export default function FacilitiesPreview() {
                 
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
                   <Crown size={28} className="text-gold-leaf mb-4 group-hover:-translate-y-1 transition-transform" />
-                  <h3 className="font-serif text-[22px] font-semibold leading-[1.2] text-white">Premium Suites</h3>
+                  <h3 className="font-serif text-[22px] font-semibold leading-[1.2] text-white">Guest Suites</h3>
                 </div>
               </div>
 
@@ -126,7 +126,7 @@ export default function FacilitiesPreview() {
                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
                   <Car size={28} className="text-gold-leaf mb-4 group-hover:-translate-y-1 transition-transform" />
                   <h3 className="font-serif text-[22px] font-semibold leading-[1.2] text-gold-leaf">Valet Parking</h3>
-                  <p className="type-small text-white/62 uppercase tracking-[0.08em] mt-2 hidden sm:block">Secure & Spacious</p>
+                  <p className="type-small text-white/62 uppercase tracking-[0.08em] mt-2 hidden sm:block">Covered & Secure</p>
                 </div>
               </div>
 

@@ -43,7 +43,7 @@ export default function SowbhagyaMahal() {
     <>
       <SEO
         title="Sowbhagya Mahal - Premium Mini Hall"
-        description="Sowbhagya Mahal is an elegant mini hall by Ayswariya Mahal in Chennai, perfect for intimate celebrations, family gatherings, and graceful occasions."
+        description="Sowbhagya Mahal is an intimate hall by Ayswariya Mahal in Chennai — ideal for engagements, mini weddings, receptions, and family functions."
         path="/sowbhagya-mahal"
       />
       <PageTransition>
@@ -103,7 +103,7 @@ export default function SowbhagyaMahal() {
                 variants={fadeInUp}
                 className="mx-auto max-w-2xl font-serif text-[clamp(20px,3vw,28px)] font-medium italic text-[#E5C76B]"
               >
-                An elegant mini hall crafted for intimate celebrations, family gatherings, and graceful occasions.
+                An intimate hall crafted for engagements, family celebrations, and milestone moments.
               </motion.p>
               
               <motion.div variants={fadeInWide} className="mt-12 flex justify-center">
@@ -129,7 +129,7 @@ export default function SowbhagyaMahal() {
               className="mx-auto max-w-4xl"
             >
               <motion.p variants={fadeInWide} className="font-serif text-[28px] md:text-[38px] lg:text-[44px] leading-[1.35] md:leading-[1.4] italic text-[#5A111C]">
-                "A legacy of warmth in an intimate setting, designed for families who value elegance, comfort, and tradition at an affordable scale."
+                "A tradition of hospitality in an intimate setting — designed for families who value quality, ease, and a personal touch."
               </motion.p>
             </motion.div>
           </section>
@@ -161,10 +161,10 @@ export default function SowbhagyaMahal() {
                 className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#E5C76B] mb-5">
-                  Grand Proportions
+                  Room to Celebrate
                 </motion.p>
                 <motion.h2 variants={fadeInUp} className="mb-6 lg:mb-8 font-serif text-[34px] md:text-[40px] lg:text-[56px] font-semibold leading-[1.1] text-[#fdfbf7]">
-                  Space & <span className="italic text-[#E5C76B]">Comfort</span>
+                  Space & <span className="italic text-[#E5C76B]">Ease</span>
                 </motion.h2>
                 <motion.div variants={fadeInUp} className="mb-7 lg:mb-10 h-px w-20 bg-[#E5C76B]" />
                 
@@ -201,15 +201,15 @@ export default function SowbhagyaMahal() {
                 className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#D4A843] mb-5">
-                  Seamless Celebrations
+                  Seamless Service
                 </motion.p>
                 <motion.h2 variants={fadeInUp} className="mb-6 lg:mb-8 font-serif text-[34px] md:text-[40px] lg:text-[56px] font-semibold leading-[1.1] text-[#5A111C]">
-                  Premium <span className="italic text-[#D4A843]">Facilities</span>
+                  Thoughtful <span className="italic text-[#D4A843]">Amenities</span>
                 </motion.h2>
                 <motion.div variants={fadeInUp} className="mb-7 lg:mb-10 h-px w-20 bg-[#D4A843]" />
                 
                 <motion.p variants={fadeInUp} className="font-body text-[17px] md:text-[18px] leading-[1.8] md:leading-[1.9] mb-8">
-                  Every detail is curated to ensure your event flows beautifully. From our fully equipped modern kitchen and spacious dining hall to luxurious rooms for guests, we prioritize comfort.
+                  Every detail is planned to keep your event running smoothly — from our modern kitchen and spacious dining hall to comfortable guest rooms.
                 </motion.p>
 
                 <div className="flex flex-col gap-4">
@@ -286,7 +286,7 @@ export default function SowbhagyaMahal() {
                 className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#D4A843] mb-5">
-                  The Perfect Setting
+                  An Ideal Setting
                 </motion.p>
                 <motion.h2 variants={fadeInUp} className="mb-6 lg:mb-8 font-serif text-[34px] md:text-[40px] lg:text-[56px] font-semibold leading-[1.1] text-[#5A111C]">
                   Meaningful <span className="italic text-[#D4A843]">Occasions</span>
@@ -294,7 +294,7 @@ export default function SowbhagyaMahal() {
                 <motion.div variants={fadeInUp} className="mb-7 lg:mb-10 h-px w-20 bg-[#D4A843]" />
                 
                 <motion.p variants={fadeInUp} className="font-body text-[18px] md:text-[21px] lg:text-[24px] leading-[1.75] md:leading-[1.8] italic font-light mb-8">
-                  Whether it is the intimate joy of an engagement, the quiet elegance of a mini wedding, or the warmth of a family gathering, Sowbhagya Mahal brings grace to every celebration.
+                  Whether it's an intimate engagement, a mini wedding, or a close family celebration, Sowbhagya Mahal sets the tone.
                 </motion.p>
 
                 <motion.div variants={fadeInUp} className="flex flex-wrap gap-3">
@@ -324,7 +324,7 @@ export default function SowbhagyaMahal() {
                 </div>
                 <p className="type-eyebrow mb-5 text-[#E5C76B]">Venue Rhythm</p>
                 <h2 className="font-serif text-[34px] md:text-[44px] lg:text-[54px] font-semibold leading-[1.1] text-[#fdfbf7]">
-                  A calm flow from welcome to <span className="italic text-[#E5C76B]">farewell</span>
+                  A seamless flow from welcome to <span className="italic text-[#E5C76B]">farewell</span>
                 </h2>
               </motion.div>
 

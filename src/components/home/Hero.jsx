@@ -2,18 +2,18 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import heroImage from "../../assets/images/Facility/facility8.webp";
+import heroImage from "../../assets/images/Home Hero 2.png";
 import { useEnquiry } from "../../context/useEnquiry";
 
 const petals = [
-  { left: "9%", top: "72%", size: 20, delay: 0.1, drift: 24 },
-  { left: "16%", top: "33%", size: 18, delay: 0.35, drift: 18 },
-  { left: "31%", top: "44%", size: 17, delay: 0.65, drift: 28 },
-  { left: "48%", top: "51%", size: 19, delay: 0.2, drift: 22 },
-  { left: "61%", top: "34%", size: 18, delay: 0.55, drift: 20 },
-  { left: "78%", top: "45%", size: 16, delay: 0.85, drift: 26 },
-  { left: "91%", top: "43%", size: 19, delay: 0.45, drift: 18 },
-  { left: "68%", top: "82%", size: 18, delay: 1, drift: 24 },
+  { left: "9%", top: "72%", size: 20, delay: 0.1, drift: 24, color: "#e5c76b" },
+  { left: "16%", top: "33%", size: 18, delay: 0.35, drift: 18, color: "#f3d76c" },
+  { left: "31%", top: "44%", size: 17, delay: 0.65, drift: 28, color: "#d4af37" },
+  { left: "48%", top: "51%", size: 19, delay: 0.2, drift: 22, color: "#e5c76b" },
+  { left: "61%", top: "34%", size: 18, delay: 0.55, drift: 20, color: "#f3d76c" },
+  { left: "78%", top: "45%", size: 16, delay: 0.85, drift: 26, color: "#d4af37" },
+  { left: "91%", top: "43%", size: 19, delay: 0.45, drift: 18, color: "#e5c76b" },
+  { left: "68%", top: "82%", size: 18, delay: 1, drift: 24, color: "#f3d76c" },
 ];
 
 export default function Hero() {
@@ -105,19 +105,19 @@ export default function Hero() {
         <img
           ref={imageRef}
           src={heroImage}
-          alt="Ayswariya Mahal venue exterior"
+          alt="Ayswariya Mahal grand entrance"
           loading="eager"
           decoding="async"
           fetchPriority="high"
           width="1536"
           height="1024"
-          className="h-full w-full object-cover will-change-transform [filter:brightness(0.84)_saturate(1.06)]"
+          className="h-full w-full object-cover object-center will-change-transform [filter:brightness(0.88)_saturate(1.1)_contrast(1.02)]"
         />
       </div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(26,8,10,0.78)_0%,rgba(58,20,16,0.43)_38%,rgba(20,8,8,0.2)_100%)]" />
-      <div className="absolute inset-x-0 top-0 h-[44vh] bg-[linear-gradient(180deg,rgba(20,5,8,0.9)_0%,rgba(69,14,24,0.52)_34%,rgba(69,14,24,0.18)_68%,transparent_100%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.25)_0%,rgba(0,0,0,0.08)_42%,rgba(0,0,0,0.58)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(26,8,10,0.82)_0%,rgba(58,20,16,0.5)_35%,rgba(20,8,8,0.15)_70%,transparent_100%)]" />
+      <div className="absolute inset-x-0 top-0 h-[50vh] bg-[linear-gradient(180deg,rgba(20,5,8,0.85)_0%,rgba(69,14,24,0.45)_40%,rgba(69,14,24,0.12)_72%,transparent_100%)]" />
+      <div className="absolute inset-x-0 bottom-0 h-[40vh] bg-[linear-gradient(0deg,rgba(20,5,8,0.7)_0%,rgba(42,17,22,0.35)_50%,transparent_100%)]" />
 
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         {petals.map((petal, index) => (
@@ -126,12 +126,15 @@ export default function Hero() {
             ref={(node) => {
               petalsRef.current[index] = node;
             }}
-            className="absolute rounded-full bg-[#e889a9]/80 shadow-[0_0_18px_rgba(232,137,169,0.45)] blur-[0.1px]"
+            className="absolute rounded-full blur-[0.1px]"
             style={{
               left: petal.left,
               top: petal.top,
               width: petal.size,
               height: petal.size,
+              backgroundColor: petal.color,
+              opacity: 0.75,
+              boxShadow: `0 0 18px ${petal.color}80`,
             }}
           />
         ))}
@@ -150,7 +153,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-7 max-w-xl type-body text-white/82">
-            A refined wedding destination for timeless ceremonies, grand receptions, and celebrations shaped with grace.
+            A distinguished setting for sacred ceremonies, stately receptions, and intimate family milestones.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row md:mt-10">

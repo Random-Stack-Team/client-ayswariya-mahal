@@ -7,10 +7,10 @@ import { useEnquiry } from "../../context/useEnquiry";
 import coupleIllustration from '../../assets/images/couple-illustration.webp';
 
 const QUOTES = [
-  "Every love story deserves\na beautiful beginning.",
-  "Your perfect wedding starts\nwith the perfect venue.",
-  "Where traditions become\ntimeless celebrations.",
-  "Begin your forever in\nroyal elegance.",
+  "Every love story deserves\nthe right beginning.",
+  "Your wedding begins with\nthe right setting.",
+  "Where traditions become\nlasting memories.",
+  "Begin your journey with\nintention.",
 ];
 
 const INITIAL_FORM_VALUES = {
@@ -510,7 +510,7 @@ export default function FloatingEnvelope() {
                         <h2 className="mb-4 font-display text-2xl font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Petition Received</h2>
                         <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
                         <p className="max-w-xs font-body text-base leading-7 tracking-[0.01em] text-[#4a3623] italic">
-                          Your royal request has been elegantly sealed. Our Heritage Concierge will contact you shortly.
+                          Your request has been carefully sealed. Our Heritage Concierge will be in touch shortly.
                         </p>
                       </motion.div>
                     ) : (
@@ -521,7 +521,7 @@ export default function FloatingEnvelope() {
                         <header className="mb-3 text-center shrink-0">
                           <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={18} strokeWidth={2} /></div>
                           <h2 className="font-display text-[1.6rem] sm:text-[1.7rem] font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Send an Enquiry</h2>
-                          <p className="mt-1 font-body text-xs sm:text-sm leading-relaxed tracking-[0.01em] text-[#654d39]">Share your celebration details with us.</p>
+                          <p className="mt-1 font-body text-xs sm:text-sm leading-relaxed tracking-[0.01em] text-[#654d39]">Share your occasion details with us.</p>
                           <div className="flex items-center justify-center gap-4 mt-2">
                             <div className="w-10 sm:w-12 h-[2px] bg-[#4a3623]"></div>
                             <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>

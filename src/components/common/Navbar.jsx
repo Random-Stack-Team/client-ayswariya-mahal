@@ -3,15 +3,16 @@ import { useEnquiry } from "../../context/useEnquiry";
 import { useState, useEffect, useRef } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
-import logoImg from "../../assets/images/ayswariya-mahal-logo.webp";
+import ayswariyaLogo from "../../assets/images/ayswariya-mahal-logo.webp";
+import sowbhagyaLogo from "../../assets/images/sowbhagya-mahal-logo.png";
 
 const links = [
-  { to: "/", label: "The Venue" },
-  { to: "/about", label: "Our Story" },
-  { to: "/facilities", label: "Guest Comforts" },
-  { to: "/gallery", label: "Celebrations" },
-  { to: "/reviews", label: "Kind Words" },
-  { to: "/contact", label: "Plan a Visit" },
+  { to: "/", label: "Venue" },
+  { to: "/about", label: "Legacy" },
+  { to: "/facilities", label: "Amenities" },
+  { to: "/gallery", label: "Gallery" },
+  { to: "/reviews", label: "Reviews" },
+  { to: "/contact", label: "Enquiry" },
 ];
 
 const leftLinks = links.slice(0, 3);
@@ -26,8 +27,12 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { openForm } = useEnquiry();
   const isHome = location.pathname === "/";
+  const isSowbhagya = location.pathname === "/sowbhagya-mahal";
   const navVisible = isMobileMenuOpen || !isScrolled || isScrollingUp;
   const solidNav = isScrolled || isMobileMenuOpen || !isHome;
+  const logoImg = isSowbhagya ? sowbhagyaLogo : ayswariyaLogo;
+  const logoAlt = isSowbhagya ? "Sowbhagya Mahal" : "Ayswariya Mahal";
+  const logoAriaLabel = isSowbhagya ? "Sowbhagya Mahal home" : "Ayswariya Mahal home";
 
   const scrollState = useRef({ isScrolled: false, isScrollingUp: true });
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -105,11 +110,11 @@ function Navbar() {
           <button
             onClick={handleLogoClick}
             className={`group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:justify-self-center ${isMobileMenuOpen ? "invisible" : ""} lg:visible`}
-            aria-label="Ayswariya Mahal home"
+            aria-label={logoAriaLabel}
           >
             <img
               src={logoImg}
-              alt="Ayswariya Mahal"
+              alt={logoAlt}
               loading="eager"
               fetchPriority="high"
               width="654"
@@ -173,7 +178,7 @@ function Navbar() {
                   <div>
                     <div className="flex items-center justify-between mb-4">
                       <button onClick={handleLogoClick}>
-                        <img src={logoImg} alt="Ayswariya Mahal" className="h-11 w-auto" />
+                        <img src={logoImg} alt={logoAlt} className="h-11 w-auto" />
                       </button>
                       <button
                         onClick={() => setIsMobileMenuOpen(false)}

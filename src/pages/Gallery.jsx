@@ -46,9 +46,9 @@ const galleryData = {
 };
 
 const categoryMeta = {
-  hall: { title: "Hall Experience", subtitle: "Architectural Grandeur" },
-  decor: { title: "Decor Experience", subtitle: "Art of Celebration" },
-  memories: { title: "Memory Lane", subtitle: "Moments to Cherish" },
+  hall: { title: "Hall Experience", subtitle: "Architectural Scale" },
+  decor: { title: "Decor Experience", subtitle: "Art of the Occasion" },
+  memories: { title: "Story Lane", subtitle: "Scenes to Hold" },
 };
 
 const galleryHighlights = [
@@ -262,7 +262,7 @@ export default function Gallery() {
     <>
       <SEO
         title="Wedding Gallery - Hall, Decor & Celebrations"
-        description="View the Ayswariya Mahal wedding gallery featuring elegant halls, traditional decor, celebration moments, and premium event spaces for weddings and receptions in Chennai."
+        description="Browse the Ayswariya Mahal gallery — grand halls, traditional décor, and candid moments from weddings, receptions, and family events in Chennai."
         path="/gallery"
       />
       <PageTransition>
@@ -307,7 +307,7 @@ export default function Gallery() {
                   A Gallery of
                 </span>
                 <span className="block italic text-[#E5C76B]">
-                  Grandeur
+                  Splendor
                 </span>
               </motion.h1>
             </motion.div>
@@ -409,13 +409,13 @@ export default function Gallery() {
                 transition={{ duration: 0.7, ease: "easeOut" }}
                 className="mx-auto max-w-3xl text-center"
               >
-                <p className="type-eyebrow mb-4 text-[#E5C76B]">Celebrations in Detail</p>
+                <p className="type-eyebrow mb-4 text-[#E5C76B]">Highlights in Detail</p>
                 <h2 className="font-serif text-[34px] font-semibold leading-[1.15] tracking-[0.01em] text-[#fdfbf7] md:text-[44px] lg:text-[52px]">
-                  Moments Captured at Ayswariya Mahal
+                  Scenes from Ayswariya Mahal
                 </h2>
                 <div className="mx-auto my-6 h-px w-24 bg-gradient-to-r from-transparent via-[#E5C76B] to-transparent" />
                 <p className="mx-auto max-w-3xl type-body text-[#fdfbf7]/78">
-                  Explore a curated collection of weddings, receptions, décor details, and celebration spaces that reflect the elegance and warmth of Ayswariya Mahal.
+                  A curated look at weddings, receptions, décor, and the spaces behind them.
                 </p>
               </motion.div>
 

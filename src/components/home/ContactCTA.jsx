@@ -151,7 +151,7 @@ z"/>
             </svg>
             
             <h3 className="font-serif text-[26px] md:text-[28px] lg:text-3xl text-center text-[#5A111C] mb-6 leading-[1.3] font-medium">
-              A Place Where Promises Become Memories
+              A Setting Worthy of Your Vows
             </h3>
             
             <div className="w-16 h-px bg-[#D4A843]/60 mb-8"></div>
@@ -159,15 +159,15 @@ z"/>
             <ul className="space-y-5 text-center md:text-left w-full px-2">
               <li className="flex items-center justify-center md:justify-start gap-4">
                 <span className="w-1.5 h-1.5 bg-[#D4A843] rounded-full shrink-0"></span>
-                <span className="font-serif text-[#554241] text-[17px] md:text-[17px] lg:text-lg">Engagements filled with warmth</span>
+                <span className="font-serif text-[#554241] text-[17px] md:text-[17px] lg:text-lg">Engagements marked by sincerity</span>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-4">
                 <span className="w-1.5 h-1.5 bg-[#D4A843] rounded-full shrink-0"></span>
-                <span className="font-serif text-[#554241] text-[17px] md:text-[17px] lg:text-lg">Weddings crafted with tradition</span>
+                <span className="font-serif text-[#554241] text-[17px] md:text-[17px] lg:text-lg">Weddings steeped in tradition</span>
               </li>
               <li className="flex items-center justify-center md:justify-start gap-4">
                 <span className="w-1.5 h-1.5 bg-[#D4A843] rounded-full shrink-0"></span>
-                <span className="font-serif text-[#554241] text-[17px] md:text-[17px] lg:text-lg">Celebrations remembered for generations</span>
+                <span className="font-serif text-[#554241] text-[17px] md:text-[17px] lg:text-lg">Gatherings that linger in family lore</span>
               </li>
             </ul>
             
@@ -181,18 +181,18 @@ z"/>
             className="flex flex-col items-center xl:items-start order-2"
           >
             <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] text-[#5A111C] mb-6 md:mb-7 lg:mb-8">
-              Crafting Memories <br className="hidden md:block"/>
-              <span className="italic font-light text-[#C9973B]">That Last Forever</span>
+              A Story Told <br className="hidden md:block"/>
+              <span className="italic font-light text-[#C9973B]">in Gold</span>
             </h2>
             
             <div className="w-12 h-px bg-[#C9973B] mb-6 md:mb-8 mx-auto md:mx-0"></div>
 
             <p className="font-body text-[#554241] text-lg md:text-lg lg:text-xl leading-relaxed mb-6 font-medium">
-              Every celebration begins with a promise and becomes a memory cherished for generations.
+              Every celebration begins as a promise and becomes a legacy held close by generations.
             </p>
             
             <p className="font-body text-[#554241]/85 text-base md:text-[17px] lg:text-lg leading-[1.8] font-light">
-              At Ayswariya Mahal, we believe the most beautiful moments are not measured in hours, but in the emotions they leave behind. From engagements and weddings to family celebrations, we provide a setting where stories unfold, relationships grow, and memories are treasured forever.
+              At Ayswariya Mahal, the finest celebrations aren't measured in hours — they're measured in what stays with you. From engagements and weddings to family gatherings, every moment here becomes part of your family's story.
             </p>
           </motion.div>
 

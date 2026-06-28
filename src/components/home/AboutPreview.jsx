@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import aboutImg from "../../assets/images/about.webp";
+import aboutImg from "../../assets/images/Image.png";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -46,12 +46,12 @@ export default function AboutPreview() {
         <div className="md:col-span-5 lg:col-span-5 space-y-8 z-10">
           <div className="order-2 lg:order-1 text-center lg:text-left stagger-reveal">
             <h2 className="font-serif text-[32px] md:text-[38px] lg:text-6xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] mb-6 lg:mb-8 drop-shadow-sm">
-              A Legacy of <br />
-              <span className="italic text-[#E5C76B]">Celebrations</span>
+              The Name <br />
+              Behind Every <span className="italic text-[#E5C76B]">Milestone</span>
             </h2>
             
             <p className="type-body text-[#fdfbf7]/82 mb-8 max-w-2xl mx-auto lg:mx-0">
-              For over two decades, Ayswariya Mahal has been the backdrop to life's most precious moments. With our palatial architecture and unwavering commitment to excellence, we transform your dreams into timeless memories.
+              For over two decades, Ayswariya Mahal has hosted life's defining moments — sacred ceremonies, grand receptions, and intimate milestones. Our palatial spaces and attentive service turn every vision into a lasting memory.
             </p>
 
             <button 
@@ -65,19 +65,26 @@ export default function AboutPreview() {
         </div>
 
         <div className="md:col-span-7 lg:col-span-7 relative stagger-reveal mt-8 md:mt-0">
-          <div className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner aspect-[4/5] md:aspect-[5/4] lg:aspect-square p-3 lg:p-4 luxury-image-overlay">
-            <img
-              src={aboutImg}
-              alt="Ayswariya Mahal Interior"
-              loading="lazy"
-              decoding="async"
-              width="1360"
-              height="1020"
-              className="grayscale-[12%] contrast-110 hover:grayscale-0"
-            />
+          <div className="relative group">
+            <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[18px] bg-[#E5C76B]/10" />
+            <div className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner aspect-[4/5] md:aspect-[5/4] lg:aspect-square p-3 lg:p-4 luxury-image-overlay">
+              <div className="relative h-full w-full overflow-hidden rounded-[12px]">
+                <img
+                  src={aboutImg}
+                  alt="Ayswariya Mahal Interior"
+                  loading="lazy"
+                  decoding="async"
+                  width="1360"
+                  height="1020"
+                  className="h-full w-full object-cover object-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
+                />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#5A111C]/30 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#5A111C]/15 via-transparent to-transparent" />
+              </div>
+            </div>
+            <div className="absolute -bottom-3 -left-3 h-16 w-16 border-b-2 border-l-2 border-[#E5C76B]/50 rounded-bl-xl lg:-bottom-4 lg:-left-4 lg:h-20 lg:w-20" />
+            <div className="absolute -top-3 -right-3 h-16 w-16 border-t-2 border-r-2 border-[#E5C76B]/50 rounded-tr-xl lg:-top-4 lg:-right-4 lg:h-20 lg:w-20" />
           </div>
-
-
         </div>
 
       </div>
