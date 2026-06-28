@@ -7,10 +7,10 @@ import { useEnquiry } from "../../context/useEnquiry";
 import coupleIllustration from '../../assets/images/couple-illustration.webp';
 
 const QUOTES = [
-  "Every love story deserves\nthe right beginning.",
-  "Your wedding begins with\nthe right setting.",
-  "Where traditions become\nlasting memories.",
-  "Begin your journey with\nintention.",
+  "Your wedding deserves a setting\nas sacred as your vows.",
+  "A palatial venue where traditions\nare honoured and celebrations unfold.",
+  "From sacred ceremonies to grand\nreceptions — your story starts here.",
+  "Begin your journey at\nAyswariya Mahal.",
 ];
 
 const INITIAL_FORM_VALUES = {
@@ -488,7 +488,7 @@ export default function FloatingEnvelope() {
                       >
                         <div className="text-[#a67c00] mb-2"><Sparkles size={16} strokeWidth={1} /></div>
                         <h4 className="type-eyebrow text-[#4a3623] mb-1">Planning Your</h4>
-                        <h3 className="font-serif text-[#b58c2a] text-[22px] md:text-2xl tracking-[0.01em] mb-3 drop-shadow-sm font-semibold">Dream Wedding?</h3>
+                        <h3 className="font-serif text-[#b58c2a] text-[22px] md:text-2xl tracking-[0.01em] mb-3 drop-shadow-sm font-semibold">Planning Your Celebration?</h3>
 
                         <div className="flex items-center justify-center gap-3 mb-4 w-full px-8">
                           <div className="h-[2px] bg-[#4a3623] flex-1"></div>
@@ -506,7 +506,7 @@ export default function FloatingEnvelope() {
                         className="w-full h-full flex flex-col items-center justify-center z-30 space-y-5"
                       >
                         <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
-                        <p className="font-body text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-[#3d2a1d]">Sealing Petition...</p>
+                        <p className="font-body text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-[#3d2a1d]">Sealing Your Enquiry...</p>
                       </motion.div>
                     ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
                       <motion.div
@@ -518,7 +518,7 @@ export default function FloatingEnvelope() {
                         <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-8 border-[2px] border-[#4a3623]">
                           <Heart size={20} className="text-[#4a3623] fill-[#4a3623]" />
                         </div>
-                        <h2 className="mb-4 font-display text-2xl font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Petition Received</h2>
+                        <h2 className="mb-4 font-display text-2xl font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Enquiry Received</h2>
                         <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
                         <p className="max-w-xs font-body text-base leading-7 tracking-[0.01em] text-[#4a3623] italic">
                           Your request has been carefully sealed. Our Heritage Concierge will be in touch shortly.
@@ -543,7 +543,7 @@ export default function FloatingEnvelope() {
                         <form className="flex-1 flex flex-col" onSubmit={handleSubmit} noValidate>
                           <div className="flex-1 grid grid-cols-1 gap-x-5 gap-y-4 sm:gap-y-5 md:grid-cols-2 content-start">
                             <div className="relative group">
-                              <label htmlFor="enquiry-name" className="mb-1.5 block font-body text-[0.7rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Honorable Name <span className="text-[#9a741d]">*</span></label>
+                              <label htmlFor="enquiry-name" className="mb-1.5 block font-body text-[0.7rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Your Name <span className="text-[#9a741d]">*</span></label>
                               <input ref={(node) => { fieldRefs.current.name = node; }} id="enquiry-name" name="name" value={formValues.name} onChange={handleFieldChange} type="text" required minLength="2" aria-invalid={Boolean(formErrors.name)} aria-describedby={formErrors.name ? "enquiry-name-error" : undefined} className={`min-h-10 sm:min-h-11 w-full border-0 border-b-2 bg-transparent px-1 py-2 font-body text-sm sm:text-base font-medium leading-6 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.name ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="e.g. Anand & Priya" />
                               {formErrors.name && <p id="enquiry-name-error" className="absolute -bottom-4 left-0 font-body text-[0.7rem] font-medium leading-4 text-[#9f2f2f]">{formErrors.name}</p>}
                             </div>

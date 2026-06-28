@@ -219,7 +219,7 @@ function Navbar() {
                       Plan Your Wedding
                     </button>
                     <p className="type-small text-[#8c6419]/60 text-center">
-                      Ayswariya Mahal — Est. 2020
+                      Ayswariya Mahal — Est. 2001
                     </p>
                   </div>
                 </div>

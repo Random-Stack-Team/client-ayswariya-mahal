@@ -47,7 +47,7 @@ export default function SowbhagyaMahal() {
         path="/sowbhagya-mahal"
       />
       <PageTransition>
-        <main className="min-min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7]">
+        <main className="min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7]">
           
           {/* 1. Hero Section */}
           <section className="relative isolate flex min-h-[620px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[680px] md:pb-28 md:pt-36 lg:min-h-[80vh] lg:pb-32 lg:pt-40">
@@ -59,7 +59,7 @@ export default function SowbhagyaMahal() {
             >
               <img
                 src={sowCrop5}
-                alt=""
+                alt="Sowbhagya Mahal venue"
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
@@ -129,7 +129,7 @@ export default function SowbhagyaMahal() {
               className="mx-auto max-w-4xl"
             >
               <motion.p variants={fadeInWide} className="font-serif text-[28px] md:text-[38px] lg:text-[44px] leading-[1.35] md:leading-[1.4] italic text-[#5A111C]">
-                "A tradition of hospitality in an intimate setting — designed for families who value quality, ease, and a personal touch."
+                "A tradition of hospitality in an intimate setting — designed for families who value quality, comfort, and a personal touch."
               </motion.p>
             </motion.div>
           </section>
@@ -201,15 +201,15 @@ export default function SowbhagyaMahal() {
                 className="lg:pl-10"
               >
                 <motion.p variants={fadeInUp} className="type-eyebrow text-[#D4A843] mb-5">
-                  Seamless Service
+                  Well-Appointed Amenities
                 </motion.p>
                 <motion.h2 variants={fadeInUp} className="mb-6 lg:mb-8 font-serif text-[34px] md:text-[40px] lg:text-[56px] font-semibold leading-[1.1] text-[#5A111C]">
-                  Thoughtful <span className="italic text-[#D4A843]">Amenities</span>
+                  Quality <span className="italic text-[#D4A843]">Facilities</span>
                 </motion.h2>
                 <motion.div variants={fadeInUp} className="mb-7 lg:mb-10 h-px w-20 bg-[#D4A843]" />
                 
                 <motion.p variants={fadeInUp} className="font-body text-[17px] md:text-[18px] leading-[1.8] md:leading-[1.9] mb-8">
-                  Every detail is planned to keep your event running smoothly — from our modern kitchen and spacious dining hall to comfortable guest rooms.
+                  Every detail supports a smooth event — from the modern kitchen and spacious dining hall to comfortable guest rooms.
                 </motion.p>
 
                 <div className="flex flex-col gap-4">
@@ -294,7 +294,7 @@ export default function SowbhagyaMahal() {
                 <motion.div variants={fadeInUp} className="mb-7 lg:mb-10 h-px w-20 bg-[#D4A843]" />
                 
                 <motion.p variants={fadeInUp} className="font-body text-[18px] md:text-[21px] lg:text-[24px] leading-[1.75] md:leading-[1.8] italic font-light mb-8">
-                  Whether it's an intimate engagement, a mini wedding, or a close family celebration, Sowbhagya Mahal sets the tone.
+                  Whether it's an engagement, a mini wedding, or a close family celebration, Sowbhagya Mahal provides the right setting.
                 </motion.p>
 
                 <motion.div variants={fadeInUp} className="flex flex-wrap gap-3">
@@ -324,16 +324,16 @@ export default function SowbhagyaMahal() {
                 </div>
                 <p className="type-eyebrow mb-5 text-[#E5C76B]">Venue Rhythm</p>
                 <h2 className="font-serif text-[34px] md:text-[44px] lg:text-[54px] font-semibold leading-[1.1] text-[#fdfbf7]">
-                  A seamless flow from welcome to <span className="italic text-[#E5C76B]">farewell</span>
+                  A natural flow from arrival to <span className="italic text-[#E5C76B]">farewell</span>
                 </h2>
               </motion.div>
 
               <motion.div variants={fadeInUp} className="rounded-[28px] border border-[#E5C76B]/24 bg-[#fdfbf7]/7 p-5                 shadow-[0_12px_30px_rgba(0,0,0,0.18)] backdrop-blur-sm sm:p-7 md:p-8">
                 <div className="grid gap-4 md:grid-cols-3 xl:grid-cols-1">
                   {[
-                    "Arrival spaces stay clear, composed, and easy for every age group.",
-                    "Dining access remains close enough for comfort without disturbing the hall.",
-                    "Stage, seating, and movement zones are kept visually balanced.",
+                    "Arrival areas remain clear and accessible for guests of all ages.",
+                    "Dining areas are positioned close to the hall without disrupting ceremonies.",
+                    "Stage, seating, and circulation areas are arranged for clarity and comfort.",
                   ].map((item) => (
                     <div key={item} className="flex gap-3 rounded-2xl border border-[#E5C76B]/16 bg-[#3F0C15]/32 p-4 text-left">
                       <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#E5C76B] text-[#3F0C15]">

@@ -47,11 +47,11 @@ export default function AboutPreview() {
           <div className="order-2 lg:order-1 text-center lg:text-left stagger-reveal">
             <h2 className="font-serif text-[32px] md:text-[38px] lg:text-6xl font-semibold leading-[1.2] tracking-[0.01em] text-[#fdfbf7] mb-6 lg:mb-8 drop-shadow-sm">
               The Name <br />
-              Behind Every <span className="italic text-[#E5C76B]">Milestone</span>
+              Behind Each <span className="italic text-[#E5C76B]">Milestone</span>
             </h2>
             
             <p className="type-body text-[#fdfbf7]/82 mb-8 max-w-2xl mx-auto lg:mx-0">
-              For over two decades, Ayswariya Mahal has hosted life's defining moments — sacred ceremonies, grand receptions, and intimate milestones. Our palatial spaces and attentive service turn every vision into a lasting memory.
+              For over two decades, Ayswariya Mahal has hosted thousands of weddings, receptions, and family milestones in Arumbakkam — earning trust through consistent care and spaces built for celebration.
             </p>
 
             <button 

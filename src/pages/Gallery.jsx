@@ -46,9 +46,9 @@ const galleryData = {
 };
 
 const categoryMeta = {
-  hall: { title: "Hall Experience", subtitle: "Architectural Scale" },
-  decor: { title: "Decor Experience", subtitle: "Art of the Occasion" },
-  memories: { title: "Story Lane", subtitle: "Scenes to Hold" },
+  hall: { title: "The Grand Hall", subtitle: "Scale & Architecture" },
+  decor: { title: "Décor & Styling", subtitle: "Art of the Occasion" },
+  memories: { title: "Celebration Moments", subtitle: "Candid & Captured" },
 };
 
 const galleryHighlights = [
@@ -266,11 +266,11 @@ export default function Gallery() {
         path="/gallery"
       />
       <PageTransition>
-        <main className="min-min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7] wedding-pattern-ivory">
+        <main className="min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7] wedding-pattern-ivory">
           <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-24 pt-32 sm:px-6 md:min-h-[600px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-36 lg:pt-40">
             <img
               src={gallery6}
-              alt=""
+              alt="Ayswariya Mahal gallery"
               loading="eager"
               fetchPriority="high"
               decoding="async"
@@ -319,7 +319,7 @@ export default function Gallery() {
             onKeyDown={handleKeyDown}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
-            className="relative flex min-min-h-[100dvh] flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(229,199,107,0.22),transparent_30%),linear-gradient(180deg,#fdfbf7_0%,#fbf3e7_52%,#f8efe1_100%)] px-4 pb-16 pt-10 outline-none md:px-8 md:pb-[72px] md:pt-12 lg:pb-24 lg:pt-16"
+            className="relative flex min-h-[100dvh] flex-col overflow-hidden bg-[radial-gradient(circle_at_50%_8%,rgba(229,199,107,0.22),transparent_30%),linear-gradient(180deg,#fdfbf7_0%,#fbf3e7_52%,#f8efe1_100%)] px-4 pb-16 pt-10 outline-none md:px-8 md:pb-[72px] md:pt-12 lg:pb-24 lg:pt-16"
             aria-label="Scrollable wedding gallery slider"
           >
             <div className="relative z-30 mx-auto flex max-w-5xl flex-col items-center text-center">
@@ -335,7 +335,7 @@ export default function Gallery() {
                           : "text-[#4a3623]/70 hover:bg-[#6A1724]/8 hover:text-[#6A1724]"
                       }`}
                     >
-                      {item}
+                      {categoryMeta[item]?.title || item}
                     </button>
                   ))}
                 </div>
@@ -411,11 +411,11 @@ export default function Gallery() {
               >
                 <p className="type-eyebrow mb-4 text-[#E5C76B]">Highlights in Detail</p>
                 <h2 className="font-serif text-[34px] font-semibold leading-[1.15] tracking-[0.01em] text-[#fdfbf7] md:text-[44px] lg:text-[52px]">
-                  Scenes from Ayswariya Mahal
+                  Moments From Ayswariya Mahal
                 </h2>
                 <div className="mx-auto my-6 h-px w-24 bg-gradient-to-r from-transparent via-[#E5C76B] to-transparent" />
                 <p className="mx-auto max-w-3xl type-body text-[#fdfbf7]/78">
-                  A curated look at weddings, receptions, décor, and the spaces behind them.
+                  A collection of weddings, receptions, décor, and the halls behind every celebration.
                 </p>
               </motion.div>
 

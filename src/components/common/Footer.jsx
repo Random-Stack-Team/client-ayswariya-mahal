@@ -71,8 +71,7 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 max-w-[420px] font-body text-base leading-8 text-[#fdfbf7]/76">
-              A wedding and event destination in Arumbakkam, Chennai — designed for weddings,
-              receptions, engagements, and family celebrations.
+              A wedding and event destination in Arumbakkam, Chennai — built for gatherings that bring families together.
             </p>
             <button
               type="button"

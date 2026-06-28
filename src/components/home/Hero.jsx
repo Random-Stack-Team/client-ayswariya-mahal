@@ -105,7 +105,7 @@ export default function Hero() {
         <img
           ref={imageRef}
           src={heroImage}
-          alt="Ayswariya Mahal grand entrance"
+          alt="Ayswariya Mahal main entrance"
           loading="eager"
           decoding="async"
           fetchPriority="high"
@@ -153,7 +153,7 @@ export default function Hero() {
           </h1>
 
           <p className="mt-7 max-w-xl type-body text-white/82">
-            A distinguished setting for sacred ceremonies, stately receptions, and intimate family milestones.
+            A palatial venue in Arumbakkam where sacred ceremonies and grand receptions come together under one roof.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row md:mt-10">

@@ -56,7 +56,7 @@ export default function FacilitiesPreview() {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10 md:mb-12 lg:mb-16 bento-item">
           <div>
             <p className="type-eyebrow text-gold-leaf mb-4">
-              Palace Amenities
+              Venue Amenities
             </p>
             <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-primary">
               Spaces Built for <br />

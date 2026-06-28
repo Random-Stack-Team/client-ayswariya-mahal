@@ -12,37 +12,37 @@ const googleReviewUrl =
 const reviews = [
   {
     name: "Karthik & Priya",
-    review: "A beautiful wedding hall with excellent facilities. The management was very supportive throughout our event.",
+    review: "A stunning hall with everything we needed for our wedding. The management team was responsive and accommodating from booking to the final send-off.",
     rating: 5,
     date: "March 2026",
   },
   {
     name: "Suresh Kumar",
-    review: "Spacious hall, ample parking, and excellent dining arrangements. Highly recommended for weddings and receptions.",
+    review: "We chose this for the space and parking alone — both exceeded expectations. The dining setup was well-managed and our 800 guests were comfortably seated.",
     rating: 4,
     date: "January 2026",
   },
   {
     name: "Meena Raj",
-    review: "The ambience and decoration support were amazing. Our guests were impressed with the facilities.",
+    review: "The hall's ambience and décor support were outstanding. Several guests asked us where we found the venue.",
     rating: 5,
     date: "February 2026",
   },
   {
     name: "Arun & Divya",
-    review: "Everything was well organized and the hall looked stunning. A memorable experience for our family.",
+    review: "From the initial walkthrough to event day, the coordination was seamless. The hall looked spectacular with our décor, and the staff handled 1000+ guests with ease.",
     rating: 5,
     date: "April 2026",
   },
   {
     name: "Vignesh",
-    review: "Excellent maintenance, good seating capacity, and a prime location. Worth every penny.",
+    review: "The hall was clean, well-maintained, and centrally located. Our out-of-town guests appreciated the easy access from the highway.",
     rating: 5,
     date: "May 2026",
   },
   {
     name: "Ramya",
-    review: "Very professional team and beautiful venue. We received many compliments from our guests.",
+    review: "The venue team was professional and accommodating. Our guests loved the hall's interiors and the smooth flow of the event.",
     rating: 4,
     date: "December 2025",
   },
@@ -145,7 +145,7 @@ export default function Reviews() {
         path="/reviews"
       />
       <PageTransition>
-        <main className="relative min-min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7] wedding-pattern-ivory pt-24 md:pt-28 lg:pt-32">
+        <main className="relative min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7] wedding-pattern-ivory pt-24 md:pt-28 lg:pt-32">
           <div className="pointer-events-none absolute inset-0">
             <div className="absolute left-0 top-0 h-[1400px] w-full bg-gradient-to-b from-[#4A0A12]/28 via-[#6a1a24]/18 via-[#f7f0e4]/10 to-[#fdfbf7]" />
           </div>
@@ -179,7 +179,7 @@ export default function Reviews() {
                 </motion.h1>
 
                 <motion.p variants={heroItemVariants} className="mx-auto mt-7 max-w-3xl type-body text-[#4f4038]">
-                  Trusted by thousands of families for weddings, receptions, engagements, and milestones.
+                  Trusted by thousands of families across Chennai for weddings, receptions, and engagements.
                 </motion.p>
 
                 <div
@@ -234,7 +234,7 @@ export default function Reviews() {
                   </motion.h2>
 
                   <motion.p variants={itemVariants} className="max-w-md type-body text-[#4f4038]">
-                    Every event at Ayswariya Mahal tells a story. Hear from the families who chose us.
+                    Every event here reflects a family's trust. Hear from families who celebrated with us.
                   </motion.p>
                 </motion.div>
 

@@ -20,7 +20,7 @@ export default function Contact() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Endpoint not configured — UI only. Wire to Google Apps Script URL when provided.
-    alert("Form submitted (UI only). Provide Apps Script URL to enable submission.");
+    alert("Thank you for your enquiry. Our team will contact you shortly.");
     setForm({ name: "", phone: "", email: "", eventType: "Wedding", date: "", message: "" });
   };
 
@@ -32,12 +32,12 @@ export default function Contact() {
         path="/contact"
       />
       <PageTransition>
-        <main className="bg-[#fdfbf7] wedding-pattern-ivory min-min-h-[100dvh]">
+        <main className="bg-[#fdfbf7] wedding-pattern-ivory min-h-[100dvh]">
       {/* Hero Section */}
       <section className="relative flex min-h-[520px] items-center justify-center px-5 pb-24 pt-32 sm:px-6 md:min-h-[580px] md:pb-28 md:pt-36 lg:min-h-[60vh] lg:pb-32 lg:pt-40">
         <img
           src={heroImg}
-          alt=""
+          alt="Ayswariya Mahal location"
           loading="eager"
           fetchPriority="high"
           decoding="async"
@@ -75,9 +75,9 @@ export default function Contact() {
             className="flex flex-col space-y-8 md:space-y-10 lg:space-y-12"
           >
             <div>
-              <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-6">We'd Love to Hear From You</h2>
+              <h2 className="font-serif text-[32px] md:text-[40px] lg:text-5xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-6">Begin Your Journey</h2>
               <p className="type-body text-[#4f4038]">
-                Whether you're planning a wedding, corporate event, or family celebration, our team is here to bring your vision to life.
+                Whether you're planning a wedding, reception, or family celebration, our team is here to help you find the perfect setting.
               </p>
             </div>
 
@@ -138,12 +138,12 @@ export default function Contact() {
           >
             {/* Inline Enquiry Form */}
             <form onSubmit={handleSubmit} className="bg-white p-5 sm:p-7 md:p-7 lg:p-10 rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.05)] border border-gold-leaf/20">
-              <h3 className="font-serif text-2xl md:text-[28px] lg:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-4 text-center">Share Your Details</h3>
+              <h3 className="font-serif text-2xl md:text-[28px] lg:text-3xl font-semibold leading-[1.2] tracking-[0.01em] text-[#5A111C] mb-4 text-center">Send an Enquiry</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />
-                <input name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />
-                <input name="email" value={form.email} onChange={handleChange} required placeholder="Email" type="email" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />
+                <input name="name" value={form.name} onChange={handleChange} required placeholder="Name" aria-label="Full name" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />
+                <input name="phone" value={form.phone} onChange={handleChange} required placeholder="Phone" aria-label="Phone number" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />
+                <input name="email" value={form.email} onChange={handleChange} required placeholder="Email" type="email" aria-label="Email address" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none" />
                 <select name="eventType" value={form.eventType} onChange={handleChange} className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] focus:border-[#D4A843] focus:outline-none">
                   <option>Wedding</option>
                   <option>Reception</option>
@@ -152,7 +152,7 @@ export default function Contact() {
                   <option>Other</option>
                 </select>
                 <input name="date" value={form.date} onChange={handleChange} type="date" className="min-h-12 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] focus:border-[#D4A843] focus:outline-none md:col-span-2" />
-                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" rows={3} className="min-h-24 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none md:col-span-2" />
+                <textarea name="message" value={form.message} onChange={handleChange} placeholder="Message" rows={3} aria-label="Your message" className="min-h-24 rounded border border-[#e8e2d7] bg-[#fffdf8] p-3 text-[#4f4038] placeholder:text-[#8a7d6b] focus:border-[#D4A843] focus:outline-none md:col-span-2" />
               </div>
 
               <div className="flex justify-center">

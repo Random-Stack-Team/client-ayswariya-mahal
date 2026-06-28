@@ -27,17 +27,17 @@ export default function About() {
   const pillars = [
     {
       title: "Tradition with Grace",
-      body: "We honour Indian tradition with spaces designed for rituals, family unions, and moments that stay.",
+      body: "We honour Indian tradition with spaces designed for sacred rituals, family unions, and lasting memories.",
       icon: Flower2,
     },
     {
       title: "Care in Every Detail",
-      body: "From the first welcome to the final farewell, each touchpoint is managed with sincerity, precision, and understated sophistication.",
+      body: "From arrival to farewell, every detail is handled with care, precision, and warmth.",
       icon: HeartHandshake,
     },
     {
       title: "Stories That Stay",
-      body: "We craft the setting where vows are exchanged, families unite, and milestones become stories passed through generations.",
+      body: "We shape the space where vows, union, and memory converge.",
       icon: Gem,
     },
   ];
@@ -50,13 +50,13 @@ export default function About() {
         path="/about"
       />
       <PageTransition>
-        <main className="min-min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7] wedding-pattern-ivory ">
+        <main className="min-h-[100dvh] overflow-x-hidden bg-[#fdfbf7] wedding-pattern-ivory ">
 
       {/* Hero Section */}
       <section className="relative flex min-h-[520px] items-center justify-center overflow-hidden px-5 pb-20 pt-28 sm:min-h-[560px] sm:px-6 sm:pb-24 sm:pt-32 md:min-h-[600px] md:pb-24 md:pt-[8.5rem] xl:min-h-[70vh] xl:pb-32 xl:pt-40">
         <motion.img
           src={heroImg}
-          alt=""
+          alt="Ayswariya Mahal venue"
           aria-hidden="true"
           loading="eager"
           fetchPriority="high"
@@ -138,7 +138,7 @@ export default function About() {
               Ayswariya Mahal was founded with a clear purpose: to give families a distinguished venue for life's most meaningful occasions.
             </motion.p>
             <motion.p variants={fadeInUp} className="type-body text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
-              With generous interiors, contemporary amenities, and an unwavering standard, we have hosted thousands of weddings and events, earning a reputation as a cornerstone of joyful gatherings in Chennai.
+              With spacious interiors, modern amenities, and consistent service, we have hosted thousands of weddings and events — earning a reputation as one of Chennai's most trusted venues.
             </motion.p>
           </motion.div>
 
@@ -164,7 +164,7 @@ export default function About() {
             </motion.h2>
             <motion.div variants={fadeInUp} className="w-16 h-px bg-[#D4A843] mx-auto mb-6"></motion.div>
             <motion.p variants={fadeInUp} className="font-body text-[#4f4038] text-base md:text-lg lg:text-xl max-w-2xl mx-auto italic font-light">
-              Every event at Ayswariya Mahal is shaped by care, respect for tradition, and the closeness of family.
+              Each event at Ayswariya Mahal is shaped by care, respect for tradition, and the closeness of family.
             </motion.p>
           </motion.div>
 
@@ -246,7 +246,7 @@ export default function About() {
                 </h2>
               </div>
               <p className="type-body text-[#fdfbf7]/85 leading-relaxed">
-                Every event has its own rhythm. We shape each gathering around what matters most to your family.
+                Every family carries its own traditions. We shape each gathering to honour yours.
               </p>
             </motion.div>
 
@@ -267,7 +267,7 @@ export default function About() {
                 </h2>
               </div>
               <p className="type-body text-[#fdfbf7]/85 leading-relaxed">
-                To create thoughtful gathering spaces where families come together, memories are made, and every detail reflects a standard of care.
+                To build gathering spaces where families connect, celebrations feel effortless, and every detail reflects genuine care.
               </p>
             </motion.div>
           </motion.div>

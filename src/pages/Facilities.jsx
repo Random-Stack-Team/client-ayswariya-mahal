@@ -33,7 +33,7 @@ const facilities = [
     height: 1023,
     icon: <AirVent size={26} />,
     title: "Centralized AC",
-    description: "A fully climate-controlled setting for a comfortable gathering from start to finish.",
+    description: "Fully climate-controlled for guest comfort throughout every ceremony and reception.",
   },
   {
     image: facility2,
@@ -41,7 +41,7 @@ const facilities = [
     height: 1086,
     icon: <Building2 size={26} />,
     title: "Spacious Event Hall",
-    description: "A generous main hall built for weddings, receptions, and milestone celebrations.",
+    description: "A generous main hall designed for weddings, receptions, and life's important moments.",
   },
   {
     image: facility3,
@@ -49,7 +49,7 @@ const facilities = [
     height: 1086,
     icon: <UtensilsCrossed size={26} />,
     title: "Dining Hall",
-    description: "Thoughtfully arranged dining space for smooth service and seamless guest flow.",
+    description: "Well-planned dining layout for efficient service and comfortable guest movement.",
   },
   {
     image: facility4,
@@ -57,7 +57,7 @@ const facilities = [
     height: 1024,
     icon: <BedDouble size={26} />,
     title: "Luxury Rooms",
-    description: "Welcoming guest rooms prepared for family comfort and privacy.",
+    description: "Comfortable guest rooms for family privacy and rest between ceremonies.",
   },
   {
     image: facility5,
@@ -65,7 +65,7 @@ const facilities = [
     height: 1024,
     icon: <Car size={26} />,
     title: "Ample Parking",
-    description: "Generous parking that makes arrival and departure easy for every guest.",
+    description: "Ample covered parking for convenient arrival and departure.",
   },
   {
     image: facility6,
@@ -73,7 +73,7 @@ const facilities = [
     height: 1024,
     icon: <ShieldCheck size={26} />,
     title: "CCTV Security",
-    description: "Round-the-clock security coverage for added peace of mind.",
+    description: "24/7 CCTV surveillance for venue security.",
   },
   {
     image: facility7,
@@ -81,7 +81,7 @@ const facilities = [
     height: 1024,
     icon: <Zap size={26} />,
     title: "Generator Backup",
-    description: "Reliable generator support to keep celebrations uninterrupted.",
+    description: "Full backup generator to keep events running without interruption.",
   },
   {
     image: facility8,
@@ -89,7 +89,7 @@ const facilities = [
     height: 1024,
     icon: <MapPin size={26} />,
     title: "Prime Location",
-    description: "A centrally located hall with easy access for both local and out-of-town guests.",
+    description: "Conveniently located in Arumbakkam with direct access from 100 Feet Road and the Metro.",
   },
 ];
 
@@ -144,9 +144,9 @@ export default function Facilities() {
       />
 
       <PageTransition>
-        <main className="relative min-min-h-[100dvh] bg-[#fcf9f4] wedding-pattern-ivory overflow-x-hidden">
+        <main className="relative min-h-[100dvh] bg-[#fcf9f4] wedding-pattern-ivory overflow-x-hidden">
 
-        <section className="relative flex min-h-[600px] items-center justify-center overflow-hidden md:min-h-[680px] lg:min-h-[80vh] xl:min-min-h-[100dvh]">
+        <section className="relative flex min-h-[600px] items-center justify-center overflow-hidden md:min-h-[680px] lg:min-h-[80vh] xl:min-h-[100dvh]">
 
           <motion.div
             initial={{ scale: 1.25 }}
@@ -156,7 +156,7 @@ export default function Facilities() {
           >
             <img
               src={facility2}
-              alt=""
+              alt="Ayswariya Mahal facility"
               loading="eager"
               fetchPriority="high"
               decoding="async"
@@ -198,11 +198,11 @@ export default function Facilities() {
 
     {/* SUBTITLE */}
     <motion.p variants={heroItemMotion} className="mt-6 type-body text-white/84 max-w-3xl mx-auto">
-      Discover thoughtfully designed spaces for weddings, receptions, and family milestones.
+      Spaces designed for weddings, receptions, and family gatherings.
     </motion.p>
 
     <motion.p variants={heroItemMotion} className="mt-4 type-small text-white/70">
-      Every detail is considered so your celebration feels effortless and polished.
+      Every element — from climate to circulation — is designed around your event.
     </motion.p>
 
   </motion.div>
@@ -316,7 +316,7 @@ export default function Facilities() {
               </h2>
 
               <p className="type-body text-white/82 mb-6 max-w-xl">
-                Start planning an event shaped with care, hospitality, and attention to every detail.
+                A venue engineered for 1500+ guests, seamless flow, and the atmosphere your event deserves.
               </p>
 
               <ul className="space-y-4 type-body text-white/84">
