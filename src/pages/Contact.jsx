@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Sparkles } from "lucide-react";
-import heroImg from "../assets/images/Facility/facility5.webp";
+import heroImg from "../assets/images/Gallery/hall4.webp";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 
