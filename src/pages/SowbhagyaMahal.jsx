@@ -5,8 +5,8 @@ import PageTransition from "../components/common/PageTransition";
 import SowbhagyaFooter from "../components/common/SowbhagyaFooter";
 import { useIntroReady } from "../hooks/useIntroReady";
 
-import sowCrop5 from "../assets/images/sowbhagya-hall-generated.webp";
-import sowCrop3 from "../assets/images/sowbhagya-rooftop-generated.webp";
+import sowCrop5 from "../assets/images/sow-crop2.webp";
+import sowCrop3 from "../assets/images/sowbhagya mahal intro.webp";
 import facility1 from "../assets/images/Facility/facility1.webp";
 
 export default function SowbhagyaMahal() {

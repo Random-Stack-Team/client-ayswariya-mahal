@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/Gallery/hall5.webp";
-import keralaJewellersImg from "../assets/images/kerala-jewellers.webp";
-import pebblesImg from "../assets/images/pebbles-apartments.webp";
+import keralaJewellersImg from "../assets/images/kerala intro.webp";
+import pebblesImg from "../assets/images/pebbels intro.webp";
 import { Sparkles, Flower2, HeartHandshake, Gem, GemIcon, Home } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
