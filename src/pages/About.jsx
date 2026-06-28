@@ -326,16 +326,14 @@ export default function About() {
           >
             <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[14px] bg-[#D4A843]/20" />
               <div
-                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay md:max-lg:aspect-[16/10]"
+                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay aspect-[4/3] sm:aspect-[16/10]"
               >
               <img
                 src={keralaJewellersImg}
                 alt="Kerala Jewellers showroom"
                 loading="lazy"
                 decoding="async"
-                width="1360"
-                height="1020"
-                className="h-[280px] sm:h-[340px] md:h-[380px] lg:h-[500px] w-full object-cover object-center brightness-95 contrast-[1.08]"
+                className="h-full w-full object-cover object-center brightness-95 contrast-[1.08]"
               />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(63,12,21,0.04)_0%,rgba(63,12,21,0.18)_100%)]" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
@@ -376,16 +374,14 @@ export default function About() {
           >
             <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[14px] bg-[#5A111C]/10" />
               <div
-                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay md:max-lg:aspect-[16/10]"
+                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay aspect-[4/3] sm:aspect-[16/10]"
               >
               <img
                 src={pebblesImg}
                 alt="Pebbles Service Apartments interior"
                 loading="lazy"
                 decoding="async"
-                width="1360"
-                height="1020"
-                className="h-[280px] sm:h-[340px] md:h-[380px] lg:h-[500px] w-full object-cover object-center brightness-95 contrast-[1.08]"
+                className="h-full w-full object-cover object-center brightness-95 contrast-[1.08]"
               />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(63,12,21,0.04)_0%,rgba(63,12,21,0.18)_100%)]" />
               <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
