@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "framer-motion";
 import ayswariyaLogo from "../../assets/images/ayswariya-mahal-logo.webp";
-import sowbhagyaLogo from "../../assets/images/sowbhagya-mahal-logo.png";
+import sowbhagyaLogo from "../../assets/images/sowbhagya-mahal-logo.webp";
 
 const links = [
   { to: "/", label: "Venue" },

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import siteConfig from "../../config/site";
-import logoImg from "../../assets/images/sowbhagya-mahal-logo.png";
+import logoImg from "../../assets/images/sowbhagya-mahal-logo.webp";
 import { useEnquiry } from "../../context/useEnquiry";
 import FooterCredit from "./FooterCredit";
 

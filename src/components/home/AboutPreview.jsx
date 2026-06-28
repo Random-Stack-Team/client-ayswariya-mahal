@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import aboutImg from "../../assets/images/Image.png";
+import aboutImg from "../../assets/images/Image.webp";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

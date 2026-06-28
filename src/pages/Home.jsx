@@ -3,7 +3,7 @@ import AboutPreview from "../components/home/AboutPreview";
 import RoyalStatistics from "../components/home/RoyalStatistics";
 import FacilitiesPreview from "../components/home/FacilitiesPreview";
 import GalleryPreview from "../components/home/GalleryPreview";
-import ContactCTA from "../components/home/ContactCTA";
+import SowbhagyaIntro from "../components/home/SowbhagyaIntro";
 import SEO from "../components/common/SEO";
 
 import PageTransition from "../components/common/PageTransition";
@@ -21,7 +21,7 @@ export default function Home() {
         <RoyalStatistics />
         <FacilitiesPreview />
         <GalleryPreview />
-        <ContactCTA />
+        <SowbhagyaIntro />
       </PageTransition>
     </>
   );

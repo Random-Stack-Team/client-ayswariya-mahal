@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/Gallery/hall5.webp";
-import sowCrop2 from "../assets/images/sowbhagya mahal intro.png";
-import { Sparkles, Flower2, HeartHandshake, Gem, Building2, UtensilsCrossed, Trees } from "lucide-react";
+import { Sparkles, Flower2, HeartHandshake, Gem } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 
@@ -274,116 +272,6 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-        </div>
-      </section>
-
-      {/* Sowbhagya Mahal Intro Section */}
-      <section className="relative overflow-hidden bg-[#f5ead9] wedding-pattern-gold px-5 pt-14 pb-[calc(3.5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-16 sm:pb-[calc(4rem+env(safe-area-inset-bottom))] md:pt-[68px] md:pb-[calc(4.25rem+env(safe-area-inset-bottom))] lg:py-28">
-        <div
-          aria-hidden="true"
-          className="absolute left-[8%] top-10 h-72 w-72 rounded-full bg-[#D4A843]/20 blur-3xl"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute bottom-0 right-0 h-px w-1/2 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent"
-        />
-
-        <div className="max-w-site mx-auto grid items-center gap-12 xl:grid-cols-2 xl:gap-16">
-          <div
-            className="relative mx-auto w-full max-w-[620px] md:max-lg:max-w-[820px] lg:max-w-[620px]"
-          >
-            <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[14px] bg-[#D4A843]/20" />
-              <div
-                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay md:max-lg:aspect-[16/10]"
-              >
-              <img
-                src={sowCrop2}
-                alt="Sowbhagya Mahal luxury venue interior"
-                loading="lazy"
-                decoding="async"
-                width="1360"
-                height="1020"
-                className="h-[360px] w-full object-cover object-center brightness-95 contrast-[1.08] sm:h-[440px] md:max-lg:h-full lg:h-[500px]"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(63,12,21,0.04)_0%,rgba(63,12,21,0.18)_100%)]" />
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
-            </div>
-            <div
-              className="absolute -bottom-5 left-4 rounded-xl border border-[#D4A843]/35 bg-[#5A111C]/95 px-4 py-3 text-[#fdfbf7] shadow-[0_10px_24px_rgba(63,12,21,0.2)] backdrop-blur-sm sm:left-8 md:max-lg:left-8 md:max-lg:px-5 md:max-lg:py-4 lg:left-8"
-            >
-              <div className="flex items-center gap-3">
-                <div className="grid h-9 w-9 place-items-center rounded-full border border-[#D4A843]/30 text-[#D4A843] md:max-lg:h-10 md:max-lg:w-10">
-                  <Building2 size={16} strokeWidth={1.8} aria-hidden="true" />
-                </div>
-                <div>
-                  <p className="font-display text-2xl font-semibold leading-none text-[#D4A843] md:max-lg:text-3xl">500</p>
-                  <p className="mt-1 font-sans text-[10px] font-medium uppercase tracking-[0.16em] text-[#fdfbf7]/82">
-                    Seated Guests
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={revealViewport}
-            className="relative z-10 text-center md:text-left"
-          >
-            <motion.p variants={fadeInUp} className="type-eyebrow mb-4 text-[#B8860B]">
-              Introducing Sowbhagya Mahal
-            </motion.p>
-            <motion.h2 variants={fadeInUp} className="mb-6 font-serif text-[30px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] sm:text-[32px] md:text-[36px] lg:mb-7 lg:text-5xl">
-              An Intimate Hall for <span className="italic text-[#B8860B]">Distinguished Gatherings</span>
-            </motion.h2>
-            <motion.div variants={fadeInUp} className="mx-auto mb-6 h-[1px] w-16 bg-[#B8860B] md:mx-0 lg:mb-7" />
-            <motion.p variants={fadeInUp} className="type-body mb-5 text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
-              Sowbhagya Mahal is a distinguished extension of Ayswariya Mahal — a compact hall with the same attention to detail, offered at a gentler price.
-            </motion.p>
-            <motion.p variants={fadeInUp} className="type-body mb-7 text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
-              The hall accommodates 500 seated guests, 200 for dining, and up to 1000 floating. Features include centralized air conditioning, a well-equipped kitchen, guest rooms, backup power, CCTV, and a rooftop garden.
-            </motion.p>
-
-            <motion.div variants={fadeInUp} className="mb-8 grid grid-cols-1 gap-4 xl:grid-cols-3">
-              {[
-                { number: "500", label: "Seating Capacity", icon: Building2 },
-                { number: "200", label: "Dining Capacity", icon: UtensilsCrossed },
-                { number: "1000", label: "Floating Capacity", icon: Trees },
-              ].map((stat) => (
-                <div
-                  key={stat.label}
-                  className="group relative overflow-hidden rounded-[16px] border border-[#D4A843]/55 bg-[linear-gradient(180deg,#fffaf2_0%,#f7eddc_100%)] px-4 py-3 text-center shadow-[0_6px_16px_rgba(90,17,28,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#B8860B]/70 hover:shadow-[0_10px_20px_rgba(90,17,28,0.1)]"
-                >
-                  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(212,168,67,0.08),transparent_46%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  <div className="absolute left-3 top-3 h-4 w-4 rounded-tl-[6px] border-l border-t border-[#D4A843]/70" />
-                  <div className="absolute right-3 top-3 h-4 w-4 rounded-tr-[6px] border-r border-t border-[#D4A843]/70" />
-                  <div className="absolute bottom-3 left-3 h-4 w-4 rounded-bl-[6px] border-b border-l border-[#D4A843]/70" />
-                  <div className="absolute bottom-3 right-3 h-4 w-4 rounded-br-[6px] border-b border-r border-[#D4A843]/70" />
-
-                  <div className="relative mx-auto mb-2.5 grid h-12 w-12 place-items-center rounded-full bg-[#5A111C] text-[#D4A843] shadow-[0_10px_20px_rgba(90,17,28,0.18)]">
-                    <stat.icon size={17} strokeWidth={2} aria-hidden="true" />
-                  </div>
-                  <p className="relative mb-0.5 font-display text-[clamp(1.9rem,2.4vw,2.4rem)] font-semibold leading-none text-[#5A111C]">
-                    {stat.number}
-                  </p>
-                  <p className="relative font-sans text-[10px] font-medium uppercase tracking-[0.16em] text-[#B8860B]">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
-
-            <motion.div variants={fadeInUp}>
-              <Link
-                to="/sowbhagya-mahal"
-                className="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-[#D4A843] px-8 font-sans font-medium text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_10px_20px_rgba(90,17,28,0.14)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7] sm:w-auto"
-              >
-                Explore Sowbhagya Mahal
-              </Link>
-            </motion.div>
-          </motion.div>
         </div>
       </section>
 

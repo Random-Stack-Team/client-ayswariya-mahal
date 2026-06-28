@@ -62,8 +62,8 @@ function ThemedCalendar({ selectedDate, minimumDate, viewMonth, onViewMonthChang
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 4, scale: 0.98 }}
       transition={{ duration: 0.18, ease: "easeOut" }}
-      className="fixed z-[140] rounded-xl border border-[#b58c2a]/45 bg-[#fffaf0] p-3 shadow-[0_16px_38px_rgba(61,42,29,0.24)]"
-      style={{ left: position.left, top: position.top, width: position.width }}
+      className="fixed z-[140] rounded-xl border border-[#b58c2a]/45 bg-[#fffaf0] p-3 shadow-[0_8px_24px_rgba(61,42,29,0.18)]"
+      style={{ left: position.left, top: position.top, width: position.width, willChange: "transform" }}
       role="dialog"
       aria-label="Choose event date"
     >
@@ -190,14 +190,23 @@ export default function FloatingEnvelope() {
   useEffect(() => {
     let timeoutId;
     let hasScrolledPast = false;
+    let ticking = false;
 
     const checkScroll = () => {
+      ticking = false;
       const threshold = isHome ? 3100 : window.innerHeight * 0.4;
       if (window.scrollY > threshold) {
         if (!hasScrolledPast) {
           hasScrolledPast = true;
           scheduleNext();
         }
+      }
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(checkScroll);
       }
     };
 
@@ -211,15 +220,15 @@ export default function FloatingEnvelope() {
     };
 
     const scheduleNext = () => {
-      const delay = Math.floor(Math.random() * (12000 - 6000 + 1)) + 6000;
+      const delay = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
       timeoutId = setTimeout(triggerEnvelope, delay);
     };
 
-    window.addEventListener("scroll", checkScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     checkScroll();
 
     return () => {
-      window.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("scroll", onScroll);
       clearTimeout(timeoutId);
     };
   }, [isEnvelopeVisible, isFormOpen, submitStatus, isHome]);
@@ -229,19 +238,17 @@ export default function FloatingEnvelope() {
 
     const previousBodyOverflow = document.body.style.overflow;
     const previousHtmlOverflow = document.documentElement.style.overflow;
-    const previousBodyPaddingRight = document.body.style.paddingRight;
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
 
-    document.body.style.overflow = "hidden";
-    document.documentElement.style.overflow = "hidden";
-    if (scrollbarWidth > 0) {
-      document.body.style.paddingRight = `${scrollbarWidth}px`;
-    }
+    requestAnimationFrame(() => {
+      document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
+    });
 
     return () => {
-      document.body.style.overflow = previousBodyOverflow;
-      document.documentElement.style.overflow = previousHtmlOverflow;
-      document.body.style.paddingRight = previousBodyPaddingRight;
+      requestAnimationFrame(() => {
+        document.body.style.overflow = previousBodyOverflow;
+        document.documentElement.style.overflow = previousHtmlOverflow;
+      });
     };
   }, [isFormOpen, submitStatus]);
 
@@ -291,11 +298,11 @@ export default function FloatingEnvelope() {
               setIsCalendarOpen(false);
               closeForm();
               setSubmitStatus("idle");
-            }, 1000);
-          }, 1200);
-        }, 700);
-      }, 2500);
-    }, 1000);
+            }, 800);
+          }, 800);
+        }, 500);
+      }, 1500);
+    }, 800);
   };
 
   const handleFieldChange = (e) => {
@@ -329,15 +336,15 @@ export default function FloatingEnvelope() {
       setCalendarMonth(new Date(selected.getFullYear(), selected.getMonth(), 1));
       const fieldRect = fieldRefs.current.eventDate?.getBoundingClientRect();
       if (fieldRect) {
-        const width = Math.min(288, window.innerWidth - 24);
-        const estimatedHeight = 300;
-        const spaceBelow = window.innerHeight - fieldRect.bottom - 12;
+        const width = Math.min(280, window.innerWidth - 32);
+        const estimatedHeight = 280;
+        const spaceBelow = window.innerHeight - fieldRect.bottom - 16;
         const top = spaceBelow >= estimatedHeight
           ? fieldRect.bottom + 8
-          : Math.max(12, fieldRect.top - estimatedHeight - 8);
+          : Math.max(16, fieldRect.top - estimatedHeight - 8);
         const left = Math.min(
-          Math.max(12, fieldRect.right - width),
-          window.innerWidth - width - 12
+          Math.max(16, fieldRect.right - width),
+          window.innerWidth - width - 16
         );
         setCalendarPosition({ left, top, width });
       }
@@ -357,8 +364,8 @@ export default function FloatingEnvelope() {
   const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
   const isFlapOpen = submitStatus !== "sealing_flap" && submitStatus !== "departing";
 
-  const springConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
-  const paperSpringConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
+  const springConfig = { duration: 0.6, ease: [0.16, 1, 0.3, 1] };
+  const paperSpringConfig = { duration: 0.6, ease: [0.16, 1, 0.3, 1] };
 
   return (
     <AnimatePresence>
@@ -373,7 +380,8 @@ export default function FloatingEnvelope() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={handleClose}
-                className="fixed inset-0 bg-[#2A141A]/85 backdrop-blur-md z-[100]"
+                className="fixed inset-0 bg-[#2A141A]/85 z-[100]"
+                style={{ WebkitBackdropFilter: "blur(4px)", backdropFilter: "blur(4px)" }}
               />
             )}
           </AnimatePresence>
@@ -401,6 +409,8 @@ export default function FloatingEnvelope() {
                 width: isCompactViewport ? 240 : 300,
                 height: isCompactViewport ? 180 : 210,
                 perspective: 1200,
+                willChange: "transform",
+                transform: "translateZ(0)",
               }}
             >
               {/* Layer 1: Back of Envelope (Inside) */}
@@ -412,7 +422,7 @@ export default function FloatingEnvelope() {
                 initial={false}
                 animate={{ rotateX: isFlapOpen ? 180 : 0, zIndex: isFlapOpen ? 15 : 70 }}
                 transition={springConfig}
-                style={{ transformOrigin: "top" }}
+                style={{ transformOrigin: "top", willChange: "transform" }}
                 className="absolute top-0 inset-x-0 h-[55%] pointer-events-none drop-shadow-[0_4px_0_rgba(74,54,35,0.2)] flex justify-center"
               >
                 <div className="absolute w-full h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
@@ -452,7 +462,8 @@ export default function FloatingEnvelope() {
                   cursor: isExpanded ? "default" : "pointer",
                   zIndex: isPaperExpanded ? 60 : 20,
                   WebkitFontSmoothing: "antialiased",
-                  transformOrigin: "bottom center"
+                  transformOrigin: "bottom center",
+                  willChange: "transform",
                 }}
               >
                 {/* Flat Inner Border */}
@@ -655,7 +666,8 @@ export default function FloatingEnvelope() {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#d4af37] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[3px_3px_0_rgba(74,54,35,0.3)] border-[2px] border-[#4a3623]"
+                    className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#d4af37] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[2px_2px_0_rgba(74,54,35,0.2)] border-[2px] border-[#4a3623]"
+                    style={{ willChange: "transform" }}
                   >
                     <div className="w-[36px] h-[36px] rounded-full border-[2px] border-[#4a3623] flex flex-col items-center justify-center bg-[#fdfbf7] overflow-hidden p-0.5">
                       <img src={coupleIllustration} alt="Seal" loading="lazy" decoding="async" width="150" height="150" className="w-full h-full object-contain" />

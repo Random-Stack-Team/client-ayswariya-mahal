@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
-import heroImage from "../../assets/images/Home Hero 2.png";
+import heroImage from "../../assets/images/Home Hero 2.webp";
 import { useEnquiry } from "../../context/useEnquiry";
 
 const petals = [
