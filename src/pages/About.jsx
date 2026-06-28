@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import aboutImg from "../assets/images/about.webp";
 import heroImg from "../assets/images/Gallery/hall5.webp";
-import { Sparkles, Flower2, HeartHandshake, Gem } from "lucide-react";
+import keralaJewellersImg from "../assets/images/kerala-jewellers.webp";
+import pebblesImg from "../assets/images/pebbles-apartments.webp";
+import { Sparkles, Flower2, HeartHandshake, Gem, GemIcon, Home } from "lucide-react";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
 
@@ -272,6 +274,170 @@ export default function About() {
             </motion.div>
           </motion.div>
 
+        </div>
+      </section>
+
+      {/* Kerala Jewellers Section */}
+      <section className="relative overflow-hidden bg-[#f5ead9] wedding-pattern-gold px-5 pt-14 pb-[calc(3.5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-16 sm:pb-[calc(4rem+env(safe-area-inset-bottom))] md:px-8 md:pt-[68px] md:pb-[calc(4.25rem+env(safe-area-inset-bottom))] lg:px-16 lg:py-28">
+        <div
+          aria-hidden="true"
+          className="absolute right-[8%] top-10 h-72 w-72 rounded-full bg-[#D4A843]/20 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 left-0 h-px w-1/2 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent"
+        />
+
+        <div className="max-w-site mx-auto grid items-center gap-10 sm:gap-12 md:gap-12 xl:grid-cols-2 xl:gap-16">
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={revealViewport}
+            className="relative z-10 text-center md:text-left order-2 xl:order-1"
+          >
+            <motion.p variants={fadeInUp} className="type-eyebrow mb-3 sm:mb-4 text-[#B8860B]">
+              Our Family of Brands
+            </motion.p>
+            <motion.h2 variants={fadeInUp} className="mb-5 sm:mb-6 font-serif text-[26px] sm:text-[30px] md:text-[36px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] lg:mb-7 lg:text-5xl">
+              Kerala <span className="italic text-[#B8860B]">Jewellers</span>
+            </motion.h2>
+            <motion.div variants={fadeInUp} className="mx-auto md:mx-0 mb-5 sm:mb-6 h-[1px] w-16 bg-[#B8860B] lg:mb-7" />
+            <motion.p variants={fadeInUp} className="type-body mb-4 sm:mb-5 text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
+              A trusted name in fine jewellery, Kerala Jewellers brings decades of heritage craftsmanship to every collection. From gold and diamond to platinum and silver, each piece is curated for life's most meaningful occasions.
+            </motion.p>
+            <motion.p variants={fadeInUp} className="type-body mb-6 sm:mb-7 text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
+              Known for bridal jewellery expertise and certified authenticity, Kerala Jewellers is a destination for families who value tradition, quality, and timeless design.
+            </motion.p>
+            <motion.div variants={fadeInUp}>
+              <a
+                href="https://www.keralajewellers.in/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[48px] sm:min-h-12 w-full items-center justify-center rounded-full bg-[#D4A843] px-6 sm:px-8 font-sans font-medium text-[12px] sm:text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_10px_20px_rgba(90,17,28,0.14)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7] sm:w-auto"
+              >
+                Explore Kerala Jewellers
+              </a>
+            </motion.div>
+          </motion.div>
+
+          <div
+            className="relative mx-auto w-full max-w-[420px] sm:max-w-[520px] md:max-w-[620px] md:max-lg:max-w-[820px] lg:max-w-[620px] order-1 xl:order-2"
+          >
+            <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[14px] bg-[#D4A843]/20" />
+              <div
+                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay md:max-lg:aspect-[16/10]"
+              >
+              <img
+                src={keralaJewellersImg}
+                alt="Kerala Jewellers showroom"
+                loading="lazy"
+                decoding="async"
+                width="1360"
+                height="1020"
+                className="h-[280px] sm:h-[340px] md:h-[380px] lg:h-[500px] w-full object-cover object-center brightness-95 contrast-[1.08]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(63,12,21,0.04)_0%,rgba(63,12,21,0.18)_100%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
+            </div>
+            <div
+              className="absolute -bottom-4 left-4 sm:-bottom-5 sm:left-6 md:left-8 lg:left-8 rounded-xl border border-[#D4A843]/35 bg-[#5A111C]/95 px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 text-[#fdfbf7] shadow-[0_6px_16px_rgba(63,12,21,0.15)] backdrop-blur-sm"
+            >
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <div className="grid h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 place-items-center rounded-full border border-[#D4A843]/30 text-[#D4A843]">
+                  <GemIcon size={14} strokeWidth={1.8} aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="font-display text-xl sm:text-2xl md:text-3xl font-semibold leading-none text-[#D4A843]">Since 1995</p>
+                  <p className="mt-0.5 sm:mt-1 font-sans text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.16em] text-[#fdfbf7]/82">
+                    Trusted Heritage
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pebbles Service Apartments Section */}
+      <section className="relative overflow-hidden bg-[#fdfbf7] px-5 pt-14 pb-[calc(3.5rem+env(safe-area-inset-bottom))] sm:px-6 sm:pt-16 sm:pb-[calc(4rem+env(safe-area-inset-bottom))] md:px-8 md:pt-[68px] md:pb-[calc(4.25rem+env(safe-area-inset-bottom))] lg:px-16 lg:py-28">
+        <div
+          aria-hidden="true"
+          className="absolute left-[8%] top-10 h-72 w-72 rounded-full bg-[#5A111C]/5 blur-3xl"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute bottom-0 right-0 h-px w-1/2 bg-gradient-to-r from-transparent via-[#D4A843]/70 to-transparent"
+        />
+
+        <div className="max-w-site mx-auto grid items-center gap-10 sm:gap-12 md:gap-12 xl:grid-cols-2 xl:gap-16">
+          <div
+            className="relative mx-auto w-full max-w-[420px] sm:max-w-[520px] md:max-w-[620px] md:max-lg:max-w-[820px] lg:max-w-[620px]"
+          >
+            <div className="absolute inset-0 translate-x-3 translate-y-3 rounded-[14px] bg-[#5A111C]/10" />
+              <div
+                className="luxury-image-frame luxury-image-frame--soft luxury-image-frame--banner luxury-image-overlay md:max-lg:aspect-[16/10]"
+              >
+              <img
+                src={pebblesImg}
+                alt="Pebbles Service Apartments interior"
+                loading="lazy"
+                decoding="async"
+                width="1360"
+                height="1020"
+                className="h-[280px] sm:h-[340px] md:h-[380px] lg:h-[500px] w-full object-cover object-center brightness-95 contrast-[1.08]"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(63,12,21,0.04)_0%,rgba(63,12,21,0.18)_100%)]" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(212,168,67,0.16),transparent_28%)]" />
+            </div>
+            <div
+              className="absolute -bottom-4 left-4 sm:-bottom-5 sm:left-6 md:left-8 lg:left-8 rounded-xl border border-[#D4A843]/35 bg-[#5A111C]/95 px-3 py-2.5 sm:px-4 sm:py-3 md:px-5 md:py-4 text-[#fdfbf7] shadow-[0_6px_16px_rgba(63,12,21,0.15)] backdrop-blur-sm"
+            >
+              <div className="flex items-center gap-2.5 sm:gap-3">
+                <div className="grid h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10 place-items-center rounded-full border border-[#D4A843]/30 text-[#D4A843]">
+                  <Home size={14} strokeWidth={1.8} aria-hidden="true" />
+                </div>
+                <div>
+                  <p className="font-display text-xl sm:text-2xl md:text-3xl font-semibold leading-none text-[#D4A843]">Home Away</p>
+                  <p className="mt-0.5 sm:mt-1 font-sans text-[9px] sm:text-[10px] font-medium uppercase tracking-[0.16em] text-[#fdfbf7]/82">
+                    From Home
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="show"
+            viewport={revealViewport}
+            className="relative z-10 text-center md:text-left"
+          >
+            <motion.p variants={fadeInUp} className="type-eyebrow mb-3 sm:mb-4 text-[#B8860B]">
+              Our Family of Brands
+            </motion.p>
+            <motion.h2 variants={fadeInUp} className="mb-5 sm:mb-6 font-serif text-[26px] sm:text-[30px] md:text-[36px] font-semibold leading-[1.2] tracking-[0.01em] text-[#4a3623] lg:mb-7 lg:text-5xl">
+              Pebbles <span className="italic text-[#B8860B]">Service Apartments</span>
+            </motion.h2>
+            <motion.div variants={fadeInUp} className="mx-auto md:mx-0 mb-5 sm:mb-6 h-[1px] w-16 bg-[#B8860B] lg:mb-7" />
+            <motion.p variants={fadeInUp} className="type-body mb-4 sm:mb-5 text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
+              The hospitality arm of our family, Pebbles Service Apartments offers fully furnished accommodation in Chennai. Ideal for families, business travellers, and extended stays.
+            </motion.p>
+            <motion.p variants={fadeInUp} className="type-body mb-6 sm:mb-7 text-[#4f4038] md:max-w-[34rem] lg:max-w-none">
+              With a convenient location and warm hospitality, Pebbles complements our group's commitment to guest comfort — making every stay feel like home.
+            </motion.p>
+            <motion.div variants={fadeInUp}>
+              <a
+                href="https://www.pebblesserviceapartments.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[48px] sm:min-h-12 w-full items-center justify-center rounded-full bg-[#D4A843] px-6 sm:px-8 font-sans font-medium text-[12px] sm:text-[13px] uppercase tracking-[0.12em] text-[#3F0C15] shadow-[0_10px_20px_rgba(90,17,28,0.14)] transition duration-300 hover:-translate-y-0.5 hover:bg-[#B8860B] hover:text-[#fdfbf7] sm:w-auto"
+              >
+                Explore Pebbles Service Apartments
+              </a>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
