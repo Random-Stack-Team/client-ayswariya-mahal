@@ -364,7 +364,7 @@ export default function FloatingEnvelope() {
   const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
   const isFlapOpen = submitStatus !== "sealing_flap" && submitStatus !== "departing";
 
-  const springConfig = { type: "spring", stiffness: 200, damping: 24, mass: 0.8 };
+  const springConfig = { type: "spring", stiffness: 120, damping: 20, mass: 1.2 };
 
   return (
     <AnimatePresence>
@@ -396,11 +396,11 @@ export default function FloatingEnvelope() {
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={
                 submitStatus === "departing"
-                  ? { opacity: 0, scale: 0.85, y: 0 }
-                  : { opacity: 1, y: 0, scale: isExpanded ? 1 : 0.65 }
+                  ? { opacity: 0, scale: 0.9, x: 80, y: 0 }
+                  : { opacity: 1, y: 0, x: 0, scale: isExpanded ? 1 : 0.65 }
               }
-              transition={submitStatus === "departing" ? { duration: 0.8, ease: "easeInOut" } : springConfig}
-              exit={{ opacity: 0, scale: 0.85, y: 0 }}
+              transition={submitStatus === "departing" ? { duration: 1, ease: [0.4, 0, 0.2, 1] } : springConfig}
+              exit={{ opacity: 0, scale: 0.9, y: 0 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="relative pointer-events-auto"
@@ -442,7 +442,7 @@ export default function FloatingEnvelope() {
                   y: isPaperExpanded ? "-50%" : (isPeeking ? "-40%" : "0%"),
                   boxShadow: isPaperExpanded ? "8px 8px 0px rgba(74,54,35,0.2)" : "0 0 0 transparent",
                 }}
-                transition={{ type: "spring", stiffness: 160, damping: 20, mass: 1.2 }}
+                transition={{ type: "spring", stiffness: 100, damping: 18, mass: 1.4 }}
                 className="absolute bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border-[2px] border-[#4a3623] antialiased pointer-events-auto shrink-0"
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
                 style={{
