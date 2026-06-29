@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock, Sparkles } from "lucide-react";
 import heroImg from "../assets/images/Gallery/hall4.webp";
 import SEO from "../components/common/SEO";
 import PageTransition from "../components/common/PageTransition";
+import siteConfig from "../config/site";
 
 export default function Contact() {
 
@@ -103,8 +104,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-[#5A111C] mb-1">Phone</h4>
-                  <p className="type-body text-[#4f4038]">+91 87545 14611</p>
-                  <p className="type-body text-[#4f4038]">044-24756619 / 044-24756627</p>
+                  <p className="type-body text-[#4f4038]">{siteConfig.contact.phonePrimary}</p>
+                  <p className="type-body text-[#4f4038]">{siteConfig.contact.phoneSecondary}</p>
                 </div>
               </div>
 
