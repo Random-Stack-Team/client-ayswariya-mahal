@@ -104,8 +104,8 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-[#5A111C] mb-1">Phone</h4>
-                  <p className="type-body text-[#4f4038]">{siteConfig.contact.phonePrimary}</p>
-                  <p className="type-body text-[#4f4038]">{siteConfig.contact.phoneSecondary}</p>
+                  <a href={`tel:${siteConfig.contact.phonePrimary.replace(/\s/g, "")}`} className="type-body text-[#4f4038] hover:text-[#D4A843] transition-colors">{siteConfig.contact.phonePrimary}</a>
+                  <a href={`tel:${siteConfig.contact.phoneSecondary.replace(/\s/g, "").replace("/", "")}`} className="type-body text-[#4f4038] hover:text-[#D4A843] transition-colors">{siteConfig.contact.phoneSecondary}</a>
                 </div>
               </div>
 
