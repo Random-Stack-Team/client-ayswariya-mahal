@@ -364,8 +364,7 @@ export default function FloatingEnvelope() {
   const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
   const isFlapOpen = submitStatus !== "sealing_flap" && submitStatus !== "departing";
 
-  const springConfig = { duration: 0.6, ease: [0.16, 1, 0.3, 1] };
-  const paperSpringConfig = { duration: 0.6, ease: [0.16, 1, 0.3, 1] };
+  const springConfig = { type: "spring", stiffness: 200, damping: 24, mass: 0.8 };
 
   return (
     <AnimatePresence>
@@ -394,14 +393,14 @@ export default function FloatingEnvelope() {
             }`}
           >
             <motion.div
-              initial={{ x: 300, y: 0, opacity: 0, scale: 0.9 }}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={
                 submitStatus === "departing"
-                  ? { x: 0, y: -80, opacity: 0, scale: 0.5 }
-                  : { x: 0, y: 0, opacity: 1, scale: isExpanded ? 1 : 0.65 }
+                  ? { opacity: 0, scale: 0.85, y: 0 }
+                  : { opacity: 1, y: 0, scale: isExpanded ? 1 : 0.65 }
               }
-              transition={submitStatus === "departing" ? { duration: 1, ease: "easeInOut" } : springConfig}
-              exit={{ x: 300, y: 0, opacity: 0, scale: 0.9 }}
+              transition={submitStatus === "departing" ? { duration: 0.8, ease: "easeInOut" } : springConfig}
+              exit={{ opacity: 0, scale: 0.85, y: 0 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="relative pointer-events-auto"
@@ -440,17 +439,16 @@ export default function FloatingEnvelope() {
               <motion.div
                 initial={false}
                 animate={{
-                  y: isPaperExpanded ? "-50%" : (isPeeking ? -50 : 0),
+                  y: isPaperExpanded ? "-50%" : (isPeeking ? "-40%" : "0%"),
                   boxShadow: isPaperExpanded ? "8px 8px 0px rgba(74,54,35,0.2)" : "0 0 0 transparent",
                 }}
-                transition={paperSpringConfig}
+                transition={{ type: "spring", stiffness: 160, damping: 20, mass: 1.2 }}
                 className="absolute bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border-[2px] border-[#4a3623] antialiased pointer-events-auto shrink-0"
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
                 style={{
-                  ...(isPaperExpanded
-                    ? { top: "50%", left: "50%" }
-                    : { bottom: "12px", left: "50%" }
-                  ),
+                  left: "50%",
+                  bottom: isPaperExpanded ? undefined : "12px",
+                  top: isPaperExpanded ? "50%" : undefined,
                   width: isPaperExpanded
                     ? (isCompactViewport ? "min(88vw, 340px)" : 440)
                     : "85%",
