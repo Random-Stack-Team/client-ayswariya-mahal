@@ -388,8 +388,8 @@ export default function FloatingEnvelope() {
           <div
             className={`fixed z-[101] ${
               isExpanded
-                ? "inset-0 flex items-center justify-center pointer-events-none"
-                : "bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:bottom-10 md:right-10 pointer-events-none"
+                ? "inset-0 flex items-end sm:items-center justify-center pointer-events-none px-4 pb-4 sm:px-0 sm:pb-0"
+                : "bottom-5 left-4 right-4 sm:bottom-6 sm:left-1/2 sm:-translate-x-1/2 sm:right-auto sm:translate-x-0 md:bottom-10 md:right-10 md:left-auto pointer-events-none"
             }`}
           >
             <motion.div
@@ -409,8 +409,12 @@ export default function FloatingEnvelope() {
               onMouseLeave={() => setIsHovered(false)}
               className="relative pointer-events-auto"
               style={{
-                width: isCompactViewport ? 240 : 300,
-                height: isCompactViewport ? 180 : 210,
+                width: isExpanded
+                  ? (isCompactViewport ? "min(92vw, 340px)" : 440)
+                  : (isCompactViewport ? 200 : 280),
+                height: isExpanded
+                  ? (isCompactViewport ? "min(80vh, 560px)" : 560)
+                  : (isCompactViewport ? 150 : 200),
                 perspective: 1200,
                 willChange: "transform",
                 transform: "translateZ(0)",
@@ -454,10 +458,10 @@ export default function FloatingEnvelope() {
                   bottom: isPaperExpanded ? undefined : "12px",
                   top: isPaperExpanded ? "50%" : undefined,
                   width: isPaperExpanded
-                    ? (isCompactViewport ? "min(88vw, 340px)" : 440)
+                    ? (isCompactViewport ? "min(92vw, 340px)" : 440)
                     : "85%",
                   height: isPaperExpanded
-                    ? (isCompactViewport ? "min(88vh, 600px)" : 580)
+                    ? (isCompactViewport ? "min(80vh, 560px)" : 560)
                     : "90%",
                   maxWidth: "95vw",
                   x: "-50%",
@@ -472,12 +476,13 @@ export default function FloatingEnvelope() {
                 <div className="absolute inset-[6px] border-[2px] border-[#d4af37] pointer-events-none rounded-sm"></div>
 
                 {isExpanded && submitStatus === "idle" && (
-                  <button aria-label="Close enquiry form" onClick={(e) => { e.stopPropagation(); handleClose(); }} className="absolute top-5 right-5 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/70 backdrop-blur-md rounded-2xl p-1.5 shadow-sm">
-                    <X size={16} strokeWidth={1.5} />
+                  <button aria-label="Close enquiry form" onClick={(e) => { e.stopPropagation(); handleClose(); }} className="absolute top-3 right-3 sm:top-5 sm:right-5 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/70 backdrop-blur-md rounded-2xl p-1 sm:p-1.5 shadow-sm">
+                    <X size={14} strokeWidth={1.5} className="sm:hidden" />
+                    <X size={16} strokeWidth={1.5} className="hidden sm:block" />
                   </button>
                 )}
 
-                <div className="relative w-full h-full flex flex-col z-30 pt-4 pb-4">
+                <div className="relative w-full h-full flex flex-col z-30 pt-3 sm:pt-4 pb-3 sm:pb-4">
                   <AnimatePresence mode="wait">
                     {!isExpanded ? (
                       <motion.div
@@ -486,64 +491,65 @@ export default function FloatingEnvelope() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="flex flex-col items-center justify-start text-center pt-4 px-6 h-full"
+                        className="flex flex-col items-center justify-start text-center pt-3 sm:pt-4 px-4 sm:px-6 h-full"
                       >
-                        <div className="text-[#a67c00] mb-2"><Sparkles size={16} strokeWidth={1} /></div>
-                        <h4 className="type-eyebrow text-[#4a3623] mb-1">Planning Your</h4>
-                        <h3 className="font-serif text-[#b58c2a] text-[22px] md:text-2xl tracking-[0.01em] mb-3 drop-shadow-sm font-semibold">Planning Your Celebration?</h3>
+                        <div className="text-[#a67c00] mb-1.5 sm:mb-2"><Sparkles size={14} strokeWidth={1} className="sm:hidden" /><Sparkles size={16} strokeWidth={1} className="hidden sm:block" /></div>
+                        <h4 className="type-eyebrow text-[#4a3623] mb-0.5 sm:mb-1 text-[9px] sm:text-[10px]">Planning Your</h4>
+                        <h3 className="font-serif text-[#b58c2a] text-[16px] sm:text-[18px] md:text-2xl tracking-[0.01em] mb-2 sm:mb-3 drop-shadow-sm font-semibold">Planning Your Celebration?</h3>
 
-                        <div className="flex items-center justify-center gap-3 mb-4 w-full px-8">
+                        <div className="flex items-center justify-center gap-2 sm:gap-3 mb-3 sm:mb-4 w-full px-4 sm:px-8">
                           <div className="h-[2px] bg-[#4a3623] flex-1"></div>
-                          <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
+                          <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
                           <div className="h-[2px] bg-[#4a3623] flex-1"></div>
                         </div>
 
-                        <p className="type-body text-[#4a3623] italic px-4 whitespace-pre-line">
+                        <p className="type-body text-[#4a3623] italic px-2 sm:px-4 whitespace-pre-line text-[12px] sm:text-sm">
                           "{quote}"
                         </p>
                       </motion.div>
                     ) : submitStatus === "submitting" ? (
                       <motion.div
                         key="loading"
-                        className="w-full h-full flex flex-col items-center justify-center z-30 space-y-5"
+                        className="w-full h-full flex flex-col items-center justify-center z-30 space-y-4 sm:space-y-5"
                       >
-                        <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
-                        <p className="font-body text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-[#3d2a1d]">Sealing Your Enquiry...</p>
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
+                        <p className="font-body text-[10px] sm:text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-[#3d2a1d]">Sealing Your Enquiry...</p>
                       </motion.div>
                     ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
                       <motion.div
                         key="success"
                         animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1 }}
                         transition={{ duration: 0.3 }}
-                        className="w-full h-full flex flex-col items-center justify-center text-center p-8 z-30"
+                        className="w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-8 z-30"
                       >
-                        <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-8 border-[2px] border-[#4a3623]">
-                          <Heart size={20} className="text-[#4a3623] fill-[#4a3623]" />
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-5 sm:mb-6 md:mb-8 border-[2px] border-[#4a3623]">
+                          <Heart size={16} className="text-[#4a3623] fill-[#4a3623] sm:hidden" />
+                          <Heart size={18} className="hidden sm:block text-[#4a3623] fill-[#4a3623]" />
                         </div>
-                        <h2 className="mb-4 font-display text-2xl font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Enquiry Received</h2>
-                        <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
-                        <p className="max-w-xs font-body text-base leading-7 tracking-[0.01em] text-[#4a3623] italic">
+                        <h2 className="mb-3 sm:mb-4 font-display text-xl sm:text-2xl font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Enquiry Received</h2>
+                        <div className="h-[2px] w-16 sm:w-20 md:w-24 bg-[#4a3623] mb-4 sm:mb-5 md:mb-6"></div>
+                        <p className="max-w-xs font-body text-sm sm:text-base leading-6 sm:leading-7 tracking-[0.01em] text-[#4a3623] italic">
                           Your request has been carefully sealed. Our Heritage Concierge will be in touch shortly.
                         </p>
                       </motion.div>
                     ) : (
                       <motion.div
                         key="form"
-                        className="z-30 flex flex-1 min-h-0 w-full flex-col px-5 py-4 sm:px-6"
+                        className="z-30 flex flex-1 min-h-0 w-full flex-col px-4 py-3 sm:px-5 sm:py-4 md:px-6"
                       >
-                        <header className="mb-3 text-center shrink-0">
-                          <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={18} strokeWidth={2} /></div>
-                          <h2 className="font-display text-[1.6rem] sm:text-[1.7rem] font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Send an Enquiry</h2>
-                          <p className="mt-1 font-body text-xs sm:text-sm leading-relaxed tracking-[0.01em] text-[#654d39]">Share your occasion details with us.</p>
-                          <div className="flex items-center justify-center gap-4 mt-2">
-                            <div className="w-10 sm:w-12 h-[2px] bg-[#4a3623]"></div>
-                            <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
-                            <div className="w-10 sm:w-12 h-[2px] bg-[#4a3623]"></div>
+                        <header className="mb-2 sm:mb-3 text-center shrink-0">
+                          <div className="text-[#4a3623] flex justify-center mb-1.5 sm:mb-2"><Sparkles size={16} strokeWidth={2} className="sm:hidden" /><Sparkles size={18} strokeWidth={2} className="hidden sm:block" /></div>
+                          <h2 className="font-display text-[1.3rem] sm:text-[1.5rem] md:text-[1.7rem] font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Send an Enquiry</h2>
+                          <p className="mt-0.5 sm:mt-1 font-body text-[10px] sm:text-xs md:text-sm leading-relaxed tracking-[0.01em] text-[#654d39]">Share your occasion details with us.</p>
+                          <div className="flex items-center justify-center gap-3 sm:gap-4 mt-1.5 sm:mt-2">
+                            <div className="w-8 sm:w-10 md:w-12 h-[2px] bg-[#4a3623]"></div>
+                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
+                            <div className="w-8 sm:w-10 md:w-12 h-[2px] bg-[#4a3623]"></div>
                           </div>
                         </header>
 
                         <form className="flex-1 flex flex-col" onSubmit={handleSubmit} noValidate>
-                          <div className="flex-1 grid grid-cols-1 gap-x-5 gap-y-4 sm:gap-y-5 md:grid-cols-2 content-start">
+                          <div className="flex-1 grid grid-cols-1 gap-x-4 gap-y-3 sm:gap-x-5 sm:gap-y-4 md:gap-y-5 md:grid-cols-2 content-start">
                             <div className="relative group">
                               <label htmlFor="enquiry-name" className="mb-1.5 block font-body text-[0.7rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Your Name <span className="text-[#9a741d]">*</span></label>
                               <input ref={(node) => { fieldRefs.current.name = node; }} id="enquiry-name" name="name" value={formValues.name} onChange={handleFieldChange} type="text" required minLength="2" aria-invalid={Boolean(formErrors.name)} aria-describedby={formErrors.name ? "enquiry-name-error" : undefined} className={`min-h-10 sm:min-h-11 w-full border-0 border-b-2 bg-transparent px-1 py-2 font-body text-sm sm:text-base font-medium leading-6 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.name ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="e.g. Anand & Priya" />
@@ -592,13 +598,13 @@ export default function FloatingEnvelope() {
                             {formErrors.message && <p id="enquiry-message-error" className="absolute -bottom-4 left-0 font-body text-[0.7rem] font-medium leading-4 text-[#9f2f2f]">{formErrors.message}</p>}
                           </div>
 
-                          <div className="flex justify-center pt-2 pb-1 shrink-0">
+                          <div className="flex justify-center pt-2 sm:pt-3 pb-1 shrink-0">
                             <button
                               type="submit"
-                              className="relative min-h-11 sm:min-h-12 px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
+                              className="relative min-h-10 sm:min-h-11 md:min-h-12 px-8 sm:px-10 py-2 sm:py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[200px] sm:max-w-[240px]"
                             >
                               <div className="relative z-10 flex items-center justify-center">
-                                <span className="font-body text-[0.75rem] sm:text-[0.78rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#3d2a1d] flex items-center justify-center whitespace-nowrap">
+                                <span className="font-body text-[0.7rem] sm:text-[0.75rem] md:text-[0.78rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#3d2a1d] flex items-center justify-center whitespace-nowrap">
                                   Seal & Submit
                                 </span>
                               </div>
@@ -642,15 +648,15 @@ export default function FloatingEnvelope() {
                     <motion.div
                       initial={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
-                      className="absolute bottom-4 md:bottom-5 z-50 pointer-events-auto"
+                      className="absolute bottom-3 sm:bottom-4 md:bottom-5 z-50 pointer-events-auto left-1/2 -translate-x-1/2"
                     >
                       <button
                         onClick={handleEnquireClick}
                         aria-label="Open enquiry form"
-                        className="relative min-h-12 px-10 py-2.5 group pointer-events-auto bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300"
+                        className="relative min-h-10 sm:min-h-12 px-6 sm:px-10 py-2 sm:py-2.5 group pointer-events-auto bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300"
                       >
                         <div className="relative z-10 flex flex-col items-center justify-center">
-                          <span className="type-cta text-[#4a3623] flex items-center justify-center">
+                          <span className="type-cta text-[#4a3623] flex items-center justify-center text-[11px] sm:text-xs">
                             Enquire Now
                           </span>
                         </div>
@@ -668,10 +674,10 @@ export default function FloatingEnvelope() {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#d4af37] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[2px_2px_0_rgba(74,54,35,0.2)] border-[2px] border-[#4a3623]"
+                    className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 bg-[#d4af37] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[2px_2px_0_rgba(74,54,35,0.2)] border-[2px] border-[#4a3623]"
                     style={{ willChange: "transform" }}
                   >
-                    <div className="w-[36px] h-[36px] rounded-full border-[2px] border-[#4a3623] flex flex-col items-center justify-center bg-[#fdfbf7] overflow-hidden p-0.5">
+                    <div className="w-[24px] h-[24px] sm:w-[30px] sm:h-[30px] md:w-[36px] md:h-[36px] rounded-full border-[2px] border-[#4a3623] flex flex-col items-center justify-center bg-[#fdfbf7] overflow-hidden p-0.5">
                       <img src={coupleIllustration} alt="Seal" loading="lazy" decoding="async" width="150" height="150" className="w-full h-full object-contain" />
                     </div>
                   </motion.div>
@@ -682,9 +688,10 @@ export default function FloatingEnvelope() {
                 <button
                   onClick={handleClose}
                   aria-label="Close enquiry prompt"
-                  className="absolute -top-2 -right-2 text-[#d4af37] hover:text-[#4a3623] z-[60] bg-[#fdfbf7] border border-[#d4af37]/40 rounded-full p-1.5 transition-colors pointer-events-auto shadow-md"
+                  className="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 text-[#d4af37] hover:text-[#4a3623] z-[60] bg-[#fdfbf7] border border-[#d4af37]/40 rounded-full p-1 sm:p-1.5 transition-colors pointer-events-auto shadow-md"
                 >
-                  <X size={14} strokeWidth={2} />
+                  <X size={12} strokeWidth={2} className="sm:hidden" />
+                  <X size={14} strokeWidth={2} className="hidden sm:block" />
                 </button>
               )}
             </motion.div>
