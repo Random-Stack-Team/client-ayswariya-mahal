@@ -298,9 +298,9 @@ export default function FloatingEnvelope() {
               setIsCalendarOpen(false);
               closeForm();
               setSubmitStatus("idle");
-            }, 800);
+            }, 1200);
           }, 800);
-        }, 500);
+        }, 600);
       }, 1500);
     }, 800);
   };
@@ -396,10 +396,14 @@ export default function FloatingEnvelope() {
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={
                 submitStatus === "departing"
-                  ? { opacity: 0, scale: 0.9, x: 80, y: 0 }
+                  ? { opacity: [1, 0, 0], scale: [1, 0.95, 0.9], x: [0, 0, 100], y: [0, 0, 0] }
                   : { opacity: 1, y: 0, x: 0, scale: isExpanded ? 1 : 0.65 }
               }
-              transition={submitStatus === "departing" ? { duration: 1, ease: [0.4, 0, 0.2, 1] } : springConfig}
+              transition={
+                submitStatus === "departing"
+                  ? { duration: 1.2, times: [0, 0.5, 1], ease: "easeInOut" }
+                  : springConfig
+              }
               exit={{ opacity: 0, scale: 0.9, y: 0 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
