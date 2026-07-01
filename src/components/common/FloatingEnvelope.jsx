@@ -513,46 +513,46 @@ export default function FloatingEnvelope() {
                     ) : (
                       <motion.div
                         key="form"
-                        className="z-30 flex h-full w-full flex-col justify-center px-5 py-4 sm:px-6"
+                        className={`z-30 flex h-full w-full flex-col ${isCompactViewport ? "overflow-y-auto" : "justify-center"} px-5 py-4 sm:px-6`}
                       >
-                        <header className="mb-4 text-center">
-                          <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={18} strokeWidth={2} /></div>
-                          <h2 className="font-display text-[1.7rem] font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Send an Enquiry</h2>
-                          <p className="mt-1.5 font-body text-sm leading-relaxed tracking-[0.01em] text-[#654d39]">Share your celebration details with us.</p>
-                          <div className="flex items-center justify-center gap-4 mt-3">
-                            <div className="w-12 h-[2px] bg-[#4a3623]"></div>
-                            <div className="w-2 h-2 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
-                            <div className="w-12 h-[2px] bg-[#4a3623]"></div>
+                        <header className={`${isCompactViewport ? "mb-2" : "mb-4"} text-center`}>
+                          <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={isCompactViewport ? 14 : 18} strokeWidth={2} /></div>
+                          <h2 className={`font-display font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d] ${isCompactViewport ? "text-xl" : "text-[1.7rem]"}`}>Send an Enquiry</h2>
+                          <p className={`font-body leading-relaxed tracking-[0.01em] text-[#654d39] ${isCompactViewport ? "mt-1 text-xs" : "mt-1.5 text-sm"}`}>Share your celebration details with us.</p>
+                          <div className={`flex items-center justify-center ${isCompactViewport ? "gap-3 mt-2" : "gap-4 mt-3"}`}>
+                            <div className={`${isCompactViewport ? "w-8" : "w-12"} h-[2px] bg-[#4a3623]`}></div>
+                            <div className={`${isCompactViewport ? "w-1.5 h-1.5" : "w-2 h-2"} rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]`}></div>
+                            <div className={`${isCompactViewport ? "w-8" : "w-12"} h-[2px] bg-[#4a3623]`}></div>
                           </div>
                         </header>
 
-                        <form className="space-y-5" onSubmit={handleSubmit} noValidate>
-                          <div className="grid grid-cols-1 gap-x-5 gap-y-5 md:grid-cols-2">
+                        <form className={isCompactViewport ? "space-y-3" : "space-y-5"} onSubmit={handleSubmit} noValidate>
+                          <div className={`grid ${isCompactViewport ? "grid-cols-1 gap-y-3" : "grid-cols-1 gap-x-5 gap-y-5 md:grid-cols-2"}`}>
                             <div className="relative group">
-                              <label htmlFor="enquiry-name" className="mb-1.5 block font-body text-[0.7rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Honorable Name <span className="text-[#9a741d]">*</span></label>
-                              <input ref={(node) => { fieldRefs.current.name = node; }} id="enquiry-name" name="name" value={formValues.name} onChange={handleFieldChange} type="text" required minLength="2" aria-invalid={Boolean(formErrors.name)} aria-describedby={formErrors.name ? "enquiry-name-error" : undefined} className={`min-h-11 w-full border-0 border-b-2 bg-transparent px-1 py-2 font-body text-base font-medium leading-6 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.name ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="e.g. Anand & Priya" />
-                              {formErrors.name && <p id="enquiry-name-error" className="absolute -bottom-4 left-0 font-body text-[0.7rem] font-medium leading-4 text-[#9f2f2f]">{formErrors.name}</p>}
+                              <label htmlFor="enquiry-name" className={`block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] ${isCompactViewport ? "mb-1 text-[0.6rem] leading-4" : "mb-1.5 text-[0.7rem] leading-5"}`}>Honorable Name <span className="text-[#9a741d]">*</span></label>
+                              <input ref={(node) => { fieldRefs.current.name = node; }} id="enquiry-name" name="name" value={formValues.name} onChange={handleFieldChange} type="text" required minLength="2" aria-invalid={Boolean(formErrors.name)} aria-describedby={formErrors.name ? "enquiry-name-error" : undefined} className={`${isCompactViewport ? "min-h-9 py-1.5 text-sm" : "min-h-11 py-2 text-base"} w-full border-0 border-b-2 bg-transparent px-1 font-body font-medium leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.name ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="e.g. Anand & Priya" />
+                              {formErrors.name && <p id="enquiry-name-error" className={`font-body font-medium leading-4 text-[#9f2f2f] ${isCompactViewport ? "mt-0.5 text-[0.6rem]" : "absolute -bottom-4 left-0 text-[0.7rem]"}`}>{formErrors.name}</p>}
                             </div>
 
                             <div className="relative group">
-                              <label htmlFor="enquiry-phone" className="mb-1.5 block font-body text-[0.7rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Mobile Number <span className="text-[#9a741d]">*</span></label>
-                              <input ref={(node) => { fieldRefs.current.phone = node; }} id="enquiry-phone" name="phone" value={formValues.phone} onChange={handleFieldChange} type="tel" inputMode="tel" autoComplete="tel" required aria-invalid={Boolean(formErrors.phone)} aria-describedby={formErrors.phone ? "enquiry-phone-error" : undefined} className={`min-h-11 w-full border-0 border-b-2 bg-transparent px-1 py-2 font-body text-base font-medium leading-6 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.phone ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="+91 9876543210" />
-                              {formErrors.phone && <p id="enquiry-phone-error" className="absolute -bottom-4 left-0 font-body text-[0.7rem] font-medium leading-4 text-[#9f2f2f]">{formErrors.phone}</p>}
+                              <label htmlFor="enquiry-phone" className={`block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] ${isCompactViewport ? "mb-1 text-[0.6rem] leading-4" : "mb-1.5 text-[0.7rem] leading-5"}`}>Mobile Number <span className="text-[#9a741d]">*</span></label>
+                              <input ref={(node) => { fieldRefs.current.phone = node; }} id="enquiry-phone" name="phone" value={formValues.phone} onChange={handleFieldChange} type="tel" inputMode="tel" autoComplete="tel" required aria-invalid={Boolean(formErrors.phone)} aria-describedby={formErrors.phone ? "enquiry-phone-error" : undefined} className={`${isCompactViewport ? "min-h-9 py-1.5 text-sm" : "min-h-11 py-2 text-base"} w-full border-0 border-b-2 bg-transparent px-1 font-body font-medium leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.phone ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="+91 9876543210" />
+                              {formErrors.phone && <p id="enquiry-phone-error" className={`font-body font-medium leading-4 text-[#9f2f2f] ${isCompactViewport ? "mt-0.5 text-[0.6rem]" : "absolute -bottom-4 left-0 text-[0.7rem]"}`}>{formErrors.phone}</p>}
                             </div>
 
                             <div className="relative group">
-                              <label htmlFor="enquiry-email" className="mb-1.5 block font-body text-[0.7rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Email Address <span className="text-[#9a741d]">*</span></label>
-                              <input ref={(node) => { fieldRefs.current.email = node; }} id="enquiry-email" name="email" value={formValues.email} onChange={handleFieldChange} type="email" autoComplete="email" required aria-invalid={Boolean(formErrors.email)} aria-describedby={formErrors.email ? "enquiry-email-error" : undefined} className={`min-h-11 w-full border-0 border-b-2 bg-transparent px-1 py-2 font-body text-base font-medium leading-6 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.email ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="your@email.com" />
-                              {formErrors.email && <p id="enquiry-email-error" className="absolute -bottom-4 left-0 font-body text-[0.7rem] font-medium leading-4 text-[#9f2f2f]">{formErrors.email}</p>}
+                              <label htmlFor="enquiry-email" className={`block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] ${isCompactViewport ? "mb-1 text-[0.6rem] leading-4" : "mb-1.5 text-[0.7rem] leading-5"}`}>Email Address <span className="text-[#9a741d]">*</span></label>
+                              <input ref={(node) => { fieldRefs.current.email = node; }} id="enquiry-email" name="email" value={formValues.email} onChange={handleFieldChange} type="email" autoComplete="email" required aria-invalid={Boolean(formErrors.email)} aria-describedby={formErrors.email ? "enquiry-email-error" : undefined} className={`${isCompactViewport ? "min-h-9 py-1.5 text-sm" : "min-h-11 py-2 text-base"} w-full border-0 border-b-2 bg-transparent px-1 font-body font-medium leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.email ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="your@email.com" />
+                              {formErrors.email && <p id="enquiry-email-error" className={`font-body font-medium leading-4 text-[#9f2f2f] ${isCompactViewport ? "mt-0.5 text-[0.6rem]" : "absolute -bottom-4 left-0 text-[0.7rem]"}`}>{formErrors.email}</p>}
                             </div>
 
                             <div className="relative group">
-                              <label htmlFor="enquiry-date" className="mb-1.5 block font-body text-[0.7rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Auspicious Date <span className="text-[#9a741d]">*</span></label>
+                              <label htmlFor="enquiry-date" className={`block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] ${isCompactViewport ? "mb-1 text-[0.6rem] leading-4" : "mb-1.5 text-[0.7rem] leading-5"}`}>Auspicious Date <span className="text-[#9a741d]">*</span></label>
                               <div className="relative">
-                                <button ref={(node) => { fieldRefs.current.eventDate = node; }} id="enquiry-date" type="button" onClick={toggleCalendar} aria-haspopup="dialog" aria-expanded={isCalendarOpen} aria-invalid={Boolean(formErrors.eventDate)} aria-describedby={formErrors.eventDate ? "enquiry-date-error" : undefined} className={`flex min-h-11 w-full cursor-pointer items-center border-0 border-b-2 bg-[#fbf6ea]/55 px-1 py-2 pr-11 text-left font-body text-base font-medium leading-6 tracking-[0.01em] outline-none transition-colors focus:ring-0 ${formValues.eventDate ? "text-[#3d2a1d]" : "text-[#766858]"} ${formErrors.eventDate ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`}>
+                                <button ref={(node) => { fieldRefs.current.eventDate = node; }} id="enquiry-date" type="button" onClick={toggleCalendar} aria-haspopup="dialog" aria-expanded={isCalendarOpen} aria-invalid={Boolean(formErrors.eventDate)} aria-describedby={formErrors.eventDate ? "enquiry-date-error" : undefined} className={`flex w-full cursor-pointer items-center border-0 border-b-2 bg-[#fbf6ea]/55 px-1 pr-9 text-left font-body font-medium leading-5 tracking-[0.01em] outline-none transition-colors focus:ring-0 ${isCompactViewport ? "min-h-9 py-1.5 text-sm" : "min-h-11 py-2 text-base pr-11"} ${formValues.eventDate ? "text-[#3d2a1d]" : "text-[#766858]"} ${formErrors.eventDate ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`}>
                                   <span className="normal-case">{formatSelectedDate(formValues.eventDate)}</span>
                                 </button>
-                                <CalendarDays aria-hidden="true" size={19} strokeWidth={1.7} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#9a741d] transition-colors group-focus-within:text-[#6f5012]" />
+                                <CalendarDays aria-hidden="true" size={isCompactViewport ? 15 : 19} strokeWidth={1.7} className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#9a741d] transition-colors group-focus-within:text-[#6f5012]" />
                                 <AnimatePresence>
                                   {isCalendarOpen && calendarPosition && (
                                     <ThemedCalendar
@@ -566,23 +566,23 @@ export default function FloatingEnvelope() {
                                   )}
                                 </AnimatePresence>
                               </div>
-                              {formErrors.eventDate && <p id="enquiry-date-error" className="absolute -bottom-4 left-0 font-body text-[0.7rem] font-medium leading-4 text-[#9f2f2f]">{formErrors.eventDate}</p>}
+                              {formErrors.eventDate && <p id="enquiry-date-error" className={`font-body font-medium leading-4 text-[#9f2f2f] ${isCompactViewport ? "mt-0.5 text-[0.6rem]" : "absolute -bottom-4 left-0 text-[0.7rem]"}`}>{formErrors.eventDate}</p>}
                             </div>
                           </div>
 
                           <div className="relative group">
-                            <label htmlFor="enquiry-message" className="mb-1.5 block font-body text-[0.7rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">How can we help? <span className="text-[#9a741d]">*</span></label>
-                            <textarea ref={(node) => { fieldRefs.current.message = node; }} id="enquiry-message" name="message" value={formValues.message} onChange={handleFieldChange} rows="2" required minLength="10" aria-invalid={Boolean(formErrors.message)} aria-describedby={formErrors.message ? "enquiry-message-error" : undefined} className={`min-h-16 w-full resize-none border-0 border-b-2 bg-transparent px-1 py-2 font-body text-base font-medium leading-6 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.message ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="Tell us about your requirements..."></textarea>
-                            {formErrors.message && <p id="enquiry-message-error" className="absolute -bottom-4 left-0 font-body text-[0.7rem] font-medium leading-4 text-[#9f2f2f]">{formErrors.message}</p>}
+                            <label htmlFor="enquiry-message" className={`block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] ${isCompactViewport ? "mb-1 text-[0.6rem] leading-4" : "mb-1.5 text-[0.7rem] leading-5"}`}>How can we help? <span className="text-[#9a741d]">*</span></label>
+                            <textarea ref={(node) => { fieldRefs.current.message = node; }} id="enquiry-message" name="message" value={formValues.message} onChange={handleFieldChange} rows={isCompactViewport ? 1 : 2} required minLength="10" aria-invalid={Boolean(formErrors.message)} aria-describedby={formErrors.message ? "enquiry-message-error" : undefined} className={`${isCompactViewport ? "min-h-9 py-1.5 text-sm" : "min-h-16 py-2 text-base"} w-full resize-none border-0 border-b-2 bg-transparent px-1 font-body font-medium leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.message ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="Tell us about your requirements..."></textarea>
+                            {formErrors.message && <p id="enquiry-message-error" className={`font-body font-medium leading-4 text-[#9f2f2f] ${isCompactViewport ? "mt-0.5 text-[0.6rem]" : "absolute -bottom-4 left-0 text-[0.7rem]"}`}>{formErrors.message}</p>}
                           </div>
 
-                          <div className="flex -translate-y-3 justify-center pb-1 pt-3">
+                          <div className={`flex justify-center ${isCompactViewport ? "pt-1 pb-1" : "-translate-y-3 pb-1 pt-3"}`}>
                             <button 
                               type="submit" 
-                              className="relative min-h-12 px-10 py-2.5 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[240px]"
+                              className={`relative group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full ${isCompactViewport ? "min-h-10 px-6 py-2 max-w-[200px]" : "min-h-12 px-10 py-2.5 max-w-[240px]"}`}
                             >
                               <div className="relative z-10 flex items-center justify-center">
-                                <span className="font-body text-[0.78rem] font-semibold uppercase leading-5 tracking-[0.12em] text-[#3d2a1d] flex items-center justify-center whitespace-nowrap">
+                                <span className={`font-body font-semibold uppercase tracking-[0.12em] text-[#3d2a1d] flex items-center justify-center whitespace-nowrap ${isCompactViewport ? "text-[0.65rem] leading-4" : "text-[0.78rem] leading-5"}`}>
                                   Seal & Submit
                                 </span>
                               </div>
