@@ -156,6 +156,8 @@ export default function FloatingEnvelope() {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [calendarMonth, setCalendarMonth] = useState(() => new Date());
   const [calendarPosition, setCalendarPosition] = useState(null);
+  const [expandOrigin, setExpandOrigin] = useState({ x: 0, y: 0 });
+  const envelopeRef = useRef(null);
   const fieldRefs = useRef({});
   const timersRef = useRef([]);
 
@@ -261,11 +263,18 @@ export default function FloatingEnvelope() {
     setFormValues(INITIAL_FORM_VALUES);
     setFormErrors({});
     setIsCalendarOpen(false);
+    setExpandOrigin({ x: 0, y: 0 });
     closeForm();
   };
 
   const handleEnquireClick = (e) => {
     if (e) e.stopPropagation();
+    if (envelopeRef.current) {
+      const rect = envelopeRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2 - window.innerWidth / 2;
+      const centerY = rect.top + rect.height / 2 - window.innerHeight / 2;
+      setExpandOrigin({ x: centerX, y: centerY });
+    }
     openForm();
   };
 
@@ -386,18 +395,17 @@ export default function FloatingEnvelope() {
           </AnimatePresence>
 
           <div
-            className={`fixed z-[101] ${
-              isExpanded
-                ? "inset-0 flex items-end sm:items-center justify-center pointer-events-none px-4 pb-4 sm:px-0 sm:pb-0"
-                : "bottom-5 left-4 right-4 sm:bottom-6 sm:left-1/2 sm:-translate-x-1/2 sm:right-auto sm:translate-x-0 md:bottom-10 md:right-10 md:left-auto pointer-events-none"
-            }`}
+            className="fixed inset-0 z-[101] flex items-end sm:items-center justify-center pointer-events-none px-4 pb-4 sm:px-0 sm:pb-0"
           >
             <motion.div
+              ref={envelopeRef}
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={
                 submitStatus === "departing"
                   ? { opacity: [1, 0, 0], scale: [1, 0.95, 0.9], x: [0, 0, 100], y: [0, 0, 0] }
-                  : { opacity: 1, y: 0, x: 0, scale: isExpanded ? 1 : 0.65 }
+                  : isExpanded
+                    ? { opacity: 1, y: 0, x: 0, scale: 1 }
+                    : { opacity: 1, y: 0, x: expandOrigin.x * 0.3, scale: 0.65 }
               }
               transition={
                 submitStatus === "departing"
@@ -452,7 +460,18 @@ export default function FloatingEnvelope() {
                 }}
                 transition={{ type: "spring", stiffness: 100, damping: 18, mass: 1.4 }}
                 className="absolute bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border-[2px] border-[#4a3623] antialiased pointer-events-auto shrink-0"
-                onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
+                onClick={(e) => {
+                  if (!isExpanded) {
+                    e.stopPropagation();
+                    if (envelopeRef.current) {
+                      const rect = envelopeRef.current.getBoundingClientRect();
+                      const centerX = rect.left + rect.width / 2 - window.innerWidth / 2;
+                      const centerY = rect.top + rect.height / 2 - window.innerHeight / 2;
+                      setExpandOrigin({ x: centerX, y: centerY });
+                    }
+                    openForm();
+                  }
+                }}
                 style={{
                   left: "50%",
                   bottom: isPaperExpanded ? undefined : "12px",
