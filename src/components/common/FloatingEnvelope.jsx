@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { CalendarDays, ChevronLeft, ChevronRight, Heart, Sparkles, X } from "lucide-react";
@@ -142,77 +142,52 @@ const validateForm = (values) => {
   return errors;
 };
 
-/*
-  Animation phases:
-  closed           – envelope hidden
-  envelopeOpening  – envelope appears, flap opens
-  formEmerging     – form slides up from envelope to center
-  formVisible      – form fully visible, envelope light behind
-  submitting       – loading spinner
-  success          – success message
-  formReturning    – form shrinks back into envelope
-  envelopeClosing  – envelope fades out
-*/
-const PHASE = {
-  CLOSED: "closed",
-  ENVELOPE_OPENING: "envelopeOpening",
-  FORM_EMERGING: "formEmerging",
-  FORM_VISIBLE: "formVisible",
-  SUBMITTING: "submitting",
-  SUCCESS: "success",
-  FORM_RETURNING: "formReturning",
-  ENVELOPE_CLOSING: "envelopeClosing",
-};
-
-const isFormShowing = (phase) =>
-  phase === PHASE.FORM_EMERGING ||
-  phase === PHASE.FORM_VISIBLE ||
-  phase === PHASE.SUBMITTING ||
-  phase === PHASE.SUCCESS ||
-  phase === PHASE.FORM_RETURNING;
-
-
 export default function FloatingEnvelope() {
   const { isFormOpen, openForm, closeForm } = useEnquiry();
   const location = useLocation();
   const isHome = location.pathname === "/";
-
-  const [phase, setPhase] = useState(PHASE.CLOSED);
+  const [isEnvelopeVisible, setIsEnvelopeVisible] = useState(false);
   const [quote, setQuote] = useState("");
   const [isHovered, setIsHovered] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState("idle");
   const [isCompactViewport, setIsCompactViewport] = useState(false);
   const [formValues, setFormValues] = useState(INITIAL_FORM_VALUES);
   const [formErrors, setFormErrors] = useState({});
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [calendarMonth, setCalendarMonth] = useState(() => new Date());
   const [calendarPosition, setCalendarPosition] = useState(null);
-  const [envelopePromptVisible, setEnvelopePromptVisible] = useState(false);
-
+  const envelopeRef = useRef(null);
   const fieldRefs = useRef({});
   const timersRef = useRef([]);
 
-  const clearTimers = useCallback(() => {
+  const clearSubmitTimers = () => {
     timersRef.current.forEach(window.clearTimeout);
     timersRef.current = [];
-  }, []);
+  };
 
-  const runLater = useCallback((callback, delay) => {
+  const runLater = (callback, delay) => {
     const timerId = window.setTimeout(callback, delay);
     timersRef.current.push(timerId);
     return timerId;
-  }, []);
-
-  useEffect(() => () => { clearTimers(); }, [clearTimers]);
+  };
 
   useEffect(() => {
-    const mq = window.matchMedia("(max-width: 1023px), (max-height: 760px)");
-    const sync = () => setIsCompactViewport(mq.matches);
-    sync();
-    mq.addEventListener("change", sync);
-    return () => mq.removeEventListener("change", sync);
+    return () => {
+      timersRef.current.forEach(window.clearTimeout);
+      timersRef.current = [];
+    };
   }, []);
 
-  // Scroll-triggered envelope prompt
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1023px), (max-height: 760px)");
+    const syncViewport = () => setIsCompactViewport(mediaQuery.matches);
+
+    syncViewport();
+    mediaQuery.addEventListener("change", syncViewport);
+
+    return () => mediaQuery.removeEventListener("change", syncViewport);
+  }, []);
+
   useEffect(() => {
     let timeoutId;
     let hasScrolledPast = false;
@@ -221,28 +196,33 @@ export default function FloatingEnvelope() {
     const checkScroll = () => {
       ticking = false;
       const threshold = isHome ? 3100 : window.innerHeight * 0.4;
-      if (window.scrollY > threshold && !hasScrolledPast) {
-        hasScrolledPast = true;
-        scheduleNext();
+      if (window.scrollY > threshold) {
+        if (!hasScrolledPast) {
+          hasScrolledPast = true;
+          scheduleNext();
+        }
       }
     };
 
     const onScroll = () => {
-      if (!ticking) { ticking = true; requestAnimationFrame(checkScroll); }
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(checkScroll);
+      }
     };
 
-    const triggerPrompt = () => {
-      if (phase === PHASE.CLOSED && hasScrolledPast) {
+    const triggerEnvelope = () => {
+      if (!isFormOpen && hasScrolledPast && submitStatus === "idle") {
         setQuote(QUOTES[Math.floor(Math.random() * QUOTES.length)]);
-        setEnvelopePromptVisible(true);
-      } else if (phase === PHASE.CLOSED) {
+        setIsEnvelopeVisible(true);
+      } else if (!isFormOpen) {
         scheduleNext();
       }
     };
 
     const scheduleNext = () => {
-      const delay = Math.floor(Math.random() * 5000) + 5000;
-      timeoutId = setTimeout(triggerPrompt, delay);
+      const delay = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
+      timeoutId = setTimeout(triggerEnvelope, delay);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -252,123 +232,104 @@ export default function FloatingEnvelope() {
       window.removeEventListener("scroll", onScroll);
       clearTimeout(timeoutId);
     };
-  }, [phase, isHome]);
+  }, [isEnvelopeVisible, isFormOpen, submitStatus, isHome]);
 
-  // Body scroll lock when form is showing
   useEffect(() => {
-    if (!isFormShowing(phase) && phase !== PHASE.SUBMITTING && phase !== PHASE.SUCCESS) return undefined;
-    const prev = document.body.style.overflow;
-    const prevHtml = document.documentElement.style.overflow;
+    if (!isFormOpen && submitStatus === "idle") return undefined;
+
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
     requestAnimationFrame(() => {
       document.body.style.overflow = "hidden";
       document.documentElement.style.overflow = "hidden";
     });
+
     return () => {
       requestAnimationFrame(() => {
-        document.body.style.overflow = prev;
-        document.documentElement.style.overflow = prevHtml;
+        document.body.style.overflow = previousBodyOverflow;
+        document.documentElement.style.overflow = previousHtmlOverflow;
       });
     };
-  }, [phase]);
+  }, [isFormOpen, submitStatus]);
 
-  // Phase transitions when isFormOpen changes
-  useEffect(() => {
-    if (isFormOpen && phase === PHASE.CLOSED) {
-      queueMicrotask(() => {
-        setPhase(PHASE.ENVELOPE_OPENING);
-        runLater(() => setPhase(PHASE.FORM_EMERGING), 600);
-        runLater(() => setPhase(PHASE.FORM_VISIBLE), 1400);
-      });
-    }
-  }, [isFormOpen, phase, runLater]);
-
-  const handleClose = useCallback((e) => {
+  const handleClose = (e) => {
     if (e) e.stopPropagation();
-    clearTimers();
+    clearSubmitTimers();
+    setIsEnvelopeVisible(false);
+    setIsHovered(false);
+    setSubmitStatus("idle");
+    setFormValues(INITIAL_FORM_VALUES);
+    setFormErrors({});
+    setIsCalendarOpen(false);
+    closeForm();
+  };
 
-    if (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS) {
-      setPhase(PHASE.FORM_RETURNING);
-      runLater(() => setPhase(PHASE.ENVELOPE_CLOSING), 800);
-      runLater(() => {
-        setPhase(PHASE.CLOSED);
-        setFormValues(INITIAL_FORM_VALUES);
-        setFormErrors({});
-        setIsCalendarOpen(false);
-        setIsHovered(false);
-        closeForm();
-      }, 1400);
-    } else {
-      setEnvelopePromptVisible(false);
-      setPhase(PHASE.ENVELOPE_CLOSING);
-      runLater(() => {
-        setPhase(PHASE.CLOSED);
-        setIsHovered(false);
-        closeForm();
-      }, 600);
-    }
-  }, [phase, clearTimers, runLater, closeForm]);
-
-  const handleEnquireClick = useCallback((e) => {
+  const handleEnquireClick = (e) => {
     if (e) e.stopPropagation();
-    setEnvelopePromptVisible(false);
     openForm();
-  }, [openForm]);
+  };
 
-  const handleSubmit = useCallback((e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const errors = validateForm(formValues);
+
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
-      const first = Object.keys(errors)[0];
-      fieldRefs.current[first]?.focus();
+      const firstInvalidField = Object.keys(errors)[0];
+      fieldRefs.current[firstInvalidField]?.focus();
       return;
     }
 
-    clearTimers();
-    setPhase(PHASE.SUBMITTING);
+    clearSubmitTimers();
+    setSubmitStatus("submitting");
     runLater(() => {
-      setPhase(PHASE.SUCCESS);
+      setSubmitStatus("success");
       runLater(() => {
-        setPhase(PHASE.FORM_RETURNING);
+        setSubmitStatus("sealing_paper");
         runLater(() => {
-          setPhase(PHASE.ENVELOPE_CLOSING);
+          setSubmitStatus("sealing_flap");
           runLater(() => {
-            setPhase(PHASE.CLOSED);
-            setFormValues(INITIAL_FORM_VALUES);
-            setFormErrors({});
-            setIsCalendarOpen(false);
-            setIsHovered(false);
-            closeForm();
+            setSubmitStatus("departing");
+            runLater(() => {
+              setIsEnvelopeVisible(false);
+              setIsHovered(false);
+              setFormValues(INITIAL_FORM_VALUES);
+              setFormErrors({});
+              setIsCalendarOpen(false);
+              closeForm();
+              setSubmitStatus("idle");
+            }, 1200);
           }, 800);
-        }, 800);
+        }, 600);
       }, 1500);
-    }, 1000);
-  }, [formValues, clearTimers, runLater, closeForm]);
+    }, 800);
+  };
 
-  const handleFieldChange = useCallback((e) => {
+  const handleFieldChange = (e) => {
     const { name, value } = e.target;
-    setFormValues((c) => ({ ...c, [name]: value }));
-    setFormErrors((c) => {
-      if (!c[name]) return c;
-      const next = { ...c };
-      delete next[name];
-      return next;
+    setFormValues((current) => ({ ...current, [name]: value }));
+    setFormErrors((current) => {
+      if (!current[name]) return current;
+      const nextErrors = { ...current };
+      delete nextErrors[name];
+      return nextErrors;
     });
-  }, []);
+  };
 
-  const handleDateSelect = useCallback((date) => {
-    setFormValues((c) => ({ ...c, eventDate: date }));
-    setFormErrors((c) => {
-      if (!c.eventDate) return c;
-      const next = { ...c };
-      delete next.eventDate;
-      return next;
+  const handleDateSelect = (date) => {
+    setFormValues((current) => ({ ...current, eventDate: date }));
+    setFormErrors((current) => {
+      if (!current.eventDate) return current;
+      const nextErrors = { ...current };
+      delete nextErrors.eventDate;
+      return nextErrors;
     });
     setIsCalendarOpen(false);
     fieldRefs.current.eventDate?.focus();
-  }, []);
+  };
 
-  const toggleCalendar = useCallback(() => {
+  const toggleCalendar = () => {
     if (!isCalendarOpen) {
       const selected = formValues.eventDate
         ? new Date(`${formValues.eventDate}T00:00:00`)
@@ -389,55 +350,35 @@ export default function FloatingEnvelope() {
         setCalendarPosition({ left, top, width });
       }
     }
-    setIsCalendarOpen((c) => !c);
-  }, [isCalendarOpen, formValues.eventDate]);
+    setIsCalendarOpen((current) => !current);
+  };
 
   const today = new Date();
   const minimumEventDate = new Date(today.getTime() - today.getTimezoneOffset() * 60000)
     .toISOString()
     .slice(0, 10);
 
-  const anyVisible = phase !== PHASE.CLOSED || envelopePromptVisible;
-  const showBackdrop = isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS;
-  const isFlapOpen = phase !== PHASE.ENVELOPE_CLOSING && phase !== PHASE.CLOSED;
+  const isExpanded = isFormOpen || submitStatus !== "idle";
+  const isVisible = isEnvelopeVisible || isExpanded;
+  const isPeeking = isHovered && !isExpanded;
 
-  const envelopeAnim = (() => {
-    if (phase === PHASE.ENVELOPE_OPENING) return { opacity: 1, scale: 1, y: 0 };
-    if (phase === PHASE.FORM_EMERGING) return { opacity: 1, scale: 1, y: 0 };
-    if (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS) return { opacity: 1, scale: 1, y: 0 };
-    if (phase === PHASE.FORM_RETURNING) return { opacity: 1, scale: 0.65, y: 80 };
-    if (phase === PHASE.ENVELOPE_CLOSING) return { opacity: 0, scale: 0.65, y: 80 };
-    if (envelopePromptVisible) return { opacity: 1, scale: 0.65, y: 0 };
-    return { opacity: 0, scale: 0.65, y: 40 };
-  })();
+  const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
+  const isFlapOpen = submitStatus !== "sealing_flap" && submitStatus !== "departing";
 
-  const envelopeDecorOpacity = (() => {
-    if (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS) return 0.25;
-    if (phase === PHASE.FORM_RETURNING) return 0.6;
-    return 1;
-  })();
-
-  const envelopeContainerClass = (() => {
-    if (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS || phase === PHASE.FORM_RETURNING) {
-      return "fixed inset-0 z-[101] flex items-center justify-center pointer-events-none";
-    }
-    return "fixed z-[101] pointer-events-none bottom-5 right-4 sm:bottom-6 sm:right-6 md:bottom-10 md:right-10";
-  })();
+  const springConfig = { type: "spring", stiffness: 120, damping: 20, mass: 1.2 };
 
   return (
     <AnimatePresence>
-      {anyVisible && (
+      {isVisible && (
         <>
-          {/* Backdrop */}
           <AnimatePresence>
-            {showBackdrop && (
+            {isExpanded && (
               <motion.button
                 type="button"
                 aria-label="Close enquiry form"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
                 onClick={handleClose}
                 className="fixed inset-0 bg-[#2A141A]/85 z-[100]"
                 style={{ WebkitBackdropFilter: "blur(4px)", backdropFilter: "blur(4px)" }}
@@ -445,38 +386,51 @@ export default function FloatingEnvelope() {
             )}
           </AnimatePresence>
 
-          {/* Envelope Container */}
-          <div className={envelopeContainerClass}>
+          <div
+            className={`fixed z-[101] pointer-events-none ${
+              isExpanded
+                ? "inset-0 flex items-end sm:items-center justify-center px-4 pb-4 sm:px-0 sm:pb-0"
+                : "bottom-5 right-4 sm:bottom-6 sm:right-6 md:bottom-10 md:right-10"
+            }`}
+          >
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, y: 40 }}
-              animate={envelopeAnim}
-              exit={{ opacity: 0, scale: 0.8, y: 40 }}
-              transition={{ type: "spring", stiffness: 90, damping: 18, mass: 1.2 }}
+              ref={envelopeRef}
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={
+                submitStatus === "departing"
+                  ? { opacity: [1, 0, 0], scale: [1, 0.95, 0.9], x: [0, 0, 100], y: [0, 0, 0] }
+                  : { opacity: 1, y: 0, x: 0, scale: isExpanded ? 1 : 0.65 }
+              }
+              transition={
+                submitStatus === "departing"
+                  ? { duration: 1.2, times: [0, 0.5, 1], ease: "easeInOut" }
+                  : springConfig
+              }
+              exit={{ opacity: 0, scale: 0.9, y: 0 }}
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               className="relative pointer-events-auto"
               style={{
-                width: (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS || phase === PHASE.FORM_RETURNING)
+                width: isExpanded
                   ? (isCompactViewport ? "min(92vw, 340px)" : 440)
                   : (isCompactViewport ? 200 : 280),
-                height: (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS || phase === PHASE.FORM_RETURNING)
-                  ? (isCompactViewport ? "min(85vh, 580px)" : 580)
+                height: isExpanded
+                  ? (isCompactViewport ? "min(80vh, 560px)" : 560)
                   : (isCompactViewport ? 150 : 200),
                 perspective: 1200,
                 willChange: "transform",
+                transform: "translateZ(0)",
               }}
             >
-              {/* Envelope back */}
-              <div
-                className="absolute inset-0 bg-[#e0d0b0] border-[2px] border-[#4a3623] rounded-sm z-10 overflow-hidden shadow-[inset_0_4px_0_rgba(0,0,0,0.1)]"
-                style={{ opacity: envelopeDecorOpacity, transition: "opacity 0.6s ease" }}
-              />
+              {/* Layer 1: Back of Envelope (Inside) */}
+              <div className="absolute inset-0 bg-[#e0d0b0] border-[2px] border-[#4a3623] rounded-sm z-10 overflow-hidden shadow-[inset_0_4px_0_rgba(0,0,0,0.1)]">
+              </div>
 
-              {/* Top Flap */}
+              {/* Layer 5: Top Flap */}
               <motion.div
                 initial={false}
                 animate={{ rotateX: isFlapOpen ? 180 : 0, zIndex: isFlapOpen ? 15 : 70 }}
-                transition={{ type: "spring", stiffness: 100, damping: 16, mass: 1 }}
+                transition={springConfig}
                 style={{ transformOrigin: "top", willChange: "transform" }}
                 className="absolute top-0 inset-x-0 h-[55%] pointer-events-none drop-shadow-[0_4px_0_rgba(74,54,35,0.2)] flex justify-center"
               >
@@ -491,49 +445,44 @@ export default function FloatingEnvelope() {
                 </div>
               </motion.div>
 
-              {/* Inner Paper / Form */}
+              {/* Layer 2: The Inner Paper */}
               <motion.div
                 initial={false}
                 animate={{
-                  y: (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS)
-                    ? "-50%"
-                    : (isHovered && !isFormShowing(phase) ? "-35%" : "0%"),
-                  boxShadow: (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS)
-                    ? "8px 8px 0px rgba(74,54,35,0.2)"
-                    : "0 0 0 transparent",
+                  y: isPaperExpanded ? "-50%" : (isPeeking ? "-40%" : "0%"),
+                  boxShadow: isPaperExpanded ? "8px 8px 0px rgba(74,54,35,0.2)" : "0 0 0 transparent",
                 }}
                 transition={{ type: "spring", stiffness: 100, damping: 18, mass: 1.4 }}
                 className="absolute bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border-[2px] border-[#4a3623] antialiased pointer-events-auto shrink-0"
                 onClick={(e) => {
-                  if (!isFormShowing(phase) && phase !== PHASE.SUBMITTING && phase !== PHASE.SUCCESS) {
+                  if (!isExpanded) {
                     e.stopPropagation();
                     openForm();
                   }
                 }}
                 style={{
                   left: "50%",
-                  bottom: (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS) ? undefined : "12px",
-                  top: (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS) ? "50%" : undefined,
-                  width: (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS)
+                  bottom: isPaperExpanded ? undefined : "12px",
+                  top: isPaperExpanded ? "50%" : undefined,
+                  width: isPaperExpanded
                     ? (isCompactViewport ? "min(92vw, 340px)" : 440)
                     : "85%",
-                  height: (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS)
-                    ? (isCompactViewport ? "min(85vh, 580px)" : 580)
-                    : "88%",
+                  height: isPaperExpanded
+                    ? (isCompactViewport ? "min(80vh, 560px)" : 560)
+                    : "90%",
                   maxWidth: "95vw",
                   x: "-50%",
-                  cursor: isFormShowing(phase) ? "default" : "pointer",
-                  zIndex: (isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS) ? 60 : 20,
+                  cursor: isExpanded ? "default" : "pointer",
+                  zIndex: isPaperExpanded ? 60 : 20,
                   WebkitFontSmoothing: "antialiased",
                   transformOrigin: "bottom center",
                   willChange: "transform",
                 }}
               >
-                {/* Gold inner border */}
-                <div className="absolute inset-[6px] border-[2px] border-[#d4af37] pointer-events-none rounded-sm" />
+                {/* Flat Inner Border */}
+                <div className="absolute inset-[6px] border-[2px] border-[#d4af37] pointer-events-none rounded-sm"></div>
 
-                {/* Close button */}
-                {(isFormShowing(phase) || phase === PHASE.SUBMITTING || phase === PHASE.SUCCESS) && (
+                {isExpanded && submitStatus === "idle" && (
                   <button aria-label="Close enquiry form" onClick={(e) => { e.stopPropagation(); handleClose(); }} className="absolute top-3 right-3 sm:top-5 sm:right-5 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/70 backdrop-blur-md rounded-2xl p-1 sm:p-1.5 shadow-sm">
                     <X size={14} strokeWidth={1.5} className="sm:hidden" />
                     <X size={16} strokeWidth={1.5} className="hidden sm:block" />
@@ -542,7 +491,7 @@ export default function FloatingEnvelope() {
 
                 <div className="relative w-full h-full flex flex-col z-30 pt-3 sm:pt-4 pb-3 sm:pb-4">
                   <AnimatePresence mode="wait">
-                    {!isFormShowing(phase) && phase !== PHASE.SUBMITTING && phase !== PHASE.SUCCESS ? (
+                    {!isExpanded ? (
                       <motion.div
                         key="quote"
                         initial={{ opacity: 0 }}
@@ -562,27 +511,22 @@ export default function FloatingEnvelope() {
                         </div>
 
                         <p className="type-body text-[#4a3623] italic px-2 sm:px-4 whitespace-pre-line text-[12px] sm:text-sm">
-                          &ldquo;{quote}&rdquo;
+                          "{quote}"
                         </p>
                       </motion.div>
-                    ) : phase === PHASE.SUBMITTING ? (
+                    ) : submitStatus === "submitting" ? (
                       <motion.div
                         key="loading"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
                         className="w-full h-full flex flex-col items-center justify-center z-30 space-y-4 sm:space-y-5"
                       >
                         <div className="w-10 h-10 sm:w-12 sm:h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
                         <p className="font-body text-[10px] sm:text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-[#3d2a1d]">Sealing Your Enquiry...</p>
                       </motion.div>
-                    ) : phase === PHASE.SUCCESS ? (
+                    ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
                       <motion.div
                         key="success"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.9 }}
-                        transition={{ duration: 0.4 }}
+                        animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1 }}
+                        transition={{ duration: 0.3 }}
                         className="w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-8 z-30"
                       >
                         <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-5 sm:mb-6 md:mb-8 border-[2px] border-[#4a3623]">
@@ -598,10 +542,6 @@ export default function FloatingEnvelope() {
                     ) : (
                       <motion.div
                         key="form"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
                         className="z-30 flex flex-1 min-h-0 w-full flex-col px-4 py-3 sm:px-5 sm:py-4 md:px-6"
                       >
                         <header className="mb-2 sm:mb-3 text-center shrink-0">
@@ -684,36 +624,34 @@ export default function FloatingEnvelope() {
                 </div>
               </motion.div>
 
-              {/* Left & Right Flaps */}
-              <div
-                className="absolute inset-0 z-30 pointer-events-none rounded-sm overflow-hidden drop-shadow-[0_4px_0_rgba(74,54,35,0.15)]"
-                style={{ opacity: envelopeDecorOpacity, transition: "opacity 0.6s ease" }}
-              >
+              {/* Layer 3: Left & Right Flaps */}
+              <div className="absolute inset-0 z-30 pointer-events-none rounded-sm overflow-hidden drop-shadow-[0_4px_0_rgba(74,54,35,0.15)]">
                 <div className="absolute left-0 top-0 w-[55%] h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
                   <div className="absolute left-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#d4af37]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
-                    <div className="absolute left-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }} />
+                    <div className="absolute left-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
+                    </div>
                   </div>
                 </div>
                 <div className="absolute right-0 top-0 w-[55%] h-full bg-[#4a3623]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
                   <div className="absolute right-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#d4af37]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
-                    <div className="absolute right-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }} />
+                    <div className="absolute right-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(100% 0, 0 50%, 100% 100%)" }}>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Bottom Flap & Enquire Now Button */}
-              <div
-                className="absolute bottom-0 inset-x-0 h-[65%] z-40 pointer-events-none drop-shadow-[0_-4px_0_rgba(74,54,35,0.15)] flex justify-center"
-                style={{ opacity: envelopeDecorOpacity, transition: "opacity 0.6s ease" }}
-              >
+              {/* Layer 4: Bottom Flap & Button */}
+              <div className="absolute bottom-0 inset-x-0 h-[65%] z-40 pointer-events-none drop-shadow-[0_-4px_0_rgba(74,54,35,0.15)] flex justify-center">
+
                 <div className="absolute bottom-0 w-full h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
                   <div className="absolute bottom-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#d4af37]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
-                    <div className="absolute bottom-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }} />
+                    <div className="absolute bottom-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
+                    </div>
                   </div>
                 </div>
 
                 <AnimatePresence>
-                  {!isFormShowing(phase) && phase !== PHASE.SUBMITTING && phase !== PHASE.SUCCESS && (
+                  {!isExpanded && (
                     <motion.div
                       initial={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 10 }}
@@ -735,9 +673,9 @@ export default function FloatingEnvelope() {
                 </AnimatePresence>
               </div>
 
-              {/* Seal */}
+              {/* Layer 6: The Seal */}
               <AnimatePresence>
-                {!isFormShowing(phase) && phase !== PHASE.SUBMITTING && phase !== PHASE.SUCCESS && (
+                {(!isExpanded || submitStatus === "sealing_flap" || submitStatus === "departing") && (
                   <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
@@ -753,8 +691,7 @@ export default function FloatingEnvelope() {
                 )}
               </AnimatePresence>
 
-              {/* Close prompt button */}
-              {envelopePromptVisible && !isFormShowing(phase) && phase !== PHASE.SUBMITTING && phase !== PHASE.SUCCESS && (
+              {!isExpanded && (
                 <button
                   onClick={handleClose}
                   aria-label="Close enquiry prompt"
