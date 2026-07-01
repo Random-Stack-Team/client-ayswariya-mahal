@@ -379,10 +379,10 @@ export default function FloatingEnvelope() {
             )}
           </AnimatePresence>
 
-          <div
+           <div
             className={`fixed z-[101] ${
               isExpanded
-                ? "inset-0 flex items-center justify-center pointer-events-none px-4 pb-4 pt-8 sm:px-6 sm:pb-6 sm:pt-10 md:px-0 md:pb-0 md:pt-0"
+                ? "inset-0 flex items-center justify-center pointer-events-none"
                 : "bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:bottom-10 md:right-10 pointer-events-none"
             }`}
           >
@@ -436,10 +436,10 @@ export default function FloatingEnvelope() {
                 className="absolute bottom-3 bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border-[2px] border-[#4a3623] antialiased pointer-events-auto shrink-0"
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
                 style={{ 
-                  width: isPaperExpanded ? (isCompactViewport ? "min(90vw, 360px)" : 420) : "85%",
-                  height: isPaperExpanded ? (isCompactViewport ? "min(500px, 75vh)" : 500) : "90%",
+                  width: isPaperExpanded ? (isCompactViewport ? "min(92vw, 380px)" : 440) : "85%",
+                  height: isPaperExpanded ? (isCompactViewport ? "min(88vh, 600px)" : 560) : "90%",
                   maxWidth: "95vw",
-                  maxHeight: isCompactViewport ? "75vh" : "85vh",
+                  maxHeight: isCompactViewport ? "88vh" : "85vh",
                   left: "50%",
                   x: "-50%",
                   cursor: isExpanded ? "default" : "pointer",
@@ -452,13 +452,13 @@ export default function FloatingEnvelope() {
                 <div className="absolute inset-[6px] border-[2px] border-[#d4af37] pointer-events-none rounded-sm"></div>
 
                 {isExpanded && submitStatus === "idle" && (
-                  <button aria-label="Close enquiry form" onClick={(e) => { e.stopPropagation(); handleClose(); }} className="absolute top-3 right-3 sm:top-5 sm:right-5 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/70 backdrop-blur-md rounded-2xl p-1 sm:p-1.5 shadow-sm">
-                    <X size={14} strokeWidth={1.5} className="sm:hidden" />
-                    <X size={16} strokeWidth={1.5} className="hidden sm:block" />
+                  <button aria-label="Close enquiry form" onClick={(e) => { e.stopPropagation(); handleClose(); }} className="absolute top-2 right-2 sm:top-3 sm:right-3 md:top-4 md:right-4 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/70 backdrop-blur-md rounded-full p-1 sm:p-1.5 shadow-sm">
+                    <X size={12} strokeWidth={1.5} className="sm:hidden" />
+                    <X size={14} strokeWidth={1.5} className="hidden sm:block" />
                   </button>
                 )}
 
-                <div className="relative w-full h-full flex flex-col z-30 pt-4">
+                <div className="relative w-full h-full flex flex-col z-30">
                   <AnimatePresence mode="wait">
                     {!isExpanded ? (
                       <motion.div
@@ -467,11 +467,11 @@ export default function FloatingEnvelope() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                        className="flex flex-col items-center justify-start text-center pt-4 px-6 h-full"
+                        className="flex flex-col items-center justify-start text-center pt-6 px-5 h-full"
                       >
                         <div className="text-[#a67c00] mb-2"><Sparkles size={16} strokeWidth={1} /></div>
                         <h4 className="type-eyebrow text-[#4a3623] mb-1">Planning Your</h4>
-                        <h3 className="font-serif text-[#b58c2a] text-[22px] md:text-2xl tracking-[0.01em] mb-3 drop-shadow-sm font-semibold">Dream Wedding?</h3>
+                        <h3 className="font-serif text-[#b58c2a] text-[20px] md:text-2xl tracking-[0.01em] mb-3 drop-shadow-sm font-semibold">Dream Wedding?</h3>
                         
                         <div className="flex items-center justify-center gap-3 mb-4 w-full px-8">
                           <div className="h-[2px] bg-[#4a3623] flex-1"></div>
@@ -479,113 +479,116 @@ export default function FloatingEnvelope() {
                           <div className="h-[2px] bg-[#4a3623] flex-1"></div>
                         </div>
 
-                        <p className="type-body text-[#4a3623] italic px-4 whitespace-pre-line">
-                          "{quote}"
+                        <p className="type-body text-[#4a3623] italic px-4 whitespace-pre-line text-sm">
+                          &ldquo;{quote}&rdquo;
                         </p>
                       </motion.div>
                     ) : submitStatus === "submitting" ? (
                       <motion.div
                         key="loading"
-                        className="w-full h-full flex flex-col items-center justify-center z-30 space-y-5"
+                        className="w-full h-full flex flex-col items-center justify-center z-30 space-y-4"
                       >
-                        <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
-                        <p className="font-body text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-[#3d2a1d]">Sealing Petition...</p>
+                        <div className="w-10 h-10 sm:w-12 sm:h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
+                        <p className="font-body text-[10px] sm:text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-[#3d2a1d]">Sealing Petition...</p>
                       </motion.div>
                     ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
                       <motion.div
                         key="success"
                         animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1 }}
                         transition={{ duration: 0.3 }}
-                        className="w-full h-full flex flex-col items-center justify-center text-center p-8 z-30"
+                        className="w-full h-full flex flex-col items-center justify-center text-center p-6 sm:p-8 z-30"
                       >
-                        <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-8 border-[2px] border-[#4a3623]">
-                          <Heart size={20} className="text-[#4a3623] fill-[#4a3623]" />
+                        <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-6 sm:mb-8 border-[2px] border-[#4a3623]">
+                          <Heart size={16} className="text-[#4a3623] fill-[#4a3623] sm:hidden" />
+                          <Heart size={18} className="hidden sm:block text-[#4a3623] fill-[#4a3623]" />
                         </div>
-                        <h2 className="mb-4 font-display text-2xl font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Petition Received</h2>
-                        <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
-                        <p className="max-w-xs font-body text-base leading-7 tracking-[0.01em] text-[#4a3623] italic">
+                        <h2 className="mb-3 sm:mb-4 font-display text-lg sm:text-xl md:text-2xl font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Petition Received</h2>
+                        <div className="h-[2px] w-16 sm:w-20 md:w-24 bg-[#4a3623] mb-4 sm:mb-6"></div>
+                        <p className="max-w-xs font-body text-sm sm:text-base leading-6 sm:leading-7 tracking-[0.01em] text-[#4a3623] italic">
                           Your royal request has been elegantly sealed. Our Heritage Concierge will contact you shortly.
                         </p>
                       </motion.div>
                     ) : (
                       <motion.div
                         key="form"
-                        className="z-30 flex h-full w-full flex-col justify-center px-4 py-3 sm:px-5 sm:py-4"
+                        className="z-30 flex h-full w-full flex-col overflow-hidden"
                       >
-                        <header className="mb-1.5 sm:mb-2 text-center">
-                          <div className="text-[#4a3623] flex justify-center mb-0.5 sm:mb-1"><Sparkles size={14} strokeWidth={2} className="sm:hidden" /><Sparkles size={16} strokeWidth={2} className="hidden sm:block" /></div>
-                          <h2 className="font-display text-[1.1rem] sm:text-[1.3rem] md:text-[1.5rem] font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Send an Enquiry</h2>
-                          <p className="mt-0.5 font-body text-[9px] sm:text-[10px] md:text-xs leading-relaxed tracking-[0.01em] text-[#654d39]">Share your celebration details with us.</p>
-                          <div className="flex items-center justify-center gap-2 sm:gap-3 mt-1 sm:mt-1.5">
-                            <div className="w-6 sm:w-8 md:w-10 h-[1.5px] bg-[#4a3623]"></div>
-                            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rotate-45 bg-[#d4af37] border-[1.5px] sm:border-[2px] border-[#4a3623]"></div>
-                            <div className="w-6 sm:w-8 md:w-10 h-[1.5px] bg-[#4a3623]"></div>
-                          </div>
-                        </header>
-
-                        <form className="space-y-2 sm:space-y-3" onSubmit={handleSubmit} noValidate>
-                          <div className="grid grid-cols-1 gap-x-3 gap-y-2 sm:gap-y-3 md:grid-cols-2">
-                            <div className="relative group pb-4">
-                              <label htmlFor="enquiry-name" className="mb-0.5 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Honorable Name <span className="text-[#9a741d]">*</span></label>
-                              <input ref={(node) => { fieldRefs.current.name = node; }} id="enquiry-name" name="name" value={formValues.name} onChange={handleFieldChange} type="text" required minLength="2" aria-invalid={Boolean(formErrors.name)} aria-describedby={formErrors.name ? "enquiry-name-error" : undefined} className={`min-h-8 sm:min-h-9 w-full border-0 border-b-2 bg-transparent px-0.5 py-1 sm:py-1.5 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.name ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="e.g. Anand & Priya" />
-                              {formErrors.name && <p id="enquiry-name-error" className="absolute bottom-0 left-0 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.name}</p>}
+                        <div className="flex-1 overflow-y-auto px-4 py-3 sm:px-5 sm:py-4 md:px-6">
+                          <header className="mb-3 sm:mb-4 text-center">
+                            <div className="text-[#4a3623] flex justify-center mb-1 sm:mb-1.5"><Sparkles size={14} strokeWidth={2} className="sm:hidden" /><Sparkles size={16} strokeWidth={2} className="hidden sm:block" /></div>
+                            <h2 className="font-display text-[1.1rem] sm:text-[1.25rem] md:text-[1.4rem] font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Send an Enquiry</h2>
+                            <p className="mt-0.5 font-body text-[9px] sm:text-[10px] md:text-xs leading-relaxed tracking-[0.01em] text-[#654d39]">Share your celebration details with us.</p>
+                            <div className="flex items-center justify-center gap-2 sm:gap-3 mt-1.5 sm:mt-2">
+                              <div className="w-6 sm:w-8 md:w-10 h-[1.5px] bg-[#4a3623]"></div>
+                              <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 rotate-45 bg-[#d4af37] border-[1.5px] sm:border-[2px] border-[#4a3623]"></div>
+                              <div className="w-6 sm:w-8 md:w-10 h-[1.5px] bg-[#4a3623]"></div>
                             </div>
+                          </header>
 
-                            <div className="relative group pb-4">
-                              <label htmlFor="enquiry-phone" className="mb-0.5 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Mobile Number <span className="text-[#9a741d]">*</span></label>
-                              <input ref={(node) => { fieldRefs.current.phone = node; }} id="enquiry-phone" name="phone" value={formValues.phone} onChange={handleFieldChange} type="tel" inputMode="tel" autoComplete="tel" required aria-invalid={Boolean(formErrors.phone)} aria-describedby={formErrors.phone ? "enquiry-phone-error" : undefined} className={`min-h-8 sm:min-h-9 w-full border-0 border-b-2 bg-transparent px-0.5 py-1 sm:py-1.5 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.phone ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="+91 9876543210" />
-                              {formErrors.phone && <p id="enquiry-phone-error" className="absolute bottom-0 left-0 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.phone}</p>}
-                            </div>
-
-                            <div className="relative group pb-4">
-                              <label htmlFor="enquiry-email" className="mb-0.5 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Email Address <span className="text-[#9a741d]">*</span></label>
-                              <input ref={(node) => { fieldRefs.current.email = node; }} id="enquiry-email" name="email" value={formValues.email} onChange={handleFieldChange} type="email" autoComplete="email" required aria-invalid={Boolean(formErrors.email)} aria-describedby={formErrors.email ? "enquiry-email-error" : undefined} className={`min-h-8 sm:min-h-9 w-full border-0 border-b-2 bg-transparent px-0.5 py-1 sm:py-1.5 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.email ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="your@email.com" />
-                              {formErrors.email && <p id="enquiry-email-error" className="absolute bottom-0 left-0 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.email}</p>}
-                            </div>
-
-                            <div className="relative group pb-4">
-                              <label htmlFor="enquiry-date" className="mb-0.5 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Auspicious Date <span className="text-[#9a741d]">*</span></label>
+                          <form className="space-y-3 sm:space-y-4" onSubmit={handleSubmit} noValidate>
+                            <div className="grid grid-cols-1 gap-x-4 gap-y-3 sm:gap-y-4 md:grid-cols-2">
                               <div className="relative">
-                                <button ref={(node) => { fieldRefs.current.eventDate = node; }} id="enquiry-date" type="button" onClick={toggleCalendar} aria-haspopup="dialog" aria-expanded={isCalendarOpen} aria-invalid={Boolean(formErrors.eventDate)} aria-describedby={formErrors.eventDate ? "enquiry-date-error" : undefined} className={`flex min-h-8 sm:min-h-9 w-full cursor-pointer items-center border-0 border-b-2 bg-[#fbf6ea]/55 px-0.5 py-1 sm:py-1.5 pr-9 sm:pr-10 text-left font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] outline-none transition-colors focus:ring-0 ${formValues.eventDate ? "text-[#3d2a1d]" : "text-[#766858]"} ${formErrors.eventDate ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`}>
-                                  <span className="normal-case">{formatSelectedDate(formValues.eventDate)}</span>
-                                </button>
-                                <CalendarDays aria-hidden="true" size={15} strokeWidth={1.7} className="pointer-events-none absolute right-2 sm:right-2.5 top-1/2 -translate-y-1/2 text-[#9a741d] transition-colors group-focus-within:text-[#6f5012]" />
-                                <AnimatePresence>
-                                  {isCalendarOpen && calendarPosition && (
-                                    <ThemedCalendar
-                                      selectedDate={formValues.eventDate}
-                                      minimumDate={minimumEventDate}
-                                      viewMonth={calendarMonth}
-                                      onViewMonthChange={setCalendarMonth}
-                                      onSelect={handleDateSelect}
-                                      position={calendarPosition}
-                                    />
-                                  )}
-                                </AnimatePresence>
+                                <label htmlFor="enquiry-name" className="mb-1 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Honorable Name <span className="text-[#9a741d]">*</span></label>
+                                <input ref={(node) => { fieldRefs.current.name = node; }} id="enquiry-name" name="name" value={formValues.name} onChange={handleFieldChange} type="text" required minLength="2" aria-invalid={Boolean(formErrors.name)} aria-describedby={formErrors.name ? "enquiry-name-error" : undefined} className={`min-h-8 sm:min-h-9 md:min-h-10 w-full border-0 border-b-2 bg-transparent px-0.5 py-1.5 sm:py-2 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.name ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="e.g. Anand & Priya" />
+                                {formErrors.name && <p id="enquiry-name-error" className="mt-0.5 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.name}</p>}
                               </div>
-                              {formErrors.eventDate && <p id="enquiry-date-error" className="absolute bottom-0 left-0 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.eventDate}</p>}
+
+                              <div className="relative">
+                                <label htmlFor="enquiry-phone" className="mb-1 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Mobile Number <span className="text-[#9a741d]">*</span></label>
+                                <input ref={(node) => { fieldRefs.current.phone = node; }} id="enquiry-phone" name="phone" value={formValues.phone} onChange={handleFieldChange} type="tel" inputMode="tel" autoComplete="tel" required aria-invalid={Boolean(formErrors.phone)} aria-describedby={formErrors.phone ? "enquiry-phone-error" : undefined} className={`min-h-8 sm:min-h-9 md:min-h-10 w-full border-0 border-b-2 bg-transparent px-0.5 py-1.5 sm:py-2 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.phone ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="+91 9876543210" />
+                                {formErrors.phone && <p id="enquiry-phone-error" className="mt-0.5 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.phone}</p>}
+                              </div>
+
+                              <div className="relative">
+                                <label htmlFor="enquiry-email" className="mb-1 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Email Address <span className="text-[#9a741d]">*</span></label>
+                                <input ref={(node) => { fieldRefs.current.email = node; }} id="enquiry-email" name="email" value={formValues.email} onChange={handleFieldChange} type="email" autoComplete="email" required aria-invalid={Boolean(formErrors.email)} aria-describedby={formErrors.email ? "enquiry-email-error" : undefined} className={`min-h-8 sm:min-h-9 md:min-h-10 w-full border-0 border-b-2 bg-transparent px-0.5 py-1.5 sm:py-2 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.email ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="your@email.com" />
+                                {formErrors.email && <p id="enquiry-email-error" className="mt-0.5 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.email}</p>}
+                              </div>
+
+                              <div className="relative">
+                                <label htmlFor="enquiry-date" className="mb-1 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">Auspicious Date <span className="text-[#9a741d]">*</span></label>
+                                <div className="relative">
+                                  <button ref={(node) => { fieldRefs.current.eventDate = node; }} id="enquiry-date" type="button" onClick={toggleCalendar} aria-haspopup="dialog" aria-expanded={isCalendarOpen} aria-invalid={Boolean(formErrors.eventDate)} aria-describedby={formErrors.eventDate ? "enquiry-date-error" : undefined} className={`flex min-h-8 sm:min-h-9 md:min-h-10 w-full cursor-pointer items-center border-0 border-b-2 bg-[#fbf6ea]/55 px-0.5 py-1.5 sm:py-2 pr-8 sm:pr-9 md:pr-10 text-left font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] outline-none transition-colors focus:ring-0 ${formValues.eventDate ? "text-[#3d2a1d]" : "text-[#766858]"} ${formErrors.eventDate ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`}>
+                                    <span className="normal-case">{formatSelectedDate(formValues.eventDate)}</span>
+                                  </button>
+                                  <CalendarDays aria-hidden="true" size={14} strokeWidth={1.7} className="pointer-events-none absolute right-2 sm:right-2.5 top-1/2 -translate-y-1/2 text-[#9a741d] transition-colors group-focus-within:text-[#6f5012]" />
+                                  <AnimatePresence>
+                                    {isCalendarOpen && calendarPosition && (
+                                      <ThemedCalendar
+                                        selectedDate={formValues.eventDate}
+                                        minimumDate={minimumEventDate}
+                                        viewMonth={calendarMonth}
+                                        onViewMonthChange={setCalendarMonth}
+                                        onSelect={handleDateSelect}
+                                        position={calendarPosition}
+                                      />
+                                    )}
+                                  </AnimatePresence>
+                                </div>
+                                {formErrors.eventDate && <p id="enquiry-date-error" className="mt-0.5 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.eventDate}</p>}
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="relative group pb-4">
-                            <label htmlFor="enquiry-message" className="mb-0.5 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">How can we help? <span className="text-[#9a741d]">*</span></label>
-                            <textarea ref={(node) => { fieldRefs.current.message = node; }} id="enquiry-message" name="message" value={formValues.message} onChange={handleFieldChange} rows="2" required minLength="10" aria-invalid={Boolean(formErrors.message)} aria-describedby={formErrors.message ? "enquiry-message-error" : undefined} className={`min-h-10 sm:min-h-12 w-full resize-none border-0 border-b-2 bg-transparent px-0.5 py-1 sm:py-1.5 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.message ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="Tell us about your requirements..."></textarea>
-                            {formErrors.message && <p id="enquiry-message-error" className="absolute bottom-0 left-0 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.message}</p>}
-                          </div>
+                            <div className="relative">
+                              <label htmlFor="enquiry-message" className="mb-1 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">How can we help? <span className="text-[#9a741d]">*</span></label>
+                              <textarea ref={(node) => { fieldRefs.current.message = node; }} id="enquiry-message" name="message" value={formValues.message} onChange={handleFieldChange} rows="2" required minLength="10" aria-invalid={Boolean(formErrors.message)} aria-describedby={formErrors.message ? "enquiry-message-error" : undefined} className={`min-h-10 sm:min-h-12 w-full resize-none border-0 border-b-2 bg-transparent px-0.5 py-1.5 sm:py-2 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.message ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="Tell us about your requirements..."></textarea>
+                              {formErrors.message && <p id="enquiry-message-error" className="mt-0.5 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.message}</p>}
+                            </div>
 
-                          <div className="flex justify-center pt-0.5 sm:pt-1 pb-0.5">
-                            <button 
-                              type="submit" 
-                              className="relative min-h-9 sm:min-h-10 px-6 sm:px-8 py-1.5 sm:py-2 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[180px] sm:max-w-[220px]"
-                            >
-                              <div className="relative z-10 flex items-center justify-center">
-                                <span className="font-body text-[0.6rem] sm:text-[0.7rem] font-semibold uppercase leading-4 sm:leading-5 tracking-[0.1em] text-[#3d2a1d] flex items-center justify-center whitespace-nowrap">
-                                  Seal & Submit
-                                </span>
-                              </div>
-                            </button>
-                          </div>
-                        </form>
+                            <div className="flex justify-center pt-1 sm:pt-2 pb-2">
+                              <button 
+                                type="submit" 
+                                className="relative min-h-9 sm:min-h-10 md:min-h-11 px-6 sm:px-8 py-1.5 sm:py-2 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[180px] sm:max-w-[220px]"
+                              >
+                                <div className="relative z-10 flex items-center justify-center">
+                                  <span className="font-body text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem] font-semibold uppercase leading-4 sm:leading-5 tracking-[0.1em] text-[#3d2a1d] flex items-center justify-center whitespace-nowrap">
+                                    Seal & Submit
+                                  </span>
+                                </div>
+                              </button>
+                            </div>
+                          </form>
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
