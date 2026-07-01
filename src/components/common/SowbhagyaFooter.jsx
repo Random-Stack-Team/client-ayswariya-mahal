@@ -132,7 +132,7 @@ export default function SowbhagyaFooter() {
                 className="flex min-h-12 items-center gap-3 font-body text-base text-[#fdfbf7]/72 transition-colors duration-300 hover:text-[#D4A843]"
               >
                 <Phone className="h-5 w-5 shrink-0 text-[#D4A843]" aria-hidden="true" />
-                {siteConfig.contact.phonePrimary}
+                <span>{siteConfig.contact.phonePrimary} <span className="mx-1 text-[#fdfbf7]/40">/</span> {siteConfig.contact.phoneSecondary}</span>
               </a>
               <a
                 href={`mailto:${siteConfig.contact.email}`}

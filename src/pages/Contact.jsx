@@ -105,6 +105,7 @@ export default function Contact() {
                 <div>
                   <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-[#5A111C] mb-1">Phone</h4>
                   <a href={`tel:${siteConfig.contact.phonePrimary.replace(/\s/g, "")}`} className="type-body text-[#4f4038] hover:text-[#D4A843] transition-colors">{siteConfig.contact.phonePrimary}</a>
+                  <span className="mx-2 text-[#4f4038]/40">/</span>
                   <a href={`tel:${siteConfig.contact.phoneSecondary.replace(/\s/g, "").replace("/", "")}`} className="type-body text-[#4f4038] hover:text-[#D4A843] transition-colors">{siteConfig.contact.phoneSecondary}</a>
                 </div>
               </div>
@@ -125,8 +126,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-serif text-[22px] font-semibold leading-[1.2] text-[#5A111C] mb-1">Office Hours</h4>
-                  <p className="type-body text-[#4f4038]">Monday - Saturday: 9:00 AM - 7:00 PM</p>
-                  <p className="type-body text-[#4f4038]">Sunday: 10:00 AM - 2:00 PM</p>
+                  <p className="type-body text-[#4f4038]">{siteConfig.contact.officeHours}</p>
                 </div>
               </div>
             </div>

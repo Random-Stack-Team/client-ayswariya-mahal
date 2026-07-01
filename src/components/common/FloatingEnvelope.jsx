@@ -62,7 +62,7 @@ function ThemedCalendar({ selectedDate, minimumDate, viewMonth, onViewMonthChang
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, y: 4, scale: 0.98 }}
       transition={{ duration: 0.18, ease: "easeOut" }}
-      className="fixed z-[140] rounded-xl border border-[#b58c2a]/45 bg-[#fffaf0] p-3 shadow-[0_16px_38px_rgba(61,42,29,0.24)]"
+      className="fixed z-[250] rounded-xl border border-[#b58c2a]/45 bg-[#fffaf0] p-3 shadow-[0_16px_38px_rgba(61,42,29,0.24)]"
       style={{ left: position.left, top: position.top, width: position.width }}
       role="dialog"
       aria-label="Choose event date"
@@ -333,9 +333,10 @@ export default function FloatingEnvelope() {
         const width = Math.min(288, window.innerWidth - 24);
         const estimatedHeight = 300;
         const spaceBelow = window.innerHeight - fieldRect.bottom - 12;
-        const top = spaceBelow >= estimatedHeight
-          ? fieldRect.bottom + 8
-          : Math.max(12, fieldRect.top - estimatedHeight - 8);
+        const preferAbove = isCompactViewport || spaceBelow < estimatedHeight;
+        const top = preferAbove
+          ? Math.max(12, fieldRect.top - estimatedHeight - 8)
+          : fieldRect.bottom + 8;
         const left = Math.min(
           Math.max(12, fieldRect.right - width),
           window.innerWidth - width - 12
@@ -357,6 +358,7 @@ export default function FloatingEnvelope() {
 
   const isPaperExpanded = isExpanded && submitStatus !== "sealing_paper" && submitStatus !== "sealing_flap" && submitStatus !== "departing";
   const isFlapOpen = submitStatus !== "sealing_flap" && submitStatus !== "departing";
+  const isMobileClosing = isCompactViewport && !isPaperExpanded && isExpanded;
 
   const springConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
   const paperSpringConfig = { duration: 0.8, ease: [0.16, 1, 0.3, 1] };
@@ -379,7 +381,141 @@ export default function FloatingEnvelope() {
             )}
           </AnimatePresence>
 
-          <div
+          {isExpanded && isCompactViewport && createPortal(
+            <motion.div
+              initial={{ opacity: 0, y: 40, scale: 0.95 }}
+              animate={
+                submitStatus === "sealing_paper" || submitStatus === "sealing_flap"
+                  ? { opacity: 0, y: 0, scale: 0.95 }
+                  : submitStatus === "departing"
+                    ? { opacity: 0, y: -60, scale: 0.8 }
+                    : { opacity: 1, y: 0, scale: 1 }
+              }
+              exit={{ opacity: 0, y: 40, scale: 0.95 }}
+              transition={paperSpringConfig}
+              className="fixed inset-0 z-[200] flex items-center justify-center p-4 pointer-events-auto"
+            >
+              <div className="relative bg-[#fdfbf7] flex flex-col rounded-sm overflow-y-auto border-[2px] border-[#4a3623] antialiased w-full max-w-[360px] max-h-[calc(100dvh-32px)] shadow-[8px_8px_0_rgba(74,54,35,0.2)]" style={{ WebkitFontSmoothing: "antialiased" }}>
+                <div className="absolute inset-[6px] border-[2px] border-[#d4af37] pointer-events-none rounded-sm"></div>
+
+                {submitStatus === "idle" && (
+                  <button aria-label="Close enquiry form" onClick={(e) => { e.stopPropagation(); handleClose(); }} className="absolute top-3 right-3 text-[#d4af37] hover:text-[#4a3623] z-50 transition-colors bg-white/70 backdrop-blur-md rounded-2xl p-1.5 shadow-sm">
+                    <X size={16} strokeWidth={1.5} />
+                  </button>
+                )}
+
+                <div className="relative w-full flex flex-col z-30 px-5 pb-5 pt-2">
+                  <AnimatePresence mode="wait">
+                    {submitStatus === "submitting" ? (
+                      <motion.div
+                        key="loading"
+                        className="w-full flex flex-col items-center justify-center z-30 space-y-5 py-16"
+                      >
+                        <div className="w-12 h-12 border-[3px] border-[#4a3623]/20 border-t-[#4a3623] rounded-full animate-spin"></div>
+                        <p className="font-body text-xs font-semibold uppercase leading-5 tracking-[0.14em] text-[#3d2a1d]">Sealing Petition...</p>
+                      </motion.div>
+                    ) : submitStatus === "success" || submitStatus.startsWith("sealing") || submitStatus === "departing" ? (
+                      <motion.div
+                        key="success"
+                        animate={{ opacity: submitStatus.startsWith("sealing") || submitStatus === "departing" ? 0 : 1 }}
+                        transition={{ duration: 0.3 }}
+                        className="w-full flex flex-col items-center justify-center text-center p-8 z-30 py-16"
+                      >
+                        <div className="w-16 h-16 rounded-full bg-[#d4af37] flex items-center justify-center shadow-[4px_4px_0_#4a3623] mb-8 border-[2px] border-[#4a3623]">
+                          <Heart size={20} className="text-[#4a3623] fill-[#4a3623]" />
+                        </div>
+                        <h2 className="mb-4 font-display text-2xl font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d]">Petition Received</h2>
+                        <div className="h-[2px] w-24 bg-[#4a3623] mb-6"></div>
+                        <p className="max-w-xs font-body text-base leading-7 tracking-[0.01em] text-[#4a3623] italic">
+                          Your royal request has been elegantly sealed. Our Heritage Concierge will contact you shortly.
+                        </p>
+                      </motion.div>
+                    ) : (
+                      <motion.div
+                        key="form"
+                        className="z-30 flex w-full flex-col overflow-y-auto px-1 pt-2"
+                      >
+                        <header className="mb-2 text-center">
+                          <div className="text-[#4a3623] flex justify-center mb-2"><Sparkles size={14} strokeWidth={2} /></div>
+                          <h2 className="font-display font-semibold leading-tight tracking-[-0.01em] text-[#3d2a1d] text-xl">Send an Enquiry</h2>
+                          <p className="font-body leading-relaxed tracking-[0.01em] text-[#654d39] mt-1 text-xs">Share your celebration details with us.</p>
+                          <div className="flex items-center justify-center gap-3 mt-2">
+                            <div className="w-8 h-[2px] bg-[#4a3623]"></div>
+                            <div className="w-1.5 h-1.5 rotate-45 bg-[#d4af37] border-[2px] border-[#4a3623]"></div>
+                            <div className="w-8 h-[2px] bg-[#4a3623]"></div>
+                          </div>
+                        </header>
+
+                        <form className="space-y-3" onSubmit={handleSubmit} noValidate>
+                          <div className="grid grid-cols-1 gap-y-3">
+                            <div className="relative group">
+                              <label htmlFor="mob-enquiry-name" className="block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] mb-1 text-[0.6rem] leading-4">Honorable Name <span className="text-[#9a741d]">*</span></label>
+                              <input ref={(node) => { fieldRefs.current.name = node; }} id="mob-enquiry-name" name="name" value={formValues.name} onChange={handleFieldChange} type="text" required minLength="2" aria-invalid={Boolean(formErrors.name)} aria-describedby={formErrors.name ? "mob-enquiry-name-error" : undefined} className="min-h-9 py-1.5 text-sm w-full border-0 border-b-2 bg-transparent px-1 font-body font-medium leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 border-[#4a3623]/35 focus:border-[#9a741d]" placeholder="e.g. Anand & Priya" />
+                              {formErrors.name && <p id="mob-enquiry-name-error" className="font-body font-medium leading-4 text-[#9f2f2f] mt-0.5 text-[0.6rem]">{formErrors.name}</p>}
+                            </div>
+
+                            <div className="relative group">
+                              <label htmlFor="mob-enquiry-phone" className="block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] mb-1 text-[0.6rem] leading-4">Mobile Number <span className="text-[#9a741d]">*</span></label>
+                              <input ref={(node) => { fieldRefs.current.phone = node; }} id="mob-enquiry-phone" name="phone" value={formValues.phone} onChange={handleFieldChange} type="tel" inputMode="tel" autoComplete="tel" required aria-invalid={Boolean(formErrors.phone)} aria-describedby={formErrors.phone ? "mob-enquiry-phone-error" : undefined} className="min-h-9 py-1.5 text-sm w-full border-0 border-b-2 bg-transparent px-1 font-body font-medium leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 border-[#4a3623]/35 focus:border-[#9a741d]" placeholder="+91 9876543210" />
+                              {formErrors.phone && <p id="mob-enquiry-phone-error" className="font-body font-medium leading-4 text-[#9f2f2f] mt-0.5 text-[0.6rem]">{formErrors.phone}</p>}
+                            </div>
+
+                            <div className="relative group">
+                              <label htmlFor="mob-enquiry-email" className="block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] mb-1 text-[0.6rem] leading-4">Email Address <span className="text-[#9a741d]">*</span></label>
+                              <input ref={(node) => { fieldRefs.current.email = node; }} id="mob-enquiry-email" name="email" value={formValues.email} onChange={handleFieldChange} type="email" autoComplete="email" required aria-invalid={Boolean(formErrors.email)} aria-describedby={formErrors.email ? "mob-enquiry-email-error" : undefined} className="min-h-9 py-1.5 text-sm w-full border-0 border-b-2 bg-transparent px-1 font-body font-medium leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 border-[#4a3623]/35 focus:border-[#9a741d]" placeholder="your@email.com" />
+                              {formErrors.email && <p id="mob-enquiry-email-error" className="font-body font-medium leading-4 text-[#9f2f2f] mt-0.5 text-[0.6rem]">{formErrors.email}</p>}
+                            </div>
+
+                            <div className="relative group">
+                              <label htmlFor="mob-enquiry-date" className="block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] mb-1 text-[0.6rem] leading-4">Auspicious Date <span className="text-[#9a741d]">*</span></label>
+                              <div className="relative">
+                                <button ref={(node) => { fieldRefs.current.eventDate = node; }} id="mob-enquiry-date" type="button" onClick={toggleCalendar} aria-haspopup="dialog" aria-expanded={isCalendarOpen} aria-invalid={Boolean(formErrors.eventDate)} aria-describedby={formErrors.eventDate ? "mob-enquiry-date-error" : undefined} className={`flex w-full cursor-pointer items-center border-0 border-b-2 bg-[#fbf6ea]/55 px-1 pr-9 text-left font-body font-medium leading-5 tracking-[0.01em] outline-none transition-colors focus:ring-0 min-h-9 py-1.5 text-sm ${formValues.eventDate ? "text-[#3d2a1d]" : "text-[#766858]"} ${formErrors.eventDate ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`}>
+                                  <span className="normal-case">{formatSelectedDate(formValues.eventDate)}</span>
+                                </button>
+                                <CalendarDays aria-hidden="true" size={15} strokeWidth={1.7} className="pointer-events-none absolute right-2.5 top-1/2 -translate-y-1/2 text-[#9a741d] transition-colors group-focus-within:text-[#6f5012]" />
+                                <AnimatePresence>
+                                  {isCalendarOpen && calendarPosition && (
+                                    <ThemedCalendar
+                                      selectedDate={formValues.eventDate}
+                                      minimumDate={minimumEventDate}
+                                      viewMonth={calendarMonth}
+                                      onViewMonthChange={setCalendarMonth}
+                                      onSelect={handleDateSelect}
+                                      position={calendarPosition}
+                                    />
+                                  )}
+                                </AnimatePresence>
+                              </div>
+                              {formErrors.eventDate && <p id="mob-enquiry-date-error" className="font-body font-medium leading-4 text-[#9f2f2f] mt-0.5 text-[0.6rem]">{formErrors.eventDate}</p>}
+                            </div>
+                          </div>
+
+                          <div className="relative group">
+                            <label htmlFor="mob-enquiry-message" className="block font-body font-semibold uppercase tracking-[0.12em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d] mb-1 text-[0.6rem] leading-4">How can we help? <span className="text-[#9a741d]">*</span></label>
+                            <textarea ref={(node) => { fieldRefs.current.message = node; }} id="mob-enquiry-message" name="message" value={formValues.message} onChange={handleFieldChange} rows={1} required minLength="10" aria-invalid={Boolean(formErrors.message)} aria-describedby={formErrors.message ? "mob-enquiry-message-error" : undefined} className="min-h-9 py-1.5 text-sm w-full resize-none border-0 border-b-2 bg-transparent px-1 font-body font-medium leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 border-[#4a3623]/35 focus:border-[#9a741d]" placeholder="Tell us about your requirements..."></textarea>
+                            {formErrors.message && <p id="mob-enquiry-message-error" className="font-body font-medium leading-4 text-[#9f2f2f] mt-0.5 text-[0.6rem]">{formErrors.message}</p>}
+                          </div>
+
+                          <div className="flex justify-center pt-1 pb-1">
+                            <button type="submit" className="relative group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full min-h-10 px-6 py-2 max-w-[200px]">
+                              <div className="relative z-10 flex items-center justify-center">
+                                <span className="font-body font-semibold uppercase tracking-[0.12em] text-[#3d2a1d] flex items-center justify-center whitespace-nowrap text-[0.65rem] leading-4">
+                                  Seal & Submit
+                                </span>
+                              </div>
+                            </button>
+                          </div>
+                        </form>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </div>
+            </motion.div>,
+            document.body
+          )}
+
+           <div
             className={`fixed z-[101] ${
               isExpanded
                 ? "inset-0 flex items-center justify-center pointer-events-none"
@@ -401,17 +537,17 @@ export default function FloatingEnvelope() {
               className="relative pointer-events-auto h-[180px] w-[280px] md:h-[210px] md:w-[340px]"
               style={{ perspective: 1200 }}
             >
-              {/* Layer 1: Back of Envelope (Inside) */}
-              <div className="absolute inset-0 bg-[#e0d0b0] border-[2px] border-[#4a3623] rounded-sm z-10 overflow-hidden shadow-[inset_0_4px_0_rgba(0,0,0,0.1)]">
+              {/* Layer 1: Back of Envelope (Inside) - hidden on mobile when expanded */}
+              <div className={`absolute inset-0 bg-[#e0d0b0] border-[2px] border-[#4a3623] rounded-sm z-10 overflow-hidden shadow-[inset_0_4px_0_rgba(0,0,0,0.1)] ${isExpanded && isCompactViewport && !isMobileClosing ? "hidden" : ""}`}>
               </div>
 
-              {/* Layer 5: Top Flap */}
+              {/* Layer 5: Top Flap - hidden on mobile when expanded */}
               <motion.div
                 initial={false}
                 animate={{ rotateX: isFlapOpen ? 180 : 0, zIndex: isFlapOpen ? 15 : 70 }}
                 transition={springConfig}
                 style={{ transformOrigin: "top" }}
-                className="absolute top-0 inset-x-0 h-[55%] pointer-events-none drop-shadow-[0_4px_0_rgba(74,54,35,0.2)] flex justify-center"
+                className={`absolute top-0 inset-x-0 h-[55%] pointer-events-none drop-shadow-[0_4px_0_rgba(74,54,35,0.2)] flex justify-center ${isExpanded && isCompactViewport && !isMobileClosing ? "hidden" : ""}`}
               >
                 <div className="absolute w-full h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
                   <div className="absolute top-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#d4af37]" style={{ clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}>
@@ -445,7 +581,8 @@ export default function FloatingEnvelope() {
                   cursor: isExpanded ? "default" : "pointer",
                   zIndex: isPaperExpanded ? 60 : 20,
                   WebkitFontSmoothing: "antialiased",
-                  transformOrigin: "bottom center"
+                  transformOrigin: "bottom center",
+                  display: isPaperExpanded && isCompactViewport ? "none" : undefined,
                 }}
               >
                 {/* Flat Inner Border */}
@@ -458,6 +595,7 @@ export default function FloatingEnvelope() {
                 )}
 
                 <div className="relative w-full h-full flex flex-col z-30 pt-4">
+                  {!(isPaperExpanded && isCompactViewport) && (
                   <AnimatePresence mode="wait">
                     {!isExpanded ? (
                       <motion.div
@@ -586,13 +724,14 @@ export default function FloatingEnvelope() {
                           </div>
                         </form>
                       </motion.div>
-                    )}
+                  )}
                   </AnimatePresence>
+                  )}
                 </div>
               </motion.div>
 
-              {/* Layer 3: Left & Right Flaps */}
-              <div className="absolute inset-0 z-30 pointer-events-none rounded-sm overflow-hidden drop-shadow-[0_4px_0_rgba(74,54,35,0.15)]">
+              {/* Layer 3: Left & Right Flaps - hidden on mobile when expanded */}
+              <div className={`absolute inset-0 z-30 pointer-events-none rounded-sm overflow-hidden drop-shadow-[0_4px_0_rgba(74,54,35,0.15)] ${isExpanded && isCompactViewport && !isMobileClosing ? "hidden" : ""}`}>
                 <div className="absolute left-0 top-0 w-[55%] h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
                   <div className="absolute left-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#d4af37]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
                     <div className="absolute left-0 top-[2px] bottom-[2px] w-[calc(100%-3px)] h-[calc(100%-4px)] bg-[#fdfbf7]" style={{ clipPath: "polygon(0 0, 100% 50%, 0 100%)" }}>
@@ -607,8 +746,8 @@ export default function FloatingEnvelope() {
                 </div>
               </div>
 
-              {/* Layer 4: Bottom Flap & Button */}
-              <div className="absolute bottom-0 inset-x-0 h-[65%] z-40 pointer-events-none drop-shadow-[0_-4px_0_rgba(74,54,35,0.15)] flex justify-center">
+              {/* Layer 4: Bottom Flap & Button - hidden on mobile when expanded */}
+              <div className={`absolute bottom-0 inset-x-0 h-[65%] z-40 pointer-events-none drop-shadow-[0_-4px_0_rgba(74,54,35,0.15)] flex justify-center ${isExpanded && isCompactViewport && !isMobileClosing ? "hidden" : ""}`}>
                 
                 <div className="absolute bottom-0 w-full h-full bg-[#4a3623]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
                   <div className="absolute bottom-0 left-[2px] right-[2px] w-[calc(100%-4px)] h-[calc(100%-2px)] bg-[#d4af37]" style={{ clipPath: "polygon(0 100%, 50% 0, 100% 100%)" }}>
@@ -639,10 +778,10 @@ export default function FloatingEnvelope() {
                       </button>
                     </motion.div>
                   )}
-                </AnimatePresence>
+                  </AnimatePresence>
               </div>
 
-              {/* Layer 6: The Seal */}
+              {/* Layer 6: The Seal - hidden on mobile when expanded */}
               <AnimatePresence>
                 {(!isExpanded || submitStatus === "sealing_flap" || submitStatus === "departing") && (
                   <motion.div 
@@ -650,7 +789,7 @@ export default function FloatingEnvelope() {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#d4af37] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[3px_3px_0_rgba(74,54,35,0.3)] border-[2px] border-[#4a3623]"
+                    className={`absolute top-[55%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 bg-[#d4af37] rounded-full flex items-center justify-center z-[80] pointer-events-none shadow-[3px_3px_0_rgba(74,54,35,0.3)] border-[2px] border-[#4a3623] ${isExpanded && isCompactViewport && !isMobileClosing ? "hidden" : ""}`}
                   >
                     <div className="w-[36px] h-[36px] rounded-full border-[2px] border-[#4a3623] flex flex-col items-center justify-center bg-[#fdfbf7] overflow-hidden p-0.5">
                       <img src={coupleIllustration} alt="Seal" loading="lazy" decoding="async" width="150" height="150" className="w-full h-full object-contain" />
