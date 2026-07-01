@@ -435,11 +435,11 @@ export default function FloatingEnvelope() {
                 transition={paperSpringConfig}
                 className="absolute bottom-3 bg-[#fdfbf7] flex flex-col rounded-sm overflow-hidden border-[2px] border-[#4a3623] antialiased pointer-events-auto shrink-0"
                 onClick={(e) => { if (!isExpanded) { e.stopPropagation(); openForm(); } }}
-                style={{ 
-                  width: isPaperExpanded ? (isCompactViewport ? "min(92vw, 380px)" : 440) : "85%",
-                  height: isPaperExpanded ? (isCompactViewport ? "min(88vh, 600px)" : 560) : "90%",
-                  maxWidth: "95vw",
-                  maxHeight: isCompactViewport ? "88vh" : "85vh",
+                  style={{ 
+                    width: isPaperExpanded ? (isCompactViewport ? "min(92vw, 340px)" : 440) : "85%",
+                    height: isPaperExpanded ? (isCompactViewport ? "min(72vh, 480px)" : 560) : "90%",
+                    maxWidth: "95vw",
+                    maxHeight: isCompactViewport ? "72vh" : "85vh",
                   left: "50%",
                   x: "-50%",
                   cursor: isExpanded ? "default" : "pointer",
@@ -571,14 +571,14 @@ export default function FloatingEnvelope() {
 
                             <div className="relative">
                               <label htmlFor="enquiry-message" className="mb-1 block font-body text-[0.6rem] sm:text-[0.65rem] font-semibold uppercase leading-3 sm:leading-4 tracking-[0.1em] text-[#4a3623] transition-colors group-focus-within:text-[#9a741d]">How can we help? <span className="text-[#9a741d]">*</span></label>
-                              <textarea ref={(node) => { fieldRefs.current.message = node; }} id="enquiry-message" name="message" value={formValues.message} onChange={handleFieldChange} rows="2" required minLength="10" aria-invalid={Boolean(formErrors.message)} aria-describedby={formErrors.message ? "enquiry-message-error" : undefined} className={`min-h-10 sm:min-h-12 w-full resize-none border-0 border-b-2 bg-transparent px-0.5 py-1.5 sm:py-2 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.message ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="Tell us about your requirements..."></textarea>
+                              <textarea ref={(node) => { fieldRefs.current.message = node; }} id="enquiry-message" name="message" value={formValues.message} onChange={handleFieldChange} rows="1" required minLength="10" aria-invalid={Boolean(formErrors.message)} aria-describedby={formErrors.message ? "enquiry-message-error" : undefined} className={`min-h-8 sm:min-h-10 md:min-h-12 w-full resize-none border-0 border-b-2 bg-transparent px-0.5 py-1.5 sm:py-2 font-body text-xs sm:text-sm font-medium leading-4 sm:leading-5 tracking-[0.01em] text-[#3d2a1d] outline-none transition-colors placeholder:text-[#766858] focus:ring-0 ${formErrors.message ? "border-[#9f2f2f]" : "border-[#4a3623]/35 focus:border-[#9a741d]"}`} placeholder="Tell us about your requirements..."></textarea>
                               {formErrors.message && <p id="enquiry-message-error" className="mt-0.5 font-body text-[0.55rem] sm:text-[0.6rem] font-medium leading-3 text-[#9f2f2f]">{formErrors.message}</p>}
                             </div>
 
                             <div className="flex justify-center pt-1 sm:pt-2 pb-2">
                               <button 
                                 type="submit" 
-                                className="relative min-h-9 sm:min-h-10 md:min-h-11 px-6 sm:px-8 py-1.5 sm:py-2 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[180px] sm:max-w-[220px]"
+                                className="relative min-h-8 sm:min-h-10 md:min-h-11 px-5 sm:px-8 py-1.5 sm:py-2 group bg-[#d4af37] rounded-full shadow-[0_4px_15px_rgba(212,175,55,0.4)] hover:shadow-[0_6px_20px_rgba(212,175,55,0.6)] hover:-translate-y-0.5 transition-all duration-300 w-full max-w-[160px] sm:max-w-[220px]"
                               >
                                 <div className="relative z-10 flex items-center justify-center">
                                   <span className="font-body text-[0.6rem] sm:text-[0.7rem] md:text-[0.75rem] font-semibold uppercase leading-4 sm:leading-5 tracking-[0.1em] text-[#3d2a1d] flex items-center justify-center whitespace-nowrap">
