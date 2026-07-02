@@ -96,7 +96,7 @@ function Navbar() {
             solidNav ? "min-h-[68px] md:min-h-[76px]" : "min-h-[76px] md:min-h-[88px]"
           }`}
         >
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className={`flex items-center gap-2 sm:gap-3 ${isMobileMenuOpen ? "invisible" : ""}`}>
             <button
               onClick={handleAyswariyaClick}
               className={`group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2`}
@@ -109,7 +109,7 @@ function Navbar() {
                 fetchPriority="high"
                 width="654"
                 height="293"
-                className={`relative z-10 h-8 min-h-8 w-auto max-w-[110px] object-contain transition duration-700 sm:h-9 sm:min-h-9 sm:max-w-[130px] md:h-[44px] md:min-h-[44px] md:max-w-[150px] lg:h-[60px] lg:min-h-[60px] lg:max-w-none ${
+                className={`relative z-10 h-10 min-h-10 w-auto max-w-[130px] object-contain transition duration-700 sm:h-11 sm:min-h-11 sm:max-w-[150px] md:h-[48px] md:min-h-[48px] md:max-w-[170px] lg:h-[60px] lg:min-h-[60px] lg:max-w-none ${
                   solidNav
                     ? "drop-shadow-[0_5px_12px_rgba(90,17,28,0.1)]"
                     : "brightness-[1.22] drop-shadow-[0_8px_22px_rgba(0,0,0,0.36)]"
@@ -130,7 +130,7 @@ function Navbar() {
                 loading="eager"
                 width="654"
                 height="293"
-                className={`relative z-10 h-8 min-h-8 w-auto max-w-[110px] object-contain transition duration-700 sm:h-9 sm:min-h-9 sm:max-w-[130px] md:h-[44px] md:min-h-[44px] md:max-w-[150px] ${
+                className={`relative z-10 h-10 min-h-10 w-auto max-w-[130px] object-contain transition duration-700 sm:h-11 sm:min-h-11 sm:max-w-[150px] md:h-[48px] md:min-h-[48px] md:max-w-[170px] ${
                   solidNav
                     ? "drop-shadow-[0_5px_12px_rgba(90,17,28,0.1)]"
                     : "brightness-[1.22] drop-shadow-[0_8px_22px_rgba(0,0,0,0.36)]"
@@ -206,9 +206,15 @@ function Navbar() {
                 <div className="flex h-full flex-col justify-between px-5 py-6 sm:px-7 sm:py-9">
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <button onClick={handleAyswariyaClick}>
-                        <img src={ayswariyaLogo} alt="Ayswariya Mahal" className="h-11 w-auto" />
-                      </button>
+                      <div className="flex items-center gap-3">
+                        <button onClick={handleAyswariyaClick}>
+                          <img src={ayswariyaLogo} alt="Ayswariya Mahal" className="h-10 w-auto" />
+                        </button>
+                        <div className="h-5 w-px bg-[#d4af37]/50" aria-hidden="true" />
+                        <button onClick={handleSowbhagyaClick}>
+                          <img src={sowbhagyaLogo} alt="Sowbhagya Mahal" className="h-10 w-auto" />
+                        </button>
+                      </div>
                       <button
                         onClick={() => setIsMobileMenuOpen(false)}
                         className="grid h-11 w-11 place-items-center text-[#5A111C]/70 hover:text-[#5A111C] transition-colors rounded-full hover:bg-[#d4af37]/10"
