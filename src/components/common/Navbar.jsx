@@ -98,7 +98,7 @@ function Navbar() {
         >
           <button
             onClick={handleAyswariyaClick}
-            className={`group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 ${isMobileMenuOpen ? "invisible" : ""} lg:visible`}
+            className={`group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:visible`}
             aria-label="Ayswariya Mahal home"
           >
             <img
@@ -116,7 +116,7 @@ function Navbar() {
             />
           </button>
 
-          <nav className="hidden items-center justify-center gap-6 lg:flex xl:gap-8">
+          <nav className="hidden items-center justify-center gap-8 lg:flex xl:gap-11">
             {links.map((link) => (
               <NavLink key={link.to} to={link.to} className={linkClass}>
                 {link.label}
@@ -127,7 +127,7 @@ function Navbar() {
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               onClick={handleSowbhagyaClick}
-              className={`group relative min-h-11 justify-self-end px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 ${isMobileMenuOpen ? "invisible" : ""} lg:visible`}
+              className={`group relative min-h-11 justify-self-end px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:visible`}
               aria-label="Sowbhagya Mahal"
             >
               <img
@@ -136,7 +136,7 @@ function Navbar() {
                 loading="eager"
                 width="654"
                 height="293"
-                className={`relative z-10 h-9 min-h-9 w-auto object-contain transition duration-700 sm:h-10 md:h-[46px] lg:h-[56px] ${
+                className={`relative z-10 h-10 min-h-10 w-auto object-contain transition duration-700 sm:h-11 md:h-[52px] lg:h-[60px] ${
                   solidNav
                     ? "drop-shadow-[0_5px_12px_rgba(90,17,28,0.1)]"
                     : "brightness-[1.22] drop-shadow-[0_8px_22px_rgba(0,0,0,0.36)]"
@@ -146,7 +146,7 @@ function Navbar() {
 
             <button
               onClick={() => setIsMobileMenuOpen((open) => !open)}
-              className={`grid h-11 w-11 place-items-center rounded-full border justify-self-end transition-colors duration-300 lg:hidden ${isMobileMenuOpen ? "invisible" : ""} ${
+              className={`grid h-11 w-11 place-items-center rounded-full border justify-self-end transition-colors duration-300 lg:hidden ${
                 solidNav
                   ? "border-[#d4af37]/45 bg-white/35 text-[#4a3623]"
                   : "border-white/24 bg-white/10 text-white backdrop-blur-md"
