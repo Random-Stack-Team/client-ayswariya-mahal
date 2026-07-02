@@ -92,29 +92,52 @@ function Navbar() {
         }`}
       >
         <div
-          className={`mx-auto grid w-full max-w-[1320px] items-center gap-4 px-4 transition-[min-height] duration-700 sm:px-5 md:px-8 lg:px-10 xl:px-12 grid-cols-[auto_1fr] lg:grid-cols-[auto_1fr_auto] ${
+          className={`mx-auto grid w-full max-w-[1320px] items-center gap-4 px-4 transition-[min-height] duration-700 sm:px-5 md:px-8 lg:px-10 xl:px-12 grid-cols-[auto_1fr_auto] ${
             solidNav ? "min-h-[68px] md:min-h-[76px]" : "min-h-[76px] md:min-h-[88px]"
           }`}
         >
-          <button
-            onClick={handleAyswariyaClick}
-            className={`group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:visible`}
-            aria-label="Ayswariya Mahal home"
-          >
-            <img
-              src={ayswariyaLogo}
-              alt="Ayswariya Mahal"
-              loading="eager"
-              fetchPriority="high"
-              width="654"
-              height="293"
-              className={`relative z-10 h-8 min-h-8 w-auto max-w-[110px] object-contain transition duration-700 sm:h-9 sm:min-h-9 sm:max-w-[130px] md:h-[44px] md:min-h-[44px] md:max-w-[150px] lg:h-[60px] lg:min-h-[60px] lg:max-w-none ${
-                solidNav
-                  ? "drop-shadow-[0_5px_12px_rgba(90,17,28,0.1)]"
-                  : "brightness-[1.22] drop-shadow-[0_8px_22px_rgba(0,0,0,0.36)]"
-              }`}
-            />
-          </button>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={handleAyswariyaClick}
+              className={`group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2`}
+              aria-label="Ayswariya Mahal home"
+            >
+              <img
+                src={ayswariyaLogo}
+                alt="Ayswariya Mahal"
+                loading="eager"
+                fetchPriority="high"
+                width="654"
+                height="293"
+                className={`relative z-10 h-8 min-h-8 w-auto max-w-[110px] object-contain transition duration-700 sm:h-9 sm:min-h-9 sm:max-w-[130px] md:h-[44px] md:min-h-[44px] md:max-w-[150px] lg:h-[60px] lg:min-h-[60px] lg:max-w-none ${
+                  solidNav
+                    ? "drop-shadow-[0_5px_12px_rgba(90,17,28,0.1)]"
+                    : "brightness-[1.22] drop-shadow-[0_8px_22px_rgba(0,0,0,0.36)]"
+                }`}
+              />
+            </button>
+
+            <div className="h-5 w-px bg-[#d4af37]/50 lg:hidden" aria-hidden="true" />
+
+            <button
+              onClick={handleSowbhagyaClick}
+              className={`group relative min-h-11 px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:hidden`}
+              aria-label="Sowbhagya Mahal"
+            >
+              <img
+                src={sowbhagyaLogo}
+                alt="Sowbhagya Mahal"
+                loading="eager"
+                width="654"
+                height="293"
+                className={`relative z-10 h-8 min-h-8 w-auto max-w-[110px] object-contain transition duration-700 sm:h-9 sm:min-h-9 sm:max-w-[130px] md:h-[44px] md:min-h-[44px] md:max-w-[150px] ${
+                  solidNav
+                    ? "drop-shadow-[0_5px_12px_rgba(90,17,28,0.1)]"
+                    : "brightness-[1.22] drop-shadow-[0_8px_22px_rgba(0,0,0,0.36)]"
+                }`}
+              />
+            </button>
+          </div>
 
           <nav className="hidden items-center justify-center gap-8 lg:flex xl:gap-11">
             {links.map((link) => (
@@ -127,7 +150,7 @@ function Navbar() {
           <div className="flex items-center justify-end gap-2 sm:gap-3">
             <button
               onClick={handleSowbhagyaClick}
-              className={`group relative min-h-11 justify-self-end px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:visible`}
+              className={`group relative min-h-11 px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 hidden lg:block`}
               aria-label="Sowbhagya Mahal"
             >
               <img
@@ -136,15 +159,13 @@ function Navbar() {
                 loading="eager"
                 width="654"
                 height="293"
-                className={`relative z-10 h-8 min-h-8 w-auto max-w-[110px] object-contain transition duration-700 sm:h-9 sm:min-h-9 sm:max-w-[130px] md:h-[44px] md:min-h-[44px] md:max-w-[150px] lg:h-[60px] lg:min-h-[60px] lg:max-w-none ${
+                className={`relative z-10 h-[60px] min-h-[60px] w-auto object-contain transition duration-700 ${
                   solidNav
                     ? "drop-shadow-[0_5px_12px_rgba(90,17,28,0.1)]"
                     : "brightness-[1.22] drop-shadow-[0_8px_22px_rgba(0,0,0,0.36)]"
                 }`}
               />
             </button>
-
-            <div className="h-5 w-px bg-[#d4af37]/50 lg:hidden" aria-hidden="true" />
 
             <button
               onClick={() => setIsMobileMenuOpen((open) => !open)}
