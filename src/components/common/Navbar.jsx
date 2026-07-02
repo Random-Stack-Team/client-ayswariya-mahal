@@ -15,9 +15,6 @@ const links = [
   { to: "/contact", label: "Enquiry" },
 ];
 
-const leftLinks = links.slice(0, 3);
-const rightLinks = links.slice(3);
-
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,12 +24,8 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { openForm } = useEnquiry();
   const isHome = location.pathname === "/";
-  const isSowbhagya = location.pathname === "/sowbhagya-mahal";
   const navVisible = isMobileMenuOpen || !isScrolled || isScrollingUp;
   const solidNav = isScrolled || isMobileMenuOpen || !isHome;
-  const logoImg = isSowbhagya ? sowbhagyaLogo : ayswariyaLogo;
-  const logoAlt = isSowbhagya ? "Sowbhagya Mahal" : "Ayswariya Mahal";
-  const logoAriaLabel = isSowbhagya ? "Sowbhagya Mahal home" : "Ayswariya Mahal home";
 
   const scrollState = useRef({ isScrolled: false, isScrollingUp: true });
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -50,7 +43,6 @@ function Navbar() {
     }
   });
 
-  // Close mobile menu when viewport enters desktop width
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 1024px)");
     const onDesktop = () => setIsMobileMenuOpen(false);
@@ -75,9 +67,14 @@ function Navbar() {
         : "border-l-[3px] border-transparent text-[#4a3623] hover:bg-[#d4af37]/4 hover:text-[#6A1724]",
     ].join(" ");
 
-  const handleLogoClick = () => {
+  const handleAyswariyaClick = () => {
     setIsMobileMenuOpen(false);
     navigate("/");
+  };
+
+  const handleSowbhagyaClick = () => {
+    setIsMobileMenuOpen(false);
+    navigate("/sowbhagya-mahal");
   };
 
   return (
@@ -95,26 +92,18 @@ function Navbar() {
         }`}
       >
         <div
-          className={`mx-auto grid w-full max-w-[1320px] grid-cols-[1fr_auto] items-center gap-4 px-4 transition-[min-height] duration-700 sm:px-5 md:px-8 lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] lg:px-10 xl:px-12 ${
+          className={`mx-auto grid w-full max-w-[1320px] grid-cols-[auto_1fr_auto] items-center gap-4 px-4 transition-[min-height] duration-700 sm:px-5 md:px-8 lg:px-10 xl:px-12 ${
             solidNav ? "min-h-[68px] md:min-h-[76px]" : "min-h-[76px] md:min-h-[88px]"
           }`}
         >
-          <nav className="hidden items-center justify-end gap-8 pr-8 lg:flex xl:gap-11 xl:pr-12">
-            {leftLinks.map((link) => (
-              <NavLink key={link.to} to={link.to} className={linkClass}>
-                {link.label}
-              </NavLink>
-            ))}
-          </nav>
-
           <button
-            onClick={handleLogoClick}
-            className={`group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 lg:justify-self-center ${isMobileMenuOpen ? "invisible" : ""} lg:visible`}
-            aria-label={logoAriaLabel}
+            onClick={handleAyswariyaClick}
+            className={`group relative min-h-11 justify-self-start px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 ${isMobileMenuOpen ? "invisible" : ""} lg:visible`}
+            aria-label="Ayswariya Mahal home"
           >
             <img
-              src={logoImg}
-              alt={logoAlt}
+              src={ayswariyaLogo}
+              alt="Ayswariya Mahal"
               loading="eager"
               fetchPriority="high"
               width="654"
@@ -127,29 +116,47 @@ function Navbar() {
             />
           </button>
 
-          <div className="hidden items-center justify-start gap-8 pl-8 lg:flex xl:gap-11 xl:pl-12">
-            <nav className="flex items-center gap-8 xl:gap-11">
-              {rightLinks.map((link) => (
-                <NavLink key={link.to} to={link.to} className={linkClass}>
-                  {link.label}
-                </NavLink>
-              ))}
-            </nav>
+          <nav className="hidden items-center justify-center gap-6 lg:flex xl:gap-8">
+            {links.map((link) => (
+              <NavLink key={link.to} to={link.to} className={linkClass}>
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
 
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button
+              onClick={handleSowbhagyaClick}
+              className={`group relative min-h-11 justify-self-end px-1 py-1 outline-none transition duration-500 hover:scale-[1.012] focus-visible:ring-2 focus-visible:ring-[#e5c76b]/70 sm:px-2 ${isMobileMenuOpen ? "invisible" : ""} lg:visible`}
+              aria-label="Sowbhagya Mahal"
+            >
+              <img
+                src={sowbhagyaLogo}
+                alt="Sowbhagya Mahal"
+                loading="eager"
+                width="654"
+                height="293"
+                className={`relative z-10 h-9 min-h-9 w-auto object-contain transition duration-700 sm:h-10 md:h-[46px] lg:h-[56px] ${
+                  solidNav
+                    ? "drop-shadow-[0_5px_12px_rgba(90,17,28,0.1)]"
+                    : "brightness-[1.22] drop-shadow-[0_8px_22px_rgba(0,0,0,0.36)]"
+                }`}
+              />
+            </button>
+
+            <button
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              className={`grid h-11 w-11 place-items-center rounded-full border justify-self-end transition-colors duration-300 lg:hidden ${isMobileMenuOpen ? "invisible" : ""} ${
+                solidNav
+                  ? "border-[#d4af37]/45 bg-white/35 text-[#4a3623]"
+                  : "border-white/24 bg-white/10 text-white backdrop-blur-md"
+              }`}
+              aria-label="Toggle navigation"
+              aria-expanded={isMobileMenuOpen}
+            >
+              {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
           </div>
-
-          <button
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
-            className={`grid h-11 w-11 place-items-center rounded-full border justify-self-end transition-colors duration-300 lg:hidden ${isMobileMenuOpen ? "invisible" : ""} ${
-              solidNav
-                ? "border-[#d4af37]/45 bg-white/35 text-[#4a3623]"
-                : "border-white/24 bg-white/10 text-white backdrop-blur-md"
-            }`}
-            aria-label="Toggle navigation"
-            aria-expanded={isMobileMenuOpen}
-          >
-            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
         </div>
 
         <AnimatePresence>
@@ -174,11 +181,10 @@ function Navbar() {
                 style={{ paddingTop: "env(safe-area-inset-top)", paddingBottom: "env(safe-area-inset-bottom)" }}
               >
                 <div className="flex h-full flex-col justify-between px-5 py-6 sm:px-7 sm:py-9">
-                  {/* Top: Logo + Close + Divider */}
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <button onClick={handleLogoClick}>
-                        <img src={logoImg} alt={logoAlt} className="h-11 w-auto" />
+                      <button onClick={handleAyswariyaClick}>
+                        <img src={ayswariyaLogo} alt="Ayswariya Mahal" className="h-11 w-auto" />
                       </button>
                       <button
                         onClick={() => setIsMobileMenuOpen(false)}
@@ -195,7 +201,6 @@ function Navbar() {
                     </div>
                   </div>
 
-                  {/* Middle: Nav links centered */}
                   <div className="flex flex-1 flex-col justify-center gap-1">
                     {links.map((link) => (
                       <NavLink
@@ -209,7 +214,6 @@ function Navbar() {
                     ))}
                   </div>
 
-                  {/* Bottom: CTA + Accent */}
                   <div className="flex flex-col items-center gap-5 pt-6 border-t border-[#d4af37]/20">
                     <button
                       onClick={() => { setIsMobileMenuOpen(false); openForm(); }}
