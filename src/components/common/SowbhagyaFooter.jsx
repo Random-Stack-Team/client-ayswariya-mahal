@@ -6,12 +6,12 @@ import { useEnquiry } from "../../context/useEnquiry";
 import FooterCredit from "./FooterCredit";
 
 const quickLinks = [
-  { label: "Home", to: "/" },
-  { label: "About", to: "/about" },
-  { label: "Facilities", to: "/facilities" },
+  { label: "Venue", to: "/" },
+  { label: "Legacy", to: "/about" },
+  { label: "Amenities", to: "/facilities" },
   { label: "Gallery", to: "/gallery" },
   { label: "Reviews", to: "/reviews" },
-  { label: "Contact", to: "/contact" },
+  { label: "Enquiry", to: "/contact" },
 ];
 
 const venueHighlights = [
