@@ -1,5 +1,5 @@
 const siteConfig = {
-  maintenance: true,
+  maintenance: false,
   title: 'Ayswariya Mahal',
   description: 'Ayswariya Mahal — Chennai premium wedding venue in Arumbakkam for weddings, receptions and engagements. AC halls, dining, luxury rooms and warm hospitality since 2001.',
   url: 'https://ayswariyamahal.com',
